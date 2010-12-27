@@ -3,11 +3,16 @@
 #  Compresses a MathJax file and reports the new size and savings.
 #  You need to have yuicompressor in order for this to work
 #  
-#  Usage:  ./packMJfile src-file dest-file
+#  Usage:  packMJfile src-file dest-file
 
+use Cwd;
+use FindBin;
+
+$bindir = $FindBin::Bin;
+$YUI = "$bindir/yuicompressor-2.4.2/build/yuicompressor-2.4.2.jar";
+$YUIFILTER = "$bindir/yuiFilter";
 $src = shift; $dst = shift;
 
-$YUI = "yuicompressor-2.4.2/build/yuicompressor-2.4.2.jar";
 
 if ($src =~ m!/config/(local/local|MathJax)\.js$!) {
   print "============================================\n";
@@ -19,21 +24,15 @@ if ($src =~ m!/config/(local/local|MathJax)\.js$!) {
 print "============================================\n";
 print "Compressing: $src\n";
 print "--------------------------------------------\n";
-print "Phase I...";
-system("java -jar '$YUI' -v -o tmp.js '$src' 2>&1 | ./yuiFilter");
+system("java -jar '$YUI' -v -o '$dst' '$src' 2>&1 | $YUIFILTER");
 
-print "--------------------------------------------\n";
-print "Phase II...\n";
-system("./jsCompress.pl tmp.js");
-
-print "--------------------------------------------\n";
-open(MJX,"<","tmp.data");
+open(MJX,"<", $dst);
 @lines = <MJX>;
 close(MJX);
 $compressed = join("",@lines);
 
-$template = "template.js";
-$template = "template-MathJax.js" if $dst =~ m!/MathJax\.js$!;
+$template = "$bindir/template.js";
+$template = "$bindir/template-MathJax.js" if $dst =~ m!(^|/)MathJax\.js$!;
 
 open(MJX,"<",$template);
 @lines = <MJX>;
@@ -44,12 +43,10 @@ $dstname = $dst; $dstname =~ s!.*/MathJax!/MathJax!;
 $lines =~ s/%%%NAME%%%/$dstname/;
 $lines =~ s/%%%DATA%%%/$compressed/;
 
+
 open(MJX,">",$dst);
 print MJX $lines;
 close(MJX);
-
-unlink "tmp.js";
-unlink "tmp.data";
 
 1;
 

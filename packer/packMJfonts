@@ -3,9 +3,16 @@
 #  Packs the javascript files that are part of the 
 #  image fonts package at fonts/HTML-CSS/TeX/png.
 #  
-#  Usage:  ./packMJfonts
+#  Usage:  packMJfonts [project-dir]
 
-$SRC = "../../mathjax/fonts/HTML-CSS/TeX/png";
+use Cwd;
+use FindBin;
+
+$bindir = $FindBin::Bin;
+$top_builddir = shift || getcwd;
+$builddir = "$top_builddir/fonts/HTML-CSS/TeX/png";
+$SRC = $builddir;
+$PACKMJFILE = "$bindir/packMJfile";
 
 sub packDir {
   my ($src,$dst) = @_;
@@ -28,7 +35,7 @@ sub packFile {
   my ($stime,$ssize) = (stat($src))[9,7];
   my $dtime = (stat($dst))[9];
   return if $stime <= $dtime || $ssize <= 1024;
-  system("./packMJfile '$src' '$dst'");
+  system("$PACKMJFILE '$src' '$dst'");
   my $dsize = (stat($dst))[7];
   print "Size: $dsize,  Original: $ssize [",$ssize-$dsize," or ",
     sprintf("%.1f",100*($ssize-$dsize)/$ssize),"%]\n";

@@ -24,18 +24,7 @@
 
 if (!window.MathJax) {window.MathJax = {}}
 
-MathJax.Unpack = function (data) {
-  var k, d, n, m, i;
-  for (k = 0, m = data.length; k < m; k++) {
-    d = data[k];
-    for (i = 0, n = d.length; i < n; i++)
-      {if (typeof(d[i]) == 'number') {d[i] = d[d[i]]}}
-    data[k] = d.join('');
-  }
-  eval(data.join(''));
-};
 MathJax.isPacked = true;
 
-MathJax.Unpack([
-%%%DATA%%%]);
+%%%DATA%%%
 

@@ -1,7 +1,16 @@
 #! /usr/local/bin/perl
 
-$SRC = "../SourceForge/trunk/mathjax/unpacked";
-$DST = $SRC; $DST =~ s!/unpacked$!!;
+#  Compresses scripts in the MathJax project
+#  
+#  Usage:  packMJ [project-dir]
+
+use Cwd;
+use FindBin;
+
+$DST = shift || getcwd;
+$SRC = "$DST/unpacked";
+$bindir = $FindBin::Bin;
+$PACKMJFILE = "$bindir/packMJfile";
 
 sub packDir {
   my ($src,$dst) = @_;
@@ -27,7 +36,7 @@ sub packFile {
   my ($stime,$ssize) = (stat($src))[9,7];
   my $dtime = (stat($dst))[9];
   return if $stime <= $dtime || $ssize <= 1024;
-  system("./packMJfile '$src' '$dst'");
+  system("$PACKMJFILE '$src' '$dst'");
   my $dsize = (stat($dst))[7];
   print "Size: $dsize,  Original: $ssize [",$ssize-$dsize," or ",
     sprintf("%.1f",100*($ssize-$dsize)/$ssize),"%]\n";
