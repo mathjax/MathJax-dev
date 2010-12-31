@@ -23,7 +23,7 @@ if ($src =~ m!/config/(local/local|MathJax)\.js$!) {
 
 print "============================================\n";
 print "Compressing: $src\n";
-print "--------------------------------------------\n";
+print "--------------------------------------------";
 system("java -jar '$YUI' -v -o '$dst' '$src' 2>&1 | $YUIFILTER");
 
 open(MJX,"<", $dst);

@@ -38,7 +38,7 @@ sub packFile {
   return if $stime <= $dtime || $ssize <= 1024;
   system("$PACKMJFILE '$src' '$dst'");
   my $dsize = (stat($dst))[7];
-  print "Size: $dsize,  Original: $ssize [",$ssize-$dsize," or ",
+  print "Size: $dsize,  Original: $ssize [saved: ",$ssize-$dsize," or ",
     sprintf("%.1f",100*($ssize-$dsize)/$ssize),"%]\n";
 }
 
