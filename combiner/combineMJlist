@@ -1,0 +1,77 @@
+#! /usr/local/bin/perl
+
+#
+#  Combine scripts in the MathJax project into single-file-load
+#  configuration files.
+#
+#  Usage:  ./combineMJlist proj-dir [files.lis]
+#
+
+use Cwd;
+use FindBin;
+
+$DIR = $FindBin::Bin;
+$MJX = shift || getcwd;
+
+$name = $ARGV[0]; $name =~ s!.*/!!;
+die "Usage: ./combineMJlist srcdir files.lis\n" unless $name =~ m/\S/;
+die "Project directory must contain a config directory\n" unless -d "$MJX/config";
+
+$outfile = "config/$name"; $outfile =~ s/\.[^.]*/.js/;
+
+@files = ();
+while ($file = <>) {
+  chomp($file);
+  if ($file =~ m/\S/) {
+    push (@files,$file);
+  } else {
+    @config = <>;
+    chomp(@config);
+    last;
+  }
+}
+
+$MMLorHTML = 0;
+@list = ();
+
+foreach $file (@files) {
+  $MMLorHTML = 1 if $file =~ m!/MMLorHTML.js!;
+  push(@list,"[MathJax]/$file");
+}
+$files = '  "'.join("\",\n  \"",@list).'"';
+$MMLorHTML = ("","\nMathJax.Hub.Config({delayJaxRegistration: true});\n")[$MMLorHTML];
+
+open(CONFIG,"<","$DIR/template.js") || die "Can't open $DIR/template.js: $!\n";
+@lines = <CONFIG>;
+close(CONFIG);
+$config = join("",@lines);
+
+$config =~ s!%%% NAME %%%!/MathJax/$outfile!;
+$config =~ s!%%% FILES %%%!$files!;
+$config =~ s!%%% MMLorHTML %%%!$MMLorHTML!;
+
+print "Creating $outfile\n";
+open(CONFIG,">","$MJX/$outfile") || die "Can't write $MJX/$outfile: $!\n";
+print CONFIG $config;
+
+if (scalar(@config)) {
+  print CONFIG "MathJax.Hub.Config({\n  ";
+  print CONFIG join("\n  ",@config);
+  print CONFIG "\n});\n\n";
+}
+
+foreach $file (@files) {
+  print "  $file\n";
+  open(JS,"<","$MJX/$file") || warn "Can't read $MJX/$file: $!\n";
+  @lines = <JS>;
+  close(JS);
+  $lines = join("",@lines);
+  $lines =~ s!/.*?\*/\n\n!!s;
+  print CONFIG $lines;
+}
+
+print CONFIG "MathJax.Ajax.loadComplete(\"[MathJax]/$outfile\");\n";
+
+close(CONFIG);
+
+1;

@@ -1,0 +1,47 @@
+#! /usr/local/bin/perl
+
+#
+#  Create all the combined configuration files
+#
+#  Usage:  ./combineMJlist [proj-dir]
+#
+
+use Cwd;
+use FindBin;
+
+$DIR = $FindBin::Bin;
+$MJX = shift || getcwd;
+$COMBINELIST = "$DIR/combineMJlist";
+
+die "Project directory must contain a config directory\n" unless -d "$MJX/config";
+
+
+opendir(LISTS,"$DIR/lists") || die "Can't list $DIR/lists: $!\n";
+@lists = grep {/.*\.lis/} readdir(LISTS);
+closedir(LISTS);
+
+foreach $list (@lists) {
+  $file = $list; $file =~ s/\.[^.]*/.js/;
+  $needsUpdate = 0;
+  if (-e "$MJX/config/$file") {
+    $date = (stat("$MJX/config/$file"))[9];
+    open(LIST,"<","$DIR/lists/$list") || warn "Can't read $DIR/lists/$list: $!\n";
+    @files = <LIST>; chomp(@files);
+    close(LIST);
+    foreach $name (@files) {
+      last unless $name =~ m/\S/;
+      if (!(-e "$MJX/$name") || (stat("$MJX/$name"))[9] > $date) {
+	$needsUpdate = 1;
+ 	last;
+      }
+    }
+  }
+  if ($needsUpdate) {
+    print "Refreshing: config/$file\n";
+    system("$COMBINELIST '$MJX' '$DIR/lists/$list' > /dev/null");
+  } else {
+    print "Up to date: config/$file\n";
+  }
+}
+
+1;

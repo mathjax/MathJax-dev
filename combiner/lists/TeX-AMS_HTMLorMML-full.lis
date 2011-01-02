@@ -1,0 +1,16 @@
+jax/input/TeX/config.js
+jax/output/HTML-CSS/config.js
+jax/output/NativeMML/config.js
+config/MMLorHTML.js
+extensions/tex2jax.js
+extensions/MathZoom.js
+extensions/MathMenu.js
+jax/element/mml/jax.js
+extensions/TeX/noErrors.js
+extensions/TeX/noUndefined.js
+jax/input/TeX/jax.js
+extensions/TeX/AMSmath.js
+extensions/TeX/AMSsymbols.js
+jax/output/NativeMML/jax.js
+jax/output/HTML-CSS/jax.js
+jax/output/HTML-CSS/autoload/mtable.js
