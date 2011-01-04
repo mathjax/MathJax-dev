@@ -1,0 +1,33 @@
+jax/input/TeX/config.js
+jax/input/MathML/config.js
+jax/output/HTML-CSS/config.js
+jax/output/NativeMML/config.js
+config/MMLorHTML.js
+extensions/tex2jax.js
+extensions/mml2jax.js
+extensions/MathZoom.js
+jax/element/mml/jax.js
+extensions/TeX/noErrors.js
+extensions/TeX/noUndefined.js
+jax/input/TeX/jax.js
+extensions/TeX/AMSmath.js
+extensions/TeX/AMSsymbols.js
+jax/input/MathML/jax.js
+jax/output/NativeMML/jax.js
+jax/output/HTML-CSS/jax.js
+jax/output/HTML-CSS/autoload/mtable.js
+
+"HTML-CSS": {
+  showMathMenu: false
+},
+NativeMML: {
+  showMathMenu: false,
+  showMathMenuMSIE: false
+},
+menuSettings: {
+  zoom: "Double-Click"
+},
+errorSettings: {
+  message: ["[Math Error]"]
+}
+
