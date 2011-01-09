@@ -6,6 +6,7 @@ config/MMLorHTML.js
 extensions/tex2jax.js
 extensions/mml2jax.js
 extensions/MathZoom.js
+extensions/MathMenu.js
 jax/element/mml/jax.js
 extensions/TeX/noErrors.js
 extensions/TeX/noUndefined.js
@@ -14,11 +15,7 @@ extensions/TeX/AMSmath.js
 extensions/TeX/AMSsymbols.js
 jax/input/MathML/jax.js
 
-"HTML-CSS": {
-  showMathMenu: false
-},
 NativeMML: {
-  showMathMenu: false,
   showMathMenuMSIE: false
 },
 menuSettings: {
