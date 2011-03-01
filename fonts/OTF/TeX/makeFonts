@@ -1,0 +1,22 @@
+#! /bin/csh -f
+
+#
+#  Make the fonts in all the formats
+#
+#    Usage:  ./makeFonts
+#
+
+echo "OTF and TTF"
+./makeOTF
+
+echo ""
+echo "EOT"
+./makeEOT
+
+echo ""
+echo "SVG"
+./makeSVG
+
+rm otf/*Greek*
+rm ttf/*WinChrom* ttf/*WinIE6*
+

@@ -6,7 +6,7 @@
 #  Usage:  ./makeAll
 
 
-rm ff/* otf/* ttf/* eot/* svg/*
+rm pfa/* ff/* otf/* ttf/* eot/* svg/*
 
 echo "------------------"
 ./makeBlacker 15   # values between 10 and 30 seem best
@@ -15,6 +15,6 @@ echo "------------------"
 echo "------------------"
 ./makeFF
 echo "------------------"
-./makeOTF
+./makeFonts
 echo "------------------"
 ./makeInstall

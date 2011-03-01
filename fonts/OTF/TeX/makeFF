@@ -3,7 +3,7 @@
 #  Creates the FontForge files needed to create the
 #  MathJax fonts from the TeX source files, constructing some
 #  glyphs from two or more parts, when needed.
-#  
+#
 #  Usage:  ./makeFF
 
 require "lib/skew.pl";
@@ -1784,7 +1784,7 @@ $extra{'Main-Regular'} = {
     'Select(0u23B8)','Paste()',
     'Select(0u23AD)','Copy()',
     'Select(0u23B8)',
-    'PasteWithOffset(0,0)',
+    'PasteWithOffset(1,0)',
     'Scale(55,0,0)','RoundToInt()','Move(-38,250)',
     'RemoveOverlap()','Simplify()',
     'SetRBearing(-38,1)',
@@ -2299,13 +2299,15 @@ foreach $cmfont (sort (keys %map)) {
   foreach $mjfont (keys %{$map{$cmfont}}) {
     $fontname = "MathJax_$mjfont";
     $style = $fontname; $style =~ s/.*?(-|$)//; $style = "Regular" unless $style;
+    $normal = "Normal"; $normal = "Bold" if style =~ m/Bold/;
     $family = $fontname; $family =~ s/-.*//;
     $fontname = "$family-$style";
     $STYLE = $style; $STYLE = "Bold Italic" if $STYLE eq "BoldItalic";
     $otf = "otf/$fontname.otf";
     unless (defined($script{$mjfont})) {
       open(SPACE,"lib/Space.ttx"); $lines = join("",<SPACE>); close(SPACE);
-      $lines =~ s/\*NAME\*/$family/g; $lines =~ s/\*WEIGHT\*/$style/g; $lines =~ s/\*WEIGHT_S\*/$STYLE/g;
+      $lines =~ s/\*NAME\*/$family/g; $lines =~ s/\*WEIGHT\*/$style/g;
+      $lines =~ s/\*WEIGHT_S\*/$STYLE/g; $lines =~ s/\*NORMAL\*/$normal/g;
       if ($style eq "Regular") {$lines =~ s/\* WEIGHT\*//g} else {$lines =~ s/\* WEIGHT\*/ $STYLE/g}
       open(SPACE,">Space.ttx"); print SPACE $lines; close(SPACE);
       `ttx Space.ttx`; `mv Space.otf '$otf'`; unlink("Space.ttx");
@@ -2369,8 +2371,9 @@ foreach $font (sort keys %script) {
   print "MathJax_$font\n";
   open(SCRIPT,">","ff/MathJax_$font.ff");
   print SCRIPT join(";\n",@{$script{$font}},@{$style{$style}},"",
-                    'SelectAll()','AddExtrema()',
-		    'SelectAll()','AutoHint()',
+                    'SelectAll()','RoundToInt()',
+		    'Simplify()','AddExtrema()','Simplify()',
+		    'ClearHints()','AutoHint()','RoundToInt()',
 		    'Generate("otf/MathJax_'.$family.'.otf")',
 		    'SelectAll()','AutoInstr()',
                     'Generate("ttf/MathJax_'.$family.'.ttf")'),"\n";

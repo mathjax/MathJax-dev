@@ -16,7 +16,7 @@
     <fontRevision value="1.0"/>
     <checkSumAdjustment value="0x2b8c80da"/>
     <magicNumber value="0x5f0f3cf5"/>
-    <flags value="00000000 00001011"/>
+    <flags value="00000000 00000011"/>
     <unitsPerEm value="1000"/>
     <created value="Sun Jan 24 23:04:46 2010"/>
     <modified value="Sun Jan 24 23:04:46 2010"/>
@@ -121,19 +121,25 @@
       FontForge 2.0 : *NAME*-*WEIGHT*
     </namerecord>
     <namerecord nameID="4" platformID="1" platEncID="0" langID="0x0">
-      *NAME** WEIGHT*
+      *NAME*-*WEIGHT*
     </namerecord>
     <namerecord nameID="5" platformID="1" platEncID="0" langID="0x0">
-      Version 1.0
+      Version 1.1
     </namerecord>
     <namerecord nameID="6" platformID="1" platEncID="0" langID="0x0">
       *NAME*-*WEIGHT*
     </namerecord>
     <namerecord nameID="13" platformID="1" platEncID="0" langID="0x0">
-      Copyright (c) 2009-2010, Design Science, Inc. (&lt;www.mathjax.org>),&#10;with Reserved Font Name *NAME*.&#10;&#10;This Font Software is licensed under the SIL Open Font License, Version 1.1.&#10;This license is copied below, and is also available with a FAQ at:&#10;http://scripts.sil.org/OFL&#10;&#10;&#10;-----------------------------------------------------------&#10;SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007&#10;-----------------------------------------------------------&#10;&#10;PREAMBLE&#10;The goals of the Open Font License (OFL) are to stimulate worldwide&#10;development of collaborative font projects, to support the font creation&#10;efforts of academic and linguistic communities, and to provide a free and&#10;open framework in which fonts may be shared and improved in partnership&#10;with others.&#10;&#10;The OFL allows the licensed fonts to be used, studied, modified and&#10;redistributed freely as long as they are not sold by themselves. The&#10;fonts, including any derivative works, can be bundled, embedded, &#10;redistributed and/or sold with any software provided that any reserved&#10;names are not used by derivative works. The fonts and derivatives,&#10;however, cannot be released under any other type of license. The&#10;requirement for fonts to remain under this license does not apply&#10;to any document created using the fonts or their derivatives.&#10;&#10;DEFINITIONS&#10;"Font Software" refers to the set of files released by the Copyright&#10;Holder(s) under this license and clearly marked as such. This may&#10;include source files, build scripts and documentation.&#10;&#10;"Reserved Font Name" refers to any names specified as such after the&#10;copyright statement(s).&#10;&#10;"Original Version" refers to the collection of Font Software components as&#10;distributed by the Copyright Holder(s).&#10;&#10;"Modified Version" refers to any derivative made by adding to, deleting,&#10;or substituting -- in part or in whole -- any of the components of the&#10;Original Version, by changing formats or by porting the Font Software to a&#10;new environment.&#10;&#10;"Author" refers to any designer, engineer, programmer, technical&#10;writer or other person who contributed to the Font Software.&#10;&#10;PERMISSION &amp; CONDITIONS&#10;Permission is hereby granted, free of charge, to any person obtaining&#10;a copy of the Font Software, to use, study, copy, merge, embed, modify,&#10;redistribute, and sell modified and unmodified copies of the Font&#10;Software, subject to the following conditions:&#10;&#10;1) Neither the Font Software nor any of its individual components,&#10;in Original or Modified Versions, may be sold by itself.&#10;&#10;2) Original or Modified Versions of the Font Software may be bundled,&#10;redistributed and/or sold with any software, provided that each copy&#10;contains the above copyright notice and this license. These can be&#10;included either as stand-alone text files, human-readable headers or&#10;in the appropriate machine-readable metadata fields within text or&#10;binary files as long as those fields can be easily viewed by the user.&#10;&#10;3) No Modified Version of the Font Software may use the Reserved Font&#10;Name(s) unless explicit written permission is granted by the corresponding&#10;Copyright Holder. This restriction only applies to the primary font name as&#10;presented to the users.&#10;&#10;4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font&#10;Software shall not be used to promote, endorse or advertise any&#10;Modified Version, except to acknowledge the contribution(s) of the&#10;Copyright Holder(s) and the Author(s) or with their explicit written&#10;permission.&#10;&#10;5) The Font Software, modified or unmodified, in part or in whole,&#10;must be distributed entirely under this license, and must not be&#10;distributed under any other license. The requirement for fonts to&#10;remain under this license does not apply to any document created&#10;using the Font Software.&#10;&#10;TERMINATION&#10;This license becomes null and void if any of the above conditions are&#10;not met.&#10;&#10;DISCLAIMER&#10;THE FONT SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,&#10;EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF&#10;MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT&#10;OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE&#10;COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,&#10;INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL&#10;DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING&#10;FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM&#10;OTHER DEALINGS IN THE FONT SOFTWARE.
+      Copyright (c) 2009-2010, Design Science, Inc. (&lt;www.mathjax.org>),&#10;with Reserved Font Name *NAME*.&#10;&#10;This Font Software is licensed under the SIL Open Font License, Version 1.1.&#10;This license available with a FAQ at:&#10;http://scripts.sil.org/OFL
     </namerecord>
     <namerecord nameID="14" platformID="1" platEncID="0" langID="0x0">
       http://scripts.sil.org/OFL
+    </namerecord>
+    <namerecord nameID="16" platformID="1" platEncID="0" langID="0x0">
+      *NAME*
+    </namerecord>
+    <namerecord nameID="17" platformID="1" platEncID="0" langID="0x0">
+      *WEIGHT*
     </namerecord>
     <namerecord nameID="0" platformID="3" platEncID="1" langID="0x409">
       Copyright (c) 2009-2010 Design Science, Inc.
@@ -148,16 +154,16 @@
       FontForge 2.0 : *NAME*-*WEIGHT*
     </namerecord>
     <namerecord nameID="4" platformID="3" platEncID="1" langID="0x409">
-      *NAME** WEIGHT*
+      *NAME*-*WEIGHT*
     </namerecord>
     <namerecord nameID="5" platformID="3" platEncID="1" langID="0x409">
-      Version 1.0
+      Version 1.1
     </namerecord>
     <namerecord nameID="6" platformID="3" platEncID="1" langID="0x409">
       *NAME*-*WEIGHT*
     </namerecord>
     <namerecord nameID="13" platformID="3" platEncID="1" langID="0x409">
-      Copyright (c) 2009-2010, Design Science, Inc. (&lt;www.mathjax.org>),&#10;with Reserved Font Name *NAME*.&#10;&#10;This Font Software is licensed under the SIL Open Font License, Version 1.1.&#10;This license is copied below, and is also available with a FAQ at:&#10;http://scripts.sil.org/OFL&#10;&#10;&#10;-----------------------------------------------------------&#10;SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007&#10;-----------------------------------------------------------&#10;&#10;PREAMBLE&#10;The goals of the Open Font License (OFL) are to stimulate worldwide&#10;development of collaborative font projects, to support the font creation&#10;efforts of academic and linguistic communities, and to provide a free and&#10;open framework in which fonts may be shared and improved in partnership&#10;with others.&#10;&#10;The OFL allows the licensed fonts to be used, studied, modified and&#10;redistributed freely as long as they are not sold by themselves. The&#10;fonts, including any derivative works, can be bundled, embedded, &#10;redistributed and/or sold with any software provided that any reserved&#10;names are not used by derivative works. The fonts and derivatives,&#10;however, cannot be released under any other type of license. The&#10;requirement for fonts to remain under this license does not apply&#10;to any document created using the fonts or their derivatives.&#10;&#10;DEFINITIONS&#10;"Font Software" refers to the set of files released by the Copyright&#10;Holder(s) under this license and clearly marked as such. This may&#10;include source files, build scripts and documentation.&#10;&#10;"Reserved Font Name" refers to any names specified as such after the&#10;copyright statement(s).&#10;&#10;"Original Version" refers to the collection of Font Software components as&#10;distributed by the Copyright Holder(s).&#10;&#10;"Modified Version" refers to any derivative made by adding to, deleting,&#10;or substituting -- in part or in whole -- any of the components of the&#10;Original Version, by changing formats or by porting the Font Software to a&#10;new environment.&#10;&#10;"Author" refers to any designer, engineer, programmer, technical&#10;writer or other person who contributed to the Font Software.&#10;&#10;PERMISSION &amp; CONDITIONS&#10;Permission is hereby granted, free of charge, to any person obtaining&#10;a copy of the Font Software, to use, study, copy, merge, embed, modify,&#10;redistribute, and sell modified and unmodified copies of the Font&#10;Software, subject to the following conditions:&#10;&#10;1) Neither the Font Software nor any of its individual components,&#10;in Original or Modified Versions, may be sold by itself.&#10;&#10;2) Original or Modified Versions of the Font Software may be bundled,&#10;redistributed and/or sold with any software, provided that each copy&#10;contains the above copyright notice and this license. These can be&#10;included either as stand-alone text files, human-readable headers or&#10;in the appropriate machine-readable metadata fields within text or&#10;binary files as long as those fields can be easily viewed by the user.&#10;&#10;3) No Modified Version of the Font Software may use the Reserved Font&#10;Name(s) unless explicit written permission is granted by the corresponding&#10;Copyright Holder. This restriction only applies to the primary font name as&#10;presented to the users.&#10;&#10;4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font&#10;Software shall not be used to promote, endorse or advertise any&#10;Modified Version, except to acknowledge the contribution(s) of the&#10;Copyright Holder(s) and the Author(s) or with their explicit written&#10;permission.&#10;&#10;5) The Font Software, modified or unmodified, in part or in whole,&#10;must be distributed entirely under this license, and must not be&#10;distributed under any other license. The requirement for fonts to&#10;remain under this license does not apply to any document created&#10;using the Font Software.&#10;&#10;TERMINATION&#10;This license becomes null and void if any of the above conditions are&#10;not met.&#10;&#10;DISCLAIMER&#10;THE FONT SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,&#10;EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF&#10;MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT&#10;OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE&#10;COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,&#10;INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL&#10;DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING&#10;FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM&#10;OTHER DEALINGS IN THE FONT SOFTWARE.
+      Copyright (c) 2009-2010, Design Science, Inc. (&lt;www.mathjax.org>),&#10;with Reserved Font Name *NAME*.&#10;&#10;This Font Software is licensed under the SIL Open Font License, Version 1.1.&#10;This license available with a FAQ at:&#10;http://scripts.sil.org/OFL
     </namerecord>
     <namerecord nameID="14" platformID="3" platEncID="1" langID="0x409">
       http://scripts.sil.org/OFL
@@ -173,7 +179,7 @@
       <map code="0xefff" name="uniEFFF"/><!-- Private Use -->
     </cmap_format_4>
     <cmap_format_0 platformID="1" platEncID="0" language="0">
-      <map code="0x0" name="space"/>
+      <map code="0x0" name=".notdef"/>
       <map code="0x1" name=".notdef"/>
       <map code="0x2" name=".notdef"/>
       <map code="0x3" name=".notdef"/>
@@ -182,11 +188,11 @@
       <map code="0x6" name=".notdef"/>
       <map code="0x7" name=".notdef"/>
       <map code="0x8" name=".notdef"/>
-      <map code="0x9" name=".notdef"/>
+      <map code="0x9" name="space"/>
       <map code="0xa" name=".notdef"/>
       <map code="0xb" name=".notdef"/>
       <map code="0xc" name=".notdef"/>
-      <map code="0xd" name=".notdef"/>
+      <map code="0xd" name="space"/>
       <map code="0xe" name=".notdef"/>
       <map code="0xf" name=".notdef"/>
       <map code="0x10" name=".notdef"/>
@@ -453,13 +459,14 @@
   <CFF>
 
     <CFFFont name="*NAME*-*WEIGHT*">
-      <version value="1.0"/>
-      <Notice value=""/>
+      <version value="001.001"/>
+      <Notice value="Copyright (c) 2009-2010 Design Science, Inc."/>
       <FullName value="*NAME*-*WEIGHT*"/>
       <FamilyName value="*NAME*"/>
-      <Weight value="*WEIGHT*"/>
+      <Weight value="*NORMAL*"/>
       <isFixedPitch value="0"/>
       <ItalicAngle value="0"/>
+      <UnderlinePosition value="-150"/>
       <UnderlineThickness value="50"/>
       <PaintType value="0"/>
       <CharstringType value="2"/>
@@ -469,13 +476,11 @@
       <!-- charset is dumped separately as the 'GlyphOrder' element -->
       <Encoding name="StandardEncoding"/>
       <Private>
-        <BlueScale value="0.039625"/>
+        <BlueScale value="0.03963"/>
         <BlueShift value="0"/>
         <BlueFuzz value="1"/>
         <StdHW value="50"/>
         <StdVW value="50"/>
-        <StemSnapH value="50"/>
-        <StemSnapV value="50"/>
         <ForceBold value="0"/>
         <LanguageGroup value="0"/>
         <ExpansionFactor value="0.06"/>
