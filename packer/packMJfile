@@ -14,7 +14,7 @@ $YUIFILTER = "$bindir/yuiFilter";
 $src = shift; $dst = shift;
 
 
-if ($src =~ m!/config/(local/local|MathJax)\.js$!) {
+if ($src =~ m!/config/(local/local|default)\.js$!) {
   print "============================================\n";
   print "Copying: $src\n";
   system("cp '$src' '$dst'");
@@ -39,7 +39,7 @@ open(MJX,"<",$template);
 close(MJX);
 $lines = join("",@lines);
 
-$dstname = $dst; $dstname =~ s!.*/MathJax!/MathJax!;
+$dstname = $dst; $dstname =~ s!.*/(dpvc-)?MathJax!/MathJax!;
 $lines =~ s/%%%NAME%%%/$dstname/;
 $lines =~ s/%%%DATA%%%/$compressed/;
 
