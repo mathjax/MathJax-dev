@@ -1,0 +1,70 @@
+#! /usr/local/bin/perl
+
+#
+#  Combine scripts in the MathJax project into single-file-load
+#  configuration files.
+#
+#  Usage:  ./combineMJlist-unpacked proj-dir [files.lis]
+#
+
+use Cwd;
+use FindBin;
+
+$DIR = $FindBin::Bin;
+$MJX = shift || getcwd;
+
+$name = $ARGV[0]; $name =~ s!.*/!!;
+die "Usage: ./combineMJlist srcdir files.lis\n" unless $name =~ m/\S/;
+die "Project directory must contain an unpacked/config directory\n" unless -d "$MJX/unpacked/config";
+
+$outfile = "config/$name"; $outfile =~ s/\.[^.]*/.js/;
+
+@files = ();
+while ($file = <>) {
+  chomp($file);
+  if ($file =~ m/\S/) {
+    push (@files,$file);
+  } else {
+    @config = <>;
+    chomp(@config);
+    while (scalar(@config) && $config[-1] !~ m/\S/) {pop(@config)}
+    last;
+  }
+}
+
+@CONFIG = ();
+@JAX = ();
+@EXTENSIONS = ();
+
+foreach $file (@files) {
+  if ($file =~ m!^jax/(.*)/config.js!) {push(@JAX,"\"$1\"")}
+  if ($file =~ m!^extensions/(.*)!) {push(@EXTENSIONS,"\"$1\"")}
+  if ($file =~ m!^config/(.*)!) {push(@CONFIG,"\"$1\"")}
+}
+
+@HUB = ();
+push(@HUB,"config: [".join(",",@CONFIG)."]") if scalar(@CONFIG);
+push(@HUB,"extensions: [".join(",",@EXTENSIONS)."]") if scalar(@EXTENSIONS);
+push(@HUB,"jax: [".join(",",@JAX)."]") if scalar(@JAX);
+push(@HUB,join("\n  ",@config)) if scalar(@config);
+
+open(CONFIG,"<","$DIR/template-unpacked.js") || die "Can't open $DIR/template-unpacked.js: $!\n";
+@lines = <CONFIG>;
+close(CONFIG);
+$config = join("",@lines);
+
+$config =~ s!%%% NAME %%%!/MathJax/unpacked/$outfile!;
+
+print "Creating $outfile\n";
+open(CONFIG,">","$MJX/unpacked/$outfile") || die "Can't write $MJX/$outfile: $!\n";
+print CONFIG $config;
+
+print CONFIG "MathJax.Hub.Config({\n";
+print CONFIG "  ",join(",\n  ",@HUB);
+print CONFIG "\n});\n\n";
+
+print CONFIG "MathJax.Ajax.loadComplete(\"[MathJax]/$outfile\");\n";
+
+close(CONFIG);
+
+1;
