@@ -6,6 +6,7 @@ extensions/mml2jax.js
 extensions/MathZoom.js
 extensions/MathMenu.js
 jax/element/mml/jax.js
+extensions/toMathML.js
 jax/input/MathML/jax.js
 jax/output/NativeMML/jax.js
 jax/output/HTML-CSS/jax.js
