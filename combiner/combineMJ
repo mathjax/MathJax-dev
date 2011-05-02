@@ -12,6 +12,7 @@ use FindBin;
 $DIR = $FindBin::Bin;
 $MJX = shift || getcwd;
 $COMBINELIST = "$DIR/combineMJlist";
+$COMBINELISTU = "$DIR/combineMJlist-unpacked";
 
 die "Project directory must contain a config directory\n" unless -d "$MJX/config";
 
@@ -40,6 +41,7 @@ foreach $list (@lists) {
   if ($needsUpdate) {
     print "Refreshing: config/$file\n";
     system("$COMBINELIST '$MJX' '$DIR/lists/$list' > /dev/null");
+    system("$COMBINELISTU '$MJX' '$DIR/lists/$list' > /dev/null");
   } else {
     print "Up to date: config/$file\n";
   }
