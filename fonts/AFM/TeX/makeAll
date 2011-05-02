@@ -14,8 +14,8 @@ echo "-------------------"
 ./makeFonts
 ./makeData
 
-rm ../../../../mathjax/unpacked/jax/output/HTML-CSS/fonts/TeX/*/*/*.js
-cp -R fonts/TeX/* ../../../../mathjax/unpaacked/jax/output/HTML-CSS/fonts/TeX
+rm ../../../../MathJax/unpacked/jax/output/HTML-CSS/fonts/TeX/*/*/*.js
+cp -R fonts/TeX/* ../../../../MathJax/unpacked/jax/output/HTML-CSS/fonts/TeX
 
 #
 #  This is the data needed for the fonts in jax/output/HTML-CSS/fonts/TeX/fontdata.js
