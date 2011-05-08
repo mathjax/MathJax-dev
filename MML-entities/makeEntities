@@ -22,10 +22,14 @@ foreach $code (
 ) {$MJ{$code} = 1}
 
 
-open(UNICODE,"MML-Unicode-List.txt");
+open(UNICODE,"htmlmathml-f.txt");
 while ($line = <UNICODE>) {
   chomp($line); next unless $line =~ m/\S/;
-  ($entity,$code,$code2,$name) = ($line =~ m/(.*), *U0?([0-9A-F]+)(?:-0([0-9A-F]+))?, (.*)/);
+  # fix errors in table
+    $line =~ s/#38;#38/#x00026/; $line =~ s/#38;#60/#x0003C/; $line =~ s/#38;//;  $line =~ s/" &/"&/;
+  #
+  ($entity,$code,$code2,$name) = ($line =~ m/<!ENTITY ([^ "]*) +"&#x0?([0-9A-F]+);(?:&#x0?([0-9A-F]+);)?" ><!--(.*)-->/);
+  warn "Can't process: $line\n" if "[$entity][$code][$code2][$name]" eq "[][][][]";
   if (length($code) == 5 || $entity =~ m/^[a-zA-Z0-9](fr|opf|scr)$/) {
     $font = substr($entity,1);
     if (length($code) == 5) {$code = "D835\\u".sprintf("%04X",hex($code)-0x1D400+0xDC00)}
