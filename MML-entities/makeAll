@@ -7,9 +7,9 @@
 #  Usage:  ./makeAll
 
 rm -rf entities
-rm ../mathjax/unpacked/jax/input/MathML/entities/*.js
+rm ../../MathJax/unpacked/jax/input/MathML/entities/*.js
 ./makeEntities
-cp entities/*.js ../mathjax/unpacked/jax/input/MathML/entities
+cp entities/*.js ../../MathJax/unpacked/jax/input/MathML/entities
 
 #
 #  This file contains the entity table to be added
