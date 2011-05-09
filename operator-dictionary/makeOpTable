@@ -20,15 +20,16 @@ $lines =~ s/&amp;/&/g; $lines =~ s/&amp;/&/g;
 $lines =~ s/&lt;/</g; $lines =~ s/&gt;/>/g;
 
 foreach $line (split(/\n/,$lines)) {
-  ($id,$char,$name,$form,$prec,$lspace,$rspace,$min,$attributes) = split(/<\/t[dh]><t[dh][^>]*>/,$line);
+  ($id,$char,$name,$form,$prec,$lspace,$rspace,$attributes) = split(/<\/t[dh]><t[dh][^>]*>/,$line);
   next if $id eq "min";
+  $attributes =~ s/,//g;  #  older version didn't include commas, so remove them
   $op{$form}{$id} = [$lspace,$rspace,$attributes,$name];
 }
 
 # hack to add in missing prefix and postfix |
 
-$op{prefix}{"|"} = [0,0,'fence stretchy symmetric','vertical line'];
-$op{postfix}{"|"} = [0,0,'fence stretchy symmetric','vertical line'];
+#$op{prefix}{"|"} = [0,0,'fence stretchy symmetric','vertical line'];
+#$op{postfix}{"|"} = [0,0,'fence stretchy symmetric','vertical line'];
 
 @RANGES = (
   ["BasicLatin",0x20,0x7F,'REL'],
@@ -373,13 +374,15 @@ sub GetRange {
   '[3,3,TEXCLASS.BIN]' => 'BIN3',
   '[4,4,TEXCLASS.BIN]' => 'BIN4',
   '[0,1,TEXCLASS.BIN]' => 'BIN01',
+  '[5,5,TEXCLASS.BIN]' => 'BIN5',
   '[4,4,TEXCLASS.BIN,{stretchy: true}]' => 'TALLBIN',
   '[4,4,TEXCLASS.BIN,{largeop: true, movablelimits: true}]' => 'BINOP',
   '[5,5,TEXCLASS.REL]' => 'REL',
   '[1,1,TEXCLASS.REL,{stretchy: true}]' => 'REL1',
   '[4,4,TEXCLASS.REL]' => 'REL4',
-  '[5,5,TEXCLASS.REL,{stretchy: true}]' => 'WIDEREL',
-  '[5,5,TEXCLASS.REL,{accent: true, stretchy: true}]' => 'RELACCENT',
+  '[5,5,TEXCLASS.REL,{stretchy: true}]' => 'RELSTRETCH',
+  '[5,5,TEXCLASS.REL,{accent: true}]' => 'RELACCENT',
+  '[5,5,TEXCLASS.REL,{accent: true, stretchy: true}]' => 'WIDEREL',
   '[0,0,TEXCLASS.OPEN,{fence: true, stretchy: true, symmetric: true}]' => 'OPEN',
   '[0,0,TEXCLASS.CLOSE,{fence: true, stretchy: true, symmetric: true}]' => 'CLOSE',
   '[0,0,TEXCLASS.INNER]' => 'INNER',

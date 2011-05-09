@@ -12,7 +12,7 @@ rm optable.js
 
 ./makeOpTable
 
-cp optable/*.js ../mathjax/unpacked/jax/element/mml/optable
+cp optable/*.js ../../MathJax/unpacked/jax/element/mml/optable
 
 #
 #  This file contains the operator table data needed
