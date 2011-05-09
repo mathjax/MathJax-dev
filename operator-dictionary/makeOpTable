@@ -22,7 +22,8 @@ $lines =~ s/&lt;/</g; $lines =~ s/&gt;/>/g;
 foreach $line (split(/\n/,$lines)) {
   ($id,$char,$name,$form,$prec,$lspace,$rspace,$attributes) = split(/<\/t[dh]><t[dh][^>]*>/,$line);
   next if $id eq "min";
-  $attributes =~ s/,//g;  #  older version didn't include commas, so remove them
+  $attributes =~ s/,//g;               #  older version didn't include commas, so remove them
+  $attributes =~ s/=([^ ]*)/:"\1"/g;   #  replace linebreak=after buy linebreak:"after"
   $op{$form}{$id} = [$lspace,$rspace,$attributes,$name];
 }
 
@@ -417,7 +418,7 @@ foreach $form (reverse(sort(keys %op))) {
       $class = "BIN" if length($ID) == 2;
     }
     @DATA = ($lspace,$rspace,"TEXCLASS.$class");
-    push(@DATA,"{".join(': true, ',sort(split(/ /,$attributes))).": true}") if $attributes;
+    push(@DATA,"{".join(', ',map {($_ =~ m/:/ ? $_ : $_.": true")} sort(split(/ /,$attributes)))."}") if $attributes;
     $DATA = "[".join(",",@DATA)."]";
     $DATA = "MO.$CLASS{$DATA}" if defined $CLASS{$DATA};
     $DATA = sprintf("%-30s","        '$UID': $DATA,")." // $name\n";
