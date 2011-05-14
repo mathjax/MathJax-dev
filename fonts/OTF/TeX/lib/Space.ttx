@@ -85,8 +85,8 @@
       <bMidline value="0"/>
       <bXHeight value="0"/>
     </panose>
-    <ulUnicodeRange1 value="00000000 00000000 00000000 10000001"/>
-    <ulUnicodeRange2 value="00000000 00000000 00000000 00000000"/>
+    <ulUnicodeRange1 value="10000000 00000000 00000000 11101111"/>
+    <ulUnicodeRange2 value="00010000 00000000 11101100 11101101"/>
     <ulUnicodeRange3 value="00000000 00000000 00000000 00000000"/>
     <ulUnicodeRange4 value="00000000 00000000 00000000 00000000"/>
     <achVendID value="PfEd"/>
