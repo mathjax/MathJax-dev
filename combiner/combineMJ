@@ -3,11 +3,13 @@
 #
 #  Create all the combined configuration files
 #
-#  Usage:  ./combineMJlist [proj-dir]
+#  Usage:  ./combineMJlist [--force] [proj-dir]
 #
 
 use Cwd;
 use FindBin;
+
+if ($ARGV[0] eq '--force') {$force = true; shift}
 
 $DIR = $FindBin::Bin;
 $MJX = shift || getcwd;
@@ -24,7 +26,7 @@ closedir(LISTS);
 foreach $list (@lists) {
   $file = $list; $file =~ s/\.[^.]*/.js/;
   $needsUpdate = 1;
-  if (-e "$MJX/config/$file") {
+  if (-e "$MJX/config/$file" && !$force) {
     $needsUpdate = 0;
     $date = (stat("$MJX/config/$file"))[9];
     open(LIST,"<","$DIR/lists/$list") || warn "Can't read $DIR/lists/$list: $!\n";
