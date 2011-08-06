@@ -26,6 +26,7 @@ foreach $line (split(/\n/,$lines)) {
   $attributes =~ s/=([^ ]*)/:"\1"/g;   #  replace linebreak=after buy linebreak:"after"
   $op{$form}{$id} = [$lspace,$rspace,$attributes,$name];
 }
+$op{infix}{""} = [0,0,"","empty <mo>"];
 
 # hack to add in missing prefix and postfix |
 
@@ -86,6 +87,8 @@ sub GetRange {
 }
 
 %TEX = (
+  '' => ['ORD', 'empty <mo>'],
+
   '!' => ['CLOSE', '!'],
   '(' => ['OPEN', '('],
   ')' => ['CLOSE', ')'],
