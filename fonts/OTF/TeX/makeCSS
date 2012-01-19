@@ -1,0 +1,10 @@
+#! /bin/csh -f
+
+foreach file (woff/*.woff)
+echo $file:t:r
+./woff2css $file > css/$file:t:r.css
+end
+
+./css2all css/*.css > MathJax-All.css
+mv MathJax-All.css css
+

@@ -5,6 +5,7 @@ jax/output/NativeMML/config.js
 config/MMLorHTML.js
 extensions/tex2jax.js
 extensions/mml2jax.js
+extensions/MathEvents.js
 extensions/MathZoom.js
 extensions/MathMenu.js
 jax/element/mml/jax.js
@@ -16,9 +17,7 @@ extensions/TeX/AMSmath.js
 extensions/TeX/AMSsymbols.js
 jax/input/MathML/jax.js
 
-NativeMML: {
-  showMathMenuMSIE: false
-},
+showMathMenuMSIE: false,
 menuSettings: {
   zoom: "Double-Click"
 },

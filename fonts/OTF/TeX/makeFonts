@@ -17,6 +17,10 @@ echo ""
 echo "SVG"
 ./makeSVG
 
+echo ""
+echo "WOFF"
+./makeOFF
+
 rm otf/*Greek*
 rm ttf/*WinChrom* ttf/*WinIE6*
 

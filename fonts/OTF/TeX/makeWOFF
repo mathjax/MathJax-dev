@@ -1,0 +1,10 @@
+#! /bin/csh -f
+
+foreach file (otf/*.otf)
+echo $file:t:r
+sfnt2woff $file
+end
+mv otf/*.woff woff
+
+rm woff/*WinChrom* woff/*WinIE6* woff/*Greek*
+
