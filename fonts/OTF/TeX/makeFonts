@@ -19,7 +19,11 @@ echo "SVG"
 
 echo ""
 echo "WOFF"
-./makeOFF
+./makeWOFF
+
+#echo ""
+#echo "CSS"
+#./makeCSS
 
 rm otf/*Greek*
 rm ttf/*WinChrom* ttf/*WinIE6*
