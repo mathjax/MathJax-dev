@@ -157,17 +157,17 @@ $fontdir = "TeX";
 );
 
 %test = (
-  "Main" => '"MathJax Main"',
-  "Math" => '"MathJax Math"',
+  "Main" => '"MathJax Main ^ \\u210F \\u2223"',
+  "Math" => '"MathJax Math \\u03A5"',
   "Size" => '"() [] {}"',
-  "WinC" => '"> T d "+String.fromCharCode(0x23A6)+" "+String.fromCharCode(0x2A00)',
-  "WinI" => 'String.fromCharCode(0xE247)+" "+String.fromCharCode(0xE257)+" "+String.fromCharCode(0xE2CF)',
+  "WinC" => '"> T d \\u23A6 \\u2A00"',
+  "WinI" => '"\\uE247 \\uE257 \\uE2CF"',
   "Cali" => '"MATHJAX CALIGRAPHIC"',
-  "AMS"  => '"MATHJAX AMS"',
+  "AMS"  => '"MATHJAX AMS \\u02C6"',
   "Frak" => '"MathJax Fraktur"',
-  "Sans" => '"MathJax SansSerif"',
+  "Sans" => '"MathJax SansSerif ^ _"',
   "Scri" => '"MATHJAX SCRIPT"',
-  "Type" => '"MathJax Typewriter"',
-  "Gree" => 'String.fromCharCode(0x393)+" "+String.fromCharCode(0x3A5)+" "+String.fromCharCode(0x39B)',
+  "Type" => '"MathJax Typewriter |"',
+  "Gree" => '"\\u0393 \\u03A5 \\u039B"',
 );
 

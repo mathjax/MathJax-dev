@@ -20,9 +20,10 @@ jax/output/NativeMML/jax.js
 jax/output/HTML-CSS/jax.js
 jax/output/HTML-CSS/autoload/mtable.js
 
-showMathMenuMSIE: false,
 menuSettings: {
-  zoom: "Double-Click"
+  zoom: "Double-Click",
+  mpContext: true,
+  mpMouse: true
 },
 errorSettings: {
   message: ["[Math Error]"]
