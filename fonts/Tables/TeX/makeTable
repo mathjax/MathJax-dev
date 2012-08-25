@@ -361,7 +361,7 @@ sub PrintNavigation {
     $pi = $#fonts; $pfont = $fonts[$#fonts]; $ni = 0; $nfont = "";
   }
   while ($j && $pi >= 0 && $frcount{$pfont}{$name} == 0) {$pfont = $fonts[--$pi]}
-  $pfont = "" if $pi < 0; $nfont = "MathJAx_All" if $ni > $#fonts;
+  $pfont = "" if $pi < 0; $nfont = "MathJax_All" if $ni > $#fonts;
   $pfont = substr($pfont,8); $nfont = substr($nfont,8);
   my $pfurl = "../".$pfont.($j ne '' ? sprintf("/%04X-%04X.html",$start,$end) : '/All.html');
   my $nfurl = "../".$nfont.($j ne '' ? sprintf("/%04X-%04X.html",$start,$end) : '/All.html');
