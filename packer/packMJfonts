@@ -1,4 +1,4 @@
-#! /usr/local/bin/perl
+#! /usr/bin/perl
 
 #  Packs the javascript files that are part of the 
 #  image fonts package at fonts/HTML-CSS/TeX/png.

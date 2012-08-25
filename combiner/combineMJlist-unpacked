@@ -1,4 +1,4 @@
-#! /usr/local/bin/perl
+#! /usr/bin/perl
 
 #
 #  Combine scripts in the MathJax project into single-file-load

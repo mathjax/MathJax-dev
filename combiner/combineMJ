@@ -1,9 +1,9 @@
-#! /usr/local/bin/perl
+#! /usr/bin/perl
 
 #
 #  Create all the combined configuration files
 #
-#  Usage:  ./combineMJlist [--force] [proj-dir]
+#  Usage:  ./combineMJ [--force] [proj-dir]
 #
 
 use Cwd;
