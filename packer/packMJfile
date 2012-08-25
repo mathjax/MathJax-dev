@@ -1,4 +1,4 @@
-#! /usr/local/bin/perl
+#! /usr/bin/perl
 
 #  Compresses a MathJax file and reports the new size and savings.
 #  You need to have yuicompressor in order for this to work

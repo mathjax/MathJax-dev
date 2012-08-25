@@ -1,4 +1,4 @@
-#! /usr/local/bin/perl
+#! /usr/bin/perl
 
 # used internally to filter the yuicompressor output to not show certain messages
 
