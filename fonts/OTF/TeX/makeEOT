@@ -1,4 +1,4 @@
-#! /bin/csh -f
+#! /bin/bash
 
 #
 #  Make the EOT fonts from the TTF fonts
@@ -6,9 +6,11 @@
 #    Usage:  ./makeEOT
 #
 
-foreach file (ttf/*.ttf)
-echo $file:t:r
-ttf2eot < $file > eot/$file:t:r.eot
-end
+source ../../../custom.cfg
+
+for file in `ls ttf/*.ttf | $SED 's|ttf/\(.*\)\.ttf|\1|'`; do
+echo "Generating $file.eot..."
+$TTF2EOT < ttf/$file.ttf > eot/$file.eot
+done
 
 rm eot/*WinChrome* eot/*Greek*

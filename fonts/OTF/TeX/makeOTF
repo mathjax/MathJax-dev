@@ -1,4 +1,4 @@
-#! /bin/csh -f
+#! /bin/bash
 
 #
 #  Runs fontforge to create all the MathJax font files
@@ -7,11 +7,13 @@
 #  Usage: ./makeOTF
 #
 
-echo "MathJax_Size4.ff"
-fontforge -lang=ff -script ff/MathJax_Size4.ff
+source ../../../custom.cfg
 
-foreach file (ff/*.ff)
+echo "MathJax_Size4.ff"
+$FONTFORGE -lang=ff -script ff/MathJax_Size4.ff
+
+for file in `cd ff; ls *.ff`; do
 echo ""
-echo $file:t
-fontforge -lang=ff -script $file
-end
+echo $file
+$FONTFORGE -lang=ff -script ff/$file
+done

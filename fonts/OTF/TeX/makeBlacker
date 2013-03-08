@@ -5,18 +5,18 @@
 #  
 #  Usage:  ./makeBlacker blackness
 
+do "../../../custom.cfg.pl";
+
 $blacker = shift;
 unless ($blacker) {
   print stderr "Usage:  ./makeBlacker blackness\n";
   exit;
 }
 
-$MFTRACE = "/opt/local/bin/mftrace";
-
 sub editMftrace {
-  my $oldMFTRACE = $MFTRACE;
+  my $oldMFTRACE = $MFTRACE_PATH;
   $MFTRACE = "./lib/mftrace-modified";
-  print "Editing mftace\n";
+  print "Editing mftrace\n";
   open(MFT,$oldMFTRACE) || die "Can't read '$oldMFTRACE': $!\n";
   my $MFT = join("",<MFT>);
   close(MFT);

@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 
 #  Make the required pfa files from the original
 #  TeX fonts using mftrace

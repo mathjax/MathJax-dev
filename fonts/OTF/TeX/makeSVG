@@ -1,4 +1,4 @@
-#! /bin/csh -f
+#! /bin/bash
 
 #
 #  Make the SVG fonts from the TTF fonts
@@ -7,9 +7,11 @@
 #    Usage: ./makeSVG
 #
 
-foreach file (ttf/*.ttf)
-echo $file:t:r
-java -jar lib/batik-1.7/batik-ttf2svg.jar $file -id $file:t:r -o svg/$file:t:r.svg -l 0 -h 65535
-end
+source ../../../custom.cfg
+
+for file in `ls ttf/*.ttf | $SED 's|ttf/\(.*\)\.ttf|\1|'`; do
+echo "Generating $file.svg..."
+$JAVA -jar $TTF2SVG ttf/$file.ttf -id $file -o svg/$file.svg -l 0 -h 65535
+done
 
 rm svg/*WinIE6* svg/*Greek*

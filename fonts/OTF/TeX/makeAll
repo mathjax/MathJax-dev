@@ -1,4 +1,4 @@
-#! /bin/csh -f
+#! /bin/bash
 
 #  Makes all the font files, and installs
 #  them in the mathjax/fonts/HTML-CSS/TeX directory

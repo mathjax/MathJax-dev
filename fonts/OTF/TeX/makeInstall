@@ -1,15 +1,17 @@
-#! /bin/csh -f
+#! /bin/bash
 
 #  Put the font files into the proper locations
 #  
 #  Usage: ./makeInstall
 
+source ../../../custom.cfg
+
 #
 #  Copy the font files into the system font directory
 #
-#rm ~/Library/Fonts/MathJax_*
-cp otf/*.otf ~/Library/Fonts
-cp ttf/*Greek*.ttf ~/Library/Fonts
+#rm $FONTDIR/MathJax_*
+cp otf/*.otf $FONTDIR
+cp ttf/*Greek*.ttf $FONTDIR
 
 #
 #  Put the fonts into the MathJax fonts folder
