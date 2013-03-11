@@ -1,5 +1,4 @@
-#!gmake
-#
+#! /bin/bash
 # Version: Apache License 2.0
 #
 # Copyright (c) 2013 MathJax Project
@@ -15,21 +14,19 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-all: otf afm # img ams tables
+source ../../../custom.cfg
 
-otf:
-	$(MAKE) -C OTF/TeX all
+FONTDATA=$MATHJAXDIR/unpacked/jax/output/HTML-CSS/fonts/TeX/fontdata.js
 
-afm:
-	$(MAKE) -C AFM/TeX all
-
-img:
-	$(MAKE) -C IMG/TeX all
-
-ams:
-	$(MAKE) -C AMS
-
-tables:
-	$(MAKE) -C TABLES/TeX all
+for file in `cd data; ls *.js | $SED 's|\(.*\)\.js|\1|'`
+do
+    echo "Copying $file.js..."
+    name=`$GREP HTMLCSS.FONTDATA.FONTS data/$file.js | $SED "s|.*\['\(.*\)'\].*|\1|"`
+    $SED -i "/\['$name'\]/i INSERT_HERE" $FONTDATA
+    $SED -i "/\['$name'\]/,/};/ {d}" $FONTDATA
+    $SED -i "/INSERT_HERE/{
+r data/$file.js
+d
+}" $FONTDATA
+done

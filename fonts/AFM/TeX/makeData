@@ -8,8 +8,8 @@ opendir(AFM,"afm");
 @files = grep {/.*\.afm/} (readdir(AFM));
 closedir(AFM);
 
-open(DATA,">fontdata.js");
 foreach $file (@files) {
+  (my $name = $file) =~ s{\.[^.]+$}{};
   $file =~ s/\.afm//; $file =~ s/MathJax_//;
   $file .= "-Regular" unless $file =~ m/-/;
   next if $file =~ /Math-Regular|-BoldItalic|AMS|Caligraphic-Bold/;
@@ -21,7 +21,7 @@ foreach $file (@files) {
   close(FONT);
   $lines =~ s/.*FONTDATA/  HTMLCSS.FONTDATA/s;
   $lines =~ s/};.*/};\n/s;
-  print DATA $lines,"\n";
+  open(DATA,">data/$name.js");
+  print DATA $lines;
+  close(DATA);
 }
-close(DATA);
-
