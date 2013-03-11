@@ -17,31 +17,21 @@
 # limitations under the License.
 #
 
-CUSTOM=custom.cfg
+include ../custom.cfg
 
--include $(CUSTOM)
+all: otf # afm img ams tables
 
-help:
-	@echo "make config"
-	@echo "make fonts"
+otf:
+	$(MAKE) -C OTF/TeX all
 
-$(CUSTOM):
-	@cp default.cfg $(CUSTOM);
-	@echo "Configuration file '$(CUSTOM)' created.";
-	@echo "Edit this file and run 'make config'.";
-	@exit 1
+afm:
+	$(MAKE) -C AFM
 
-config:	$(CUSTOM)
-	@echo "Creating Perl config file..."
-	@cp $(CUSTOM) $(CUSTOM).pl
-	@echo >> $(CUSTOM).pl # ensure that the config file ends by a new line
-	@echo "MFTRACE_PATH=`$(WHICH) $(MFTRACE)`" >> $(CUSTOM).pl
-	@$(SED) -i "s|\([A-Z_0-9]*\)=\(.*\)|$$\1='\2';|g" $(CUSTOM).pl
+img:
+	$(MAKE) -C IMG
 
-fonts:
-	$(MAKE) -C fonts all
+ams:
+	$(MAKE) -C AMS
 
-clean:
-	rm -f $(CUSTOM).pl
-
-.PHONY: fonts
+tables:
+	$(MAKE) -C TABLES
