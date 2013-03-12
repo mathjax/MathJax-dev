@@ -176,5 +176,5 @@ install:
         #cp css/*.css $(MATHJAXDIR)/fonts/HTML-CSS/TeX/css
 
 clean:
-	rm -f $(MFTRACE_MODIFIED) $(BLACKER)
+	rm -f $(MFTRACE_MODIFIED) lib/blacker.mf
 	rm -rf pfa ff otf ttf eot svg woff css

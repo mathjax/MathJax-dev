@@ -17,28 +17,21 @@
 # limitations under the License.
 #
 
-all: otf afm svg img ams
+include ../../custom.cfg
 
-otf:
-	$(MAKE) -C OTF/TeX all
+all: data optable translation
 
-afm:
-	$(MAKE) -C AFM/TeX all
-	$(MAKE) -C AFM/STIX-1.1 all
+data.js:
+	$(PERL) makeData
+data: data.js
 
-svg:
-	$(MAKE) -C SVG/TeX all
+optable.js:
+	$(PERL) makeOpTable
+optable: optable.js
 
-img:
-	$(MAKE) -C IMG/TeX all
-
-ams:
-	$(MAKE) -C AMS all
+AMS.pl:
+	$(PERL) makeTranslation > AMS.pl
+translation: AMS.pl
 
 clean:
-	$(MAKE) -C OTF/TeX clean
-	$(MAKE) -C AFM/TeX clean
-	$(MAKE) -C AFM/STIX-1.1 clean
-	$(MAKE) -C SVG/TeX clean
-	$(MAKE) -C IMG/TeX clean
-	$(MAKE) -C AMS clean
+	rm -rf data.js optable.js AMS.pl

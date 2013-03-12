@@ -22,8 +22,17 @@ CUSTOM=custom.cfg
 -include $(CUSTOM)
 
 help:
+	@echo "Usage:"
+	@echo ""
 	@echo "make config"
+	@echo "  Generate the Perl configuration"
+	@echo ""
 	@echo "make fonts"
+	@echo "  Generate and install MathJax fonts and related data."
+	@echo ""
+	@echo "make clean"
+	@echo "  Remove temporary directories and files."
+	@echo ""
 
 $(CUSTOM):
 	@cp default.cfg $(CUSTOM);
@@ -31,17 +40,20 @@ $(CUSTOM):
 	@echo "Edit this file and run 'make config'.";
 	@exit 1
 
-config:	$(CUSTOM)
+$(CUSTOM).pl: $(CUSTOM)
 	@echo "Creating Perl config file..."
 	@cp $(CUSTOM) $(CUSTOM).pl
 	@echo >> $(CUSTOM).pl # ensure that the config file ends by a new line
 	@echo "MFTRACE_PATH=`$(WHICH) $(MFTRACE)`" >> $(CUSTOM).pl
 	@$(SED) -i "s|^\([A-Z_0-9]*\)=\(.*\)|$$\1='\2';|" $(CUSTOM).pl
 
-fonts:
+config: $(CUSTOM).pl
+
+fonts: $(CUSTOM).pl
 	$(MAKE) -C fonts all
 
 clean:
 	rm -f $(CUSTOM).pl
+	$(MAKE) -C fonts clean
 
 .PHONY: fonts

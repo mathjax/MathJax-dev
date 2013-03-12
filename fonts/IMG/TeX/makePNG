@@ -5,6 +5,8 @@
 #  
 #  Usage:  ./makePNG font [sizes]
 
+require "../../../custom.cfg.pl";
+
 $font = shift;
 
 if (!$font) {
@@ -22,7 +24,7 @@ sub MakeFontFiles {
     Generate("MathJax.pfb","",0x10001);
   EOF;
   close(FF);
-  `fontforge -lang=ff -script MathJax.ff 2>/dev/null`;
+  `$FONTFORGE -lang=ff -script MathJax.ff 2>/dev/null`;
 }
 
 sub RemoveFontBlock {
@@ -36,7 +38,7 @@ sub RemoveFontBlock {
     Generate("MathJax.pfb","",0x10001);
   EOF;
   close(FF);
-  `fontforge -lang=ff -script MathJax.ff 2>/dev/null`;
+  `$FONTFORGE -lang=ff -script MathJax.ff 2>/dev/null`;
 }
 
 sub GetUnicodePoints {
@@ -55,7 +57,7 @@ sub GetUnicodePoints {
   open(FF,">MathJax.ff");
   print FF join("\n",@name,"");
   close(FF);
-  my $unicode = `fontforge -lang=ff -script MathJax.ff 2>/dev/null`;
+  my $unicode = `$FONTFORGE -lang=ff -script MathJax.ff 2>/dev/null`;
   chomp($unicode);
   return split(/\n/,$unicode);
 }
@@ -79,12 +81,12 @@ sub MakeTeXfile {
     \\end{document}
   EOF;
   close(TEX);
-  `latex MathJax`;
+  `$LATEX MathJax`;
 }
 
 sub MakePNGfiles {
   my $size = shift;
-  $depths = `dvipng --gamma 1.5 -q -bgTransparent -D$size --depth -o PNG/%03d.png MathJax`;
+  $depths = `$DVIPNG --gamma 1.5 -q -bgTransparent -D$size --depth -o PNG/%03d.png MathJax`;
   $depths =~ s/^[^\n]*\n//; $depths =~ s/\s//g; $depths =~ s/^depth=//;
   my @depths = split(/depth=/,$depths);
   while (my $unicode = shift) {$depth{$unicode}{$size} = shift(@depths)}
