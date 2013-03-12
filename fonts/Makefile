@@ -24,6 +24,7 @@ otf:
 
 afm:
 	$(MAKE) -C AFM/TeX all
+	$(MAKE) -C AFM/STIX-1.1 all
 
 img:
 	$(MAKE) -C IMG/TeX all

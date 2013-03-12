@@ -17,7 +17,7 @@
 
 source ../../../custom.cfg
 
-FONTDATA=$MATHJAXDIR/unpacked/jax/output/HTML-CSS/fonts/TeX/fontdata.js
+FONTDATA=$MATHJAXDIR/unpacked/jax/output/HTML-CSS/fonts/STIX/fontdata.js
 
 for file in `cd data; ls *.js | $SED 's|\(.*\)\.js|\1|'`
 do

@@ -36,7 +36,7 @@ config:	$(CUSTOM)
 	@cp $(CUSTOM) $(CUSTOM).pl
 	@echo >> $(CUSTOM).pl # ensure that the config file ends by a new line
 	@echo "MFTRACE_PATH=`$(WHICH) $(MFTRACE)`" >> $(CUSTOM).pl
-	@$(SED) -i "s|\([A-Z_0-9]*\)=\(.*\)|$$\1='\2';|g" $(CUSTOM).pl
+	@$(SED) -i "s|^\([A-Z_0-9]*\)=\(.*\)|$$\1='\2';|" $(CUSTOM).pl
 
 fonts:
 	$(MAKE) -C fonts all

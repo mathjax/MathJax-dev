@@ -24,7 +24,7 @@ all: afm fonts data install
 afm:
 	mkdir -p afm
 	rm -f afm/*
-	@for file in `cd $(FONTDIR); ls MathJax*.*tf`; do \
+	@for file in `cd $(FONTDIR); ls STIX*.*tf`; do \
 		echo ""; \
 		input=`echo $(FONTDIR)/$$file`; \
 		output=`echo $$file | $(SED) 's|\(.*\)\..tf|\1|'`.afm; \
@@ -45,8 +45,8 @@ data: fonts
 	$(PERL) makeData
 
 install:
-	rm -f $(MATHJAXDIR)/unpacked/jax/output/HTML-CSS/fonts/TeX/*/*/*.js
-	cp -R fonts/TeX/* $(MATHJAXDIR)/unpacked/jax/output/HTML-CSS/fonts/TeX
+	rm -f $(MATHJAXDIR)/unpacked/jax/output/HTML-CSS/fonts/STIX/*/*/*.js
+	cp -R fonts/STIX/* $(MATHJAXDIR)/unpacked/jax/output/HTML-CSS/fonts/STIX
 	./copyData
 
 clean:

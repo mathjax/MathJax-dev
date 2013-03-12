@@ -5,7 +5,7 @@
 #  
 #  Usage:  ./makeBlacker blackness
 
-do "../../../custom.cfg.pl";
+require "../../../custom.cfg.pl";
 
 $blacker = shift;
 unless ($blacker) {

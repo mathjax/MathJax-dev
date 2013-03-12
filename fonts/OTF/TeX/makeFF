@@ -7,8 +7,7 @@
 #  Usage:  ./makeFF
 
 require "lib/skew.pl";
-
-do "../../../custom.cfg.pl";
+require "../../../custom.cfg.pl";
 
 #########################################################################
 
@@ -2310,8 +2309,7 @@ foreach $cmfont (sort (keys %map)) {
       $lines =~ s/\*WEIGHT_S\*/$STYLE/g; $lines =~ s/\*NORMAL\*/$normal/g;
       if ($style eq "Regular") {$lines =~ s/\* WEIGHT\*//g} else {$lines =~ s/\* WEIGHT\*/ $STYLE/g}
       open(SPACE,">Space.ttx"); print SPACE $lines; close(SPACE);
-      system $TTX, "Space.ttx";
-      `mv Space.otf '$otf'`; unlink("Space.ttx");
+      `$TTX Space.ttx; mv Space.otf '$otf'`; unlink("Space.ttx");
       $script{$mjfont} = [
         'Open("'.$otf.'")',
         'SetPanose([0,0,'.($style eq 'Bold' ? '8' : '0').',0,0,0,0,0,0,0])',
