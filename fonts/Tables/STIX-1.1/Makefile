@@ -17,34 +17,24 @@
 # limitations under the License.
 #
 
-all: otf afm svg img ams tables
+include ../../../custom.cfg
 
-otf:
-	$(MAKE) -C OTF/TeX all
+STIXURL=http://www.stixfonts.org/
+STIXCHARLIST=allGlyphs.html
 
-afm:
-	$(MAKE) -C AFM/TeX all
-	$(MAKE) -C AFM/STIX-1.1 all
+all: STIX
 
-svg:
-	$(MAKE) -C SVG/TeX all
+$(STIXCHARLIST):
+	@echo "Downloading STIX character list..."
+	$(WGET) $(STIXURL)/$(STIXCHARLIST)
 
-img:
-	$(MAKE) -C IMG/TeX all
+unicode.pl: $(STIXCHARLIST)
+	@echo "Creating unicode.pl..."
+	$(PERL) makeUnicode > unicode.pl
 
-ams:
-	$(MAKE) -C AMS all
-
-tables:
-	$(MAKE) -C Tables/STIX-1.1 all
-	$(MAKE) -C Tables/TeX all
+STIX: unicode.pl
+	@echo "Creating Character Table for MathJax STIX fonts..."
+	@$(PERL) makeTable
 
 clean:
-	$(MAKE) -C OTF/TeX clean
-	$(MAKE) -C AFM/TeX clean
-	$(MAKE) -C AFM/STIX-1.1 clean
-	$(MAKE) -C SVG/TeX clean
-	$(MAKE) -C IMG/TeX clean
-	$(MAKE) -C AMS clean
-	$(MAKE) -C Tables/STIX-1.1 clean
-	$(MAKE) -C Tables/TeX clean
+	rm -rf STIX unicode.pl $(STIXCHARLIST)

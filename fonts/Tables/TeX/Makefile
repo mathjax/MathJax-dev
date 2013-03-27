@@ -17,34 +17,21 @@
 # limitations under the License.
 #
 
-all: otf afm svg img ams tables
+include ../../../custom.cfg
 
-otf:
-	$(MAKE) -C OTF/TeX all
+all: TeX
 
-afm:
-	$(MAKE) -C AFM/TeX all
-	$(MAKE) -C AFM/STIX-1.1 all
-
-svg:
-	$(MAKE) -C SVG/TeX all
-
-img:
-	$(MAKE) -C IMG/TeX all
-
-ams:
-	$(MAKE) -C AMS all
-
-tables:
-	$(MAKE) -C Tables/STIX-1.1 all
-	$(MAKE) -C Tables/TeX all
+TeX:
+	@echo "Copying Web fonts..."
+	@mkdir -p TeX/css/; cd TeX/css/ ; \
+	FONTDIR=../../../../OTF/TeX/; \
+	cp -r $$FONTDIR/eot eot; \
+	cp -r $$FONTDIR/otf otf; \
+	cp -r $$FONTDIR/svg svg; \
+	cp -r $$FONTDIR/ttf ttf; \
+	cp -r $$FONTDIR/woff woff;
+	@echo "Creating Character Table for MathJax TeX fonts..."
+	@$(PERL) makeTable
 
 clean:
-	$(MAKE) -C OTF/TeX clean
-	$(MAKE) -C AFM/TeX clean
-	$(MAKE) -C AFM/STIX-1.1 clean
-	$(MAKE) -C SVG/TeX clean
-	$(MAKE) -C IMG/TeX clean
-	$(MAKE) -C AMS clean
-	$(MAKE) -C Tables/STIX-1.1 clean
-	$(MAKE) -C Tables/TeX clean
+	rm -rf TeX
