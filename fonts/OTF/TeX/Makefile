@@ -32,10 +32,10 @@ pfa: $(MFTRACE_MODIFIED)
 	$(PYTHON) $(MFTRACE_MODIFIED) --magnification 1000 --simplify cmr10
 
 	@echo "cmmi10"
-	$(PYTHON) $(MFTRACE_MODIFIED) --magnification 1000 --encoding /opt/local/share/texmf-dist/fonts/enc/dvips/tetex/aae443f0.enc --simplify cmmi10
+	$(PYTHON) $(MFTRACE_MODIFIED) --magnification 1000 --encoding $(TETEXENCODING)/aae443f0.enc --simplify cmmi10
 
 	@echo "cmsy10"
-	$(PYTHON) $(MFTRACE_MODIFIED) --magnification 1000 --encoding /opt/local/share/texmf-dist/fonts/enc/dvips/tetex/10037936.enc --simplify cmsy10
+	$(PYTHON) $(MFTRACE_MODIFIED) --magnification 1000 --encoding $(TETEXENCODING)/10037936.enc --simplify cmsy10
 
 	@echo "cmex10"
 	$(PYTHON) $(MFTRACE_MODIFIED) --magnification 1000 --keep cmex10
@@ -50,16 +50,16 @@ pfa: $(MFTRACE_MODIFIED)
 	$(PYTHON) $(MFTRACE_MODIFIED) --magnification 1000 --simplify cmti10
 
 	@echo "msam10"
-	$(PYTHON) $(MFTRACE_MODIFIED) --magnification 1000 --simplify --encoding /opt/local/share/texmf-dist/fonts/enc/dvips/tetex/10037936.enc msam10
+	$(PYTHON) $(MFTRACE_MODIFIED) --magnification 1000 --simplify --encoding $(TETEXENCODING)/10037936.enc msam10
 
 	@echo "msbm10"
-	$(PYTHON) $(MFTRACE_MODIFIED) --magnification 450 --simplify --encoding /opt/local/share/texmf-dist/fonts/enc/dvips/tetex/10037936.enc msbm10
+	$(PYTHON) $(MFTRACE_MODIFIED) --magnification 450 --simplify --encoding $(TETEXENCODING)/10037936.enc msbm10
 
 	@echo "cmmib10"
-	$(PYTHON) $(MFTRACE_MODIFIED) --magnification 1000 --encoding /opt/local/share/texmf-dist/fonts/enc/dvips/tetex/aae443f0.enc --simplify cmmib10
+	$(PYTHON) $(MFTRACE_MODIFIED) --magnification 1000 --encoding $(TETEXENCODING)/aae443f0.enc --simplify cmmib10
 
 	@echo "cmbsy10"
-	$(PYTHON) $(MFTRACE_MODIFIED) --magnification 1000 --encoding /opt/local/share/texmf-dist/fonts/enc/dvips/tetex/10037936.enc --simplify cmbsy10
+	$(PYTHON) $(MFTRACE_MODIFIED) --magnification 1000 --encoding $(TETEXENCODING)/10037936.enc --simplify cmbsy10
 
 	@echo "cmtt10"
 	$(PYTHON) $(MFTRACE_MODIFIED) --magnification 1000 --simplify cmtt10
@@ -82,7 +82,7 @@ pfa: $(MFTRACE_MODIFIED)
         #$(PYTHON) $(MFTRACE_MODIFIED) --magnification 1000 --simplify eusb10
 
 	@echo "rsfs10"
-	$(PYTHON) $(MFTRACE_MODIFIED) --magnification 1000 --simplify --encoding /usr/local/texlive/2008/texmf-dist/fonts/enc/dvips/base/tex256.enc rsfs10
+	$(PYTHON) $(MFTRACE_MODIFIED) --magnification 1000 --simplify --encoding $(BASEENCODING)/tex256.enc rsfs10
 
 	mkdir -p pfa
 	rm -f pfa/*

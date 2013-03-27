@@ -46,6 +46,7 @@ $(CUSTOM).pl: $(CUSTOM)
 	@echo >> $(CUSTOM).pl # ensure that the config file ends by a new line
 	@echo "MFTRACE_PATH=`$(WHICH) $(MFTRACE)`" >> $(CUSTOM).pl
 	@$(SED) -i "s|^\([A-Z_0-9]*\)=\(.*\)|$$\1='\2';|" $(CUSTOM).pl
+	@echo "1;" >> $(CUSTOM).pl
 
 config: $(CUSTOM).pl
 
