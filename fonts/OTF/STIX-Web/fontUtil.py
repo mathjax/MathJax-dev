@@ -30,7 +30,9 @@ def newFont(aFontFrom, aName, aWeight):
 
     # Now open the new font and rename it.
     font = fontforge.open(fileName)
-    font.fontname = "%s_%s" % (font.familyname.replace(" ", "_"), aName)
+    font.fontname = "%s_%s-%s" % (font.familyname.replace(" ", "_"), aName,
+                                  aWeight)
+    font.fullname = font.fontname
 
     # Clear all the glyphs.
     font.selection.all()
@@ -47,32 +49,36 @@ def saveFont(aFont):
     # Hence we need to remove that table.
     aFont.math.clear()
 
-    aFont.generate("otf/%s-%s.otf" % (aFont.fontname, aFont.weight))
-    aFont.generate("ttf/%s-%s.ttf" % (aFont.fontname, aFont.weight))
+    aFont.generate("otf/%s.otf" % aFont.fontname)
+    aFont.generate("ttf/%s.ttf" % aFont.fontname)
 
-def copyGlyph(aFontFrom, aFontTo, aOldPosition, aNewPosition = None):
-    # Copy the glyph from the font aFontFrom at position aOldPosition
+def moveGlyph(aFontFrom, aFontTo, aOldPosition, aNewPosition = None):
+    # Move the glyph from the font aFontFrom at position aOldPosition
     # to the font aFontTo at position aNewPosition. 
     if aNewPosition is None:
         aNewPosition = aOldPosition
     aFontFrom.selection.select(aOldPosition)
-    aFontFrom.copy()
+    aFontFrom.cut()
     aFontTo.selection.select(aNewPosition)
     aFontTo.paste()
 
-def copyFontCoverage(aFontFrom, aFontTo, aFontReference):
-    # Copy the glyphs covered by  aFontReference
-    # from the font aFontFrom to the font aFontTo.
-    reference = fontforge.open(aFontReference)
-    for glyph in reference.glyphs():
-        if glyph.unicode == -1:
-            continue
-        copyGlyph(aFontFrom, aFontTo, glyph.unicode)
-
-def copyRange(aFontFrom, aFontTo, aRangeStart, aRangeEnd):
-    # Copy the glyphs in the range (aRangeStart, aRangeEnd)
+def moveRange(aFontFrom, aFontTo, aRangeStart, aRangeEnd):
+    # Move the glyphs in the range (aRangeStart, aRangeEnd)
     # from the font aFontFrom to the font aFontTo.
     aFontFrom.selection.select(("ranges", None), aRangeStart, aRangeEnd)
     aFontTo.selection.select(("ranges", None), aRangeStart, aRangeEnd)
-    aFontFrom.copy()
+    aFontFrom.cut()
     aFontTo.paste()
+
+def moveFontCoverage(aFontFrom, aFontTo, aFontReference):
+    # Move the glyphs covered by aFontReference
+    # from the font aFontFrom to the font aFontTo.
+    reference = fontforge.open(aFontReference)
+    for glyph in reference.glyphs():
+        if (glyph.unicode == -1 or
+            (glyph.unicode in aFontFrom and
+             not(aFontFrom[glyph.unicode].isWorthOutputting()))):
+            # Ignore NonUnicode glyph or those that have already been
+            # cut from aFontFrom.
+            continue
+        moveGlyph(aFontFrom, aFontTo, glyph.unicode)

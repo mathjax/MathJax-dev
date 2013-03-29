@@ -25,14 +25,23 @@ import fontUtil
 
 def copyComponent(aPiece, aType):
     # Copy a single component
-    global STIXMath, STIXSize, STIXPUAPointer, fontData
+    global STIXMath, STIXSize
+    global STIXPUAPointer, STIXPUAContent
+    global fontData, MAXSIZE
     glyphname = aPiece[0]
-    fontUtil.copyGlyph(STIXMath, STIXSize[MAXSIZE],
-                       glyphname, STIXPUAPointer)
 
-    print("%05X:%s " % (STIXPUAPointer, aType), file=fontData, end="")
+    if glyphname not in STIXPUAContent:
+        # New piece: copy it and save the code point.
+        pieceCodePoint = STIXPUAPointer
+        STIXPUAContent[glyphname] = pieceCodePoint
+        fontUtil.moveGlyph(STIXMath, STIXSize[MAXSIZE],
+                           glyphname, pieceCodePoint)
+        STIXPUAPointer += 1 # move to the next code point
+    else:
+        # This piece was already copied: retrieve its code point.
+        pieceCodePoint = STIXPUAContent[glyphname]
 
-    STIXPUAPointer += 1 # move to the next code point
+    print("%05X:%s " % (pieceCodePoint, aType), file=fontData, end="")
 
 def cmpPiece(aPiece1, aPiece2):
     # the first component has no start overlap (piece[2] == 0)
@@ -127,7 +136,7 @@ def copySizeVariant(aGlyph, aSizeVariantTable):
             j = 0
 
         # Ask fontforge to copy the glyph
-        fontUtil.copyGlyph(STIXMath, STIXSize[j],
+        fontUtil.moveGlyph(STIXMath, STIXSize[j],
                            aSizeVariantTable[i], aGlyph.unicode)
 
         print("%05X:%d " % (aGlyph.unicode,j), file=fontData, end="")
@@ -152,6 +161,7 @@ for i in range(0,MAXSIZE+1):
 
 # Pointer to the PUA to store the horizontal/vertical components
 STIXPUAPointer=0xE000
+STIXPUAContent=dict()
 
 fontData = open("fontdata.txt", "w")
 
@@ -195,3 +205,5 @@ fontData.close()
 # Finally, save the new fonts
 for font in STIXSize:
     fontUtil.saveFont(font)
+
+fontUtil.saveFont(STIXMath)
