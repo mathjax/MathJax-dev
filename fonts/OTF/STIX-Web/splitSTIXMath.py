@@ -25,14 +25,14 @@ import fontUtil
 
 def copyComponent(aPiece, aType):
     # Copy a single component
-    global STIXMath, STIXSize, STIXSizePointer, fontData
+    global STIXMath, STIXSize, STIXPUAPointer, fontData
     glyphname = aPiece[0]
-    newCodePoint = STIXSizePointer[MAXSIZE]
     fontUtil.copyGlyph(STIXMath, STIXSize[MAXSIZE],
-                       glyphname, newCodePoint)
-    STIXSizePointer[MAXSIZE] += 1 # move to the next code point
+                       glyphname, STIXPUAPointer)
 
-    print("%05X:%s " % (newCodePoint, aType), file=fontData, end="")
+    print("%05X:%s " % (STIXPUAPointer, aType), file=fontData, end="")
+
+    STIXPUAPointer += 1 # move to the next code point
 
 def cmpPiece(aPiece1, aPiece2):
     # the first component has no start overlap (piece[2] == 0)
@@ -104,7 +104,7 @@ def copyComponents(aComponents, aIsHorizontal):
 
 def copySizeVariant(aGlyph, aSizeVariantTable):
     # Copy the variants of a given glyph into the right STIX_Size* font.
-    global STIXMath, STIXSize, STIXSizePointer, fontData
+    global STIXMath, STIXSize, fontData
     for i in range(0,len(aSizeVariantTable)):
         # The variant sizes have a name with an extension, for example
         # uni005C.s2 for the size variant 2 of U+005C. We will choose the
@@ -126,20 +126,11 @@ def copySizeVariant(aGlyph, aSizeVariantTable):
         else:
             j = 0
 
-        # Normal size glyph (Size0) are just copied at the expected
-        # Unicode position of the character. The larger variants are copied
-        # into the PUA, at the location pointed by STIXSizePointer
-        if j == 0:
-            newCodePoint = aGlyph.unicode
-        else:
-            newCodePoint = STIXSizePointer[j]
-            STIXSizePointer[j] += 1 # move to the next code point
-
         # Ask fontforge to copy the glyph
         fontUtil.copyGlyph(STIXMath, STIXSize[j],
-                           aSizeVariantTable[i], newCodePoint)
+                           aSizeVariantTable[i], aGlyph.unicode)
 
-        print("%05X:%d " % (newCodePoint,j), file=fontData, end="")
+        print("%05X:%d " % (aGlyph.unicode,j), file=fontData, end="")
 
 # Parse the command line arguments
 parser = argparse.ArgumentParser()
@@ -153,13 +144,14 @@ MAXSIZE = args.maxsize
 STIXMathFile = "%s/STIXMath-Regular.otf" % FONTDIR
 STIXMath=fontforge.open(STIXMathFile)
 
-# Create a new font for each size as well as a pointer to PUA code points
+# Create a new font for each size
 STIXSize=[]
-STIXSizePointer=[]
 for i in range(0,MAXSIZE+1):
     font = fontUtil.newFont(STIXMathFile, "Size%d" % i, "Regular")
     STIXSize.append(font)
-    STIXSizePointer.append(0xE000) # move to the beginning of the PUA 
+
+# Pointer to the PUA to store the horizontal/vertical components
+STIXPUAPointer=0xE000
 
 fontData = open("fontdata.txt", "w")
 
