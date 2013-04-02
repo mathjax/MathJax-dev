@@ -206,4 +206,8 @@ fontData.close()
 for font in STIXSize:
     fontUtil.saveFont(font)
 
-fontUtil.saveFont(STIXMath)
+# Save the remaining characters in a separate font
+STIXMath.fontname = "STIX_Math-Regular"
+STIXMath.fullname = font.fontname
+# TODO: this file is big, do we really need to do that?
+# fontUtil.saveFont(STIXMath)
