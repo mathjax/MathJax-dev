@@ -38,6 +38,13 @@ def newFont(aFontFrom, aName, aWeight):
     font.selection.all()
     font.clear()
 
+    # Copy the three PUA glyphs used to detect Web Fonts availability
+    PUAfont = fontforge.open("../PUA-Fonts/X-%s.otf" % aWeight)
+    PUAfont.selection.select(("ranges", None), 0xEFFD, 0xEFFF)
+    PUAfont.copy()
+    font.selection.select(("ranges", None), 0xEFFD, 0xEFFF)    
+    font.paste()
+
     return font
 
 def saveFont(aFont):
