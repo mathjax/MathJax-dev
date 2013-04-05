@@ -50,8 +50,8 @@ close(INFILE);
 foreach $i (0..$#ranges) {
   @data = @{$ranges[$i]};
   $file = shift(@data);
-  # fredw: for now, just put everything in All.js
-  $file = "All";
+  # fredw: for now, just put everything in Main.js
+  $file = "Main";
   if (substr($file,0,5) eq "Main ") {
     next unless $file eq "Main $style";
     $file = "Main";

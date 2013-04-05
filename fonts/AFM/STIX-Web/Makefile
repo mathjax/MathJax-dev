@@ -70,5 +70,10 @@ data: fonts $(CONFIG_FILES_PL)
 	rm -f data/*
 	$(PERL) makeData
 
+install:
+	rm -f $(MATHJAXDIR)/unpacked/jax/output/HTML-CSS/fonts/STIX-Web/*/*/*.js
+	cp -R fonts/STIX-Web/* $(MATHJAXDIR)/unpacked/jax/output/HTML-CSS/fonts/STIX-Web
+	./copyData
+
 clean:
 	rm -rf afm fonts data $(CONFIG_PL) $(CONFIG_FILES_PL) skew.js
