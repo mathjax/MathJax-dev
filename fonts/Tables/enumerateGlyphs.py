@@ -247,6 +247,7 @@ UnicodeBlocks = [
 
 # Parse the command line arguments
 parser = argparse.ArgumentParser()
+parser.add_argument('--perl', action='store_true')
 parser.add_argument('fontdir', type=str)
 parser.add_argument('font', nargs="*")
 args = parser.parse_args()
@@ -261,33 +262,53 @@ def getCurrentBlock(aCodePoint):
     return -1
 
 def getGlyphName(aGlyph):
+    global args
     if aGlyph.unicode == -1:
         return aGlyph.glyphname
     else:
-        return "U+%06X" % aGlyph.unicode
+        if args.perl:
+            return "0x%06X" % aGlyph.unicode
+        else:
+            return "U+%06X" % aGlyph.unicode
 
 def openChunk(aGlyph):
-    global chunkStart, previousGlyph
+    global chunkStart, previousGlyph, args
     chunkStart = aGlyph.unicode
     previousGlyph = aGlyph
     if (aGlyph.unicode == -1):
-        print(getGlyphName(aGlyph), end="")
+        if not args.perl:
+            print(getGlyphName(aGlyph), end="")
     else:
-        print("%s" % getGlyphName(aGlyph), end="")
+        if args.perl:
+            print(",[%s" % getGlyphName(aGlyph), end="")
+        else:
+            print("%s" % getGlyphName(aGlyph), end="")
 
 def closeChunk():
-    global chunkStart, previousGlyph
+    global chunkStart, previousGlyph, args
     if previousGlyph is None:
         return
     if (chunkStart == previousGlyph.unicode):
-        print()
+        if args.perl:
+            if currentBlock != -1:
+                print("]", end="")
+        else:
+            print()
     else:
-        print("-%s (%d glyphs)" % (getGlyphName(previousGlyph),
-                                   (previousGlyph.unicode - chunkStart + 1)))
+        if args.perl:
+            print(",%s]" % getGlyphName(previousGlyph), end="")
+        else:
+            print("-%s (%d glyphs)" % (getGlyphName(previousGlyph),
+                                       (previousGlyph.unicode -
+                                        chunkStart + 1)))
 
 # Browse the list of fonts
 for fontName in args.font:
-    print("=== %s ===" % fontName)
+
+    if args.perl:
+        print("  \"%s\" => [" % fontName)
+    else:
+        print("=== %s ===" % fontName)
 
     # Open the font file
     fontFile="%s/%s.otf" % (args.fontdir, fontName)
@@ -306,8 +327,12 @@ for fontName in args.font:
             (currentBlock == -1 and glyph.unicode != -1)):
 
             closeChunk()
-            if currentBlock is not None and glyphCount > 1:
-                print("Total: %d glyphs." % glyphCount)
+            if currentBlock is not None:
+                if args.perl:
+                    if currentBlock != -1:
+                        print("],")
+                elif glyphCount > 1:
+                    print("Total: %d glyphs." % glyphCount)
             glyphCount = 0
 
             currentBlock = getCurrentBlock(glyph.unicode)
@@ -315,8 +340,12 @@ for fontName in args.font:
                 blockName = "Non Unicode Glyphs"
             else:
                 blockName = UnicodeBlocks[currentBlock][0]
-            print()
-            print("** %s **" % blockName)
+            if args.perl:
+                if currentBlock >= 0:
+                    print("    [\"%s\"" % blockName, end="")
+            else:
+                print()
+                print("** %s **" % blockName)
             openChunk(glyph)
             glyphCount += 1
             continue
@@ -328,7 +357,8 @@ for fontName in args.font:
             continue
 
         if (glyph.unicode == -1):
-            print(", %s" % getGlyphName(glyph), end="")
+            if not args.perl:
+                print(", %s" % getGlyphName(glyph), end="")
             previousGlyph = glyph
             glyphCount += 1
             continue
@@ -338,6 +368,9 @@ for fontName in args.font:
         glyphCount += 1
 
     closeChunk()
-    print()
-
-
+    if args.perl:
+        if currentBlock != -1:
+            print("],")
+        print("  ],")
+    else:
+        print()
