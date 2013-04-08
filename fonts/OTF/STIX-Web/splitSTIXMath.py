@@ -23,7 +23,7 @@ import fontforge
 import re
 import fontUtil
 
-def copyComponent(aPiece, aType):
+def copyComponent(aPiece, aType, lastPiece=False):
     # Copy a single component
     global STIXMath, STIXSize
     global STIXPUAPointer, STIXPUAContent
@@ -41,15 +41,19 @@ def copyComponent(aPiece, aType):
         # This piece was already copied: retrieve its code point.
         pieceCodePoint = STIXPUAContent[glyphname]
 
-    print("%05X:%s " % (pieceCodePoint, aType), file=fontData, end="")
+    print("%s:[0x%X,MATHSIZE%d]" % (aType, pieceCodePoint, MAXSIZE),
+          file=fontData, end="")
+
+    if not(lastPiece):
+        print(", ", file=fontData, end="")
 
 def cmpPiece(aPiece1, aPiece2):
     # the first component has no start overlap (piece[2] == 0)
     # the last component has no end overlap    (piece[3] == 0)
     if aPiece1[2] == 0 or aPiece2[3] == 0:
-        return -1
-    if aPiece2[2] == 0 or aPiece1[3] == 0:
         return 1
+    if aPiece2[2] == 0 or aPiece1[3] == 0:
+        return -1
     return 0
 
 def copyComponents(aComponents, aIsHorizontal):
@@ -65,21 +69,23 @@ def copyComponents(aComponents, aIsHorizontal):
     # Try to get the last component
     p = components.pop()
     if p[1] == 0:
+        isLast = (len(components) == 0)
         if aIsHorizontal:
-            copyComponent(p,  "right")
+            copyComponent(p,  "left", isLast)
         else:
-            copyComponent(p,  "bot")
-        if len(components) == 0:
+            copyComponent(p,  "top", isLast)
+        if isLast:
             return
         p = components.pop()
 
     # Try to get the middle component
     if p[1] == 0:
+        isLast = (len(components) == 0)
         if aIsHorizontal:
-            copyComponent(p,  "rep")
+            copyComponent(p,  "rep", isLast)
         else:
-            copyComponent(p,  "mid")
-        if len(components) == 0:
+            copyComponent(p,  "mid", isLast)
+        if isLast:
             return
         p = components.pop()
         hasSecondComponent = True
@@ -88,28 +94,28 @@ def copyComponents(aComponents, aIsHorizontal):
 
     # Try to get the extender component
     if p[1] == 1:
-        copyComponent(p,  "ext")
+        q = p
         # Ignore multiple extenders
-        while (p[1] == 1):
-            if len(components) == 0:
-                return
+        while (len(components) > 0 and components[0][1] == 1):
             p = components.pop()
+        isLast = (len(components) == 0)
+        copyComponent(q,  "ext", isLast)
+        if isLast:
+            return
             
     # Try to get the middle component
     if not(hasSecondComponent) and len(components) > 1:
         if aIsHorizontal:
-            copyComponent(p,  "rep")
+            copyComponent(p,  "rep", False)
         else:
-            copyComponent(p,  "mid")
-        if len(components) == 0:
-            return
+            copyComponent(p,  "mid", False)
         p = components.pop()
 
     # Try to get the last component
     if aIsHorizontal:
-        copyComponent(p,  "left")
+        copyComponent(p,  "right", True)
     else:
-        copyComponent(p,  "top")
+        copyComponent(p,  "bot", True)
 
 def copySizeVariant(aGlyph, aSizeVariantTable):
     # Copy the variants of a given glyph into the right STIX_Size* font.
@@ -139,7 +145,9 @@ def copySizeVariant(aGlyph, aSizeVariantTable):
         fontUtil.moveGlyph(STIXMath, STIXSize[j],
                            aSizeVariantTable[i], aGlyph.unicode)
 
-        print("%05X:%d " % (aGlyph.unicode,j), file=fontData, end="")
+        if i > 0:
+            print(",", file=fontData, end="")
+        print("[%.3f,MATHSIZE%d]" % (1.,j), file=fontData, end="")
 
 # Parse the command line arguments
 parser = argparse.ArgumentParser()
@@ -165,41 +173,78 @@ STIXPUAContent=dict()
 
 fontData = open("fontdata.txt", "w")
 
+firstGlyph = True
+
+print("DELIMITERS: {", file=fontData)
+
 # Browse the list of all glyphs in STIXMath to find those with stretchy data.
 for glyph in STIXMath.glyphs():
 
     if (glyph.unicode == -1):
         continue
 
-    if (glyph.horizontalComponents is None and
-        glyph.verticalComponents is None and
-        glyph.horizontalVariants is None and
-        glyph.verticalVariants is None):
+    hasVariants = (glyph.horizontalVariants is not None or
+                   glyph.verticalVariants is not None)
+    hasComponents = (glyph.horizontalComponents is not None or
+                     glyph.verticalComponents is not None)
+
+    if (not hasVariants and not hasComponents):
         # skip non-stretchy glyphs
         continue
     
+    if firstGlyph:
+        firstGlyph = False
+    else:
+        print(",", file=fontData)
+
+    if ((glyph.horizontalVariants is not None and
+         glyph.verticalVariants is not None) or
+        (glyph.horizontalComponents is not None and
+         glyph.verticalComponents is not None)):
+        raise BaseException("Unable to determine direction")
+        
+    isHorizontal = (glyph.horizontalVariants is not None or
+                    glyph.horizontalComponents is not None)
+
     print("%s" % glyph.glyphname)
 
-    print("%05X = " % glyph.unicode, file=fontData, end="")
+    print("  0x%X:" % glyph.unicode, file=fontData)
+    print("  {", file=fontData)
 
-    if (glyph.horizontalComponents):
-        # Copy horizontal components
-        copyComponents(glyph.horizontalComponents, True)
-    elif (glyph.verticalComponents):
-        # Copy vertical components
-        copyComponents(glyph.verticalComponents, False)
+    if isHorizontal:
+        print("    dir: H,", file=fontData)
+    else:
+        print("    dir: V,", file=fontData)
 
-    print("; ", file=fontData, end="")
+    if hasVariants:
+        print("    HW: [", file=fontData, end="")
+        if isHorizontal:
+            # Copy horizontal size variants
+            copySizeVariant(glyph, glyph.horizontalVariants.split())
+        else:
+            # Copy vertical size variants
+            copySizeVariant(glyph, glyph.verticalVariants.split())
+        print("]", file=fontData, end="");
+        if hasComponents:
+            print(",", file=fontData)
+        else:
+            print(file=fontData)
 
-    if (glyph.horizontalVariants):
-        # Copy horizontal size variants
-        copySizeVariant(glyph, glyph.horizontalVariants.split())
-    elif (glyph.verticalVariants):
-        # Copy vertical size variants
-        copySizeVariant(glyph, glyph.verticalVariants.split())
+    if hasComponents:
+        print("    stretch: {", file=fontData, end="")
+        if isHorizontal:
+            # Copy horizontal components
+            copyComponents(glyph.horizontalComponents, isHorizontal)
+        else:
+            # Copy vertical components
+            copyComponents(glyph.verticalComponents, isHorizontal)
+        print("}", file=fontData)
 
-    print(file=fontData)
+    print("  }", file=fontData, end="")
 
+
+print(file=fontData)
+print("} // END DELIMITERS", file=fontData)
 fontData.close()
 
 # Finally, save the new fonts
