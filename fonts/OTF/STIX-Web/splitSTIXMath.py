@@ -117,7 +117,7 @@ def copyComponents(aComponents, aIsHorizontal):
     else:
         copyComponent(p,  "bot", True)
 
-def copySizeVariant(aGlyph, aSizeVariantTable):
+def copySizeVariant(aGlyph, aSizeVariantTable, aIsHorizontal):
     # Copy the variants of a given glyph into the right STIX_Size* font.
     global STIXMath, STIXSize, fontData
     for i in range(0,len(aSizeVariantTable)):
@@ -141,13 +141,20 @@ def copySizeVariant(aGlyph, aSizeVariantTable):
         else:
             j = 0
 
+        # Determine the em width/height of the glyph
+        boundingBox = STIXMath[aSizeVariantTable[i]].boundingBox()
+        if aIsHorizontal:
+            s = float(boundingBox[2] - boundingBox[0])
+        else:
+            s = float(boundingBox[3] - boundingBox[1])
+
         # Ask fontforge to copy the glyph
         fontUtil.moveGlyph(STIXMath, STIXSize[j],
                            aSizeVariantTable[i], aGlyph.unicode)
 
         if i > 0:
             print(",", file=fontData, end="")
-        print("[%.3f,MATHSIZE%d]" % (1.,j), file=fontData, end="")
+        print("[%.3f,MATHSIZE%d]" % (s/STIXMath.em,j), file=fontData, end="")
 
 # Parse the command line arguments
 parser = argparse.ArgumentParser()
@@ -220,10 +227,12 @@ for glyph in STIXMath.glyphs():
         print("    HW: [", file=fontData, end="")
         if isHorizontal:
             # Copy horizontal size variants
-            copySizeVariant(glyph, glyph.horizontalVariants.split())
+            copySizeVariant(glyph, glyph.horizontalVariants.split(),
+                            isHorizontal)
         else:
             # Copy vertical size variants
-            copySizeVariant(glyph, glyph.verticalVariants.split())
+            copySizeVariant(glyph, glyph.verticalVariants.split(),
+                            isHorizontal)
         print("]", file=fontData, end="");
         if hasComponents:
             print(",", file=fontData)

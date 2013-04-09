@@ -44,7 +44,7 @@ d
 done
 
 # Copy the DELIMITERS data
-indent="`$SED -n "s/^\([ \t]*\) DELIMITERS: {$/\1/p" $FONTDATA`"
+indent="`$SED -n "s/^\([ \t]*\)DELIMITERS: {$/\1/p" $FONTDATA`"
 $SED "s/^\(.*\)$/$indent\1/" <../../OTF/STIX-Web/fontdata.txt >tmp.js
 $SED -i "/^\([ \t]*\)DELIMITERS: {$/i INSERT_HERE" $FONTDATA
 $SED -i "/^\([ \t]*\)DELIMITERS: {$/,/END DELIMITERS/ {d}" $FONTDATA
