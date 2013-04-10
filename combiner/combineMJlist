@@ -19,14 +19,15 @@ use FindBin;
 $DIR = $FindBin::Bin;
 $MJX = $ARGV[0];
 
-my $name = $ARGV[1]; 
+my $name = $ARGV[1];
+my $listfile = $name;
 $name =~ s!.*/!!;
 die "Usage: ./combineMJlist proj-dir lis-file [out-dir]\n" unless $name =~ m/\S/;
 
 die "Project directory must contain a config directory\n" unless -d "$MJX/config";
 
 my $outdir = $MJX;
-my $outfile = "config/$name"; 
+my $outfile = "config/$name";
 $outfile =~ s/\.[^.]*/.js/;
 
 # If the user supplied an output directory, then use that, and strip off
@@ -42,7 +43,7 @@ my $template = "$DIR/template.js";
 $load_complete_path = "[MathJax]/$outfile";
 
 
-open(my $LIST_FILE, "<", $name) or die "Can't open $name for reading";
+open(my $LIST_FILE, "<", $listfile) or die "Can't open $listfile for reading";
 @files = ();
 while ($file = <$LIST_FILE>) {
     chomp($file);
