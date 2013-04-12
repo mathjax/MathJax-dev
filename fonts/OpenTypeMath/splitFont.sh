@@ -27,7 +27,13 @@ fi
 
 FONTFAMILY=$1
 
-if [ $FONTFAMILY/config.cfg ]
+if [ ! -d $FONTFAMILY ]
+then
+    echo "Directory $FONTFAMILY does not exist"
+    exit 1
+fi
+
+if [ -f $FONTFAMILY/config.cfg ]
 then
     source $FONTFAMILY/config.cfg
 else
@@ -41,7 +47,8 @@ rm -f $FONTFAMILY/otf/*
 rm -f $FONTFAMILY/ttf/*
 
 # Extract the Open Type Math table from the math font
-$PYTHON splitMath.py $FONTFAMILY $FONTDIR/$FONTMATH $MAXSIZE
+$PYTHON splitMath.py $FONTFAMILY $FONTDIR/$FONTMATH $FONTMATH_MAXSIZE
+if [ $? -ne 0 ]; then exit 1; fi
 
 if [ $FONTREGULAR ]
 then

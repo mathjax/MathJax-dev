@@ -119,43 +119,38 @@ def copyComponents(aComponents, aIsHorizontal):
 
 def copySizeVariant(aGlyph, aSizeVariantTable, aIsHorizontal):
     # Copy the variants of a given glyph into the right Size* font.
-    global Math, Size, fontData
-    for i in range(0,len(aSizeVariantTable)):
-        # TODO: This only works well for STIX fonts... Make this configurable.
-        # The variant sizes have a name with an extension, for example
-        # uni005C.s2 for the size variant 2 of U+005C. We will choose the
-        # destination according to the extension of the glyph name:
-        # 
-        # No extensions: copy into Size0
-        # *.s1 or *.dst: copy into Size1
-        # *.s2: copy into Size2
-        # *.s3: copy into Size3
-        # *.s4: copy into Size4
-        # *.s5: copy into Size5
-        #
-        glyphname = aSizeVariantTable[i]
-        sizeMatch = re.search("\.s(\d)$", glyphname)
-        if sizeMatch:
-            j = int(sizeMatch.group(1))
-        elif glyphname.find(".") >= 0:
-            j = 1
-        else:
-            j = 0
+    global Math, Size, fontData, FONTFAMILY, MAXSIZE
+
+    aSizeVariantTable.reverse()
+
+    # Always add the Size0 character if it is not here.
+    if (len(aSizeVariantTable) == 0 or
+        aSizeVariantTable[-1] != aGlyph.glyphname):
+        aSizeVariantTable.append(aGlyph.glyphname)
+
+    if (len(aSizeVariantTable)-1 > MAXSIZE):
+        raise BaseException("Too many size variants in %s. Please verify that the value of FONTMATH_MAXSIZE correctly set (it should be at least %d)" %
+                            (FONTFAMILY,len(aSizeVariantTable)-1))
+
+    i = 0
+    while aSizeVariantTable:
+        glyphname = aSizeVariantTable.pop()
 
         # Determine the em width/height of the glyph
-        boundingBox = Math[aSizeVariantTable[i]].boundingBox()
+        boundingBox = Math[glyphname].boundingBox()
         if aIsHorizontal:
             s = float(boundingBox[2] - boundingBox[0])
         else:
             s = float(boundingBox[3] - boundingBox[1])
 
         # Ask fontforge to copy the glyph
-        fontUtil.moveGlyph(Math, Size[j],
-                           aSizeVariantTable[i], aGlyph.unicode)
+        fontUtil.moveGlyph(Math, Size[i], glyphname, aGlyph.unicode)
 
         if i > 0:
             print(",", file=fontData, end="")
-        print("[%.3f,MATHSIZE%d]" % (s/Math.em,j), file=fontData, end="")
+
+        print("[%.3f,MATHSIZE%d]" % (s/Math.em,i), file=fontData, end="")
+        i += 1
 
 # Parse the command line arguments
 parser = argparse.ArgumentParser()
