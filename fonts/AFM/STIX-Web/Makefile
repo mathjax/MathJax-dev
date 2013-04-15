@@ -21,7 +21,7 @@ include ../../../custom.cfg
 
 all: afm fonts data
 
-FONTDIR2=../../OTF/STIX-Web/otf/
+FONTDIR2=../../OpenTypeMath/STIX-Web/otf/
 CONFIG_PL=config.pl
 CONFIG_FILES_PL=config-files.pl
 ENUM=../../Tables/enumerateGlyphs.py
