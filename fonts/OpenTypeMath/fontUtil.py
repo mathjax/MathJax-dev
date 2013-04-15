@@ -71,6 +71,12 @@ def saveFont(aFamily, aFont):
     aFont.generate("%s/ttf/%s.ttf" % (aFamily, aFont.fontname))
 
 def moveGlyph(aFontFrom, aFontTo, aOldPosition, aNewPosition = None):
+    # Ignore glyphs that have already been deleted before
+    # (Otherwise, FontForge will copy them as "blank" glyphs)
+    if not(aOldPosition in aFontFrom and
+           aFontFrom[aOldPosition].isWorthOutputting()):
+        return
+
     # Move the glyph from the font aFontFrom at position aOldPosition
     # to the font aFontTo at position aNewPosition. 
     if aNewPosition is None:
@@ -81,22 +87,14 @@ def moveGlyph(aFontFrom, aFontTo, aOldPosition, aNewPosition = None):
     aFontTo.paste()
 
 def moveRange(aFontFrom, aFontTo, aRangeStart, aRangeEnd):
-    # Move the glyphs in the range (aRangeStart, aRangeEnd)
+    # Move the glyphs in the range [aRangeStart, aRangeEnd]
     # from the font aFontFrom to the font aFontTo.
-    aFontFrom.selection.select(("ranges", None), aRangeStart, aRangeEnd)
-    aFontTo.selection.select(("ranges", None), aRangeStart, aRangeEnd)
-    aFontFrom.cut()
-    aFontTo.paste()
+    for codePoint in range(aRangeStart, aRangeEnd+1):
+        moveGlyph(aFontFrom, aFontTo, codePoint)
 
 def moveFontCoverage(aFontFrom, aFontTo, aFontReference):
     # Move the glyphs covered by aFontReference
     # from the font aFontFrom to the font aFontTo.
     reference = fontforge.open(aFontReference)
     for glyph in reference.glyphs():
-        if (glyph.unicode == -1 or
-            (glyph.unicode in aFontFrom and
-             not(aFontFrom[glyph.unicode].isWorthOutputting()))):
-            # Ignore NonUnicode glyph or those that have already been
-            # cut from aFontFrom.
-            continue
-        moveGlyph(aFontFrom, aFontTo, glyph.unicode)
+        moveGlyph(aFontFrom, aFontTo, glyph.glyphname)
