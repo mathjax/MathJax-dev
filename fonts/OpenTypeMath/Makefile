@@ -19,7 +19,7 @@
 
 include ../../custom.cfg
 
-all: STIX-Web
+all: STIX-Web # Asana-Math/woff Gyre-Pagella/woff Gyre-Termes/woff Latin-Modern/woff Neo-Euler/woff
 
 clean:
 	rm -rf */otf */ttf */eot */svg */woff

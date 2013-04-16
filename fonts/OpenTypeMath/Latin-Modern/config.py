@@ -1,5 +1,4 @@
-#!/bin/bash
-# -*- Mode: Shell-script; tab-width: 2; indent-tabs-mode:nil; -*-
+# -*- Mode: Python; tab-width: 2; indent-tabs-mode:nil; -*-
 # vim: set ts=2 et sw=2 tw=80:
 #
 # Copyright (c) 2013 MathJax Project
@@ -17,27 +16,5 @@
 # limitations under the License.
 #
 
-source ../../custom.cfg
-
-if [ $# != 1 ]
-then
-    echo "usage: $0 FontFamily"
-    exit 1
-fi
-
-FONTFAMILY=$1
-
-if [ ! -d $FONTFAMILY ]
-then
-    echo "Directory $FONTFAMILY does not exist"
-    exit 1
-fi
-
-mkdir -p $FONTFAMILY/otf
-mkdir -p $FONTFAMILY/ttf
-rm -f $FONTFAMILY/otf/*
-rm -f $FONTFAMILY/ttf/*
-
-$PYTHON splitFont.py $FONTFAMILY $FONTDIR
-
-rm -f $FONTFAMILY/otf/*.tmp
+MATHFONT="latinmodern-math.otf"
+MAINFONTS=None
