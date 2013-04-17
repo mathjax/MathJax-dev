@@ -21,6 +21,7 @@ from __future__ import print_function
 from shutil import copyfile
 import fontforge
 from fontSplitting import FONTSPLITTING
+from copy import deepcopy
 
 def newFont(aFamily, aFontFrom, aName, aWeight):
     print("New font %s-%s..." % (aName, aWeight))
@@ -36,8 +37,9 @@ def newFont(aFamily, aFontFrom, aName, aWeight):
     font.fullname = font.fontname
     font.encoding = "UnicodeFull"
 
-    # Clear all the glyphs.
+    # Clear all but the space glyph.
     font.selection.all()
+    font.selection.select(("less", None), 0x20)
     font.clear()
 
     # Copy the three PUA glyphs used to detect Web Fonts availability
@@ -51,8 +53,8 @@ def newFont(aFamily, aFontFrom, aName, aWeight):
 
 def saveFont(aFamily, aFont):
     # Check that the font has at least four glyphs
-    # (Our PUA glyphs + the notdef glyph)
-    i = 4
+    # (Our PUA glyphs + the notdef glyph + the space glyph)
+    i = 5
     for g in aFont.glyphs():
         i -= 1
         if i == 0:
@@ -94,11 +96,11 @@ def moveRange(aFontFrom, aFontTo, aRangeStart, aRangeEnd):
         moveGlyph(aFontFrom, aFontTo, codePoint)
 
 class stretchyOp:
-    def __init__(self, aCodePoint, aIsHorizontal):
-        self.mCodePoint = aCodePoint
+    def __init__(self, aIsHorizontal):
         self.mIsHorizontal = aIsHorizontal
         self.mSizeVariants = None
         self.mComponents = None
+        self.mAlias = None
 
 class mathFontSplitter:
     def __init__(self, aFontFamily, aMathFont):
@@ -112,7 +114,7 @@ class mathFontSplitter:
         self.mPUAContent=dict()
 
         # Lists of stretchy operators
-        self.mStretchyOperators=[]
+        self.mStretchyOperators=dict()
 
         # List of normal size glyphs
         self.mNormalSize=[]
@@ -170,7 +172,7 @@ class mathFontSplitter:
             isHorizontal = (glyph.horizontalVariants is not None or
                             glyph.horizontalComponents is not None)
 
-            operator = stretchyOp(glyph.unicode, isHorizontal)
+            operator = stretchyOp(isHorizontal)
 
             if hasVariants:
                 if isHorizontal:
@@ -198,13 +200,110 @@ class mathFontSplitter:
                         self.copyComponents(glyph.verticalComponents,
                                             isHorizontal)
 
-            self.mStretchyOperators.append(operator)
+            self.mStretchyOperators[glyph.unicode] = operator
 
         # Finally, save the new fonts
         for font in self.mMathSize:
             saveFont(self.mFontFamily, font)
 
-    def printDelimiters(self, aStream):
+    def addStretchyOperators(self, aStretchyOperators):
+        # Add some stretchy operators that are not in the Open Type Math table
+
+        for codePoint in aStretchyOperators:
+            if codePoint in self.mStretchyOperators:
+                raise BaseException("0x%04X is already in the list of stretchy \
+operators and should not be specified in DELIMITERS" % codePoint)
+            item = aStretchyOperators[codePoint]
+            isHorizontal = (item["dir"] == "H")
+            operator = stretchyOp(isHorizontal)
+
+            if "alias" in item:
+                # This is an alias
+                operator.mAlias = item["alias"]
+                self.mStretchyOperators[codePoint] = operator
+                continue
+
+            # Size variants
+            if "HW" in item:
+                i = 0
+                operator.mSizeVariants = []
+                for c in item["HW"]:
+                    operator.mSizeVariants.append(
+                        self.copySizeVariant(isHorizontal, i,
+                                             self.mMathFont[c].glyphname))
+                    i += 1
+
+            # Components
+            if "stretch" in item:
+                operator.mComponents = []
+                for piece in item["stretch"]:
+                    data = self.copyComponent(self.mMathFont[piece[0]].
+                                              glyphname,
+                                              piece[1])
+                    # add the optional dx,dy,scale,dh,dd parameters
+                    if len(piece) > 2:
+                        for i in range(2,len(piece)):
+                            data.append(piece[i])
+
+                    operator.mComponents.append(data)
+
+            self.mStretchyOperators[codePoint] = operator
+
+    def verifyTeXSizeVariants(self, aTeXFactor, aDelimiters):
+        # Ensure that some TeX delimiters have enough variants to provide
+        # different sizes for the \big, \bigg... commands.
+        for codePoint in aDelimiters:
+            if codePoint not in self.mStretchyOperators:
+                raise BaseException("0x%04X is not in the list of stretchy \
+#operators. Please add a construction for it in DELIMITERS." %
+                                    codePoint)
+
+            # Target sizes (these values are from the TeX input jax)
+            p_height = 1.2/.85
+            bigSizes = [0.85,1.15,1.45,1.75]
+            for i in range(0,len(bigSizes)):
+                bigSizes[i] *= p_height*aTeXFactor
+
+            # These are the available variant sizes
+            variantSizes = []
+            variants = self.mStretchyOperators[codePoint].mSizeVariants
+            for i in range(1,len(variants)):
+                em = variants[i][2]
+                variantSizes.append(em)
+
+            # See https://groups.google.com/d/msg/mathjax-dev/3mdLfPrG1vg/74WbQnz2aj4J
+            # Note that we browse the target/available list in reverse order
+            variants2 = []
+            while len(bigSizes) > 0:
+
+                # Get the target size
+                size = bigSizes.pop()
+
+                if len(variantSizes) == 0:
+                    raise BaseException("Not enough variants!")
+
+                if variantSizes[-1] < size:
+                    # The current size is not large enough to reach the target
+                    # size, so scale it
+                    old=variants[-1]
+                    variants2.append((old[0],old[1],size,size/old[2]))
+                    continue
+
+                # Copy the variants that are larger than the target size
+                while (len(variantSizes) > 1
+                       and variantSizes[-1] >= size):
+                    variantSizes.pop()
+                    variants2.append(variants.pop())
+
+            # Copy the remaining variants
+            while len(variants) > 0:
+                variants2.append(variants.pop())
+
+            # Update the variant list for this code point
+            variants2.reverse()
+            self.mStretchyOperators[codePoint].mSizeVariants = variants2
+
+    def computeNormalSizeSplitting(self):
         # Determine the name of the font to use for the fontSize variant
         size0 = dict()
         for codePoint in self.mNormalSize:
@@ -238,26 +337,45 @@ class mathFontSplitter:
                 raise BaseException("Glyph not found: 0x%X. Is FONTSPLITTING \
 correctly sorted?" % codePoint)
 
-        # Print the delimiters list
-        print("DELIMITERS: {", file=aStream)
+        self.mNormalSize = size0
 
-        for i in range(0, len(self.mStretchyOperators)):
-            operator = self.mStretchyOperators[i]
+    def printDelimiters(self, aStream, aIndent, aFontExtra = False):
+        # Print the delimiters
+        if not(type(self.mNormalSize) == dict):
+            self.computeNormalSizeSplitting()
 
-            if i > 0:
+        indent=""
+        while aIndent > 0:
+            indent += " "
+            aIndent -= 1
+
+        isFirst = True
+        for key in sorted(self.mStretchyOperators.iterkeys()):
+            operator = self.mStretchyOperators[key]
+
+            if isFirst:
+                isFirst = False
+            else:
                 print(",", file=aStream)
 
-            print("  0x%X:" % operator.mCodePoint, file=aStream)
-            print("  {", file=aStream)
-
             if operator.mIsHorizontal:
-                print("    dir: H,", file=aStream)
+                d = "H"
             else:
-                print("    dir: V,", file=aStream)
+                d = "V"
+
+            if operator.mAlias is not None:
+                print("%s  0x%X: {alias: 0x%04X, dir: %s}" %
+                      (indent, key, operator.mAlias, d), file=aStream, end="")
+                continue
+
+            print("%s  0x%X:" % (indent, key), file=aStream)
+            print("%s  {" % indent, file=aStream)
+
+            print("%s    dir: %s," % (indent, d), file=aStream)
 
             if operator.mSizeVariants is not None:
                 # Print the size variants
-                print("    HW: [", file=aStream, end="")
+                print("%s    HW: [" % indent, file=aStream, end="")
 
                 for j in range(0, len(operator.mSizeVariants)):
 
@@ -268,12 +386,22 @@ correctly sorted?" % codePoint)
                     size = v[0]
                     codePoint = v[1]
                     em = v[2]
+                    scale = v[3]
                     if size == 0:
-                        fontname = size0[codePoint]
+                        fontname = self.mNormalSize[codePoint]
                     else:
                         fontname = "MATHSIZE%d" % size
             
-                    print("[%d,%s]" % (em, fontname), file=aStream, end="")
+                    data = "%.3f,%s" % (em, fontname)
+                    if scale != 1.0:
+                        data += ",%.3f" % scale
+                    if size == 0 and codePoint != key:
+                        if scale == 1.0:
+                            data += ",null,0x%04X" % codePoint
+                        else:
+                            data += ",0x%04X" % codePoint
+
+                    print("[%s]" % data, file=aStream, end="")
                 
                 print("]", file=aStream, end="");
 
@@ -284,7 +412,7 @@ correctly sorted?" % codePoint)
      
             if operator.mComponents is not None:
                 # Print the components
-                print("    stretch: {", file=aStream, end="")
+                print("%s    stretch: {" % indent, file=aStream, end="")
 
                 for j in range(0, len(operator.mComponents)):
                     if j > 0:
@@ -294,20 +422,63 @@ correctly sorted?" % codePoint)
                     codePoint = v[1]
                     pieceType = v[2]
                     if size == 0:
-                        fontname = size0[codePoint]
+                        fontname = self.mNormalSize[codePoint]
                     else:
                         fontname = "MATHSIZE%d" % size
-            
-                    print("%s:[0x%X,%s]" % (pieceType, codePoint, fontname),
-                          file=aStream, end="")
+
+                    data = "0x%X,%s" % (codePoint, fontname)
+                    if len(v) > 3:
+                        for i in range(3,len(v)):
+                            data += ",%.3f" % v[i]
+
+                    print("%s:[%s]" % (pieceType, data), file=aStream, end="")
 
                 print("}", file=aStream)
-         
 
-            print("  }", file=aStream, end="")
+            print("%s  }" % indent, file=aStream, end="")
     
         print(file=aStream)
-        print("} // END DELIMITERS", file=aStream)
+
+    def copyGlyph(self, aGlyphName, aSize):
+        if (self.mMathFont[aGlyphName].unicode >= 0 and
+            self.mMathFont[aGlyphName].unicode <= 0xE01EF):
+            # The piece is a normal size glyph. Use the main font.
+            codePoint = self.mMathFont[aGlyphName].unicode
+            self.mNormalSize.append(codePoint)
+            return (False,codePoint)
+
+        if aGlyphName not in self.mPUAContent:
+            # New piece: copy it into the PUA and save the code point.
+            codePoint = self.mPUAPointer
+            self.mPUAContent[aGlyphName] = codePoint
+            moveGlyph(self.mMathFont,
+                      self.mMathSize[aSize-1],
+                      aGlyphName, codePoint)
+            self.mPUAPointer += 1 # move to the next code point
+        else:
+            # This piece was already copied into the PUA:
+            # retrieve its code point.
+            codePoint = self.mPUAContent[aGlyphName]
+        return (True,codePoint)
+
+    def copySizeVariant(self, aIsHorizontal, aSize, aGlyphName):
+            # Determine the em width/height of the glyph
+            # Note: we assume that the Regular and Math bounding metrics are
+            # the same.
+            boundingBox = self.mMathFont[aGlyphName].boundingBox()
+            if aIsHorizontal:
+                s = float(boundingBox[2] - boundingBox[0])
+            else:
+                s = float(boundingBox[3] - boundingBox[1])
+
+            (PUAglyph, newCodePoint) = self.copyGlyph(aGlyphName, aSize)
+
+            if PUAglyph:
+                size = aSize
+            else:
+                size = 0
+
+            return (size, newCodePoint, s/self.mMathFont.em, 1.0)
 
     def copySizeVariants(self, aGlyph, aSizeVariantTable, aIsHorizontal):
         # Copy the variants of a given glyph into the right Size* font.
@@ -325,53 +496,18 @@ correctly sorted?" % codePoint)
         i = 0
         while aSizeVariantTable:
             glyphname = aSizeVariantTable.pop()
-
-            # Determine the em width/height of the glyph
-            boundingBox = self.mMathFont[glyphname].boundingBox()
-            if aIsHorizontal:
-                s = float(boundingBox[2] - boundingBox[0])
-            else:
-                s = float(boundingBox[3] - boundingBox[1])
-
-            if i > 0:
-                # Ask fontforge to copy the glyph
-                # We ignore the size 0 since we will use the main font instead.
-                # Note: we assume that the Main and Math bounding metrics are
-                # the same.
-                moveGlyph(self.mMathFont,
-                          self.mMathSize[i-1],
-                          glyphname, aGlyph.unicode)
-
-            rv.append([i, aGlyph.unicode, s/self.mMathFont.em])
+            rv.append(self.copySizeVariant(aIsHorizontal, i, glyphname))
             i += 1
 
         return rv
 
-    def copyComponent(self, aPiece, aType):
+    def copyComponent(self, aGlyphName, aType):
         # Copy a single component
-        glyphname = aPiece[0]
-
-        if (self.mMathFont[glyphname].unicode >= 0 and
-            self.mMathFont[glyphname].unicode <= 0xE01EF):
-            # The piece is a normal size glyph. Use the main font.
-            codePoint = self.mMathFont[glyphname].unicode
-            self.mNormalSize.append(codePoint)
-            return (0, codePoint, aType)
+        (PUAglyph, newCodePoint) = self.copyGlyph(aGlyphName, self.mMaxSize)
+        if PUAglyph:
+            return [self.mMaxSize, newCodePoint, aType]
         else:
-            if glyphname not in self.mPUAContent:
-                # New piece: copy it into the PUA and save the code point.
-                pieceCodePoint = self.mPUAPointer
-                self.mPUAContent[glyphname] = pieceCodePoint
-                moveGlyph(self.mMathFont,
-                          self.mMathSize[self.mMaxSize-1],
-                          glyphname, pieceCodePoint)
-                self.mPUAPointer += 1 # move to the next code point
-            else:
-                # This piece was already copied into the PUA:
-                # retrieve its code point.
-                pieceCodePoint = self.mPUAContent[glyphname]
-
-        return (self.mMaxSize, pieceCodePoint, aType)
+            return [0, newCodePoint, aType]
 
     def copyComponents(self, aComponents, aIsHorizontal):
         # Copy the components. The structure of the Open Type Math table is a
@@ -399,9 +535,9 @@ correctly sorted?" % codePoint)
         p = components.pop()
         if p[1] == 0:
             if aIsHorizontal:
-                rv.append(self.copyComponent(p,  "left"))
+                rv.append(self.copyComponent(p[0],  "left"))
             else:
-                rv.append(self.copyComponent(p,  "top"))
+                rv.append(self.copyComponent(p[0],  "top"))
             if len(components) == 0:
                 return rv
         p = components.pop()
@@ -409,9 +545,9 @@ correctly sorted?" % codePoint)
         # Try to get the middle component
         if p[1] == 0:
             if aIsHorizontal:
-                rv.append(self.copyComponent(p,  "rep"))
+                rv.append(self.copyComponent(p[0],  "rep"))
             else:
-                rv.append(self.copyComponent(p,  "mid"))
+                rv.append(self.copyComponent(p[0],  "mid"))
             if len(components) == 0:
                 return rv
             p = components.pop()
@@ -425,22 +561,22 @@ correctly sorted?" % codePoint)
             # Ignore multiple extenders
             while (len(components) > 0 and components[0][1] == 1):
                 p = components.pop()
-            rv.append(self.copyComponent(q,  "ext"))
+            rv.append(self.copyComponent(q[0],  "ext"))
             if len(components) == 0:
                 return rv
             
         # Try to get the middle component
         if not(hasSecondComponent) and len(components) > 1:
             if aIsHorizontal:
-                rv.append(self.copyComponent(p,  "rep"))
+                rv.append(self.copyComponent(p[0],  "rep"))
             else:
-                rv.append(self.copyComponent(p,  "mid"))
+                rv.append(self.copyComponent(p[0],  "mid"))
             p = components.pop()
 
         # Try to get the last component
         if aIsHorizontal:
-            rv.append(self.copyComponent(p,  "right"))
+            rv.append(self.copyComponent(p[0],  "right"))
         else:
-            rv.append(self.copyComponent(p,  "bot"))
+            rv.append(self.copyComponent(p[0],  "bot"))
 
         return rv
