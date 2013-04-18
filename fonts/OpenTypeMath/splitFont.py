@@ -46,8 +46,8 @@ if (not os.path.exists("%s/config.py" % FONTFAMILY)):
 # Create/clean up the ttf and otf directories
 subprocess.call("mkdir -p %s/ttf %s/otf" % (FONTFAMILY, FONTFAMILY),
                 shell=True)
-#subprocess.call("rm -f %s/ttf/* %s/otf/*" % (FONTFAMILY, FONTFAMILY),
-#                shell=True)
+subprocess.call("rm -f %s/ttf/* %s/otf/*" % (FONTFAMILY, FONTFAMILY),
+                shell=True)
 
 # Import the configuration for this font family
 sys.path.append("./%s" % FONTFAMILY)
@@ -58,10 +58,11 @@ if config.MAINFONTS is None:
     config.MAINFONTS = { "Regular": config.MATHFONT }
 if config.FONTDATA["TeX_factor"] is None:
     mainFont = fontforge.open("%s/%s" % (FONTDIR, config.MAINFONTS["Regular"]))
-    config.FONTDATA["TeX_factor"] = float(mainFont.em) / mainFont["M"].width
+    # 0x4D = M
+    config.FONTDATA["TeX_factor"] = float(mainFont.em) / mainFont[0x4D].width
 
 # Split the Main fonts
-for weight in []: # config.MAINFONTS:
+for weight in config.MAINFONTS:
     fontFile = "%s/%s" % (FONTDIR, config.MAINFONTS[weight])
     oldfont=fontforge.open(fontFile)
     oldfont.encoding = "UnicodeFull"
@@ -79,12 +80,14 @@ for weight in []: # config.MAINFONTS:
 
     # Save the rest of the glyphs in a NonUnicode font
     oldfont.fontname = ("%s_NonUnicode-%s" %
-                            (oldfont.familyname.replace(" ", "_"), weight))
+                        (oldfont.familyname.replace(" ", "_"), weight))
     fontUtil.saveFont(FONTFAMILY, oldfont)
 
 # Split the Math font
 splitter=fontUtil.mathFontSplitter(FONTFAMILY,
-                                   "%s/%s" % (FONTDIR, config.MATHFONT))
+                                   FONTDIR,
+                                   config.MATHFONT,
+                                   config.MAINFONTS)
 splitter.split()
 
 # Remove temporary files

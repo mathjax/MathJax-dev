@@ -103,11 +103,15 @@ class stretchyOp:
         self.mAlias = None
 
 class mathFontSplitter:
-    def __init__(self, aFontFamily, aMathFont):
+    def __init__(self, aFontFamily, aFontDir, aMathFont, aMainFonts):
         self.mFontFamily = aFontFamily
 
-        # Open the math font to split
-        self.mMathFont = fontforge.open(aMathFont)
+        # Open the fonts
+        self.mMathFont = fontforge.open("%s/%s" % (aFontDir, aMathFont))
+        self.mMainFonts = {}
+        for key in aMainFonts:
+            self.mMainFonts[key] = \
+                fontforge.open("%s/%s" % (aFontDir, aMainFonts[key]))
 
         # Pointer to the PUA to store the horizontal/vertical components
         self.mPUAPointer=0xE000
@@ -140,7 +144,8 @@ class mathFontSplitter:
         # Create a new font for each size
         self.mMathSize=[]
         for i in range(0, self.mMaxSize):
-            self.mMathSize.append(newFont(self.mFontFamily, aMathFont,
+            self.mMathSize.append(newFont(self.mFontFamily,
+                                          "%s/%s" % (aFontDir, aMathFont),
                                           "Size%d" % (i+1), "Regular"))
         
     def split(self):
@@ -228,18 +233,26 @@ operators and should not be specified in DELIMITERS" % codePoint)
                 i = 0
                 operator.mSizeVariants = []
                 for c in item["HW"]:
-                    operator.mSizeVariants.append(
-                        self.copySizeVariant(isHorizontal, i,
-                                             self.mMathFont[c].glyphname))
+                    if type(c) == int or type(c) == str:
+                        data = self.copySizeVariant(isHorizontal, i,
+                                                    codePoint, c)
+                    else:
+                        data = self.copySizeVariant(isHorizontal, i,
+                                                    codePoint, c[0], c[1])
+
+                    operator.mSizeVariants.append(data)
                     i += 1
 
             # Components
             if "stretch" in item:
                 operator.mComponents = []
                 for piece in item["stretch"]:
-                    data = self.copyComponent(self.mMathFont[piece[0]].
-                                              glyphname,
-                                              piece[1])
+                    c = piece[0]
+                    if type(c) == int or type(c) == str:
+                        data = self.copyComponent(c, piece[1])
+                    else:
+                        data = self.copyComponent(c[0], piece[1], c[1])
+
                     # add the optional dx,dy,scale,dh,dd parameters
                     if len(piece) > 2:
                         for i in range(2,len(piece)):
@@ -255,7 +268,7 @@ operators and should not be specified in DELIMITERS" % codePoint)
         for codePoint in aDelimiters:
             if codePoint not in self.mStretchyOperators:
                 raise BaseException("0x%04X is not in the list of stretchy \
-#operators. Please add a construction for it in DELIMITERS." %
+operators. Please add a construction for it in DELIMITERS." %
                                     codePoint)
 
             # Target sizes (these values are from the TeX input jax)
@@ -330,12 +343,11 @@ operators and should not be specified in DELIMITERS" % codePoint)
                             break
         
                 if found:
-                    size0[codePoint] = "%sREGULAR" % name.upper()
+                    size0[codePoint] = name.upper()
                     break
 
             if not(found):
-                raise BaseException("Glyph not found: 0x%X. Is FONTSPLITTING \
-correctly sorted?" % codePoint)
+                size0[codePoint] = "NONUNICODE"
 
         self.mNormalSize = size0
 
@@ -383,19 +395,22 @@ correctly sorted?" % codePoint)
                         print(", ", file=aStream, end="")
 
                     v = operator.mSizeVariants[j]
-                    size = v[0]
                     codePoint = v[1]
                     em = v[2]
                     scale = v[3]
-                    if size == 0:
-                        fontname = self.mNormalSize[codePoint]
+                    if type(v[0]) == str:
+                        style = v[0]
+                        fontname = "%s%s" % (self.mNormalSize[codePoint],
+                                             style.upper())
                     else:
+                        style = None
+                        size = v[0]
                         fontname = "MATHSIZE%d" % size
             
                     data = "%.3f,%s" % (em, fontname)
                     if scale != 1.0:
                         data += ",%.3f" % scale
-                    if size == 0 and codePoint != key:
+                    if style is not None and codePoint != key:
                         if scale == 1.0:
                             data += ",null,0x%04X" % codePoint
                         else:
@@ -418,13 +433,13 @@ correctly sorted?" % codePoint)
                     if j > 0:
                         print(", ", file=aStream, end="")
                     v = operator.mComponents[j]
-                    size = v[0]
                     codePoint = v[1]
                     pieceType = v[2]
-                    if size == 0:
-                        fontname = self.mNormalSize[codePoint]
+                    if type(v[0]) == str:
+                        fontname = "%s%s" % (self.mNormalSize[codePoint],
+                                             v[0].upper())
                     else:
-                        fontname = "MATHSIZE%d" % size
+                        fontname = "MATHSIZE%d" % v[0]
 
                     data = "0x%X,%s" % (codePoint, fontname)
                     if len(v) > 3:
@@ -439,46 +454,73 @@ correctly sorted?" % codePoint)
     
         print(file=aStream)
 
-    def copyGlyph(self, aGlyphName, aSize):
-        if (self.mMathFont[aGlyphName].unicode >= 0 and
-            self.mMathFont[aGlyphName].unicode <= 0xE01EF):
-            # The piece is a normal size glyph. Use the main font.
-            codePoint = self.mMathFont[aGlyphName].unicode
-            self.mNormalSize.append(codePoint)
-            return (False,codePoint)
+    def isPrivateCharacter(self, aGlyphName):
+        codePoint = self.mMathFont[aGlyphName].unicode
+        return (codePoint == -1 or
+                (0xE000 <= codePoint and codePoint <= 0xF8FF) or
+                (0xF0000 <= codePoint and codePoint <= 0xFFFFD) or
+                (0x100000 <= codePoint and codePoint <= 0x10FFFD))
+
+    def moveToPlane0PUA(self, aGlyphName):
 
         if aGlyphName not in self.mPUAContent:
             # New piece: copy it into the PUA and save the code point.
+            if self.mPUAPointer > 0xF8FF:
+                raise BaseException("Too many characters in the PUA. Not supported by the font splitter.")
             codePoint = self.mPUAPointer
+            self.mMathFont.selection.select(aGlyphName)
+            self.mMathFont.copy()
+            self.mMathSize[self.mMaxSize-1].selection.select(codePoint)
+            self.mMathSize[self.mMaxSize-1].paste()
             self.mPUAContent[aGlyphName] = codePoint
-            moveGlyph(self.mMathFont,
-                      self.mMathSize[aSize-1],
-                      aGlyphName, codePoint)
             self.mPUAPointer += 1 # move to the next code point
         else:
             # This piece was already copied into the PUA:
             # retrieve its code point.
             codePoint = self.mPUAContent[aGlyphName]
-        return (True,codePoint)
 
-    def copySizeVariant(self, aIsHorizontal, aSize, aGlyphName):
-            # Determine the em width/height of the glyph
-            # Note: we assume that the Regular and Math bounding metrics are
-            # the same.
+        return codePoint
+
+    def copySizeVariant(self, aIsHorizontal, aSize,
+                        aCodePoint, aGlyphName, aStyle=None):
+        if aStyle is not None:
+            style = aStyle
+        elif aSize == 0:
+            if self.isPrivateCharacter(aGlyphName):
+                codePoint = self.moveToPlane0PUA(aGlyphName)
+                style = None
+                size = self.mMaxSize - 1
+            else:
+                # This a normal Unicode character
+                # We assume that the normal characters from the Math font
+                # are the same as those from the Regular font.
+                style = "Regular"
+        else:
+            self.mMathFont.selection.select(aGlyphName)
+            self.mMathFont.copy()
+            self.mMathSize[aSize-1].selection.select(aCodePoint)
+            self.mMathSize[aSize-1].paste()
+            style = None
+            size = aSize
+
+        if style is None:
             boundingBox = self.mMathFont[aGlyphName].boundingBox()
-            if aIsHorizontal:
-                s = float(boundingBox[2] - boundingBox[0])
-            else:
-                s = float(boundingBox[3] - boundingBox[1])
+        else:
+            boundingBox = self.mMainFonts[style][aGlyphName].boundingBox()
+                
+        if aIsHorizontal:
+            s = float(boundingBox[2] - boundingBox[0])
+        else:
+            s = float(boundingBox[3] - boundingBox[1])
 
-            (PUAglyph, newCodePoint) = self.copyGlyph(aGlyphName, aSize)
-
-            if PUAglyph:
-                size = aSize
-            else:
-                size = 0
-
-            return (size, newCodePoint, s/self.mMathFont.em, 1.0)
+        if style is None:
+            return (size, aCodePoint, s/self.mMathFont.em, 1.0)
+        else:
+            codePoint = self.mMainFonts[style][aGlyphName].unicode
+            if codePoint == -1:
+                raise BaseException("Not supported")
+            self.mNormalSize.append(codePoint)
+            return (style, codePoint, s/self.mMathFont.em, 1.0)
 
     def copySizeVariants(self, aGlyph, aSizeVariantTable, aIsHorizontal):
         # Copy the variants of a given glyph into the right Size* font.
@@ -496,18 +538,35 @@ correctly sorted?" % codePoint)
         i = 0
         while aSizeVariantTable:
             glyphname = aSizeVariantTable.pop()
-            rv.append(self.copySizeVariant(aIsHorizontal, i, glyphname))
+            rv.append(self.copySizeVariant(aIsHorizontal, i,
+                                           aGlyph.unicode, glyphname))
             i += 1
 
         return rv
 
-    def copyComponent(self, aGlyphName, aType):
+    def copyComponent(self, aGlyphName, aType, aStyle = None):
         # Copy a single component
-        (PUAglyph, newCodePoint) = self.copyGlyph(aGlyphName, self.mMaxSize)
-        if PUAglyph:
-            return [self.mMaxSize, newCodePoint, aType]
+        if aStyle is not None:
+            style = aStyle
         else:
-            return [0, newCodePoint, aType]
+            if self.isPrivateCharacter(aGlyphName):
+                style = None
+            else:
+                # This a normal Unicode character
+                # We assume that the normal characters from the Math font
+                # are the same as those from the Regular font.
+                style = "Regular"
+
+        if style is not None:
+            codePoint = self.mMainFonts[style][aGlyphName].unicode
+            if codePoint == -1:
+                raise BaseException("Not supported")
+            self.mNormalSize.append(codePoint)
+            return [style, codePoint, aType]
+
+        codePoint = self.moveToPlane0PUA(aGlyphName)
+        
+        return [self.mMaxSize, codePoint, aType]
 
     def copyComponents(self, aComponents, aIsHorizontal):
         # Copy the components. The structure of the Open Type Math table is a

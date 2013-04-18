@@ -16,7 +16,10 @@
 # limitations under the License.
 #
 
-# This table should be kept sorted.
+# This table must be sorted.
+# The script searching in this table assumes it to be sorted. If it does not
+# found a character, it will assume it is "NONUNICODE".
+
 FONTSPLITTING = [
     ["Main",
      (0x0000, 0x007F), # Basic Latin

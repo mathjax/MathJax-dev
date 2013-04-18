@@ -92,8 +92,9 @@ DELIMITERS = {
     0x21A7: # down arrow from bar
     {
       "dir": "V",
-      "HW": [0x21A7]
-      # ((0x22A4,"top","BOLD",0.04,0,.6], (0x23D0,"ext"),(0x2193,"bot"))
+      "HW": [0x21A7],
+      "stretch": [((0x22A4,"Bold"),"top",0.04,0,.6),
+                  (0x23D0,"ext"), (0x2193,"bot")]
     },
     0x21A8: # up down arrow with base
     {
@@ -104,14 +105,14 @@ DELIMITERS = {
     0x21A9: # left hook arrow
     {
       "dir": "H",
-      "HW": [0x21A9]
-      # ((0x2190,"left"),(0x2212,"rep"), (0xE0B5,"right","NONUNI"))
+      "HW": [0x21A9],
+      "stretch": [(0x2190,"left"),(0x2212,"rep"), ((0xE0B5,"Regular"),"right")]
     },
     0x21AA: # right hook arrow
     {
       "dir": "H",
-      "HW": [0x21AA]
-#      "stretch": ((0xE0B4,"left",NONUNI],(0x2212,"rep"), (0x2192,"right"))
+      "HW": [0x21AA],
+      "stretch": (((0xE0B4,"Regular"),"left"),(0x2212,"rep"), (0x2192,"right"))
     },
     0x21B0: # up arrow with top leftwards
     {
@@ -170,26 +171,30 @@ DELIMITERS = {
     0x21E0: # left dashed arrow
     {
       "dir": "H",
-      "HW": [0x21E0]
-#      "stretch": {left:[0x21E0,GENERAL], rep:[0xE121,NONUNI,0,0,0,0,.1], fullExtenders:true}
+      "HW": [0x21E0],
+      "stretch": [(0x21E0,"left"), ((0xE121,"Regular"),"rep")],
+      "fullExtenders": True
     },
     0x21E1: # up dashed arrow
     {
       "dir": "V",
-      "HW": [0x21E1]
-#      "stretch": {ext:[0xE12D,NONUNI], top:[0x21E1,GENERAL], fullExtenders: true}
+      "HW": [0x21E1],
+      "stretch": (((0xE12D,"Regular"),"ext"), (0x21E1,"top")),
+      "fullExtenders": True
     },
     0x21E2: # right dashed arrow
     {
       "dir": "H",
-      "HW": [0x21E2]
-#      "stretch": {right:[0x21E2,VARIANT], rep:[0xE12E,NONUNI,0,0,0,0,.1], fullExtenders:true}
+      "HW": [0x21E2],
+      "stretch": [(0x21E2,"right"), ((0xE12E,"Regular"),"rep")],
+      "fullExtenders": True
     },
     0x21E3: # down dashed arrow
     {
       "dir": "V",
-      "HW": [0x21E3]
-      #      "stretch": {ext:[0xE12C,NONUNI], bot:[0x21E3,GENERAL], fullExtenders: true}
+      "HW": [0x21E3],
+      "stretch": (((0xE12C,"Regular"),"ext"), (0x21E3,"bot")),
+      "fullExtenders": True
     },
     0x21E4: # left arrow to bar
     {
@@ -233,30 +238,33 @@ DELIMITERS = {
         "HW": [0x2225],
         "stretch": [(0x2225,"ext")]
     },
-#        0x23AA: # \bracevert
-#        {
-#          "dir": "V"
-#          "HW": [[1.01,SIZE1]],
-#          "stretch": {top:[0x23AA,SIZE1], ext:[0x23AA,SIZE1], bot:[0x23AA,SIZE1]}
-#        },
+    0x23AA: # \bracevert
+    {
+        "dir": "V",
+        "HW": ["uni23AA.s1"],
+        "stretch": [("uni23AA.s1","top"), ("uni23AA.s1","ext"),
+                    ("uni23AA.s1","bot")]
+        },
     0x23AF: # horizontal line
     {
         "dir": "H",
         "HW": [0x23AF],
         "stretch": [(0x23AF,"rep")]
     },
-#      0x23B0: # \lmoustache
-#      {
-#            "dir": "V",
-#            "HW": [[1.0,SIZE1]],
-#            "stretch": {top:[0x23A7,SIZE1], ext:[0x23AA,SIZE1], bot:[0x23AD,SIZE1]}
-#      },
-#      0x23B1: # \rmoustache
-#      {
-#            "dir": "V",
-#            "HW": [[1.0,SIZE1]],
-#            "stretch": {top:[0x23AB,SIZE1], ext:[0x23AA,SIZE1], bot:[0x23A9,SIZE1]}
-#        },
+    0x23B0: # \lmoustache
+    {
+        "dir": "V",
+        "HW": ["uni23B0.s1"],
+        "stretch": [("uni23A7.s1","top"),
+                    ("uni23AA.s1","ext"), ("uni23AD.s1","bot")]
+    },
+    0x23B1: # \rmoustache
+    {
+        "dir": "V",
+        "HW": ["uni23B1.s1"],
+        "stretch": [("uni23AB.s1","top"), ("uni23AA.s1","ext"),
+                    ("uni23A9.s1", "bot")]
+    },
     0x23D0: # vertical line extension
     {
         "dir": "V",
@@ -362,14 +370,15 @@ DELIMITERS = {
     0x295A: # leftwards harpoon with barb up from bar
     {
       "dir": "H",
-      "HW": [0x295A]
-#      "stretch": {left:[0x21BC,GENERAL], rep:[0x2212,GENERAL], right:[0x22A3,"BOLD",0,.1,.6]}
+      "HW": [0x295A],
+      "stretch": [(0x21BC,"left"), (0x2212,"rep"),
+                  ((0x22A3,"Bold"),"right",0,.1,.6)]
     },
     0x295B: # rightwards harpoon with barb up from bar
     {
       "dir": "H",
-      "HW": [0x295B]
-#      "stretch": {left:[0xE0B6,NONUNI], rep:[0x2212,GENERAL], right:[0x21C0,GENERAL]}
+      "HW": [0x295B],
+      "stretch": [((0xE0B6,"Regular"),"left"),(0x2212,"rep"), (0x21C0,"right")]
     },
     0x295C: # up harpoon with barb right from bar
     {
@@ -380,20 +389,22 @@ DELIMITERS = {
     0x295D: # down harpoon with barb right from bar
     {
       "dir": "V",
-      "HW": [0x295D]
-#      "stretch": {top:[0x22A4,"BOLD",0.04,0,.6], ext:[0x23D0,GENERAL], bot:[0x21C2,GENERAL]}
+      "HW": [0x295D],
+      "stretch": [((0x22A4,"Bold"),"top",0.04,0,.6),
+                  (0x23D0,"ext"), (0x21C2,"bot")]
     },
     0x295E: # leftwards harpoon with barb down from bar
     {
       "dir": "H",
-      "HW": [0x295E]
-#      "stretch": ((0x21BD,"left"),(0x2212,"rep"), (0x22A3,"right","BOLD",0,.1,.6))
+      "HW": [0x295E],
+      "stretch": [(0x21BD,"left"),(0x2212,"rep"),
+                  ((0x22A3,"Bold"),"right",0,.1,.6)]
     },
     0x295F: # rightwards harpoon with barb down from bar
     {
       "dir": "H",
-      "HW": [0x295F]
-#      "stretch": {left:[0xE0B6,NONUNI], rep:[0x2212,GENERAL], right:[0x21C1,GENERAL]}
+      "HW": [0x295F],
+      "stretch": [((0xE0B6,"Regular"),"left"), (0x2212,"rep"), (0x21C1,"right")]
     },
     0x2960: # up harpoon with barb left from bar
     {
@@ -404,8 +415,9 @@ DELIMITERS = {
     0x2961: # down harpoon with barb left from bar
     {
       "dir": "V",
-      "HW": [0x2961]
-      # "stretch": {top:[0x22A4,"BOLD",0.04,0,.6], ext:[0x23D0,GENERAL], bot:[0x21C3,GENERAL]}
+      "HW": [0x2961],
+      "stretch": [((0x22A4,"Bold"),"top",0.04,0,.6),
+                  (0x23D0,"ext"), (0x21C3,"bot")]
     },
     0x2980: # triple vertical bar
     {
@@ -416,14 +428,16 @@ DELIMITERS = {
     0x2997: # left black tortoise shell
     {
       "dir": "V",
-      "HW": [0x2997]
-      # "stretch": {top:[0xE10D,NONUNI,.1,.05], ext:[0x23D0,GENERAL,-.1], bot:[0xE10C,NONUNI,.1]}
+      "HW": [0x2997],
+      "stretch": [((0xE10D,"Regular"),"top",.1,.05),
+                  (0x23D0,"ext",-.1), ((0xE10C,"Regular"),"bot",.1)]
     },
     0x2998: # right black tortoise shell
     {
       "dir": "V",
-      "HW": [0x2998]
-      # stretch: {top:[0xE10C,NONUNI,-.1,.05], ext:[0x23D0,GENERAL], bot:[0xE10D,NONUNI,-.1]}
+      "HW": [0x2998],
+      "stretch": [((0xE10C,"Regular"),"top",-.1,.05), (0x23D0,"ext"),
+                  ((0xE10D,"Regular"),"bot",-.1)]
     },
     0x02CD: # low macron
     {
