@@ -22,6 +22,7 @@ from shutil import copyfile
 import fontforge
 from fontSplitting import FONTSPLITTING
 from copy import deepcopy
+from math import ceil
 
 def newFont(aFamily, aFontFrom, aName, aWeight):
     print("New font %s-%s..." % (aName, aWeight))
@@ -32,8 +33,14 @@ def newFont(aFamily, aFontFrom, aName, aWeight):
 
     # Now open the new font and rename it.
     font = fontforge.open(fileName)
-    font.fontname = "%s_%s-%s" % (font.familyname.replace(" ", "_"), aName,
-                                  aWeight)
+
+    # Be sure that the prefix is the family name, with space and underscores
+    # removed.
+    familyname = font.familyname
+    familyname = familyname.replace(" ", "")
+    familyname = familyname.replace("_", "")
+    font.fontname = "%s_%s-%s" % (familyname, aName, aWeight)
+
     font.fullname = font.fontname
     font.encoding = "UnicodeFull"
 
@@ -216,7 +223,7 @@ class mathFontSplitter:
 
         for codePoint in aStretchyOperators:
             if codePoint in self.mStretchyOperators:
-                raise BaseException("0x%04X is already in the list of stretchy \
+                raise BaseException("0x%X is already in the list of stretchy \
 operators and should not be specified in DELIMITERS" % codePoint)
             item = aStretchyOperators[codePoint]
             isHorizontal = (item["dir"] == "H")
@@ -267,7 +274,7 @@ operators and should not be specified in DELIMITERS" % codePoint)
         # different sizes for the \big, \bigg... commands.
         for codePoint in aDelimiters:
             if codePoint not in self.mStretchyOperators:
-                raise BaseException("0x%04X is not in the list of stretchy \
+                raise BaseException("0x%X is not in the list of stretchy \
 operators. Please add a construction for it in DELIMITERS." %
                                     codePoint)
 
@@ -280,7 +287,7 @@ operators. Please add a construction for it in DELIMITERS." %
             # These are the available variant sizes
             variantSizes = []
             variants = self.mStretchyOperators[codePoint].mSizeVariants
-            for i in range(1,len(variants)):
+            for i in range(0,len(variants)):
                 em = variants[i][2]
                 variantSizes.append(em)
 
@@ -297,9 +304,12 @@ operators. Please add a construction for it in DELIMITERS." %
 
                 if variantSizes[-1] < size:
                     # The current size is not large enough to reach the target
-                    # size, so scale it
+                    # size, so scale it.
                     old=variants[-1]
-                    variants2.append((old[0],old[1],size,size/old[2]))
+                    # round to upper values
+                    newsize = ceil(1000*size)/1000.
+                    newscale = ceil(1000*size/old[2])/1000.
+                    variants2.append((old[0],old[1],newsize,newscale))
                     continue
 
                 # Copy the variants that are larger than the target size
@@ -351,7 +361,8 @@ operators. Please add a construction for it in DELIMITERS." %
 
         self.mNormalSize = size0
 
-    def printDelimiters(self, aStream, aIndent, aFontExtra = False):
+    def printDelimiters(self, aStream, aIndent, aDelimitersExtra,
+                        aExtra = False):
         # Print the delimiters
         if not(type(self.mNormalSize) == dict):
             self.computeNormalSizeSplitting()
@@ -363,20 +374,30 @@ operators. Please add a construction for it in DELIMITERS." %
 
         isFirst = True
         for key in sorted(self.mStretchyOperators.iterkeys()):
-            operator = self.mStretchyOperators[key]
 
-            if isFirst:
-                isFirst = False
-            else:
-                print(",", file=aStream)
+            operator = self.mStretchyOperators[key]
 
             if operator.mIsHorizontal:
                 d = "H"
             else:
                 d = "V"
 
+            if aExtra:
+                if key not in aDelimitersExtra:
+                    continue
+
+            if isFirst:
+                isFirst = False
+            else:
+                print(",", file=aStream)
+
+            if not(aExtra) and key in aDelimitersExtra:
+                print("%s  0x%X: EXTRA%s" % (indent, key, d),
+                      file=aStream, end="")
+                continue
+
             if operator.mAlias is not None:
-                print("%s  0x%X: {alias: 0x%04X, dir: %s}" %
+                print("%s  0x%X: {alias: 0x%X, dir: %s}" %
                       (indent, key, operator.mAlias, d), file=aStream, end="")
                 continue
 
@@ -405,16 +426,16 @@ operators. Please add a construction for it in DELIMITERS." %
                     else:
                         style = None
                         size = v[0]
-                        fontname = "MATHSIZE%d" % size
+                        fontname = "SIZE%d" % size
             
                     data = "%.3f,%s" % (em, fontname)
                     if scale != 1.0:
                         data += ",%.3f" % scale
                     if style is not None and codePoint != key:
                         if scale == 1.0:
-                            data += ",null,0x%04X" % codePoint
+                            data += ",null,0x%X" % codePoint
                         else:
-                            data += ",0x%04X" % codePoint
+                            data += ",0x%X" % codePoint
 
                     print("[%s]" % data, file=aStream, end="")
                 
@@ -439,7 +460,7 @@ operators. Please add a construction for it in DELIMITERS." %
                         fontname = "%s%s" % (self.mNormalSize[codePoint],
                                              v[0].upper())
                     else:
-                        fontname = "MATHSIZE%d" % v[0]
+                        fontname = "SIZE%d" % v[0]
 
                     data = "0x%X,%s" % (codePoint, fontname)
                     if len(v) > 3:
@@ -455,6 +476,13 @@ operators. Please add a construction for it in DELIMITERS." %
         print(file=aStream)
 
     def isPrivateCharacter(self, aGlyphName):
+        if aGlyphName not in self.mMathFont:
+            if type(aGlyphName) == int:
+                c = "0x%X" % aGlyphName
+            else:
+                c = aGlyphName
+            raise BaseException("No such glyph: %s" % c)
+
         codePoint = self.mMathFont[aGlyphName].unicode
         return (codePoint == -1 or
                 (0xE000 <= codePoint and codePoint <= 0xF8FF) or
@@ -507,11 +535,14 @@ operators. Please add a construction for it in DELIMITERS." %
             boundingBox = self.mMathFont[aGlyphName].boundingBox()
         else:
             boundingBox = self.mMainFonts[style][aGlyphName].boundingBox()
-                
+               
         if aIsHorizontal:
             s = float(boundingBox[2] - boundingBox[0])
         else:
             s = float(boundingBox[3] - boundingBox[1])
+
+        if s == 0:
+            raise BaseException("Invalid size.")
 
         if style is None:
             return (size, aCodePoint, s/self.mMathFont.em, 1.0)

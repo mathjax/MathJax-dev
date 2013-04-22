@@ -17,11 +17,48 @@
 #
 
 MATHFONT="texgyrepagella-math.otf"
+MAINFONTS = None
 
-MAINFONTS = \
-    {
-    "Regular": "texgyrepagella-regular.otf",
-    "Bold": "texgyrepagella-bold.otf",
-    "Italic": "texgyrepagella-italic.otf",
-    "BoldItalic": "texgyrepagella-bolditalic.otf"
+FONTDATA = {
+    "FileVersion": "2.1",
+    "Year": "2013",
+    "TeX_factor": None, # Leave None for automatic computation
+    "baselineskip": 1.2,
+    "lineH": .8,
+    "lineD": .2,
+    "hasStyleChar": True
     }
+
+RULECHAR = 0x2212
+
+REMAP = {
+    }
+
+REMAPACCENT = {
+    }
+
+REMAPACCENTUNDER = {
+    }
+
+STIXVARIANT = None
+STIXVARIANTFONTS = []
+
+TEXCALIGRAPHIC = None
+TEXCALIGRAPHICFONTS = []
+
+TEXOLDSTYLE = None
+TEXOLDSTYLEFONTS = []
+
+SMALLOPFONTS = None
+
+DELIMITERS = {
+    0x23D0: # vertical line extension
+    {
+        "dir": "V",
+        "HW": [0x7C],
+        "stretch": [(0x7C,"ext")]
+    }
+ }
+
+DELIMITERS_EXTRA = [
+]
