@@ -70,8 +70,8 @@ if (not os.path.exists("%s/config.py" % FONTFAMILY)):
 # Create/clean up the ttf and otf directories
 subprocess.call("mkdir -p %s/ttf %s/otf" % (FONTFAMILY, FONTFAMILY),
                 shell=True)
-#subprocess.call("rm -f %s/ttf/* %s/otf/*" % (FONTFAMILY, FONTFAMILY),
-#                shell=True)
+subprocess.call("rm -f %s/ttf/* %s/otf/*" % (FONTFAMILY, FONTFAMILY),
+                shell=True)
 
 # Import the configuration for this font family
 sys.path.append("./%s" % FONTFAMILY)
@@ -94,7 +94,7 @@ if config.SMALLOPFONTS is None:
     config.SMALLOPFONTS = ""
 
 # Split the Main fonts
-for weight in []: # config.MAINFONTS:
+for weight in config.MAINFONTS:
     fontFile = "%s/%s" % (FONTDIR, config.MAINFONTS[weight])
     oldfont=fontforge.open(fontFile)
     oldfont.encoding = "UnicodeFull"
