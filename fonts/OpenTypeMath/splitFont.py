@@ -138,7 +138,7 @@ print(HEADER %
       file=fontData)
       
 print('\
-(function (HTMLCSS,AJAX) {\n\
+(function (HTMLCSS,MML,AJAX) {\n\
   var VERSION = "%s";\n' % config.FONTDATA["FileVersion"], file=fontData)
 
 # Determine the list of fonts
@@ -299,7 +299,7 @@ mathvariants = '\
              offsetG: 0x1D790\n\
           },\n\
           "monospace": {\n\
-             fonts: [MONOSPACE]\n\
+             fonts: [MONOSPACE],\n\
              offsetA: 0x1D670,\n\
              offsetN: 0x1D7F6\n\
           },'
@@ -367,13 +367,13 @@ print("      },\n", file=fontData)
 
 # Print RANGES
 print('\
-      REMAP: {\n\
+      RANGES: [\n\
         {name: "alpha", low: 0x61, high: 0x7A, offset: "A", add: 26},\n\
         {name: "Alpha", low: 0x41, high: 0x5A, offset: "A"},\n\
         {name: "number", low: 0x30, high: 0x39, offset: "N"},\n\
         {name: "greek", low: 0x03B1, high: 0x03C9, offset: "G", add: 26},\n\
         {name: "Greek", low: 0x0391, high: 0x03F6, offset: "G"}\n\
-      },\n', file=fontData)
+      ],\n', file=fontData)
 
 # Print REMAP
 print("      REMAP: {", file=fontData, end="")
@@ -432,11 +432,17 @@ print(file=fontData)
 # Print the font metrics
 print("      // FONTMETRICS\n", file=fontData)
 
+# close FONTDATA & HTMLCSS.Augment
+print('\
+    }\n\
+  });', file=fontData)
+
 # Print the footer
 print('\
   AJAX.loadComplete(HTMLCSS.fontDir + "/fontdata.js");\n\
 \n\
-})(MathJax.OutputJax["HTML-CSS"],MathJax.Ajax);', file=fontData)
+})(MathJax.OutputJax["HTML-CSS"],MathJax.ElementJax.mml,MathJax.Ajax);',
+      file=fontData)
 
 fontData.close()
 

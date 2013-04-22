@@ -420,9 +420,11 @@ operators. Please add a construction for it in DELIMITERS." %
                     em = v[2]
                     scale = v[3]
                     if type(v[0]) == str:
-                        style = v[0]
+                        style = v[0].upper()
+                        if style == "REGULAR":
+                            style = ""
                         fontname = "%s%s" % (self.mNormalSize[codePoint],
-                                             style.upper())
+                                             style)
                     else:
                         style = None
                         size = v[0]
@@ -457,8 +459,11 @@ operators. Please add a construction for it in DELIMITERS." %
                     codePoint = v[1]
                     pieceType = v[2]
                     if type(v[0]) == str:
+                        style = v[0].upper()
+                        if style == "REGULAR":
+                            style = ""
                         fontname = "%s%s" % (self.mNormalSize[codePoint],
-                                             v[0].upper())
+                                             style)
                     else:
                         fontname = "SIZE%d" % v[0]
 

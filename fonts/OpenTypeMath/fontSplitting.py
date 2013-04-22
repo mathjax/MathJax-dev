@@ -284,6 +284,10 @@ FONTSPLITTING = [
      (0x1D7E2, 0x1D7EB), # Sans-Serif digits
      (0x1D7EC, 0x1D7F5)  # Sans-Serif Bold digits
      ],
+    ["Monospace",
+     (0x1D670,0x1D6A3), # Monospace
+     (0x1D7F6,0x1D7FF), # Monospace digits
+     ],
     ["Latin",
      (0x0080, 0x00FF), # Latin-1 Supplement
      (0x0100, 0x017F), # Latin Extended-A
