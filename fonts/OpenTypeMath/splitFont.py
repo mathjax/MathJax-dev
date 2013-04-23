@@ -145,6 +145,7 @@ print('\
 fontList = commands.getoutput('ls %s/otf' % FONTFAMILY).\
     replace(".otf","").split("\n")
 fontVarList = []
+fontVarValue = []
 
 # Print the javascript variables for fonts
 fontDeclaration = ""
@@ -164,6 +165,7 @@ for i in range(0,len(fontList)):
     varValue = varValue.replace("BoldItalic", "bold-italic")
     varValue = varValue.replace("Bold", "bold")
     varValue = varValue.replace("Italic", "italic")
+    fontVarValue.append(varValue)
 
     if i == 0:
         fontDeclaration += '  var %s = "%s"' % (varName, varValue)
@@ -204,7 +206,8 @@ for i in range(0,len(fontList)):
     style = font[1]
 
     fileName = "All.js"
-    print('        %s: "%s/%s/%s"' % (fontVarList[i], family, style, fileName),
+    print('        "%s": "%s/%s/%s"' %
+          (fontVarValue[i], family, style, fileName),
           file=fontData, end="")
 
 print(file=fontData)
@@ -429,13 +432,13 @@ splitter.printDelimiters(fontData, 6, config.DELIMITERS_EXTRA)
 print("      }", file=fontData)
 print(file=fontData)
 
-# Print the font metrics
-print("      // FONTMETRICS\n", file=fontData)
-
 # close FONTDATA & HTMLCSS.Augment
 print('\
     }\n\
   });', file=fontData)
+
+# Print the font metrics
+print("// MAIN FONT METRICS\n", file=fontData)
 
 # Print the footer
 print('\
