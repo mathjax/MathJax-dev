@@ -16,6 +16,8 @@
 # limitations under the License.
 #
 
+PREFIX = "STIX"
+
 MATHFONT = "STIXMath-Regular.otf"
 
 MAINFONTS = {

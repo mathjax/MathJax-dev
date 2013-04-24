@@ -16,6 +16,8 @@
 # limitations under the License.
 #
 
+PREFIX = "AsanaMath"
+
 MATHFONT = "Asana-Math.otf"
 MAINFONTS = None
 

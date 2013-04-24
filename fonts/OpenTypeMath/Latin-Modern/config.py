@@ -16,6 +16,8 @@
 # limitations under the License.
 #
 
+PREFIX = "LatinModern"
+
 MATHFONT = "latinmodern-math.otf"
 MAINFONTS = None
 

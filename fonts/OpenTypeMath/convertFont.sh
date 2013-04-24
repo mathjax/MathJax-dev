@@ -63,6 +63,17 @@ then
         $SFNT2WOFF $FONTFAMILY/otf/$file.otf
         mv $FONTFAMILY/otf/$file.woff $FONTFAMILY/woff
     done
+elif [ $TYPE = "afm" ]
+then
+	mkdir -p $FONTFAMILY/afm
+	rm -f $FONTFAMILY/afm/*
+	for file in `cd $FONTFAMILY; ls otf/*.otf | $SED 's|otf/\(.*\)\.otf|\1|'`
+  do
+    input=$FONTFAMILY/otf/$file.otf
+    output=$FONTFAMILY/afm/$file.afm
+		echo "Generating $output...";
+		$FONTFORGE -lang=ff -c 'Open("'$input'");Generate("'$output'")';
+		done
 else
     echo "Unsupported file format $TYPE"
     exit 1

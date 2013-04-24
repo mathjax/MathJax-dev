@@ -22,8 +22,9 @@ include ../../custom.cfg
 all: STIX-Web Asana-Math Gyre-Pagella Gyre-Termes Latin-Modern Neo-Euler
 
 clean:
-	rm -rf */otf */ttf */eot */svg */woff
-	rm -f */fontdata.js
+	rm -rf */otf */ttf */eot */svg */woff */afm
+	rm -f */fontdata.js; rm -f */fontdata-extra.js
+	rm -f */config.pl
 
 ###### Splitting the fonts ######
 
@@ -51,7 +52,7 @@ STIX-Web/fontdata.js:
 # This also generates STIX-Web/eot STIX-Web/otf
 	$(PYTHON) splitFont.py STIX-Web $(FONTDIR)
 
-delimiters: Asana-Math/fontdata.js Gyre-Pagella/fontdata.js Gyre-Termes/fontdata.js Latin-Modern/fontdata.js Neo-Euler/fontdata.js STIX-Web/fontdata.js
+fontdata: Asana-Math/fontdata.js Gyre-Pagella/fontdata.js Gyre-Termes/fontdata.js Latin-Modern/fontdata.js Neo-Euler/fontdata.js STIX-Web/fontdata.js
 
 ###### Converting to EOT ######
 
@@ -119,6 +120,70 @@ STIX-Web/woff: STIX-Web/fontdata.js
 
 woff: Asana-Math/woff Gyre-Pagella/woff Gyre-Termes/woff Latin-Modern/woff Neo-Euler/woff STIX-Web/woff
 
+###### Converting to AFM ######
+
+Asana-Math/afm: Asana-Math/fontdata.js
+	./convertFont.sh Asana-Math afm
+
+Gyre-Pagella/afm: Gyre-Pagella/fontdata.js
+	./convertFont.sh Gyre-Pagella afm
+
+Gyre-Termes/afm: Gyre-Termes/fontdata.js
+	./convertFont.sh Gyre-Termes afm
+
+Latin-Modern/afm: Latin-Modern/fontdata.js
+	./convertFont.sh Latin-Modern afm
+
+Neo-Euler/afm: Neo-Euler/fontdata.js
+	./convertFont.sh Neo-Euler afm
+
+STIX-Web/afm: STIX-Web/fontdata.js
+	./convertFont.sh STIX-Web afm
+
+afm: Asana-Math/afm Gyre-Pagella/afm Gyre-Termes/afm Latin-Modern/afm Neo-Euler/afm STIX-Web/afm
+
+### config.pl
+#
+# TODO: do this in splitFont.py and remove the --perl option from
+# enumerateGlyphs.py
+
+FAMILY=STIX-Web
+CONFIG_PL=$(FAMILY)/config.pl
+ENUM=../Tables/enumerateGlyphs.py
+
+$(CONFIG_PL):
+	@echo "Generating $(CONFIG_PL)..."
+	@echo "$$""prefix = \"STIX_\";" > $(CONFIG_PL)
+	@echo "$$""fontdir = \"$(FAMILY)\";" >> $(CONFIG_PL)
+	@echo "" >> $(CONFIG_PL)
+	@echo "%ranges = (" >> $(CONFIG_PL)
+	@for file in `cd $(FAMILY)/otf/; ls *.otf | $(SED) 's|\(.*\)\.otf|\1|'`; do \
+	$(PYTHON) $(ENUM) --perl $(FAMILY)/otf $$file >> $(CONFIG_PL); \
+	done
+	@echo ");" >> $(CONFIG_PL)
+
+### Creating the font metrics ###
+
+Asana-Math/fonts: Asana-Math/afm Asana-Math/config.pl
+	./createMetrics.sh Asana-Math
+
+Gyre-Pagella/fonts: Gyre-Pagella/afm Gyre-Pagella/config.pl
+	./createMetrics.sh Gyre-Pagella
+
+Gyre-Termes/fonts: Gyre-Termes/afm Gyre-Termes/config.pl
+	./createMetrics.sh Gyre-Termes
+
+Latin-Modern/fonts: Latin-Modern/afm Latin-Modern/config.pl
+	./createMetrics.sh Latin-Modern
+
+Neo-Euler/fonts: Neo-Euler/afm Neo-Euler/config.pl
+	./createMetrics.sh Neo-Euler
+
+STIX-Web/fonts: STIX-Web/afm STIX-Web/config.pl
+	./createMetrics.sh STIX-Web
+
+metrics: Asana-Math/fonts Gyre-Pagella/fonts Gyre-Termes/fonts Latin-Modern/fonts Neo-Euler/fonts STIX-Web/fonts
+
 ###### Making the fonts ######
 
 Asana-Math: Asana-Math/eot Asana-Math/svg Asana-Math/woff
@@ -126,4 +191,4 @@ Gyre-Pagella: Gyre-Pagella/eot Gyre-Pagella/svg Gyre-Pagella/woff
 Gyre-Termes: Gyre-Termes/eot Gyre-Termes/svg Gyre-Termes/woff
 Latin-Modern: Latin-Modern/eot Latin-Modern/svg Latin-Modern/woff
 Neo-Euler: Neo-Euler/eot Neo-Euler/svg Neo-Euler/woff
-STIX-Web: STIX-Web/eot STIX-Web/svg STIX-Web/woff
+STIX-Web: STIX-Web/eot STIX-Web/svg STIX-Web/woff STIX-Web/fonts

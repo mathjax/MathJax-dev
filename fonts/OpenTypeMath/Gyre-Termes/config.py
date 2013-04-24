@@ -16,6 +16,8 @@
 # limitations under the License.
 #
 
+PREFIX = "GyreTermes" 
+
 MATHFONT="texgyretermes-math.otf"
 MAINFONTS = None
 

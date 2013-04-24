@@ -3,6 +3,9 @@
 */svg
 */ttf
 */woff
+*/afm
 */fontdata.js
 */fontdata-extra.js
 *.pyc
+*/config.pl
+*/fonts

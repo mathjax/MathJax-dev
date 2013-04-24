@@ -24,7 +24,7 @@ from fontSplitting import FONTSPLITTING
 from copy import deepcopy
 from math import ceil
 
-def newFont(aFamily, aFontFrom, aName, aWeight):
+def newFont(aFamily, aFontFrom, aPrefix, aName, aWeight):
     print("New font %s-%s..." % (aName, aWeight))
 
     # Create a copy of the original font, to preserve all the metadata.
@@ -34,12 +34,7 @@ def newFont(aFamily, aFontFrom, aName, aWeight):
     # Now open the new font and rename it.
     font = fontforge.open(fileName)
 
-    # Be sure that the prefix is the family name, with space and underscores
-    # removed.
-    familyname = font.familyname
-    familyname = familyname.replace(" ", "")
-    familyname = familyname.replace("_", "")
-    font.fontname = "%s_%s-%s" % (familyname, aName, aWeight)
+    font.fontname = "%s_%s-%s" % (aPrefix, aName, aWeight)
 
     font.fullname = font.fontname
     font.encoding = "UnicodeFull"
@@ -110,8 +105,10 @@ class stretchyOp:
         self.mAlias = None
 
 class mathFontSplitter:
-    def __init__(self, aFontFamily, aFontDir, aMathFont, aMainFonts):
+    def __init__(self, aFontFamily, aFontDir, aPrefix, aMathFont, aMainFonts):
         self.mFontFamily = aFontFamily
+
+        self.mPrefix = aPrefix
 
         # Open the fonts
         self.mMathFont = fontforge.open("%s/%s" % (aFontDir, aMathFont))
@@ -153,6 +150,7 @@ class mathFontSplitter:
         for i in range(0, self.mMaxSize):
             self.mMathSize.append(newFont(self.mFontFamily,
                                           "%s/%s" % (aFontDir, aMathFont),
+                                          self.mPrefix,
                                           "Size%d" % (i+1), "Regular"))
         
     def split(self):
@@ -608,70 +606,58 @@ operators. Please add a construction for it in DELIMITERS." %
         # Copy the components. The structure of the Open Type Math table is a
         # bit more general than the TeX format, so try to fallback in a
         # reasonable way.
+        #
+        # Each piece is a table with the following values:
+        # 0: glyph name
+        # 1: whether it is an extender
+        # 2: start overlap
+        # 3: end overlap
+        # 4: glyph size
+        #
+        # Heuristic: the extremities of the operators have one overlap value
+        # that is zero and another one that is nonzero. The middle part has
+        # overlap in both sides.
+        # 
 
         if (len(aComponents) == 0):
             raise BaseException("Empty aComponents")
 
         rv = []
 
-        # Components seem already sorted in most fonts but just in case, sort
-        # them a bit according to their overlap values.
-        def cmpPiece(aPiece1, aPiece2):
-            # the first component has no start overlap (piece[2] == 0)
-            # the last component has no end overlap    (piece[3] == 0)
-            if aPiece1[2] == 0 or aPiece2[3] == 0:
-                return 1
-            if aPiece2[2] == 0 or aPiece1[3] == 0:
-                return -1
-            return 0
-        components = sorted(aComponents, cmpPiece)
+        # Start component
+        for p in aComponents:
+            if p[1] == 0 and p[2] != 0 and p[3] == 0:
+                if aIsHorizontal:
+                    rv.append(self.copyComponent(p[0],  "right"))
+                else:
+                    rv.append(self.copyComponent(p[0],  "top"))
+                break
 
-        # Try to get the last component
-        p = components.pop()
-        if p[1] == 0:
-            if aIsHorizontal:
-                rv.append(self.copyComponent(p[0],  "left"))
-            else:
-                rv.append(self.copyComponent(p[0],  "top"))
-            if len(components) == 0:
-                return rv
-        p = components.pop()
+        # Middle component
+        for p in aComponents:
+            if p[1] == 0 and p[2] != 0 and p[3] != 0:
+                if aIsHorizontal:
+                    rv.append(self.copyComponent(p[0],  "rep"))
+                else:
+                    rv.append(self.copyComponent(p[0],  "mid"))
+                break
 
-        # Try to get the middle component
-        if p[1] == 0:
-            if aIsHorizontal:
-                rv.append(self.copyComponent(p[0],  "rep"))
-            else:
-                rv.append(self.copyComponent(p[0],  "mid"))
-            if len(components) == 0:
-                return rv
-            p = components.pop()
-            hasSecondComponent = True
-        else:
-            hasSecondComponent = False
+        # End component
+        for p in aComponents:
+            if p[1] == 0 and p[2] == 0 and p[3] != 0:
+                if aIsHorizontal:
+                    rv.append(self.copyComponent(p[0],  "left"))
+                else:
+                    rv.append(self.copyComponent(p[0],  "bot"))
+                break
 
-        # Try to get the extender component
-        if p[1] == 1:
-            q = p
-            # Ignore multiple extenders
-            while (len(components) > 0 and components[0][1] == 1):
-                p = components.pop()
-            rv.append(self.copyComponent(q[0],  "ext"))
-            if len(components) == 0:
-                return rv
-            
-        # Try to get the middle component
-        if not(hasSecondComponent) and len(components) > 1:
-            if aIsHorizontal:
-                rv.append(self.copyComponent(p[0],  "rep"))
-            else:
-                rv.append(self.copyComponent(p[0],  "mid"))
-            p = components.pop()
-
-        # Try to get the last component
-        if aIsHorizontal:
-            rv.append(self.copyComponent(p[0],  "right"))
-        else:
-            rv.append(self.copyComponent(p[0],  "bot"))
+        # Extender component
+        for p in aComponents:
+            if p[1] == 1:
+                if aIsHorizontal:
+                    rv.append(self.copyComponent(p[0],  "rep"))
+                else:
+                    rv.append(self.copyComponent(p[0],  "ext"))
+                break
 
         return rv

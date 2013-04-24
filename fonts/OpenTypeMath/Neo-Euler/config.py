@@ -16,6 +16,8 @@
 # limitations under the License.
 #
 
+PREFIX = "NeoEuler"
+
 MATHFONT = "euler.otf"
 MAINFONTS = None
 

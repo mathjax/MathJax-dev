@@ -101,7 +101,7 @@ for weight in config.MAINFONTS:
 
     for subset in FONTSPLITTING:
         name = subset[0]
-        font=fontUtil.newFont(FONTFAMILY, fontFile, name, weight)
+        font=fontUtil.newFont(FONTFAMILY, fontFile, config.PREFIX, name, weight)
         for i in range(1,len(subset)):
             r = subset[i]
             if type(r) == int:
@@ -112,14 +112,14 @@ for weight in config.MAINFONTS:
         font.close()
 
     # Save the rest of the glyphs in a NonUnicode font
-    oldfont.fontname = ("%s_NonUnicode-%s" %
-                        (oldfont.familyname.replace(" ", "_"), weight))
+    oldfont.fontname = "%s_NonUnicode-%s" % (config.PREFIX, weight)
     fontUtil.saveFont(FONTFAMILY, oldfont)
     oldfont.close()
 
 # Split the Math font
 splitter=fontUtil.mathFontSplitter(FONTFAMILY,
                                    FONTDIR,
+                                   config.PREFIX,
                                    config.MATHFONT,
                                    config.MAINFONTS)
 splitter.split()
@@ -205,7 +205,7 @@ for i in range(0,len(fontList)):
     family = font[0]
     style = font[1]
 
-    fileName = "All.js"
+    fileName = "Main.js"
     print('        "%s": "%s/%s/%s"' %
           (fontVarValue[i], family, style, fileName),
           file=fontData, end="")

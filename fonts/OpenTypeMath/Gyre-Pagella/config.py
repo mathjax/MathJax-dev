@@ -16,6 +16,8 @@
 # limitations under the License.
 #
 
+PREFIX="GyrePagella"
+
 MATHFONT="texgyrepagella-math.otf"
 MAINFONTS = None
 
