@@ -17,14 +17,14 @@
 #
 
 # This table must be sorted.
+#
 # The script searching in this table assumes it to be sorted. If it does not
 # found a character, it will assume it is "NONUNICODE".
+#
 
 FONTSPLITTING = [
     ["Main",
      (0x0000, 0x007F), # Basic Latin
-     (0x0370, 0x03FF), # Greek and Coptic
-     0xFFFD,           # Specials
      
      # MathJax_Main, Latin-1 Supplement
      0x00A0,           
@@ -56,6 +56,8 @@ FONTSPLITTING = [
      (0x0306,0x0308),
      (0x030A,0x030C),
      0x0338,
+
+     (0x0370, 0x03FF), # Greek and Coptic
 
      # MathJax_Main, General Punctuation
      (0x2002,0x2006),
@@ -100,9 +102,8 @@ FONTSPLITTING = [
      (0x21C0,0x21C1),
      (0x21C2,0x21C4), # MathJax_AMS
      (0x21C6,0x21CF), # MathJax_AMS
-     (0x21DA,0x21DB), # MathJax_AMS
-     0x21CC,
      (0x21D0,0x21D5),
+     (0x21DA,0x21DB), # MathJax_AMS
      0x21DD, # MathJax_AMS
      0x21E0, # MathJax_AMS
      0x21E2, # MathJax_AMS
@@ -112,7 +113,6 @@ FONTSPLITTING = [
      0x2201, # MathJax_Main
      (0x2202,0x2203),
      (0x2204,0x2205), # MathJax_Main
-     0x2205,
      (0x2207,0x2209),
      0x220B,
      0x220D, # MathJax_AMS
@@ -122,7 +122,7 @@ FONTSPLITTING = [
      (0x221D,0x221E),
      (0x2220,0x2226), # MathJax_AMS ; MathJax_Main: 0x2220, 0x2223, 0x2225,
      (0x2227,0x222B),
-     (0x2234-0x2235), # MathJax_AMS
+     (0x2234,0x2235), # MathJax_AMS
      (0x223C,0x223D), # MathJax_AMS ; MathJax_Main: 0x223C
      0x2240,
      (0x2241,0x2242), # MathJax_AMS
@@ -139,8 +139,8 @@ FONTSPLITTING = [
      0x225C, # MathJax_AMS
      (0x2260,0x2261),
      (0x2264,0x2265),
-     (0x226A,0x226B),
      (0x2266,0x2269), # MathJax_AMS
+     (0x226A,0x226B),
      0x226C, # MathJax_AMS
      (0x226E,0x2273), # MathJax_AMS
      (0x2276,0x2277), # MathJax_AMS
@@ -209,27 +209,28 @@ FONTSPLITTING = [
      (0x27E8,0x27E9),
      (0x27EE,0x27EF),
 
-     # MathJax_AMS, Miscellaneous Mathematical Symbols-B
-     0x29EB,
-
      # MathJax_Main, Supplemental Arrows
      (0x27F5,0x27FA),
      0x27FC,
 
+     # MathJax_AMS, Miscellaneous Mathematical Symbols-B
+     0x29EB,
+
      # MathJax_Main, Supplemental Mathematical
      0x2A3F,
-     (0x2AAF,0x2AB0),
-
-     # MathJax_AMS, Supplemental Mathematical Operators
      0x2A5E,
      (0x2A7D,0x2A7E),
      (0x2A85,0x2A8C),
      (0x2A95,0x2A96),
+     (0x2AAF,0x2AB0),
      (0x2AB5,0x2ABA),
      (0x2AC5,0x2AC6),
-     (0x2ACB,0x2ACC)
+     (0x2ACB,0x2ACC),
+
+     0xFFFD           # Specials
      ],
     ["Normal",
+     0x210E,             # Planck Constant
      (0x1D400, 0x1D433), # Bold
      (0x1D434, 0x1D467), # Italic
      (0x1D468, 0x1D49B), # Bold Italic
@@ -237,36 +238,33 @@ FONTSPLITTING = [
      (0x1D6A8, 0x1D6E1), # Greek Bold
      (0x1D6E2, 0x1D71B), # Greek Italic
      (0x1D71C, 0x1D755), # Greek BoldItalic
-     (0x1D7CE, 0x1D7D7), # Bold digits
-     0x210E              # Planck Constant
+     (0x1D7CE, 0x1D7D7)  # Bold digits
      ], 
     ["Script", 
-     (0x1D49C, 0x1D4CF), # Script
-     (0x1D4D0, 0x1D503), # Bold Script
-     0x212C, # Script B
-     0x2130, # Script E
-     0x2131, # Script F
+     0x210A, # Script g
      0x210B, # Script H
      0x2110, # Script I
      0x2112, # Script L
-     0x2133, # Script M
      0x211B, # Script R
+     0x212C, # Script B
      0x212F, # Script e
-     0x210A, # Script g
-     0x2134 # Script o
+     0x2130, # Script E
+     0x2131, # Script F
+     0x2133, # Script M
+     0x2134, # Script o
+     (0x1D49C, 0x1D4CF), # Script
+     (0x1D4D0, 0x1D503) # Bold Script
      ],
     ["Fraktur",
-     (0x1D504, 0x1D537), # Fraktur
-     (0x1D56C, 0x1D59F), # Bold Fraktur
-     0x212D, # Script C
      0x210C, # Script H
      0x2111, # Script I
      0x211C, # Script R
-     0x2128 # Script z
+     0x2128, # Script z
+     0x212D, # Script C
+     (0x1D504, 0x1D537), # Fraktur
+     (0x1D56C, 0x1D59F) # Bold Fraktur
     ],
     ["DoubleStruck",
-     (0x1D538, 0x1D56B), # DoubleStruck
-     (0x1D7D8, 0x1D7E1), # DoubleStruck digits
      0x2102, # Script C
      0x210D, # Script H
      0x2115, # Script N
@@ -274,6 +272,8 @@ FONTSPLITTING = [
      0x211A, # Script Q
      0x211D, # Script R
      0x2124, # Script Z
+     (0x1D538, 0x1D56B), # DoubleStruck
+     (0x1D7D8, 0x1D7E1) # DoubleStruck digits
      ],
     ["SansSerif",
      (0x1D5A0, 0x1D5D3), # Sans-Serif
@@ -327,21 +327,21 @@ FONTSPLITTING = [
      (0x2980, 0x29FF) # Miscellaneous Mathematical Symbols-B
     ],
     ["Shapes",
+     (0x2400, 0x243F), # Control Pictures
+     (0x2500, 0x257F), # Box Drawing
+     (0x2580, 0x259F), # Block Elements
      (0x25A0, 0x25FF), # Geometric Shapes
      (0x2600, 0x26FF), # Miscellaneous Symbols
-     (0x2B00, 0x2BFF), # Miscellaneous Symbols and Arrows
-     (0x2580, 0x259F), # Block Elements
-     (0x2500, 0x257F), # Box Drawing
-     (0x2400, 0x243F) # Control Pictures
+     (0x2B00, 0x2BFF)  # Miscellaneous Symbols and Arrows
      ],
     ["Misc",
-     (0x2070, 0x209F), # Superscripts and Subscripts
-     (0x2460, 0x24FF), # Enclosed Alphanumerics
-     (0x20A0, 0x20CF), # Currency Symbols
+     (0x0250, 0x02AF), # IPA Extensions
      (0x1D00, 0x1D7F), # Phonetic Extensions
      (0x1D80, 0x1DBF), # Phonetic Extensions Supplement
-     (0x0250, 0x02AF), # IPA Extensions
-     (0x2700, 0x27BF), # Dingbats
-     (0x2150, 0x218F) # Number Forms
+     (0x2070, 0x209F), # Superscripts and Subscripts
+     (0x20A0, 0x20CF), # Currency Symbols
+     (0x2150, 0x218F), # Number Forms
+     (0x2460, 0x24FF), # Enclosed Alphanumerics
+     (0x2700, 0x27BF)  # Dingbats
      ]
     ]

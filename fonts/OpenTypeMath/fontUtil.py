@@ -197,6 +197,11 @@ class mathFontSplitter:
                         self.copySizeVariants(glyph,
                                               glyph.verticalVariants.split(),
                                               isHorizontal)
+            else:
+                # Just pass an empty table, the normal size character will
+                # be added by copySizeVariants.
+                operator.mSizeVariants = \
+                    self.copySizeVariants(glyph, [], isHorizontal)
 
             if hasComponents:
                 if isHorizontal:
@@ -247,6 +252,9 @@ operators and should not be specified in DELIMITERS" % codePoint)
 
                     operator.mSizeVariants.append(data)
                     i += 1
+            else:
+                raise BaseException("Missing mandatory HW entry for 0x%X" %
+                                    codePoint)
 
             # Components
             if "stretch" in item:
@@ -324,7 +332,29 @@ operators. Please add a construction for it in DELIMITERS." %
             variants2.reverse()
             self.mStretchyOperators[codePoint].mSizeVariants = variants2
 
+    def verifyFONTSPLITTING(self):
+        for subset in FONTSPLITTING:
+            name = subset[0]
+            codePoint = None
+            for i in range(1, len(subset)):
+                r = subset[i]
+                if type(r) == int:
+                    if (codePoint is not None and codePoint >= r):
+                        raise BaseException("Bad entry in FONTSPLITTING>%s: \
+0x%X" % (name, r))
+                    else:
+                        codePoint = r
+                else:
+                    if (r[1] <= r[0] or
+                        (codePoint is not None and codePoint >= r[0])):
+                        raise BaseException("Bad entry in FONTSPLITTING>%s: \
+(0x%X,0x%X)" % (name, r[0], r[1]))
+                    else:
+                        codePoint = r[1]
+
     def computeNormalSizeSplitting(self):
+        self.verifyFONTSPLITTING()
+
         # Determine the name of the font to use for the fontSize variant
         size0 = dict()
         for codePoint in self.mNormalSize:
@@ -362,7 +392,7 @@ operators. Please add a construction for it in DELIMITERS." %
     def printDelimiters(self, aStream, aIndent, aDelimitersExtra,
                         aExtra = False):
         # Print the delimiters
-        if not(type(self.mNormalSize) == dict):
+        if type(self.mNormalSize) != dict:
             self.computeNormalSizeSplitting()
 
         indent=""
@@ -404,49 +434,46 @@ operators. Please add a construction for it in DELIMITERS." %
 
             print("%s    dir: %s," % (indent, d), file=aStream)
 
-            if operator.mSizeVariants is not None:
-                # Print the size variants
-                print("%s    HW: [" % indent, file=aStream, end="")
+            # Print the size variants
+            print("%s    HW: [" % indent, file=aStream, end="")
 
-                for j in range(0, len(operator.mSizeVariants)):
+            for j in range(0, len(operator.mSizeVariants)):
 
-                    if j > 0:
-                        print(", ", file=aStream, end="")
+                if j > 0:
+                    print(", ", file=aStream, end="")
 
-                    v = operator.mSizeVariants[j]
-                    codePoint = v[1]
-                    em = v[2]
-                    scale = v[3]
-                    if type(v[0]) == str:
-                        style = v[0].upper()
-                        if style == "REGULAR":
-                            style = ""
-                        fontname = "%s%s" % (self.mNormalSize[codePoint],
-                                             style)
-                    else:
-                        style = None
-                        size = v[0]
-                        fontname = "SIZE%d" % size
-            
-                    data = "%.3f,%s" % (em, fontname)
-                    if scale != 1.0:
-                        data += ",%.3f" % scale
-                    if style is not None and codePoint != key:
-                        if scale == 1.0:
-                            data += ",null,0x%X" % codePoint
-                        else:
-                            data += ",0x%X" % codePoint
-
-                    print("[%s]" % data, file=aStream, end="")
-                
-                print("]", file=aStream, end="");
-
-                if operator.mComponents is not None:
-                    print(",", file=aStream)
+                v = operator.mSizeVariants[j]
+                codePoint = v[1]
+                em = v[2]
+                scale = v[3]
+                if type(v[0]) == str:
+                    style = v[0].upper()
+                    if style == "REGULAR":
+                        style = ""
+                    fontname = "%s%s" % (self.mNormalSize[codePoint],
+                                         style)
                 else:
+                    style = None
+                    size = v[0]
+                    fontname = "SIZE%d" % size
+            
+                data = "%.3f,%s" % (em, fontname)
+                if scale != 1.0:
+                    data += ",%.3f" % scale
+                if style is not None and codePoint != key:
+                    if scale == 1.0:
+                        data += ",null,0x%X" % codePoint
+                    else:
+                        data += ",0x%X" % codePoint
+
+                print("[%s]" % data, file=aStream, end="")
+                
+            print("]", file=aStream, end="");
+
+            if operator.mComponents is None:
                     print(file=aStream)
-     
-            if operator.mComponents is not None:
+            else:
+                print(",", file=aStream)
                 # Print the components
                 print("%s    stretch: {" % indent, file=aStream, end="")
 
@@ -559,14 +586,12 @@ operators. Please add a construction for it in DELIMITERS." %
     def copySizeVariants(self, aGlyph, aSizeVariantTable, aIsHorizontal):
         # Copy the variants of a given glyph into the right Size* font.
 
-        if (len(aSizeVariantTable) == 0):
-            raise BaseException("Empty aSizeVariantTable")
-
         rv = []
         aSizeVariantTable.reverse()
 
         # Always add the size = 0 (main font) if it is not there.
-        if (aSizeVariantTable[-1] != aGlyph.glyphname):
+        if (len(aSizeVariantTable) == 0 or
+            aSizeVariantTable[-1] != aGlyph.glyphname):
             aSizeVariantTable.append(aGlyph.glyphname)
 
         i = 0
@@ -614,50 +639,82 @@ operators. Please add a construction for it in DELIMITERS." %
         # 3: end overlap
         # 4: glyph size
         #
-        # Heuristic: the extremities of the operators have one overlap value
-        # that is zero and another one that is nonzero. The middle part has
-        # overlap in both sides.
-        # 
-
+        # We will use the two first values. We assume that the pieces are
+        # listed from bottom to top (vertical) or from left to right
+        # (horizontal).
+        #
         if (len(aComponents) == 0):
             raise BaseException("Empty aComponents")
 
         rv = []
 
-        # Start component
+        # Count the number of non extender pieces
+        count = 0
         for p in aComponents:
-            if p[1] == 0 and p[2] != 0 and p[3] == 0:
-                if aIsHorizontal:
-                    rv.append(self.copyComponent(p[0],  "right"))
-                else:
-                    rv.append(self.copyComponent(p[0],  "top"))
-                break
+            if p[1] == 0:
+                count += 1
+        if count > 3:
+            raise BaseException("Not supported: too many pieces")
 
-        # Middle component
-        for p in aComponents:
-            if p[1] == 0 and p[2] != 0 and p[3] != 0:
-                if aIsHorizontal:
-                    rv.append(self.copyComponent(p[0],  "rep"))
-                else:
-                    rv.append(self.copyComponent(p[0],  "mid"))
-                break
+        # Browse the list of pieces
 
-        # End component
-        for p in aComponents:
-            if p[1] == 0 and p[2] == 0 and p[3] != 0:
-                if aIsHorizontal:
-                    rv.append(self.copyComponent(p[0],  "left"))
-                else:
-                    rv.append(self.copyComponent(p[0],  "bot"))
-                break
+        # 0 = look for a left/bot glyph
+        # 1 = look for an extender between left/bot and mid
+        # 2 = look for a mid glyph
+        # 3 = look for an extender between mid and right/top
+        # 4 = look for a right/top glyph
+        # 5 = no more piece expected
+        state = 0 
 
-        # Extender component
+        # First extender char found.
+        extenderChar = None 
+
         for p in aComponents:
+
+            if (state == 1 or state == 2) and count < 3:
+                # do not try to find a middle glyph
+                state += 2
+
             if p[1] == 1:
-                if aIsHorizontal:
-                    rv.append(self.copyComponent(p[0],  "rep"))
-                else:
-                    rv.append(self.copyComponent(p[0],  "ext"))
-                break
+                # Extender
+                if extenderChar is None:
+                    extenderChar = p[0]
+                    if aIsHorizontal:
+                        rv.append(self.copyComponent(p[0],  "rep"))
+                    else:
+                        rv.append(self.copyComponent(p[0],  "ext"))
+                elif p[0] != extenderChar:
+                    raise BaseException("Not supported: different extenders")
+
+                if state == 0: # or state == 1
+                    # ignore left/bot piece and multiple successive extenders
+                    state = 1
+                elif state == 2: # or state == 3
+                    # ignore mid piece and multiple successive extenders
+                    state = 3
+                elif state >= 4:
+                    raise BaseException("Not supported: unexpected extender")
+            else:
+                if state == 0:
+                    if aIsHorizontal:
+                        rv.append(self.copyComponent(p[0],  "left"))
+                    else:
+                        rv.append(self.copyComponent(p[0],  "bot"))
+                    state = 1
+                    continue
+                elif state == 1 or state == 2:
+                    if aIsHorizontal:
+                        rv.append(self.copyComponent(p[0],  "mid"))
+                    else:
+                        rv.append(self.copyComponent(p[0],  "mid"))
+                    state = 3
+                    continue
+                elif state == 3 or state == 4:
+                    if aIsHorizontal:
+                        rv.append(self.copyComponent(p[0],  "right"))
+                    else:
+                        rv.append(self.copyComponent(p[0],  "top"))
+                    state = 5
+                    continue
 
         return rv

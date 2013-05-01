@@ -61,6 +61,7 @@ HEADER='\
 parser = argparse.ArgumentParser()
 parser.add_argument('fontfamily', type=str)
 parser.add_argument('fontdir', type=str)
+parser.add_argument('--skipMainFonts', action='store_true')
 args = parser.parse_args()
 FONTDIR = args.fontdir
 FONTFAMILY = args.fontfamily
@@ -70,8 +71,9 @@ if (not os.path.exists("%s/config.py" % FONTFAMILY)):
 # Create/clean up the ttf and otf directories
 subprocess.call("mkdir -p %s/ttf %s/otf" % (FONTFAMILY, FONTFAMILY),
                 shell=True)
-subprocess.call("rm -f %s/ttf/* %s/otf/*" % (FONTFAMILY, FONTFAMILY),
-                shell=True)
+if not(args.skipMainFonts):
+    subprocess.call("rm -f %s/ttf/* %s/otf/*" % (FONTFAMILY, FONTFAMILY),
+                    shell=True)
 
 # Import the configuration for this font family
 sys.path.append("./%s" % FONTFAMILY)
@@ -94,27 +96,30 @@ if config.SMALLOPFONTS is None:
     config.SMALLOPFONTS = ""
 
 # Split the Main fonts
-for weight in config.MAINFONTS:
-    fontFile = "%s/%s" % (FONTDIR, config.MAINFONTS[weight])
-    oldfont=fontforge.open(fontFile)
-    oldfont.encoding = "UnicodeFull"
+if not(args.skipMainFonts):
 
-    for subset in FONTSPLITTING:
-        name = subset[0]
-        font=fontUtil.newFont(FONTFAMILY, fontFile, config.PREFIX, name, weight)
-        for i in range(1,len(subset)):
-            r = subset[i]
-            if type(r) == int:
-                fontUtil.moveGlyph(oldfont, font, r)
-            else:
-                fontUtil.moveRange(oldfont, font, r[0], r[1])
-        fontUtil.saveFont(FONTFAMILY, font)
-        font.close()
+    for weight in config.MAINFONTS:
+        fontFile = "%s/%s" % (FONTDIR, config.MAINFONTS[weight])
+        oldfont=fontforge.open(fontFile)
+        oldfont.encoding = "UnicodeFull"
 
-    # Save the rest of the glyphs in a NonUnicode font
-    oldfont.fontname = "%s_NonUnicode-%s" % (config.PREFIX, weight)
-    fontUtil.saveFont(FONTFAMILY, oldfont)
-    oldfont.close()
+        for subset in FONTSPLITTING:
+            name = subset[0]
+            font=fontUtil.newFont(FONTFAMILY, fontFile, config.PREFIX, name,
+                                  weight)
+            for i in range(1,len(subset)):
+                r = subset[i]
+                if type(r) == int:
+                    fontUtil.moveGlyph(oldfont, font, r)
+                else:
+                    fontUtil.moveRange(oldfont, font, r[0], r[1])
+            fontUtil.saveFont(FONTFAMILY, font)
+            font.close()
+
+        # Save the rest of the glyphs in a NonUnicode font
+        oldfont.fontname = "%s_NonUnicode-%s" % (config.PREFIX, weight)
+        fontUtil.saveFont(FONTFAMILY, oldfont)
+        oldfont.close()
 
 # Split the Math font
 splitter=fontUtil.mathFontSplitter(FONTFAMILY,
@@ -244,12 +249,24 @@ if MATHONLY:
 
 print('          "normal": {fonts: [%s]},' %
       ",".join(fontList2[""]), file=fontData)
-print('          "bold": {fonts: [%s], bold:true},' %
+
+print('          "bold": {fonts: [%s], bold:true' %
       ",".join(fontList2["BOLD"]), file=fontData)
-print('          "italic": {fonts: [%s], italic:true},' %
-      ",".join(fontList2["ITALIC"]), file=fontData)
-print('          "bolditalic": {fonts: [%s], bold: true, italic:true},' %
+if MATHONLY:
+    print(', offsetA: 0x1D400, offsetG: 0x1D6A8, offsetN: 0x1D7CE', file=fontData, end="")
+print('},', file=fontData)
+
+print('          "italic": {fonts: [%s], italic:true' %
+      ",".join(fontList2["ITALIC"]), file=fontData, end="")
+if MATHONLY:
+    print(', offsetA: 0x1D434, offsetG: 0x1D6E2, remap: {0x1D454: 0x210E}', file=fontData, end="")
+print('},', file=fontData)
+
+print('          "bolditalic": {fonts: [%s], bold: true, italic:true' %
       ",".join(fontList2["BOLDITALIC"]), file=fontData)
+if MATHONLY:
+    print(', offsetA: 0x1D468, offsetG: 0x1D71C', file=fontData, end="")
+print('},', file=fontData)
 
 # Print other mathvariants
 mathvariants = '\

@@ -148,12 +148,13 @@ afm: Asana-Math/afm Gyre-Pagella/afm Gyre-Termes/afm Latin-Modern/afm Neo-Euler/
 # enumerateGlyphs.py
 
 FAMILY=STIX-Web
+PREFIX=STIX_
 CONFIG_PL=$(FAMILY)/config.pl
 ENUM=../Tables/enumerateGlyphs.py
 
 $(CONFIG_PL):
 	@echo "Generating $(CONFIG_PL)..."
-	@echo "$$""prefix = \"STIX_\";" > $(CONFIG_PL)
+	@echo "$$""prefix = \"$(PREFIX)_\";" > $(CONFIG_PL)
 	@echo "$$""fontdir = \"$(FAMILY)\";" >> $(CONFIG_PL)
 	@echo "" >> $(CONFIG_PL)
 	@echo "%ranges = (" >> $(CONFIG_PL)

@@ -5,19 +5,18 @@
 require "unicode.pl";
 require "../../custom.cfg.pl";
 
-$family = shift;
+$familyName = shift;
 $font = shift; 
 
-require "$family/config.pl";
+require "$familyName/config.pl";
 
-$FONT = $family."/afm/".$font.".afm";
+$FONT = $familyName."/afm/".$font.".afm";
 $font =~ s!^afm/!!;
 
 $dir = $font; $dir .= "-Regular" unless $font =~ m/-/;
 $dir =~ s!-!/!; $dir =~ s!$prefix!fonts/$fontdir/!;
-$dir = $family."/".$dir;
 
-CheckDir($dir);
+CheckDir("$familyName/$dir");
 
 @ranges = @{$ranges{$font}};
 
@@ -93,7 +92,7 @@ open(INFILE,"skew.js"); $skew = join("",<INFILE>); close(INFILE);
 if ($skew =~ s/.*FONTDATA\.FONTS\['$font'\]\.skew = {\n//ms) {$skew =~ s/  \};\n.*//s} else {$skew = ""}
 
 foreach $file (sort(keys %lines)) {
-  open(JSFILE,">$dir/$file.js") || die "Can't open '$dir/$file.js': $!";
+  open(JSFILE,">$familyName/$dir/$file.js") || die "Can't open '$familyName/$dir/$file.js': $!";
   $lines{$file}[scalar(@{$lines{$file}})-1] =~ s/],( )?/]\1\1/ if @{$lines{$file}};
   print JSFILE "/*************************************************************\n";
   print JSFILE " *\n";
