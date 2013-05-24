@@ -24,12 +24,12 @@ all: STIX-Web Asana-Math Gyre-Pagella Gyre-Termes Latin-Modern Neo-Euler
 clean:
 	rm -rf */otf */ttf */eot */svg */woff */afm
 	rm -f */fontdata.js; rm -f */fontdata-extra.js
-	rm -f */config.pl
+	rm -f */config.pl; rm -rf */fonts
 
 ###### Splitting the fonts ######
 
 Asana-Math/fontdata.js:
-# This also generates Asana-Mat/eot Asana-Mat/otf
+# This also generates Asana-Math/eot Asana-Math/otf
 	$(PYTHON) splitFont.py Asana-Math $(FONTDIR)
 
 Gyre-Pagella/fontdata.js:

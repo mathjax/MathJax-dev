@@ -259,7 +259,7 @@ print('},', file=fontData)
 print('          "italic": {fonts: [%s], italic:true' %
       ",".join(fontList2["ITALIC"]), file=fontData, end="")
 if MATHONLY:
-    print(', offsetA: 0x1D434, offsetG: 0x1D6E2, remap: {0x1D454: 0x210E}', file=fontData, end="")
+    print(', offsetA: 0x1D434, offsetG: 0x1D6E2, remap: {0x1D455: 0x210E}', file=fontData, end="")
 print('},', file=fontData)
 
 print('          "bolditalic": {fonts: [%s], bold: true, italic:true' %
@@ -286,19 +286,19 @@ mathvariants = '\
             offsetA: 0x1D56C\n\
           },\n\
           "script": {\n\
-            fonts: [SCRIPT], italic:true,\n\
+            fonts: [SCRIPTITALIC], italic:true,\n\
             offsetA: 0x1D49C,\n\
             remap: {0x1D49D: 0x212C, 0x1D4A0: 0x2130, 0x1D4A1: 0x2131, 0x1D4A3: 0x210B, 0x1D4A4: 0x2110, 0x1D4A7: 0x2112, 0x1D4A8: 0x2133, 0x1D4AD: 0x211B, 0x1D4BA: 0x212F, 0x1D4BC: 0x210A, 0x1D4C4: 0x2134},\n\
           },\n\
           "bold-script": {\n\
-            fonts: [SCRIPTITALIC], bold:true, italic:true,\n\
+            fonts: [SCRIPTBOLDITALIC], bold:true, italic:true,\n\
             offsetA: 0x1D4D0\n\
           },\n\
           "sans-serif": {\n\
-            fonts: [SANSSERIF],\n\
+            fonts: [SANSSERIF,NONUNICODE],\n\
             offsetA: 0x1D5A0,\n\
             offsetN: 0x1D7E2,\n\
-            ofssetG: 0xE17D\n\
+            offsetG: 0xE17D\n\
           },\n\
           "bold-sans-serif": {\n\
             fonts: [SANSSERIFBOLD], bold:true,\n\
@@ -307,13 +307,13 @@ mathvariants = '\
             offsetG: 0x1D756\n\
           },\n\
           "sans-serif-italic": {\n\
-             fonts: [SANSSERIFITALIC], italic: true,\n\
+             fonts: [SANSSERIFITALIC,NONUNICODEITALIC], italic: true,\n\
              offsetA: 0x1D608,\n\
              offsetN: 0xE1B4,\n\
              offsetG: 0xE1BF\n\
           },\n\
           "sans-serif-bold-italic": {\n\
-             fonts: [SANSSERIFBOLDITALIC], bold:true, italic: true,\n\
+             fonts: [SANSSERIFBOLDITALIC,NONUNICODEBOLDITALIC], bold:true, italic: true,\n\
              offsetA: 0x1D63C,\n\
              offsetN: 0xE1F6,\n\
              offsetG: 0x1D790\n\
@@ -355,9 +355,9 @@ for f in fontList2["ITALIC"]:
 fonts = ",".join(fonts)
 
 if config.TEXCALIGRAPHIC is None:
-    print('          "-tex-caligraphic": {fonts: [%s]},' % fonts, file=fontData)
+    print('          "-tex-caligraphic": {fonts: [%s], italic: true},' % fonts, file=fontData)
 else:
-    print('          "-tex-caligraphic": {%s, fonts: [%s]},' %
+    print('          "-tex-caligraphic": {%s, fonts: [%s], italic: true},' %
           (config.TEXCALIGRAPHIC, fonts), file=fontData)
 
 # tex-oldstyle
@@ -392,7 +392,8 @@ print('\
         {name: "Alpha", low: 0x41, high: 0x5A, offset: "A"},\n\
         {name: "number", low: 0x30, high: 0x39, offset: "N"},\n\
         {name: "greek", low: 0x03B1, high: 0x03C9, offset: "G", add: 26},\n\
-        {name: "Greek", low: 0x0391, high: 0x03F6, offset: "G"}\n\
+        {name: "Greek", low: 0x0391, high: 0x03F6, offset: "G",\n\
+           remap: {0x03F5: 52, 0x03D1: 53, 0x03F0: 54, 0x03D5: 55, 0x03F1: 56, 0x03D6: 57, 0x03F4: 17}}\n\
       ],\n', file=fontData)
 
 # Print REMAP
