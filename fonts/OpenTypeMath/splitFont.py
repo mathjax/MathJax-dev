@@ -69,7 +69,8 @@ if (not os.path.exists("%s/config.py" % FONTFAMILY)):
     raise BaseException("%s/config.py does not exist!" % FONTFAMILY)
 
 # Create/clean up the ttf and otf directories
-subprocess.call("mkdir -p %s/ttf %s/otf" % (FONTFAMILY, FONTFAMILY),
+subprocess.call("mkdir -p %s/ttf %s/otf %s/fonts" %
+                (FONTFAMILY, FONTFAMILY, FONTFAMILY),
                 shell=True)
 if not(args.skipMainFonts):
     subprocess.call("rm -f %s/ttf/* %s/otf/*" % (FONTFAMILY, FONTFAMILY),
@@ -134,7 +135,7 @@ subprocess.call("rm -f %s/otf/*.tmp" % FONTFAMILY, shell=True)
 
 
 # Create the fontdata.js file
-fontData = open("%s/fontdata.js" % FONTFAMILY, "w")
+fontData = open("%s/fonts/fontdata.js" % FONTFAMILY, "w")
 
 # Print the header
 desc="Initializes the HTML-CSS OutputJax to use the %s fonts" % FONTFAMILY
@@ -177,6 +178,14 @@ for i in range(0,len(fontList)):
     else:
         fontDeclaration += ",\n"
         fontDeclaration += '      %s = "%s"' % (varName, varValue)
+
+if FONTFAMILY == "Neo-Euler":
+    # Neo-Euler lacks some characters from the Mathematical Alphanumeric Symbols
+    # See https://github.com/khaledhosny/euler-otf/issues/14
+    fontDeclaration += ",\n"
+    fontDeclaration += '      DOUBLESTRUCK = "NeoEuler_Normal",\n'
+    fontDeclaration += '      SANSSERIF = "NeoEuler_Normal",\n'
+    fontDeclaration += '      MONOSPACE = "NeoEuler_Normal"'
 
 fontDeclaration += ";\n"
 print(fontDeclaration, file=fontData)
@@ -455,8 +464,8 @@ print('\
     }\n\
   });', file=fontData)
 
-# Print the font metrics
-print("// MAIN FONT METRICS\n", file=fontData)
+# TODO: Print the main font metrics?
+# print("// MAIN FONT METRICS\n", file=fontData)
 
 # Print the footer
 print('\
@@ -468,7 +477,7 @@ print('\
 fontData.close()
 
 # Create the fontdata-extra.js file
-fontData = open("%s/fontdata-extra.js" % FONTFAMILY, "w")
+fontData = open("%s/fonts/fontdata-extra.js" % FONTFAMILY, "w")
 
 # print Header
 desc="Adds extra stretchy characters to the %s fonts" % FONTFAMILY
@@ -498,3 +507,104 @@ print('\
 })(MathJax.OutputJax["HTML-CSS"]);', file=fontData)
 
 fontData.close()
+
+# Creating the font metrics data
+for i in range(0,len(fontList)):
+
+    fileName = fontList[i]
+    print("Generating metrics for %s..." % fileName)
+    x = fileName.split("_")[1].split("-")
+    fontName = x[0]
+    fontStyle = x[1]
+    directory = "%s/fonts/%s/%s/" % (FONTFAMILY, fontName, fontStyle)
+    subprocess.call("mkdir -p %s" % directory, shell=True)
+
+    jsFile = "Main"
+
+    fontData = open("%s/%s.js" % (directory, jsFile), "w")
+    font = fontforge.open("%s/otf/%s.otf" % (FONTFAMILY, fileName))
+    
+    print('\
+/*************************************************************\n\
+ *\n\
+ *  MathJax/jax/output/HTML-CSS/fonts/%s/%s/%s/%s.js\n\
+ *\n\
+ *  Copyright (c) 2013 MathJax Project\n\
+ *\n\
+ *  Licensed under the Apache License, Version 2.0 (the "License");\n\
+ *  you may not use this file except in compliance with the License.\n\
+ *  You may obtain a copy of the License at\n\
+ *\n\
+ *     http://www.apache.org/licenses/LICENSE-2.0\n\
+ *\n\
+ *  Unless required by applicable law or agreed to in writing, software\n\
+ *  distributed under the License is distributed on an "AS IS" BASIS,\n\
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n\
+ *  See the License for the specific language governing permissions and\n\
+ *  limitations under the License.\n\
+ *\n\
+ */\n' % (FONTFAMILY, fontName, fontStyle, jsFile), file=fontData)
+
+    if fontStyle == "Bold":
+        fontName2 = fontName + "-bold"
+    elif fontStyle == "Italic":
+        fontName2 = fontName + "-italic"
+    elif fontStyle == "BoldItalic":
+        fontName2 = fontName + "-bold-italic"
+    else:
+        fontName2 = fontName
+
+    print("MathJax.OutputJax['HTML-CSS'].FONTDATA.FONTS['%s_%s'] = {" %
+          (config.PREFIX, fontName2), file=fontData)
+
+    print("  directory: '%s/%s'," % (fontName, fontStyle), file=fontData)
+    print("  family: '%s_%s'," % (config.PREFIX, fontName), file=fontData)
+
+    if fontStyle == "Bold" or fontStyle == "BoldItalic":
+        print("  weight: 'bold',", file=fontData)
+    
+    if fontStyle == "Italic" or fontStyle == "BoldItalic":
+        print("  style: 'italic',", file=fontData)
+
+    # TODO?
+    # print("  skew: {},\n", file=fontData)
+
+    print("  testString: '%s'" % fontUtil.getTestString(font, 15),
+          file=fontData, end="")
+
+    # print the metrics
+    for glyph in font.glyphs():
+
+        if glyph.glyphname in [".notdef", ".null", "nonmarkingreturn"]:
+            continue
+        
+        v = glyph.unicode
+
+        if (v == -1 or (0xEFFD <= v and v <= 0xEFFF)):
+            # Ignore non-Unicode and PUA glyphs
+            continue
+
+        print(",", file=fontData)
+        b = glyph.boundingBox() # (xmin, ymin, xmax, ymax)
+        print("  0x%X: [%d,%d,%d,%d,%d]" % (v, 
+                                            b[3],
+                                            -b[1],
+                                            glyph.width,
+                                            glyph.left_side_bearing,
+                                            glyph.width -
+                                            glyph.right_side_bearing),
+              file=fontData, end="")
+
+    print('', file=fontData)
+    print('};', file=fontData)
+
+    print('\
+\n\
+MathJax.Callback.Queue(\n\
+  ["initFont",MathJax.OutputJax["HTML-CSS"],"%s_%s"],\n\
+  ["loadComplete",MathJax.Ajax,MathJax.OutputJax["HTML-CSS"].fontDir+"/%s/%s/%s.js"]\n\
+);' % (config.PREFIX, fontName2, fontName, fontStyle, jsFile), file=fontData)
+
+
+    font.close()
+    fontData.close()

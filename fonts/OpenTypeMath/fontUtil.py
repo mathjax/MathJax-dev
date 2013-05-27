@@ -97,6 +97,38 @@ def moveRange(aFontFrom, aFontTo, aRangeStart, aRangeEnd):
     for codePoint in range(aRangeStart, aRangeEnd+1):
         moveGlyph(aFontFrom, aFontTo, codePoint)
 
+def getTestString(aFont, aMaxLength):
+    s = ""
+    # Pick at most 10 glyphs from the font to build a test string
+    i = aMaxLength
+    for glyph in aFont.glyphs():
+        v = glyph.unicode
+
+        if (0xEFFD <= v and v <= 0xEFFF):
+            # Ignore PUA glyphs
+            continue
+
+        # ignore some ASCII characters...
+
+        if ((0x80 <= v and v <= 0xD7FF) or
+            (0xE000 <= v and v <= 0xFFFF)):
+            # BMP character
+            s += "\\u%04X" % v
+        elif (0x10000 <= v and v <= 0x10FFFF):
+            # Surrogate pair
+            v -= 0x10000
+            trail = 0xD800 + (v >> 10)
+            lead = 0xDC00 + (v & 0x3FF)
+            s += "\\u%04X\\u%04X" % (trail, lead)
+        else:
+            continue
+
+        i -= 1
+        if i == 0:
+            break
+
+    return s
+
 class stretchyOp:
     def __init__(self, aIsHorizontal):
         self.mIsHorizontal = aIsHorizontal
@@ -718,3 +750,4 @@ operators. Please add a construction for it in DELIMITERS." %
                     continue
 
         return rv
+
