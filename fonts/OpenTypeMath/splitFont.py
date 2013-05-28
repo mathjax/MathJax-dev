@@ -68,7 +68,7 @@ FONTFAMILY = args.fontfamily
 if (not os.path.exists("%s/config.py" % FONTFAMILY)):
     raise BaseException("%s/config.py does not exist!" % FONTFAMILY)
 
-# Create/clean up the ttf and otf directories
+# Create/clean up the ttf, otf and fonts directories
 subprocess.call("mkdir -p %s/ttf %s/otf %s/fonts" %
                 (FONTFAMILY, FONTFAMILY, FONTFAMILY),
                 shell=True)
@@ -114,6 +114,12 @@ if not(args.skipMainFonts):
                     fontUtil.moveGlyph(oldfont, font, r)
                 else:
                     fontUtil.moveRange(oldfont, font, r[0], r[1])
+
+            if name == "Monospace" and "u1D670" in font:
+                # For the monospace font, ensure that the space has the
+                # same width as the other characters. See MathJax's issue 380.
+                font[0x20].width = font["u1D670"].width
+
             fontUtil.saveFont(FONTFAMILY, font)
             font.close()
 
@@ -179,13 +185,13 @@ for i in range(0,len(fontList)):
         fontDeclaration += ",\n"
         fontDeclaration += '      %s = "%s"' % (varName, varValue)
 
-if FONTFAMILY == "Neo-Euler":
-    # Neo-Euler lacks some characters from the Mathematical Alphanumeric Symbols
-    # See https://github.com/khaledhosny/euler-otf/issues/14
-    fontDeclaration += ",\n"
-    fontDeclaration += '      DOUBLESTRUCK = "NeoEuler_Normal",\n'
-    fontDeclaration += '      SANSSERIF = "NeoEuler_Normal",\n'
-    fontDeclaration += '      MONOSPACE = "NeoEuler_Normal"'
+# Neo-Euler lacks some characters from the Mathematical Alphanumeric Symbols
+# so map them to the normal font instead.
+# See https://github.com/khaledhosny/euler-otf/issues/14
+for variant in ["DOUBLESTRUCK", "SANSSERIF", "MONOSPACE"]:
+    if variant not in fontVarList:
+        fontDeclaration += ",\n"
+        fontDeclaration += '      %s = "%s_Normal"' % (variant, config.PREFIX)
 
 fontDeclaration += ";\n"
 print(fontDeclaration, file=fontData)
@@ -466,6 +472,11 @@ print('\
 
 # TODO: Print the main font metrics?
 # print("// MAIN FONT METRICS\n", file=fontData)
+
+# Print some adjustments
+adjust = open("%s/fontdata-adjust.js" % FONTFAMILY, "r")
+for line in adjust:
+    print(line, file=fontData, end="")
 
 # Print the footer
 print('\
