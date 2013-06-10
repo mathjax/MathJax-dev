@@ -49,6 +49,10 @@ TeX:
         # $(PERL) makePNG ttf/MathJax_Greek-Italic.ttf
         # $(PERL) makePNG ttf/MathJax_Greek-Regular.ttf
 
+	@echo "Compressing PNG images (this make take a while)..."
+	$(OPTIPNG) -q -o7 TeX/png/*/*/*/*.png
+	$(ADVPNG) -q -z4 TeX/png/*/*/*/*.png
+
 range: TeX
         #  Makes the data files needed by the HTML-CSS output jax
         #  for ALL the MathJax image fonts
