@@ -28,7 +28,7 @@ MAINFONTS = {
     }
 
 FONTDATA = {
-    "FileVersion": "2.1",
+    "FileVersion": "2.3",
     "Year": "2013",
     "TeX_factor": None, # Leave None for automatic computation
     "baselineskip": 1.2,
@@ -37,7 +37,7 @@ FONTDATA = {
     "hasStyleChar": True
     }
 
-RULECHAR = 0x2212
+RULECHAR = 0x23AF
 
 REMAP = {
     0x2F3: 0x2DA, 0x2F4: 0x2CA,     # ring below, middle grave

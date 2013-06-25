@@ -27,21 +27,21 @@ import fontforge
 import fontUtil
 from fontSplitting import FONTSPLITTING
 
+from lxml import etree
+
 def boolToString(b):
     if b:
         return "true"
     else:
         return "false"
 
+MODES = {0:"HTML-CSS", 1:"SVG"}
 HEADER='\
 /*************************************************************\n\
  *\n\
- *  MathJax/jax/output/HTML-CSS/font/%s\n\
+ *  MathJax/jax/output/%s\n\
  *  \n\
- *  %s\n\
- *\n\
- *  ---------------------------------------------------------------------\n\
- *  \n\
+%s\
  *  Copyright (c) %s MathJax Project\n\
  *\n\
  *  Licensed under the Apache License, Version 2.0 (the "License");\n\
@@ -68,12 +68,13 @@ FONTFAMILY = args.fontfamily
 if (not os.path.exists("%s/config.py" % FONTFAMILY)):
     raise BaseException("%s/config.py does not exist!" % FONTFAMILY)
 
-# Create/clean up the ttf, otf and fonts directories
-subprocess.call("mkdir -p %s/ttf %s/otf %s/fonts" %
+# Create/clean up the ttf, otf and svg directories
+subprocess.call("mkdir -p %s/ttf %s/otf %s/svg"  %
                 (FONTFAMILY, FONTFAMILY, FONTFAMILY),
                 shell=True)
 if not(args.skipMainFonts):
-    subprocess.call("rm -f %s/ttf/* %s/otf/*" % (FONTFAMILY, FONTFAMILY),
+    subprocess.call("rm -f %s/ttf/* %s/otf/* %s/svg/*" %
+                    (FONTFAMILY, FONTFAMILY, FONTFAMILY),
                     shell=True)
 
 # Import the configuration for this font family
@@ -95,6 +96,8 @@ if config.FONTDATA["TeX_factor"] is None:
     mainFont.close()
 if config.SMALLOPFONTS is None:
     config.SMALLOPFONTS = ""
+
+################################################################################
 
 # Split the Main fonts
 if not(args.skipMainFonts):
@@ -139,19 +142,34 @@ splitter.split()
 # Remove temporary files
 subprocess.call("rm -f %s/otf/*.tmp" % FONTFAMILY, shell=True)
 
+###############################################################################
 
-# Create the fontdata.js file
-fontData = open("%s/fonts/fontdata.js" % FONTFAMILY, "w")
+fontData = {}
+for m in MODES:
+    # Create the fontdata.js file
+    fontData[m] = open("%s/%s/fontdata.js" % (FONTFAMILY, MODES[m]), "w")
 
-# Print the header
-desc="Initializes the HTML-CSS OutputJax to use the %s fonts" % FONTFAMILY
-print(HEADER %
-      (("%s/fontdata.js" % FONTFAMILY), desc, config.FONTDATA["Year"]),
-      file=fontData)
-      
+    # Print the header
+    desc = (" *  Initializes the %s OutputJax to use the %s fonts\n\n" %
+            (MODES[m], FONTFAMILY))
+    print(HEADER %
+          (("%s/fonts/%s/fontdata.js" % (MODES[m], FONTFAMILY)),
+           desc, config.FONTDATA["Year"]),
+          file=fontData[m])
+
+modeVar = {}
+for m in MODES:
+    modeVar[m] = MODES[m].replace("-", "")
+
 print('\
-(function (HTMLCSS,MML,AJAX) {\n\
-  var VERSION = "%s";\n' % config.FONTDATA["FileVersion"], file=fontData)
+(function (%s,MML,AJAX) {\n' % modeVar[0], file=fontData[0])
+print('\
+(function (%s,MML,AJAX,HUB) {\n' % modeVar[1], file=fontData[1])
+
+for m in MODES:
+    print('\
+    var VERSION = "%s";\n' % (config.FONTDATA["FileVersion"]),
+          file=fontData[m])
 
 # Determine the list of fonts
 fontList = commands.getoutput('ls %s/otf' % FONTFAMILY).\
@@ -194,16 +212,20 @@ for variant in ["DOUBLESTRUCK", "SANSSERIF", "MONOSPACE"]:
         fontDeclaration += '      %s = "%s_Normal"' % (variant, config.PREFIX)
 
 fontDeclaration += ";\n"
-print(fontDeclaration, file=fontData)
+
+for m in MODES:
+    print(fontDeclaration, file=fontData[m])
 
 # Print the main parameters
-print('\
-  var H = "H", V = "V", EXTRAH = {load:"extra", dir:H}, EXTRAV = {load:"extra", dir:V};\n\
-\n\
-  HTMLCSS.Augment({\n\
+for m in MODES:
+    print('\
+  var H = "H", V = "V", EXTRAH = {load:"extra", dir:H}, EXTRAV = {load:"extra", dir:V};\n\n\
+  %s.Augment({\n\
     FONTDATA: {\n\
       version: VERSION,\n\
-\n\
+\n' % modeVar[m], file=fontData[m])
+
+print('\
       TeX_factor: %.3f,\n\
       baselineskip: %.3f,\n\
       lineH: %.3f, lineD: %.3f,\n\
@@ -213,28 +235,37 @@ print('\
      config.FONTDATA["baselineskip"],
      config.FONTDATA["lineH"],
      config.FONTDATA["lineD"],
-     boolToString(config.FONTDATA["hasStyleChar"])), file=fontData)
+     boolToString(config.FONTDATA["hasStyleChar"])), file=fontData[0])
+
+print('\
+      baselineskip: %d,\n\
+      lineH: %d, lineD: %d,\n\
+' % (config.FONTDATA["baselineskip"] * 1000,
+     config.FONTDATA["lineH"] * 1000,
+     config.FONTDATA["lineD"] * 1000), file=fontData[1])
 
 # Print FONTS
-print("      FONTS: {", file=fontData)
-for i in range(0,len(fontList)):
-    if i > 0:
-        print(",", file=fontData)
+for m in MODES:
+    print("      FONTS: {", file=fontData[m])
+    for i in range(0,len(fontList)):
+        if i > 0:
+            print(",", file=fontData[m])
 
-    font = fontList[i].split("_")[-1].split("-")
-    family = font[0]
-    style = font[1]
+        font = fontList[i].split("_")[-1].split("-")
+        family = font[0]
+        style = font[1]
 
-    fileName = "Main.js"
-    print('        "%s": "%s/%s/%s"' %
-          (fontVarValue[i], family, style, fileName),
-          file=fontData, end="")
+        fileName = "Main.js"
+        print('        "%s": "%s/%s/%s"' %
+              (fontVarValue[i], family, style, fileName),
+              file=fontData[m], end="")
 
-print(file=fontData)
-print("      },\n", file=fontData)
+    print(file=fontData[m])
+    print("      },\n", file=fontData[m])
 
 # Print VARIANT
-print("      VARIANT: {", file=fontData)
+for m in MODES:
+    print("      VARIANT: {", file=fontData[m])
 
 
 # Print the regular, bold, italic and bold-italic form
@@ -262,26 +293,27 @@ if MATHONLY:
     for s in ["BOLD","ITALIC","BOLDITALIC"]:
         fontList2[s] = fontList2[""]
 
-print('          "normal": {fonts: [%s]},' %
-      ",".join(fontList2[""]), file=fontData)
+for m in MODES:
+    print('          "normal": {fonts: [%s]},' %
+          ",".join(fontList2[""]), file=fontData[m])
 
-print('          "bold": {fonts: [%s], bold:true' %
-      ",".join(fontList2["BOLD"]), file=fontData)
-if MATHONLY:
-    print(', offsetA: 0x1D400, offsetG: 0x1D6A8, offsetN: 0x1D7CE', file=fontData, end="")
-print('},', file=fontData)
+    print('          "bold": {fonts: [%s], bold:true' %
+          ",".join(fontList2["BOLD"]), file=fontData[m])
+    if MATHONLY:
+        print(', offsetA: 0x1D400, offsetG: 0x1D6A8, offsetN: 0x1D7CE', file=fontData[m], end="")
+    print('},', file=fontData[m])
 
-print('          "italic": {fonts: [%s], italic:true' %
-      ",".join(fontList2["ITALIC"]), file=fontData, end="")
-if MATHONLY:
-    print(', offsetA: 0x1D434, offsetG: 0x1D6E2, remap: {0x1D455: 0x210E}', file=fontData, end="")
-print('},', file=fontData)
+    print('          "italic": {fonts: [%s], italic:true' %
+          ",".join(fontList2["ITALIC"]), file=fontData[m], end="")
+    if MATHONLY:
+        print(', offsetA: 0x1D434, offsetG: 0x1D6E2, remap: {0x1D455: 0x210E}', file=fontData[m], end="")
+    print('},', file=fontData[m])
 
-print('          "bolditalic": {fonts: [%s], bold: true, italic:true' %
-      ",".join(fontList2["BOLDITALIC"]), file=fontData)
-if MATHONLY:
-    print(', offsetA: 0x1D468, offsetG: 0x1D71C', file=fontData, end="")
-print('},', file=fontData)
+    print('          "bolditalic": {fonts: [%s], bold: true, italic:true' %
+          ",".join(fontList2["BOLDITALIC"]), file=fontData[m])
+    if MATHONLY:
+        print(', offsetA: 0x1D468, offsetG: 0x1D71C', file=fontData[m], end="")
+    print('},', file=fontData[m])
 
 # Print other mathvariants
 mathvariants = '\
@@ -345,7 +377,8 @@ if MATHONLY:
     mathvariants = mathvariants.replace("BOLD", "")
     mathvariants = mathvariants.replace("ITALIC", "")
 
-print(mathvariants, file=fontData)
+for m in MODES:
+    print(mathvariants, file=fontData[m])
 
 # STIX Variants
 if config.STIXVARIANT is not None:
@@ -357,8 +390,9 @@ if config.STIXVARIANT is not None:
 
     fonts = ",".join(fonts)
 
-    print('        "-STIX-variant": {%s, fonts: [%s]},' %
-          (config.STIXVARIANT, fonts), file=fontData)
+    for m in MODES:
+        print('        "-STIX-variant": {%s, fonts: [%s]},' %
+              (config.STIXVARIANT, fonts), file=fontData[m])
 
 # tex-caligraphic
 fonts = config.TEXCALIGRAPHICFONTS
@@ -369,11 +403,12 @@ for f in fontList2["ITALIC"]:
 
 fonts = ",".join(fonts)
 
-if config.TEXCALIGRAPHIC is None:
-    print('          "-tex-caligraphic": {fonts: [%s], italic: true},' % fonts, file=fontData)
-else:
-    print('          "-tex-caligraphic": {%s, fonts: [%s], italic: true},' %
-          (config.TEXCALIGRAPHIC, fonts), file=fontData)
+for m in MODES:
+    if config.TEXCALIGRAPHIC is None:
+        print('          "-tex-caligraphic": {fonts: [%s], italic: true},' % fonts, file=fontData[m])
+    else:
+        print('          "-tex-caligraphic": {%s, fonts: [%s], italic: true},' %
+              (config.TEXCALIGRAPHIC, fonts), file=fontData[m])
 
 # tex-oldstyle
 fonts = config.TEXOLDSTYLEFONTS
@@ -384,24 +419,30 @@ for f in fontList2[""]:
 
 fonts = ",".join(fonts)
 
-if config.TEXOLDSTYLE is None:
-    print('          "-tex-oldstyle": {fonts: [%s]},' % fonts, file=fontData)
-else:
-    print('          "-tex-oldstyle": {%s, fonts: [%s]},' %
-          (config.TEXOLDSTYLE, fonts), file=fontData)
+for m in MODES:
+    if config.TEXOLDSTYLE is None:
+        print('          "-tex-oldstyle": {fonts: [%s]},' % fonts,
+              file=fontData[m])
+    else:
+        print('          "-tex-oldstyle": {%s, fonts: [%s]},' %
+              (config.TEXOLDSTYLE, fonts), file=fontData[m])
 
 # mathit
-print('          "-tex-mathit": {fonts: [%s], italic:true, noIC:true},' %
-      ",".join(fontList2["ITALIC"]), file=fontData)
+for m in MODES:
+    print('          "-tex-mathit": {fonts: [%s], italic:true, noIC:true},' %
+          ",".join(fontList2["ITALIC"]), file=fontData[m])
 
 # operators
-print('          "-largeOp": {fonts:[SIZE1,MAIN]},', file=fontData)
-print('          "-smallOp": {%s}' % config.SMALLOPFONTS, file=fontData)
+for m in MODES:
+    print('          "-largeOp": {fonts:[SIZE1,MAIN]},', file=fontData[m])
+    print('          "-smallOp": {%s}' % config.SMALLOPFONTS, file=fontData[m])
 
-print("      },\n", file=fontData)
+for m in MODES:
+    print("      },\n", file=fontData[m])
 
 # Print RANGES
-print('\
+for m in MODES:
+    print('\
       RANGES: [\n\
         {name: "alpha", low: 0x61, high: 0x7A, offset: "A", add: 26},\n\
         {name: "Alpha", low: 0x41, high: 0x5A, offset: "A"},\n\
@@ -409,49 +450,57 @@ print('\
         {name: "greek", low: 0x03B1, high: 0x03C9, offset: "G", add: 26},\n\
         {name: "Greek", low: 0x0391, high: 0x03F6, offset: "G",\n\
            remap: {0x03F5: 52, 0x03D1: 53, 0x03F0: 54, 0x03D5: 55, 0x03F1: 56, 0x03D6: 57, 0x03F4: 17}}\n\
-      ],\n', file=fontData)
+      ],\n', file=fontData[m])
+
+# Print RULECHAR,
+for m in MODES:
+    print("      RULECHAR: 0x%04X,\n\n" % config.RULECHAR,
+          file=fontData[m], end="")
 
 # Print REMAP
-print("      REMAP: {", file=fontData, end="")
-first=True
-for key in config.REMAP:
-    if first:
-        first=False
-        print(file=fontData)
-    else:
-        print(",", file=fontData)
-    print("        0x%04X: 0x%04X" % (key, config.REMAP[key]),
-          end="", file=fontData)
-print(file=fontData)
-print("      },\n", file=fontData)
+for m in MODES:
+    print("      REMAP: {", file=fontData[m], end="")
+    first=True
+    for key in config.REMAP:
+        if first:
+            first=False
+            print(file=fontData[m])
+        else:
+            print(",", file=fontData[m])
+        print("        0x%04X: 0x%04X" % (key, config.REMAP[key]),
+              end="", file=fontData[m])
+    print(file=fontData[m])
+    print("      },\n", file=fontData[m])
 
 # Print REMAPACCENT
-print("      REMAPACCENT: {", file=fontData, end="")
-first=True
-for key in config.REMAPACCENT:
-    if first:
-        first=False
-        print(file=fontData)
-    else:
-        print(",", file=fontData)
-    print('        "%s": "%s"' % (key, config.REMAPACCENT[key]),
-          end="", file=fontData)
-print(file=fontData)
-print("      },\n", file=fontData)
+for m in MODES:
+    print("      REMAPACCENT: {", file=fontData[m], end="")
+    first=True
+    for key in config.REMAPACCENT:
+        if first:
+            first=False
+            print(file=fontData[m])
+        else:
+            print(",", file=fontData[m])
+        print('        "%s": "%s"' % (key, config.REMAPACCENT[key]),
+              end="", file=fontData[m])
+    print(file=fontData[m])
+    print("      },\n", file=fontData[m])
 
 # Print REMAPACCENTUNDER
-print("      REMAPACCENTUNDER: {", file=fontData, end="")
-first=True
-for key in config.REMAPACCENTUNDER:
-    if first:
-        first=False
-        print(file=fontData)
-    else:
-        print(",", file=fontData)
-    print('        "%s": "%s"' % (key, config.REMAPACCENTUNDER[key]),
-          end="", file=fontData)
-print(file=fontData)
-print("      },\n", file=fontData)
+for m in MODES:
+    print("      REMAPACCENTUNDER: {", file=fontData[m], end="")
+    first=True
+    for key in config.REMAPACCENTUNDER:
+        if first:
+            first=False
+            print(file=fontData[m])
+        else:
+            print(",", file=fontData[m])
+            print('        "%s": "%s"' % (key, config.REMAPACCENTUNDER[key]),
+                  end="", file=fontData[m])
+    print(file=fontData[m])
+    print("      },\n", file=fontData[m])
 
 # Print DELIMITERS
 splitter.addStretchyOperators(config.DELIMITERS)
@@ -460,64 +509,76 @@ splitter.verifyTeXSizeVariants(config.FONTDATA["TeX_factor"],
                                 0x2308, 0x2309, 0x230A, 0x230B, 0x23D0, 0x27E8,
                                 0x27E9))
 # Print the delimiters list
-print("      DELIMITERS: {", file=fontData)
-splitter.printDelimiters(fontData, 6, config.DELIMITERS_EXTRA)
-print("      }", file=fontData)
-print(file=fontData)
+for m in MODES:
+    print("      DELIMITERS: {", file=fontData[m])
+    splitter.printDelimiters(fontData[m], MODES[m], 6, config.DELIMITERS_EXTRA)
+    print("      }", file=fontData[m])
+    print(file=fontData[m])
 
-# close FONTDATA & HTMLCSS.Augment
-print('\
+# close FONTDATA & *.Augment
+for m in MODES:
+    print('\
     }\n\
-  });', file=fontData)
+  });', file=fontData[m])
 
 # TODO: Print the main font metrics?
-# print("// MAIN FONT METRICS\n", file=fontData)
+# print("// MAIN FONT METRICS\n", file=fontData[m])
 
 # Print some adjustments
-adjust = open("%s/fontdata-adjust.js" % FONTFAMILY, "r")
-for line in adjust:
-    print(line, file=fontData, end="")
+for m in MODES:
+    adjust = open("%s/%s/fontdata-adjust.js" % (FONTFAMILY, MODES[m]), "r")
+    for line in adjust:
+        print(line, file=fontData[m], end="")
 
 # Print the footer
 print('\
   AJAX.loadComplete(HTMLCSS.fontDir + "/fontdata.js");\n\
 \n\
 })(MathJax.OutputJax["HTML-CSS"],MathJax.ElementJax.mml,MathJax.Ajax);',
-      file=fontData)
+      file=fontData[0])
+print('\
+  AJAX.loadComplete(SVG.fontDir + "/fontdata.js");\n\
+\n\
+})(MathJax.OutputJax.SVG,MathJax.ElementJax.mml,MathJax.Ajax,MathJax.Hub);',
+      file=fontData[1])
 
-fontData.close()
+for m in MODES:
+    fontData[m].close()
 
 # Create the fontdata-extra.js file
-fontData = open("%s/fonts/fontdata-extra.js" % FONTFAMILY, "w")
+for m in MODES:
+    fontData[m] = open("%s/%s/fontdata-extra.js" % (FONTFAMILY, MODES[m]), "w")
 
-# print Header
-desc="Adds extra stretchy characters to the %s fonts" % FONTFAMILY
-print(HEADER %
-      (("%s/fontdata-extra.js" % FONTFAMILY), desc, config.FONTDATA["Year"]),
-      file=fontData)
+    # print Header
+    desc=" *  Adds extra stretchy characters to the %s fonts\n\n" % FONTFAMILY
+    print(HEADER %
+          (("%s/fonts/%s/fontdata-extra.js" % (MODES[m], FONTFAMILY)), desc,
+           config.FONTDATA["Year"]), file=fontData[m])
 
-print('\
-(function (HTMLCSS) {\n\
-  var VERSION = "%s";\n' % config.FONTDATA["FileVersion"], file=fontData)
+    print('\
+(function (%s) {\n\
+  var VERSION = "%s";\n' % (modeVar[m],
+                            config.FONTDATA["FileVersion"]), file=fontData[m])
 
-print('\
-  var DELIMITERS = HTMLCSS.FONTDATA.DELIMITERS;\n\n\
-  var H = "H", V = "V";\n', file=fontData)
+    print('\
+  var DELIMITERS = %s.FONTDATA.DELIMITERS;\n\n\
+  var H = "H", V = "V";\n' % modeVar[m], file=fontData[m])
 
-print(fontDeclaration, file=fontData)
+    print(fontDeclaration, file=fontData[m])
 
-print('  var delim = {', file=fontData)
-splitter.printDelimiters(fontData, 4, config.DELIMITERS_EXTRA, True)
-print('\
+    print('  var delim = {', file=fontData[m])
+    splitter.printDelimiters(fontData[m], MODES[m], 4, config.DELIMITERS_EXTRA,
+                             True)
+    print('\
   };\n\
   \n\
   for (var id in delim) {if (delim.hasOwnProperty(id)) {DELIMITERS[id] = delim[id]}};\n\
 \n\
-  MathJax.Ajax.loadComplete(HTMLCSS.fontDir + "/fontdata-extra.js");\n\
+  MathJax.Ajax.loadComplete(%s.fontDir + "/fontdata-extra.js");\n\
 \n\
-})(MathJax.OutputJax["HTML-CSS"]);', file=fontData)
+})(MathJax.OutputJax["%s"]);' % (modeVar[m], MODES[m]), file=fontData[m])
 
-fontData.close()
+fontData[m].close()
 
 # Creating the font metrics data
 for i in range(0,len(fontList)):
@@ -527,34 +588,22 @@ for i in range(0,len(fontList)):
     x = fileName.split("_")[1].split("-")
     fontName = x[0]
     fontStyle = x[1]
-    directory = "%s/fonts/%s/%s/" % (FONTFAMILY, fontName, fontStyle)
-    subprocess.call("mkdir -p %s" % directory, shell=True)
 
     jsFile = "Main"
+    for m in MODES:
+        directory = ("%s/%s/%s/%s/" %
+                        (FONTFAMILY, MODES[m], fontName, fontStyle))
+        subprocess.call("mkdir -p %s" % directory, shell=True)
 
-    fontData = open("%s/%s.js" % (directory, jsFile), "w")
+        fontData[m] = open("%s/%s.js" % (directory, jsFile), "w")
+
+        print(HEADER %
+              ("%s/fonts/%s/%s/%s/%s.js" % (MODES[m],
+                                      FONTFAMILY, fontName, fontStyle, jsFile),
+               "", config.FONTDATA["Year"]), file=fontData[m])
+
     font = fontforge.open("%s/otf/%s.otf" % (FONTFAMILY, fileName))
-    
-    print('\
-/*************************************************************\n\
- *\n\
- *  MathJax/jax/output/HTML-CSS/fonts/%s/%s/%s/%s.js\n\
- *\n\
- *  Copyright (c) 2013 MathJax Project\n\
- *\n\
- *  Licensed under the Apache License, Version 2.0 (the "License");\n\
- *  you may not use this file except in compliance with the License.\n\
- *  You may obtain a copy of the License at\n\
- *\n\
- *     http://www.apache.org/licenses/LICENSE-2.0\n\
- *\n\
- *  Unless required by applicable law or agreed to in writing, software\n\
- *  distributed under the License is distributed on an "AS IS" BASIS,\n\
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n\
- *  See the License for the specific language governing permissions and\n\
- *  limitations under the License.\n\
- *\n\
- */\n' % (FONTFAMILY, fontName, fontStyle, jsFile), file=fontData)
+    SVGdoc = etree.parse("%s/svg/%s.svg" % (FONTFAMILY, fileName)).getroot()
 
     if fontStyle == "Bold":
         fontName2 = fontName + "-bold"
@@ -565,23 +614,27 @@ for i in range(0,len(fontList)):
     else:
         fontName2 = fontName
 
-    print("MathJax.OutputJax['HTML-CSS'].FONTDATA.FONTS['%s_%s'] = {" %
-          (config.PREFIX, fontName2), file=fontData)
+    # Header
 
-    print("  directory: '%s/%s'," % (fontName, fontStyle), file=fontData)
-    print("  family: '%s_%s'," % (config.PREFIX, fontName), file=fontData)
+    for m in MODES:
+        print("MathJax.OutputJax['%s'].FONTDATA.FONTS['%s_%s'] = {" %
+              (MODES[m], config.PREFIX, fontName2), file=fontData[m])
+        print("  directory: '%s/%s'," % (fontName, fontStyle),
+              file=fontData[m])
+        print("  family: '%s_%s'," % (config.PREFIX, fontName),
+              file=fontData[m])
 
-    if fontStyle == "Bold" or fontStyle == "BoldItalic":
-        print("  weight: 'bold',", file=fontData)
+        if fontStyle == "Bold" or fontStyle == "BoldItalic":
+            print("  weight: 'bold',", file=fontData[m])
     
-    if fontStyle == "Italic" or fontStyle == "BoldItalic":
-        print("  style: 'italic',", file=fontData)
+        if fontStyle == "Italic" or fontStyle == "BoldItalic":
+            print("  style: 'italic',", file=fontData[m])
 
-    # TODO?
-    # print("  skew: {},\n", file=fontData)
+        # TODO?
+        # print("  skew: {},\n", file=fontData[m])
 
-    print("  testString: '%s'" % fontUtil.getTestString(font, 15),
-          file=fontData, end="")
+        print("  testString: '%s'" % fontUtil.getTestString(font, 15),
+              file=fontData[m], end="")
 
     # print the metrics
     for glyph in font.glyphs():
@@ -595,27 +648,57 @@ for i in range(0,len(fontList)):
             # Ignore non-Unicode and PUA glyphs
             continue
 
-        print(",", file=fontData)
-        b = glyph.boundingBox() # (xmin, ymin, xmax, ymax)
-        print("  0x%X: [%d,%d,%d,%d,%d]" % (v, 
-                                            b[3],
-                                            -b[1],
-                                            glyph.width,
-                                            glyph.left_side_bearing,
-                                            glyph.width -
-                                            glyph.right_side_bearing),
-              file=fontData, end="")
+        # Glyph metrics
+        for m in MODES:
+            print(",", file=fontData[m])
+            b = glyph.boundingBox() # (xmin, ymin, xmax, ymax)
+            print("  0x%X: [%d,%d,%d,%d,%d" % (v, 
+                                               b[3],
+                                               -b[1],
+                                               glyph.width,
+                                               glyph.left_side_bearing,
+                                               glyph.width -
+                                               glyph.right_side_bearing),
+                  file=fontData[m], end="")
 
-    print('', file=fontData)
-    print('};', file=fontData)
+        # For SVG, we add the path description too.
+        # No need for namespaces={'s': 'http://www.w3.org/2000/svg'},
+        # as Font Forge does not attach any xmlns namespace to the <svg> root
+        glyphNode = SVGdoc.\
+            xpath('/svg/defs/font/glyph[@glyph-name="%s"]' % glyph.glyphname)
+        if len(glyphNode) == 0:
+            print(glyph.glyphname)
+            raise BaseException("Unable to find the glyph")
+        else:
+            glyphNode = glyphNode[0]
+        
+        if "d" in glyphNode.attrib:
+            path = glyphNode.attrib["d"]
+            path = re.match(r"^M(.*)Z", path, flags=re.IGNORECASE).group(1)
+        else:
+            path = ""
+        print(",'%s'" % path, file=fontData[1], end="")
 
+        for m in MODES:
+            print("]", file=fontData[m], end="")
+
+    for m in MODES:
+        print('', file=fontData[m])
+        print('};', file=fontData[m])
+
+    # print footer
     print('\
 \n\
 MathJax.Callback.Queue(\n\
-  ["initFont",MathJax.OutputJax["HTML-CSS"],"%s_%s"],\n\
-  ["loadComplete",MathJax.Ajax,MathJax.OutputJax["HTML-CSS"].fontDir+"/%s/%s/%s.js"]\n\
-);' % (config.PREFIX, fontName2, fontName, fontStyle, jsFile), file=fontData)
+  ["initFont",MathJax.OutputJax["%s"],"%s_%s"],\n\
+  ["loadComplete",MathJax.Ajax,MathJax.OutputJax["%s"].fontDir+"/%s/%s/%s.js"]\n\
+);' % (MODES[0], config.PREFIX, fontName2,
+       MODES[0], fontName, fontStyle, jsFile), file=fontData[0])
 
+    print('\
+\n\
+MathJax.Ajax.loadComplete(MathJax.OutputJax.%s.fontDir+"/%s/%s/%s.js");'
+              % (MODES[1], fontName, fontStyle, jsFile), file=fontData[1])
 
     font.close()
-    fontData.close()
+    fontData[m].close()

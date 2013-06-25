@@ -23,99 +23,103 @@ all: STIX-Web Asana-Math Gyre-Pagella Gyre-Termes Latin-Modern Neo-Euler
 
 clean:
 	rm -rf */otf */ttf */eot */svg */woff
-	rm -f */fonts/fontdata.js; rm -f */fonts/fontdata-extra.js
-	rm -rf */fonts
+	rm -f */HTML-CSS/fontdata.js; rm -f */HTML-CSS/fontdata-extra.js
+	rm -rf */HTML-CSS/*/;
+	rm -f */SVG/fontdata.js; rm -f */SVG/fontdata-extra.js
+	rm -rf */SVG/*/;
 
 ###### Splitting the fonts ######
 
-Asana-Math/fonts/fontdata.js:
+Asana-Math/HTML-CSS/fontdata.js:
 # This also generates Asana-Math/eot Asana-Math/otf
 	$(PYTHON) splitFont.py Asana-Math $(FONTDIR)
 
-Gyre-Pagella/fonts/fontdata.js:
+Gyre-Pagella/HTML-CSS/fontdata.js:
 # This also generates Gyre-Pagella/eot Gyre-Pagella/otf
 	$(PYTHON) splitFont.py Gyre-Pagella $(FONTDIR)
 
-Gyre-Termes/fonts/fontdata.js:
+Gyre-Termes/HTML-CSS/fontdata.js:
 # This also generates Gyre-Termes/eot Gyre-Termes/otf
 	$(PYTHON) splitFont.py Gyre-Termes $(FONTDIR)
 
-Latin-Modern/fonts/fontdata.js:
+Latin-Modern/HTML-CSS/fontdata.js:
 # This also generates Latin-Modern/eot Latin-Modern/otf
 	$(PYTHON) splitFont.py Latin-Modern $(FONTDIR)
 
-Neo-Euler/fonts/fontdata.js:
+Neo-Euler/HTML-CSS/fontdata.js:
 # This also generates Neo-Euler/eot Neo-Euler/otf
 	$(PYTHON) splitFont.py Neo-Euler $(FONTDIR)
 
-STIX-Web/fonts/fontdata.js:
+STIX-Web/HTML-CSS/fontdata.js:
 # This also generates STIX-Web/eot STIX-Web/otf
 	$(PYTHON) splitFont.py STIX-Web $(FONTDIR)
 
-fontdata: Asana-Math/fonts/fontdata.js Gyre-Pagella/fonts/fontdata.js Gyre-Termes/fonts/fontdata.js Latin-Modern/fonts/fontdata.js Neo-Euler/fonts/fontdata.js STIX-Web/fonts/fontdata.js
+fontdata: Asana-Math/HTML-CSS/fontdata.js Gyre-Pagella/HTML-CSS/fontdata.js Gyre-Termes/HTML-CSS/fontdata.js Latin-Modern/HTML-CSS/fontdata.js Neo-Euler/HTML-CSS/fontdata.js STIX-Web/HTML-CSS/fontdata.js
 
 ###### Converting to EOT ######
 
-Asana-Math/eot: Asana-Math/fonts/fontdata.js
+Asana-Math/eot: Asana-Math/HTML-CSS/fontdata.js
 	./convertFont.sh Asana-Math eot
 
-Gyre-Pagella/eot: Gyre-Pagella/fonts/fontdata.js
+Gyre-Pagella/eot: Gyre-Pagella/HTML-CSS/fontdata.js
 	./convertFont.sh Gyre-Pagella eot
 
-Gyre-Termes/eot: Gyre-Termes/fonts/fontdata.js
+Gyre-Termes/eot: Gyre-Termes/HTML-CSS/fontdata.js
 	./convertFont.sh Gyre-Termes eot
 
-Latin-Modern/eot: Latin-Modern/fonts/fontdata.js
+Latin-Modern/eot: Latin-Modern/HTML-CSS/fontdata.js
 	./convertFont.sh Latin-Modern eot
 
-Neo-Euler/eot: Neo-Euler/fonts/fontdata.js
+Neo-Euler/eot: Neo-Euler/HTML-CSS/fontdata.js
 	./convertFont.sh Neo-Euler eot
 
-STIX-Web/eot: STIX-Web/fonts/fontdata.js
+STIX-Web/eot: STIX-Web/HTML-CSS/fontdata.js
 	./convertFont.sh STIX-Web eot
 
 eot: Asana-Math/eot Gyre-Pagella/eot Gyre-Termes/eot Latin-Modern/eot Neo-Euler/eot STIX-Web/eot
 
 ###### Converting to SVG ######
 
-Asana-Math/svg: Asana-Math/fonts/fontdata.js
-	./convertFont.sh Asana-Math svg
+# This is now done in fontUtil::saveFont using FontForge
 
-Gyre-Pagella/svg: Gyre-Pagella/fonts/fontdata.js
-	./convertFont.sh Gyre-Pagella svg
+# Asana-Math/svg: Asana-Math/HTML-CSS/fontdata.js
+# 	./convertFont.sh Asana-Math svg
 
-Gyre-Termes/svg: Gyre-Termes/fonts/fontdata.js
-	./convertFont.sh Gyre-Termes svg
+# Gyre-Pagella/svg: Gyre-Pagella/HTML-CSS/fontdata.js
+# 	./convertFont.sh Gyre-Pagella svg
 
-Latin-Modern/svg: Latin-Modern/fonts/fontdata.js
-	./convertFont.sh Latin-Modern svg
+# Gyre-Termes/svg: Gyre-Termes/HTML-CSS/fontdata.js
+# 	./convertFont.sh Gyre-Termes svg
 
-Neo-Euler/svg: Neo-Euler/fonts/fontdata.js
-	./convertFont.sh Neo-Euler svg
+# Latin-Modern/svg: Latin-Modern/HTML-CSS/fontdata.js
+# 	./convertFont.sh Latin-Modern svg
 
-STIX-Web/svg: STIX-Web/fonts/fontdata.js
-	./convertFont.sh STIX-Web svg
+# Neo-Euler/svg: Neo-Euler/HTML-CSS/fontdata.js
+# 	./convertFont.sh Neo-Euler svg
 
-svg: Asana-Math/svg Gyre-Pagella/svg Gyre-Termes/svg Latin-Modern/svg Neo-Euler/svg STIX-Web/svg
+# STIX-Web/svg: STIX-Web/HTML-CSS/fontdata.js
+# 	./convertFont.sh STIX-Web svg
+
+# svg: Asana-Math/svg Gyre-Pagella/svg Gyre-Termes/svg Latin-Modern/svg Neo-Euler/svg STIX-Web/svg
 
 ###### Converting to WOFF ######
 
-Asana-Math/woff: Asana-Math/fonts/fontdata.js
+Asana-Math/woff: Asana-Math/HTML-CSS/fontdata.js
 	./convertFont.sh Asana-Math woff
 
-Gyre-Pagella/woff: Gyre-Pagella/fonts/fontdata.js
+Gyre-Pagella/woff: Gyre-Pagella/HTML-CSS/fontdata.js
 	./convertFont.sh Gyre-Pagella woff
 
-Gyre-Termes/woff: Gyre-Termes/fonts/fontdata.js
+Gyre-Termes/woff: Gyre-Termes/HTML-CSS/fontdata.js
 	./convertFont.sh Gyre-Termes woff
 
-Latin-Modern/woff: Latin-Modern/fonts/fontdata.js
+Latin-Modern/woff: Latin-Modern/HTML-CSS/fontdata.js
 	./convertFont.sh Latin-Modern woff
 
-Neo-Euler/woff: Neo-Euler/fonts/fontdata.js
+Neo-Euler/woff: Neo-Euler/HTML-CSS/fontdata.js
 	./convertFont.sh Neo-Euler woff
 
-STIX-Web/woff: STIX-Web/fonts/fontdata.js
+STIX-Web/woff: STIX-Web/HTML-CSS/fontdata.js
 	./convertFont.sh STIX-Web woff
 
 woff: Asana-Math/woff Gyre-Pagella/woff Gyre-Termes/woff Latin-Modern/woff Neo-Euler/woff STIX-Web/woff
@@ -131,13 +135,16 @@ STIX-Web: STIX-Web/eot STIX-Web/svg STIX-Web/woff
 
 # Some commands to copy the fonts and font data
 
-FONTDATADEST=$(MATHJAXDIR)/unpacked/jax/output/HTML-CSS/fonts/
+JAXDEST=$(MATHJAXDIR)/unpacked/jax/output/
 FONTDEST=$(MATHJAXDIR)/fonts/HTML-CSS/
 
 copyFontData:
 	@for f in Asana-Math Gyre-Pagella Gyre-Termes Latin-Modern Neo-Euler STIX-Web ; do \
-		rm -rf $(FONTDATADEST)/$$f; \
-		cp -r $$f/fonts $(FONTDATADEST)/$$f; \
+		rm -rf $(JAXDEST)/HTML-CSS/fonts/$$f; \
+		cp -r $$f/HTML-CSS $(JAXDEST)/HTML-CSS/fonts/$$f; \
+		rm -rf $(JAXDEST)/SVG/fonts/$$f; \
+		cp -r $$f/SVG $(JAXDEST)/SVG/fonts/$$f; \
+		rm -f $(JAXDEST)/*/fonts/*/fontdata-adjust.js; \
 	done
 
 copyFontFiles:

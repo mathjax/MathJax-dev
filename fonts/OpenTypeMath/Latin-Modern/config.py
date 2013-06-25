@@ -22,7 +22,7 @@ MATHFONT = "latinmodern-math.otf"
 MAINFONTS = None
 
 FONTDATA = {
-    "FileVersion": "2.1",
+    "FileVersion": "2.3",
     "Year": "2013",
     "TeX_factor": None, # Leave None for automatic computation
     "baselineskip": 1.2,

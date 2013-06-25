@@ -74,6 +74,7 @@ def saveFont(aFamily, aFont):
 
     aFont.generate("%s/otf/%s.otf" % (aFamily, aFont.fontname))
     aFont.generate("%s/ttf/%s.ttf" % (aFamily, aFont.fontname))
+    aFont.generate("%s/svg/%s.svg" % (aFamily, aFont.fontname))
 
 def moveGlyph(aFontFrom, aFontTo, aOldPosition, aNewPosition = None):
     # Ignore glyphs that have already been deleted before
@@ -421,7 +422,7 @@ operators. Please add a construction for it in DELIMITERS." %
 
         self.mNormalSize = size0
 
-    def printDelimiters(self, aStream, aIndent, aDelimitersExtra,
+    def printDelimiters(self, aStream, aMode, aIndent, aDelimitersExtra,
                         aExtra = False):
         # Print the delimiters
         if type(self.mNormalSize) != dict:
@@ -489,7 +490,11 @@ operators. Please add a construction for it in DELIMITERS." %
                     size = v[0]
                     fontname = "SIZE%d" % size
             
-                data = "%.3f,%s" % (em, fontname)
+                if aMode == "HTML-CSS":
+                    data = "%.3f,%s" % (em, fontname)
+                else: # SVG
+                    data = "%d,%s" % (em*1000, fontname)
+
                 if scale != 1.0:
                     data += ",%.3f" % scale
                 if style is not None and codePoint != key:
