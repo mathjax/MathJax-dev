@@ -615,7 +615,6 @@ for i in range(0,len(fontList)):
         fontName2 = fontName
 
     # Header
-
     for m in MODES:
         print("MathJax.OutputJax['%s'].FONTDATA.FONTS['%s_%s'] = {" %
               (MODES[m], config.PREFIX, fontName2), file=fontData[m])
@@ -633,8 +632,17 @@ for i in range(0,len(fontList)):
         # TODO?
         # print("  skew: {},\n", file=fontData[m])
 
-        print("  testString: '%s'" % fontUtil.getTestString(font, 15),
-              file=fontData[m], end="")
+    # HTML-CSS: add a test string
+    print("  testString: '%s'" % fontUtil.getTestString(font, 15),
+          file=fontData[0], end="")
+
+    # SVG: add an id
+    SVGid = (FONTFAMILY + fontName).replace("-","").upper();
+    if fontStyle == "Bold" or fontStyle == "BoldItalic":
+        SVGid += "B"
+    if fontStyle == "Italic" or fontStyle == "BoldItalic":
+        SVGid += "I"
+    print("  id: '%s'" % SVGid,  file=fontData[1], end="")
 
     # print the metrics
     for glyph in font.glyphs():
