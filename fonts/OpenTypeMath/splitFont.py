@@ -122,6 +122,10 @@ if not(args.skipMainFonts):
                 # For the monospace font, ensure that the space has the
                 # same width as the other characters. See MathJax's issue 380.
                 font[0x20].width = font["u1D670"].width
+                font.selection.select(0x20)
+                font.copy()
+                font.selection.select(0xA0)
+                font.paste()
 
             fontUtil.saveFont(FONTFAMILY, font)
             font.close()
@@ -391,7 +395,7 @@ if config.STIXVARIANT is not None:
     fonts = ",".join(fonts)
 
     for m in MODES:
-        print('        "-STIX-variant": {%s, fonts: [%s]},' %
+        print('        "-STIX-Web-variant": {%s, fonts: [%s]},' %
               (config.STIXVARIANT, fonts), file=fontData[m])
 
 # tex-caligraphic

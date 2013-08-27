@@ -153,7 +153,5 @@ copyFontFiles:
 		mkdir $(FONTDEST)/$$f; \
 		cp -r $$f/eot $(FONTDEST)/$$f/eot; \
 		cp -r $$f/otf $(FONTDEST)/$$f/otf; \
-		cp -r $$f/svg $(FONTDEST)/$$f/svg; \
-		cp -r $$f/ttf $(FONTDEST)/$$f/ttf; \
 		cp -r $$f/woff $(FONTDEST)/$$f/woff; \
 	done

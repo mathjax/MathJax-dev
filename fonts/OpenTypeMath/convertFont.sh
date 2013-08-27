@@ -43,16 +43,6 @@ then
         echo "Generating $file.eot...";
         $TTF2EOT < $FONTFAMILY/ttf/$file.ttf > $FONTFAMILY/eot/$file.eot;
     done
-elif [ $TYPE = "svg" ]
-then
-    mkdir -p $FONTFAMILY/svg
-    rm -f $FONTFAMILY/svg/*
-    for file in `cd $FONTFAMILY; ls ttf/*.ttf | $SED 's|ttf/\(.*\)\.ttf|\1|'`
-    do
-        echo "Generating $file.svg...";
-	      $JAVA -jar $TTF2SVG $FONTFAMILY/ttf/$file.ttf \
-            -id $file -o $FONTFAMILY/svg/$file.svg -l 0 -h 65535;
-    done
 elif [ $TYPE = "woff" ]
 then 
     mkdir -p $FONTFAMILY/woff

@@ -8,22 +8,8 @@
     SVG.FONTDATA.FONTS[SIZE6][u][1] += 200;  // adjust depth for brace extender
   });
   MathJax.Hub.Register.LoadHook(SVG.fontDir+"/Size1/Regular/Main.js",function () {
-    SVG.FONTDATA.FONTS[SIZE1][0x222B][2] -= 275;
-    SVG.FONTDATA.FONTS[SIZE1][0x222B][5] = {rfix:-275};
-    SVG.FONTDATA.FONTS[SIZE1][0x222C][2] -= 275;
-    SVG.FONTDATA.FONTS[SIZE1][0x222C][5] = {rfix:-275};
-    SVG.FONTDATA.FONTS[SIZE1][0x222D][2] -= 275;
-    SVG.FONTDATA.FONTS[SIZE1][0x222D][5] = {rfix:-275};
-    SVG.FONTDATA.FONTS[SIZE1][0x222E][2] -= 275;
-    SVG.FONTDATA.FONTS[SIZE1][0x222E][5] = {rfix:-275};
-    SVG.FONTDATA.FONTS[SIZE1][0x222F][2] -= 275;
-    SVG.FONTDATA.FONTS[SIZE1][0x222F][5] = {rfix:-275};
-    SVG.FONTDATA.FONTS[SIZE1][0x2230][2] -= 275;
-    SVG.FONTDATA.FONTS[SIZE1][0x2230][5] = {rfix:-275};
-    SVG.FONTDATA.FONTS[SIZE1][0x2231][2] -= 275;
-    SVG.FONTDATA.FONTS[SIZE1][0x2231][5] = {rfix:-275};
-    SVG.FONTDATA.FONTS[SIZE1][0x2232][2] -= 275;
-    SVG.FONTDATA.FONTS[SIZE1][0x2232][5] = {rfix:-275};
-    SVG.FONTDATA.FONTS[SIZE1][0x2233][2] -= 275;
-    SVG.FONTDATA.FONTS[SIZE1][0x2233][5] = {rfix:-275};
+    var i;
+    SVG.FONTDATA.FONTS[SIZE1][0x222B][2] -= 300;
+    for (i = 0x222C; i <= 0x2233; i++) {SVG.FONTDATA.FONTS[SIZE1][i][2] -= 420}
+    for (i = 0x2A0C; i <= 0x2A1C; i++) {SVG.FONTDATA.FONTS[SIZE1][i][2] -= 420}
   });
