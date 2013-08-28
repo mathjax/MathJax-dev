@@ -497,7 +497,7 @@ operators. Please add a construction for it in DELIMITERS." %
 
                 if scale != 1.0:
                     data += ",%.3f" % scale
-                if style is not None and codePoint != key:
+                if codePoint != key:
                     if scale == 1.0:
                         data += ",null,0x%X" % codePoint
                     else:
@@ -578,13 +578,15 @@ operators. Please add a construction for it in DELIMITERS." %
 
     def copySizeVariant(self, aIsHorizontal, aSize,
                         aCodePoint, aGlyphName, aStyle=None):
+        codePoint = aCodePoint
+
         if aStyle is not None:
             style = aStyle
         elif aSize == 0:
             if self.isPrivateCharacter(aGlyphName):
                 codePoint = self.moveToPlane0PUA(aGlyphName)
                 style = None
-                size = self.mMaxSize - 1
+                size = self.mMaxSize
             else:
                 # This a normal Unicode character
                 # We assume that the normal characters from the Math font
@@ -612,7 +614,7 @@ operators. Please add a construction for it in DELIMITERS." %
             raise BaseException("Invalid size.")
 
         if style is None:
-            return (size, aCodePoint, s/self.mMathFont.em, 1.0)
+            return (size, codePoint, s/self.mMathFont.em, 1.0)
         else:
             codePoint = self.mMainFonts[style][aGlyphName].unicode
             if codePoint == -1:
