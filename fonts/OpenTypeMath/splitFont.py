@@ -132,6 +132,7 @@ if not(args.skipMainFonts):
 
         # Save the rest of the glyphs in a NonUnicode font
         oldfont.fontname = "%s_NonUnicode-%s" % (config.PREFIX, weight)
+        fontUtil.copyPUAGlyphs(oldfont, weight)
         fontUtil.saveFont(FONTFAMILY, oldfont)
         oldfont.close()
 
@@ -140,7 +141,9 @@ splitter=fontUtil.mathFontSplitter(FONTFAMILY,
                                    FONTDIR,
                                    config.PREFIX,
                                    config.MATHFONT,
-                                   config.MAINFONTS)
+                                   config.MAINFONTS,
+                                   config.DELIMITERS,
+                                   config.DELIMITERS_EXTRA)
 splitter.split()
 
 # Remove temporary files
@@ -507,7 +510,6 @@ for m in MODES:
     print("      },\n", file=fontData[m])
 
 # Print DELIMITERS
-splitter.addStretchyOperators(config.DELIMITERS)
 splitter.verifyTeXSizeVariants(config.FONTDATA["TeX_factor"],
                                (0x28, 0x29, 0x2F, 0x5B, 0x5C, 0x5D, 0x7B, 0x7D,
                                 0x2308, 0x2309, 0x230A, 0x230B, 0x23D0, 0x27E8,
@@ -515,7 +517,7 @@ splitter.verifyTeXSizeVariants(config.FONTDATA["TeX_factor"],
 # Print the delimiters list
 for m in MODES:
     print("      DELIMITERS: {", file=fontData[m])
-    splitter.printDelimiters(fontData[m], MODES[m], 6, config.DELIMITERS_EXTRA)
+    splitter.printDelimiters(fontData[m], MODES[m], 6)
     print("      }", file=fontData[m])
     print(file=fontData[m])
 
@@ -571,8 +573,7 @@ for m in MODES:
     print(fontDeclaration, file=fontData[m])
 
     print('  var delim = {', file=fontData[m])
-    splitter.printDelimiters(fontData[m], MODES[m], 4, config.DELIMITERS_EXTRA,
-                             True)
+    splitter.printDelimiters(fontData[m], MODES[m], 4, True)
     print('\
   };\n\
   \n\

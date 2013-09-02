@@ -69,13 +69,20 @@ TEXOLDSTYLEFONTS = ["NONUNICODE"]
 
 SMALLOPFONTS = None
 
-# Delimiters that are not in the Open Type Math Table
+# Delimiters that are not in the Open Type Math Table or that are redefined.
 DELIMITERS = {
     0x003D: # equal sign
     {
         "dir": "H",
         "HW": [0x003D],
         "stretch": [(0x003D,"rep")]
+    },
+    0x203E:
+    {
+        "dir": "H",
+        "HW": [0x203E, "uni203E.s1", "uni203E.s2", "uni203E.s3", "uni203E.s4", "uni203E.s5"],
+        "stretch": [(0x203E,"left"),(0x203E,"rep")],
+        "redefine": True
     },
     0x219E: # left two-headed arrow
     {
@@ -256,13 +263,21 @@ DELIMITERS = {
         "HW": [0x2225],
         "stretch": [(0x2225,"ext")]
     },
+    0x222B:
+    {
+        "dir": "H",
+        "HW": [0x222B, "uni222B.dsp"],
+        "stretch": [("uni2320.s1", "top"), ("uni23AE.s1", "rep"),
+                    ("uni2321.s1", "bot")],
+        "redefine": True
+    },
     0x23AA: # \bracevert
     {
         "dir": "V",
         "HW": ["uni23AA.s1"],
         "stretch": [("uni23AA.s1","top"), ("uni23AA.s1","ext"),
                     ("uni23AA.s1","bot")]
-        },
+    },
     0x23AF: # horizontal line
     {
         "dir": "H",
@@ -288,6 +303,20 @@ DELIMITERS = {
         "dir": "V",
         "HW": [0x23D0,0x7C,0x2223],
         "stretch": [(0x2223,"ext")]
+    },
+    0x27E6:
+    {
+        "dir": "V",
+        "HW": [0x27E6, "uni27E6.s1", "uni27E6.s2", "uni27E6.s3", "uni27E6.s4"],
+        "stretch": [(0x2553,"top"),(0x2551,"ext"),(0x2559,"bot")],
+        "redefine": True
+    },
+    0x27E7:
+    {
+        "dir": "V",
+        "HW": [0x27E7, "uni27E7.s1", "uni27E7.s2", "uni27E7.s3", "uni27E7.s4"],
+        "stretch": [(0x2556,"top"),(0x2551,"ext"),(0x255C,"bot")],
+        "redefine": True
     },
     0x2906: # leftwards double arrow from bar
     {

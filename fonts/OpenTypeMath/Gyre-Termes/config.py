@@ -59,6 +59,75 @@ DELIMITERS = {
         "dir": "V",
         "HW": [0x7C],
         "stretch": [(0x7C,"ext")]
+    },
+    0x222B:
+    {
+        "dir": "V",
+        "HW": [0x222B,"integral.v4"],
+        "stretch": [("integral.tp","top"),("uni23AE","ext"),("integral.bt","bot")],
+        "redefine": True
+    },
+    0x222C:
+    {
+        "dir": "V",
+        "HW": [0x222C,"uni222C.v4"],
+        "stretch": [("uni222C.tp","top"),("uni222C.ex","ext"),("uni222C.bt","bot")],
+        "redefine": True
+    },
+    0x222D:
+    {
+        "dir": "V",
+        "HW": [0x222D,"uni222D.v4"],
+        "stretch": [("uni222D.tp","top"),("uni222D.ex","ext"),("uni222D.bt","bot")],
+        "redefine": True
+    },
+    0x2A0C:
+    {
+        "dir": "V",
+        "HW": [0x2A0C,"uni2A0C.v4"],
+        "redefine": True
+    },
+    0x222E:
+    {
+        "dir": "V",
+        "HW": [0x222F,"contourintegral.v4"],
+        "redefine": True
+    },
+    0x222F:
+    {
+        "dir": "V",
+        "HW": [0x222F,"uni222F.v4"],
+        "redefine": True
+    },
+    0x2230:
+    {
+        "dir": "V",
+        "HW": [0x2230,"uni2230.v4"],
+        "redefine": True
+    },
+    0x2231:
+    {
+        "dir": "V",
+        "HW": [0x2231,"uni2231.v4"],
+        "redefine": True
+    },
+    0x2A11:
+    {
+        "dir": "V",
+        "HW": [0x2A11,"uni2A11.v4"],
+        "redefine": True
+    },
+    0x2232:
+    {
+        "dir": "V",
+        "HW": [0x2232,"uni2232.v4"],
+        "redefine": True
+    },
+    0x2233:
+    {
+        "dir": "V",
+        "HW": [0x2233,"uni2233.v4"],
+        "redefine": True
     }
  }
 

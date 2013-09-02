@@ -24,6 +24,14 @@ from fontSplitting import FONTSPLITTING
 from copy import deepcopy
 from math import ceil
 
+def copyPUAGlyphs(aFont, aWeight):
+    PUAfont = fontforge.open("X-%s.otf" % aWeight)
+    PUAfont.selection.select(("ranges", None), 0xEFFD, 0xEFFF)
+    PUAfont.copy()
+    aFont.selection.select(("ranges", None), 0xEFFD, 0xEFFF)
+    aFont.paste()
+    PUAfont.close()
+
 def newFont(aFamily, aFontFrom, aPrefix, aName, aWeight):
     print("New font %s-%s..." % (aName, aWeight))
 
@@ -45,11 +53,7 @@ def newFont(aFamily, aFontFrom, aPrefix, aName, aWeight):
     font.clear()
 
     # Copy the three PUA glyphs used to detect Web Fonts availability
-    PUAfont = fontforge.open("X-%s.otf" % aWeight)
-    PUAfont.selection.select(("ranges", None), 0xEFFD, 0xEFFF)
-    PUAfont.copy()
-    font.selection.select(("ranges", None), 0xEFFD, 0xEFFF)    
-    font.paste()
+    copyPUAGlyphs(font, aWeight)
 
     return font
 
@@ -138,10 +142,12 @@ class stretchyOp:
         self.mAlias = None
 
 class mathFontSplitter:
-    def __init__(self, aFontFamily, aFontDir, aPrefix, aMathFont, aMainFonts):
+    def __init__(self, aFontFamily, aFontDir, aPrefix, aMathFont, aMainFonts, aDelimiters, aDelimitersExtra):
         self.mFontFamily = aFontFamily
 
         self.mPrefix = aPrefix
+        self.mDelimiters = aDelimiters
+        self.mDelimitersExtra = aDelimitersExtra
 
         # Open the fonts
         self.mMathFont = fontforge.open("%s/%s" % (aFontDir, aMathFont))
@@ -189,6 +195,7 @@ class mathFontSplitter:
     def split(self):
         # Browse the list of all glyphs to find those with stretchy data
         for glyph in self.mMathFont.glyphs():
+
             if (glyph.unicode == -1):
                 continue
 
@@ -200,7 +207,16 @@ class mathFontSplitter:
             if (not hasVariants and not hasComponents):
                 # skip non-stretchy glyphs
                 continue
-    
+
+            if (glyph.unicode in self.mDelimiters):
+                item = self.mDelimiters[glyph.unicode]
+                if ("redefine" not in item or not(item["redefine"])):
+                        raise BaseException("0x%X is already in the list of \
+stretchy operators from the Open Type MATH table but is redefined in DELIMITERS. Please use \"redefine\": true to force that or remove this operator from DELIMITERS." % glyph.unicode)
+                else:
+                    # skip this operator since it is redefined in config.py
+                    continue
+
             if ((glyph.horizontalVariants is not None and
                  glyph.verticalVariants is not None) or
                 (glyph.horizontalComponents is not None and
@@ -250,6 +266,9 @@ class mathFontSplitter:
 
             self.mStretchyOperators[glyph.unicode] = operator
 
+        # Add custom operators
+        self.addStretchyOperators(self.mDelimiters)
+
         # Finally, save the new fonts
         for font in self.mMathSize:
             saveFont(self.mFontFamily, font)
@@ -258,9 +277,7 @@ class mathFontSplitter:
         # Add some stretchy operators that are not in the Open Type Math table
 
         for codePoint in aStretchyOperators:
-            if codePoint in self.mStretchyOperators:
-                raise BaseException("0x%X is already in the list of stretchy \
-operators and should not be specified in DELIMITERS" % codePoint)
+
             item = aStretchyOperators[codePoint]
             isHorizontal = (item["dir"] == "H")
             operator = stretchyOp(isHorizontal)
@@ -422,8 +439,7 @@ operators. Please add a construction for it in DELIMITERS." %
 
         self.mNormalSize = size0
 
-    def printDelimiters(self, aStream, aMode, aIndent, aDelimitersExtra,
-                        aExtra = False):
+    def printDelimiters(self, aStream, aMode, aIndent, aExtra = False):
         # Print the delimiters
         if type(self.mNormalSize) != dict:
             self.computeNormalSizeSplitting()
@@ -444,7 +460,7 @@ operators. Please add a construction for it in DELIMITERS." %
                 d = "V"
 
             if aExtra:
-                if key not in aDelimitersExtra:
+                if key not in self.mDelimitersExtra:
                     continue
 
             if isFirst:
@@ -452,7 +468,7 @@ operators. Please add a construction for it in DELIMITERS." %
             else:
                 print(",", file=aStream)
 
-            if not(aExtra) and key in aDelimitersExtra:
+            if not(aExtra) and key in self.mDelimitersExtra:
                 print("%s  0x%X: EXTRA%s" % (indent, key, d),
                       file=aStream, end="")
                 continue
@@ -584,8 +600,9 @@ operators. Please add a construction for it in DELIMITERS." %
             style = aStyle
         elif aSize == 0:
             if self.isPrivateCharacter(aGlyphName):
-                codePoint = self.moveToPlane0PUA(aGlyphName)
+                print("Warning: non-Unicode glyphs %s used for the normal size! Will be copied to the PUA of Size %d..." % (aGlyphName, self.mMaxSize))
                 style = None
+                codePoint = self.moveToPlane0PUA(aGlyphName)
                 size = self.mMaxSize
             else:
                 # This a normal Unicode character
