@@ -16,7 +16,8 @@
 # limitations under the License.
 #
 
-PREFIX="GyrePagella"
+FONTFAMILY_PREFIX="Gyre Pagella MathJax"
+FONTNAME_PREFIX="GyrePagellaMathJax"
 
 MATHFONT="texgyrepagella-math.otf"
 MAINFONTS = None

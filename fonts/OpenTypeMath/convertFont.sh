@@ -2,7 +2,7 @@
 # -*- Mode: Shell-script; tab-width: 2; indent-tabs-mode:nil; -*-
 # vim: set ts=2 et sw=2 tw=80:
 #
-# Copyright (c) 2013 MathJax Project
+# Copyright (c) 2013 The MathJax Consortium
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -53,18 +53,4 @@ then
         $SFNT2WOFF $FONTFAMILY/otf/$file.otf
         mv $FONTFAMILY/otf/$file.woff $FONTFAMILY/woff
     done
-elif [ $TYPE = "afm" ]
-then
-	mkdir -p $FONTFAMILY/afm
-	rm -f $FONTFAMILY/afm/*
-	for file in `cd $FONTFAMILY; ls otf/*.otf | $SED 's|otf/\(.*\)\.otf|\1|'`
-  do
-    input=$FONTFAMILY/otf/$file.otf
-    output=$FONTFAMILY/afm/$file.afm
-		echo "Generating $output...";
-		$FONTFORGE -lang=ff -c 'Open("'$input'");Generate("'$output'")';
-		done
-else
-    echo "Unsupported file format $TYPE"
-    exit 1
 fi

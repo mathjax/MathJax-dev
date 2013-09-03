@@ -1,7 +1,7 @@
 # -*- Mode: Python; tab-width: 2; indent-tabs-mode:nil; -*-
 # vim: set ts=2 et sw=2 tw=80:
 #
-# Copyright (c) 2013 MathJax Project
+# Copyright (c) 2013 The MathJax Consortium
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -42,7 +42,7 @@ HEADER='\
  *  MathJax/jax/output/%s\n\
  *  \n\
 %s\
- *  Copyright (c) %s MathJax Project\n\
+ *  Copyright (c) %s The MathJax Consortium\n\
  *\n\
  *  Licensed under the Apache License, Version 2.0 (the "License");\n\
  *  you may not use this file except in compliance with the License.\n\
@@ -109,8 +109,7 @@ if not(args.skipMainFonts):
 
         for subset in FONTSPLITTING:
             name = subset[0]
-            font=fontUtil.newFont(FONTFAMILY, fontFile, config.PREFIX, name,
-                                  weight)
+            font=fontUtil.newFont(FONTFAMILY, fontFile, config, name, weight)
             for i in range(1,len(subset)):
                 r = subset[i]
                 if type(r) == int:
@@ -131,19 +130,15 @@ if not(args.skipMainFonts):
             font.close()
 
         # Save the rest of the glyphs in a NonUnicode font
-        oldfont.fontname = "%s_NonUnicode-%s" % (config.PREFIX, weight)
-        fontUtil.copyPUAGlyphs(oldfont, weight)
-        fontUtil.saveFont(FONTFAMILY, oldfont)
+        font=fontUtil.newFont(FONTFAMILY, fontFile, config, "NonUnicode", weight)
+        for g in oldfont.glyphs():
+            fontUtil.moveGlyph(oldfont, font, g.glyphname)
+        fontUtil.saveFont(FONTFAMILY, font)
+        font.close()
         oldfont.close()
 
 # Split the Math font
-splitter=fontUtil.mathFontSplitter(FONTFAMILY,
-                                   FONTDIR,
-                                   config.PREFIX,
-                                   config.MATHFONT,
-                                   config.MAINFONTS,
-                                   config.DELIMITERS,
-                                   config.DELIMITERS_EXTRA)
+splitter=fontUtil.mathFontSplitter(FONTFAMILY, FONTDIR, config)
 splitter.split()
 
 # Remove temporary files
@@ -216,7 +211,7 @@ for i in range(0,len(fontList)):
 for variant in ["DOUBLESTRUCK", "SANSSERIF", "MONOSPACE"]:
     if variant not in fontVarList:
         fontDeclaration += ",\n"
-        fontDeclaration += '      %s = "%s_Normal"' % (variant, config.PREFIX)
+        fontDeclaration += '      %s = "%s_Normal"' % (variant, config.FONTNAME_PREFIX)
 
 fontDeclaration += ";\n"
 
@@ -622,10 +617,10 @@ for i in range(0,len(fontList)):
     # Header
     for m in MODES:
         print("MathJax.OutputJax['%s'].FONTDATA.FONTS['%s_%s'] = {" %
-              (MODES[m], config.PREFIX, fontName2), file=fontData[m])
+              (MODES[m], config.FONTNAME_PREFIX, fontName2), file=fontData[m])
         print("  directory: '%s/%s'," % (fontName, fontStyle),
               file=fontData[m])
-        print("  family: '%s_%s'," % (config.PREFIX, fontName),
+        print("  family: '%s_%s'," % (config.FONTNAME_PREFIX, fontName),
               file=fontData[m])
 
         if fontStyle == "Bold" or fontStyle == "BoldItalic":
@@ -705,7 +700,7 @@ for i in range(0,len(fontList)):
 MathJax.Callback.Queue(\n\
   ["initFont",MathJax.OutputJax["%s"],"%s_%s"],\n\
   ["loadComplete",MathJax.Ajax,MathJax.OutputJax["%s"].fontDir+"/%s/%s/%s.js"]\n\
-);' % (MODES[0], config.PREFIX, fontName2,
+);' % (MODES[0], config.FONTNAME_PREFIX, fontName2,
        MODES[0], fontName, fontStyle, jsFile), file=fontData[0])
 
     print('\

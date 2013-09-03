@@ -16,7 +16,8 @@
 # limitations under the License.
 #
 
-PREFIX = "NeoEuler"
+FONTFAMILY_PREFIX = "Neo Euler MathJax"
+FONTNAME_PREFIX = "NeoEulerMathJax"
 
 MATHFONT = "euler.otf"
 MAINFONTS = None

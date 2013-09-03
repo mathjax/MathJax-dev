@@ -16,7 +16,8 @@
 # limitations under the License.
 #
 
-PREFIX = "AsanaMath"
+FONTFAMILY_PREFIX = "Asana MathJax"
+FONTNAME_PREFIX = "AsanaMathJax"
 
 MATHFONT = "Asana-Math.otf"
 MAINFONTS = None

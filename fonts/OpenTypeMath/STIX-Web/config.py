@@ -16,7 +16,8 @@
 # limitations under the License.
 #
 
-PREFIX = "STIX"
+FONTFAMILY_PREFIX = "STIX MathJax"
+FONTNAME_PREFIX = "STIXMathJax"
 
 MATHFONT = "STIXMath-Regular.otf"
 

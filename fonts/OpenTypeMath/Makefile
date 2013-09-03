@@ -2,7 +2,7 @@
 #
 # Version: Apache License 2.0
 #
-# Copyright (c) 2013 MathJax Project
+# Copyright (c) 2013 The MathJax Consortium
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -78,30 +78,6 @@ STIX-Web/eot: STIX-Web/HTML-CSS/fontdata.js
 
 eot: Asana-Math/eot Gyre-Pagella/eot Gyre-Termes/eot Latin-Modern/eot Neo-Euler/eot STIX-Web/eot
 
-###### Converting to SVG ######
-
-# This is now done in fontUtil::saveFont using FontForge
-
-# Asana-Math/svg: Asana-Math/HTML-CSS/fontdata.js
-# 	./convertFont.sh Asana-Math svg
-
-# Gyre-Pagella/svg: Gyre-Pagella/HTML-CSS/fontdata.js
-# 	./convertFont.sh Gyre-Pagella svg
-
-# Gyre-Termes/svg: Gyre-Termes/HTML-CSS/fontdata.js
-# 	./convertFont.sh Gyre-Termes svg
-
-# Latin-Modern/svg: Latin-Modern/HTML-CSS/fontdata.js
-# 	./convertFont.sh Latin-Modern svg
-
-# Neo-Euler/svg: Neo-Euler/HTML-CSS/fontdata.js
-# 	./convertFont.sh Neo-Euler svg
-
-# STIX-Web/svg: STIX-Web/HTML-CSS/fontdata.js
-# 	./convertFont.sh STIX-Web svg
-
-# svg: Asana-Math/svg Gyre-Pagella/svg Gyre-Termes/svg Latin-Modern/svg Neo-Euler/svg STIX-Web/svg
-
 ###### Converting to WOFF ######
 
 Asana-Math/woff: Asana-Math/HTML-CSS/fontdata.js
@@ -126,12 +102,12 @@ woff: Asana-Math/woff Gyre-Pagella/woff Gyre-Termes/woff Latin-Modern/woff Neo-E
 
 ###### Making the fonts ######
 
-Asana-Math: Asana-Math/eot Asana-Math/svg Asana-Math/woff
-Gyre-Pagella: Gyre-Pagella/eot Gyre-Pagella/svg Gyre-Pagella/woff
-Gyre-Termes: Gyre-Termes/eot Gyre-Termes/svg Gyre-Termes/woff
-Latin-Modern: Latin-Modern/eot Latin-Modern/svg Latin-Modern/woff
-Neo-Euler: Neo-Euler/eot Neo-Euler/svg Neo-Euler/woff
-STIX-Web: STIX-Web/eot STIX-Web/svg STIX-Web/woff
+Asana-Math: Asana-Math/eot Asana-Math/woff
+Gyre-Pagella: Gyre-Pagella/eot Gyre-Pagella/woff
+Gyre-Termes: Gyre-Termes/eot Gyre-Termes/woff
+Latin-Modern: Latin-Modern/eot Latin-Modern/woff
+Neo-Euler: Neo-Euler/eot Neo-Euler/woff
+STIX-Web: STIX-Web/eot STIX-Web/woff
 
 # Some commands to copy the fonts and font data
 

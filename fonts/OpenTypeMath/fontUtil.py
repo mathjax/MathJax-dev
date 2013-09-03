@@ -1,7 +1,7 @@
 # -*- Mode: Python; tab-width: 2; indent-tabs-mode:nil; -*-
 # vim: set ts=2 et sw=2 tw=80:
 #
-# Copyright (c) 2013 MathJax Project
+# Copyright (c) 2013 The MathJax Consortium
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ from __future__ import print_function
 
 from shutil import copyfile
 import fontforge
-from fontSplitting import FONTSPLITTING
+from fontSplitting import FONTSPLITTING, COPYRIGHT
 from copy import deepcopy
 from math import ceil
 
@@ -32,7 +32,7 @@ def copyPUAGlyphs(aFont, aWeight):
     aFont.paste()
     PUAfont.close()
 
-def newFont(aFamily, aFontFrom, aPrefix, aName, aWeight):
+def newFont(aFamily, aFontFrom, aConfig, aName, aWeight):
     print("New font %s-%s..." % (aName, aWeight))
 
     # Create a copy of the original font, to preserve all the metadata.
@@ -42,14 +42,19 @@ def newFont(aFamily, aFontFrom, aPrefix, aName, aWeight):
     # Now open the new font and rename it.
     font = fontforge.open(fileName)
 
-    font.fontname = "%s_%s-%s" % (aPrefix, aName, aWeight)
+    font.familyname = "%s %s" % (aConfig.FONTFAMILY_PREFIX, aName)
+    font.fontname = "%s_%s-%s" % (aConfig.FONTNAME_PREFIX, aName, aWeight)
 
     font.fullname = font.fontname
     font.encoding = "UnicodeFull"
 
-    # Clear all but the space glyph.
+    # Update the copyright notice.
+    font.copyright = "%s\n%s" % (font.copyright, COPYRIGHT);
+
+    # Clear all but the space glyphs.
     font.selection.all()
     font.selection.select(("less", None), 0x20)
+    font.selection.select(("less", None), 0xA0)
     font.clear()
 
     # Copy the three PUA glyphs used to detect Web Fonts availability
@@ -58,9 +63,11 @@ def newFont(aFamily, aFontFrom, aPrefix, aName, aWeight):
     return font
 
 def saveFont(aFamily, aFont):
-    # Check that the font has at least four glyphs
-    # (Our PUA glyphs + the notdef glyph + the space glyph)
-    i = 5
+    # Check that the font has more than 6 glyphs before saving it.
+    # - the 2 space glyphs (0x20, 0xA0)
+    # - the 3 PUA glyphs (0xEFFD, 0xEFFE, 0xEFFF)
+    # - the ".notdef" glyph added by sourceforge
+    i = 6
     for g in aFont.glyphs():
         i -= 1
         if i == 0:
@@ -142,19 +149,18 @@ class stretchyOp:
         self.mAlias = None
 
 class mathFontSplitter:
-    def __init__(self, aFontFamily, aFontDir, aPrefix, aMathFont, aMainFonts, aDelimiters, aDelimitersExtra):
+    def __init__(self, aFontFamily, aFontDir, aConfig):
         self.mFontFamily = aFontFamily
 
-        self.mPrefix = aPrefix
-        self.mDelimiters = aDelimiters
-        self.mDelimitersExtra = aDelimitersExtra
+        self.mDelimiters = aConfig.DELIMITERS
+        self.mDelimitersExtra = aConfig.DELIMITERS_EXTRA
 
         # Open the fonts
-        self.mMathFont = fontforge.open("%s/%s" % (aFontDir, aMathFont))
+        self.mMathFont = fontforge.open("%s/%s" % (aFontDir, aConfig.MATHFONT))
         self.mMainFonts = {}
-        for key in aMainFonts:
+        for key in aConfig.MAINFONTS:
             self.mMainFonts[key] = \
-                fontforge.open("%s/%s" % (aFontDir, aMainFonts[key]))
+                fontforge.open("%s/%s" % (aFontDir, aConfig.MAINFONTS[key]))
 
         # Pointer to the PUA to store the horizontal/vertical components
         self.mPUAPointer=0xE000
@@ -188,8 +194,9 @@ class mathFontSplitter:
         self.mMathSize=[]
         for i in range(0, self.mMaxSize):
             self.mMathSize.append(newFont(self.mFontFamily,
-                                          "%s/%s" % (aFontDir, aMathFont),
-                                          self.mPrefix,
+                                          "%s/%s" % (aFontDir,
+                                                     aConfig.MATHFONT),
+                                          aConfig,
                                           "Size%d" % (i+1), "Regular"))
         
     def split(self):

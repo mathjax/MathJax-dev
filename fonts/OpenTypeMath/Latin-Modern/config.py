@@ -16,7 +16,8 @@
 # limitations under the License.
 #
 
-PREFIX = "LatinModern"
+FONTFAMILY_PREFIX = "Latin Modern MathJax"
+FONTNAME_PREFIX = "LatinModernMathJax"
 
 MATHFONT = "latinmodern-math.otf"
 MAINFONTS = None

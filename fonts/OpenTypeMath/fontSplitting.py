@@ -1,7 +1,7 @@
 # -*- Mode: Python; tab-width: 2; indent-tabs-mode:nil; -*-
 # vim: set ts=2 et sw=2 tw=80:
 #
-# Copyright (c) 2013 MathJax Project
+# Copyright (c) 2013 The MathJax Consortium
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,6 +21,8 @@
 # The script searching in this table assumes it to be sorted. If it does not
 # found a character, it will assume it is "NONUNICODE".
 #
+
+COPYRIGHT = "Copyright (c) 2013 The MathJax Consortium"
 
 FONTSPLITTING = [
     ["Main",

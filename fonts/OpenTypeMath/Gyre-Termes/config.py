@@ -16,7 +16,8 @@
 # limitations under the License.
 #
 
-PREFIX = "GyreTermes" 
+FONTFAMILY_PREFIX = "Gyre Termes MathJax"
+FONTNAME_PREFIX = "GyreTermesMathJax"
 
 MATHFONT="texgyretermes-math.otf"
 MAINFONTS = None
