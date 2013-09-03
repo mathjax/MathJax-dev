@@ -130,4 +130,5 @@ copyFontFiles:
 		cp -r $$f/eot $(FONTDEST)/$$f/eot; \
 		cp -r $$f/otf $(FONTDEST)/$$f/otf; \
 		cp -r $$f/woff $(FONTDEST)/$$f/woff; \
+		cp -r $$f/*.txt $(FONTDEST)/$$f/; \
 	done
