@@ -30,12 +30,16 @@ FONTSPLITTING = [
      
      # MathJax_Main, Latin-1 Supplement
      0x00A0,           
+     0x00A3, # pound sign
      0x00A5, # MathJax_AMS
+     0x00A7, # section symbol
      0x00A8,
      0x00AC,
      0x00AE, # MathJax_AMS
      (0x00AF,0x00B1),
      0x00B4,
+     0x00B5, # mu
+     0x00B7, # middle dot
      0x00D7,
      0x00F0, # MathJax_AMS
      0x00F7,
@@ -59,7 +63,10 @@ FONTSPLITTING = [
      (0x030A,0x030C),
      0x0338,
 
-     (0x0370, 0x03FF), # Greek and Coptic
+     (0x0370, 0x0383), # Greek and Coptic
+     (0x0391, 0x03A9), # Greek and Coptic
+     (0x03B1, 0x03C9), # Greek and Coptic
+     (0x03CF, 0x03FF), # Greek and Coptic
 
      # MathJax_Main, General Punctuation
      (0x2002,0x2006),
@@ -70,7 +77,11 @@ FONTSPLITTING = [
      (0x2020,0x2021),
      0x2026,
      0x2032,
+     0x2033, # double prime
+     0x2034, # triple prime
      0x2035, # MathJax_AMS
+     0x203E, # overline
+     0x2057, # quadruple prime
 
      # MathJax_Main, Combining Diacritical Marks for Symbols
      0x20D7,
@@ -175,6 +186,10 @@ FONTSPLITTING = [
      (0x2308,0x230B),
      (0x2322,0x2323),
      (0x23B0,0x23B1),
+     0x23B4,
+     0x23B5,
+     0x23D0,
+     (0x23DC, 0x23E1),
 
      # MathJax_AMS, Enclosed Alphanumerics
      0x24C8,
@@ -191,10 +206,12 @@ FONTSPLITTING = [
      0x25B2, # MathJax_AMS
      0x25B3,
      0x25B6, # MathJax_AMS
+     0x25B8,
      0x25B9,
      0x25BC, # MathJax_AMS
      0x25BD,
      0x25C0, # MathJax_AMS
+     0x25C2,
      0x25C3,
      0x25CA, # MathJax_AMS
      0x25EF,
@@ -215,8 +232,12 @@ FONTSPLITTING = [
      (0x27F5,0x27FA),
      0x27FC,
 
-     # MathJax_AMS, Miscellaneous Mathematical Symbols-B
+     # Miscellaneous Mathematical Symbols-B
+     0x2997,
+     0x2998,
      0x29EB,
+     0x29F7,
+     0x29F8,
 
      # MathJax_Main, Supplemental Mathematical
      0x2A3F,
@@ -267,13 +288,15 @@ FONTSPLITTING = [
      (0x1D56C, 0x1D59F) # Bold Fraktur
     ],
     ["DoubleStruck",
-     0x2102, # Script C
-     0x210D, # Script H
-     0x2115, # Script N
-     0x2119, # Script P
-     0x211A, # Script Q
-     0x211D, # Script R
-     0x2124, # Script Z
+     0x2102, # DoubleStruck C
+     0x210D, # DoubleStruck H
+     0x2115, # DoubleStruck N
+     0x2119, # DoubleStruck P
+     0x211A, # DoubleStruck Q
+     0x211D, # DoubleStruck R
+     0x2124, # DoubleStruck Z
+     (0x213C, 0x2140), # DoubleStruck pi, gamma, Gamma, Sigma
+     (0x2145, 0x2149), # DoubleStruck Italic D, d, e, i, j
      (0x1D538, 0x1D56B), # DoubleStruck
      (0x1D7D8, 0x1D7E1) # DoubleStruck digits
      ],
@@ -298,8 +321,12 @@ FONTSPLITTING = [
      (0xA720, 0xA7FF), # Latin Extended-D
      (0xFB00, 0xFB4F) # Alphabetic Presentation Forms
      ],
-    ["Alphabets",
+    ["Alphabets"
+     (0x0384, 0x0390), # Greek and Coptic
+     (0x03AA, 0x03B0), # Greek and Coptic
+     (0x03CA, 0x03CE), # Greek and Coptic
      (0x0400, 0x04FF), # Cyrillic
+     0x0E3F, # thai currency symbol baht
      (0x13A0, 0x13FF), # Cherokee
      (0x2100, 0x214F), # Letterlike Symbols
      (0x3040, 0x309F), # Hiragana
