@@ -18,6 +18,7 @@
 
 from __future__ import print_function
 
+import sys
 from shutil import copyfile
 import fontforge
 from fontSplitting import FONTSPLITTING, COPYRIGHT
@@ -87,11 +88,18 @@ def saveFont(aFamily, aFont):
     aFont.generate("%s/ttf/%s.ttf" % (aFamily, aFont.fontname))
     aFont.generate("%s/svg/%s.svg" % (aFamily, aFont.fontname))
 
+def hasNonEmptyGlyph(aFont, aGlyphName):
+    # Check that the font has the glyph and that this glyph is not empty.
+    if not(aGlyphName in aFont and
+           aFont[aGlyphName].isWorthOutputting()):
+        return False
+
+    return True
+
 def moveGlyph(aFontFrom, aFontTo, aOldPosition, aNewPosition = None):
     # Ignore glyphs that have already been deleted before
     # (Otherwise, FontForge will copy them as "blank" glyphs)
-    if not(aOldPosition in aFontFrom and
-           aFontFrom[aOldPosition].isWorthOutputting()):
+    if not hasNonEmptyGlyph(aFontFrom, aOldPosition):
         return
 
     # Move the glyph from the font aFontFrom at position aOldPosition
@@ -108,6 +116,20 @@ def moveRange(aFontFrom, aFontTo, aRangeStart, aRangeEnd):
     # from the font aFontFrom to the font aFontTo.
     for codePoint in range(aRangeStart, aRangeEnd+1):
         moveGlyph(aFontFrom, aFontTo, codePoint)
+
+def moveSubset(aFontFrom, aFontTo, aSubset):
+    # move the glyphs in a subset described.
+    for r in aSubset:
+        if type(r) == int:
+            # Single code point: move one glyph.
+            moveGlyph(aFontFrom, aFontTo, r)
+        elif type(r) == tuple:
+            if type(r[0]) == int:
+                # (start, end): move the range of glyphs.
+                moveRange(aFontFrom, aFontTo, r[0], r[1])
+            elif type(r[0]) == str:
+                # (glyphname, newcodepoint): move a non-Unicode glyph
+                moveGlyph(aFontFrom, aFontTo, r[0], r[1])
 
 def getTestString(aFont, aMaxLength):
     s = ""
@@ -441,6 +463,9 @@ operators. Please add a construction for it in DELIMITERS." %
                     size0[codePoint] = name.upper()
                     break
 
+            # FIXME: also search in FONTSPLITTING_EXTRA?
+            # (In theory this should not be needed, since NonUnicode components
+            # are directly copied into SizeMax).
             if not(found):
                 size0[codePoint] = "NONUNICODE"
 
@@ -584,7 +609,7 @@ operators. Please add a construction for it in DELIMITERS." %
         if aGlyphName not in self.mPUAContent:
             # New piece: copy it into the PUA and save the code point.
             if self.mPUAPointer > 0xF8FF:
-                raise BaseException("Too many characters in the PUA. Not supported by the font splitter.")
+                raise BaseException("Too many characters in the Plane 0 PUA. Not supported by the font splitter.")
             codePoint = self.mPUAPointer
             self.mMathFont.selection.select(aGlyphName)
             self.mMathFont.copy()
@@ -607,7 +632,7 @@ operators. Please add a construction for it in DELIMITERS." %
             style = aStyle
         elif aSize == 0:
             if self.isPrivateCharacter(aGlyphName):
-                print("Warning: non-Unicode glyphs %s used for the normal size! Will be copied to the PUA of Size %d..." % (aGlyphName, self.mMaxSize))
+                print("Warning: non-Unicode glyphs %s used for the normal size! Will be copied to the PUA of Size %d..." % (aGlyphName, self.mMaxSize), file=sys.stderr)
                 style = None
                 codePoint = self.moveToPlane0PUA(aGlyphName)
                 size = self.mMaxSize

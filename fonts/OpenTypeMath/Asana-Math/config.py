@@ -22,6 +22,8 @@ FONTNAME_PREFIX = "AsanaMathJax"
 MATHFONT = "Asana-Math.otf"
 MAINFONTS = None
 
+FONTSPLITTING_EXTRA = {}
+
 FONTDATA = {
     "FileVersion": "2.3",
     "Year": "2013",
@@ -30,7 +32,7 @@ FONTDATA = {
     "lineH": .8,
     "lineD": .2,
     "hasStyleChar": True
-    }
+}
 
 RULECHAR = 0x2212
 

@@ -110,12 +110,11 @@ if not(args.skipMainFonts):
         for subset in FONTSPLITTING:
             name = subset[0]
             font=fontUtil.newFont(FONTFAMILY, fontFile, config, name, weight)
-            for i in range(1,len(subset)):
-                r = subset[i]
-                if type(r) == int:
-                    fontUtil.moveGlyph(oldfont, font, r)
-                else:
-                    fontUtil.moveRange(oldfont, font, r[0], r[1])
+            fontUtil.moveSubset(oldfont, font, subset)
+
+            if name in config.FONTSPLITTING_EXTRA:
+                fontUtil.moveSubset(oldfont, font,
+                                    config.FONTSPLITTING_EXTRA[name])
 
             if name == "Monospace" and "u1D670" in font:
                 # For the monospace font, ensure that the space has the
@@ -131,8 +130,24 @@ if not(args.skipMainFonts):
 
         # Save the rest of the glyphs in a NonUnicode font
         font=fontUtil.newFont(FONTFAMILY, fontFile, config, "NonUnicode", weight)
+        PUAPointer = 0xE000
         for g in oldfont.glyphs():
-            fontUtil.moveGlyph(oldfont, font, g.glyphname)
+
+            if g.glyphname == ".notdef":
+                continue
+
+            if PUAPointer > 0xF8FF:
+                raise BaseException("Too many characters in the Plane 0 PUA. Not supported by the font splitter.")
+
+            if fontUtil.hasNonEmptyGlyph(oldfont, PUAPointer):
+                print("Warning: 0x%X is already present in the Plane 0 PUA of the original font. %s will not be moved." % (PUAPointer, g.glyphname),
+                      file=sys.stderr)
+                fontUtil.moveGlyph(oldfont, font, g.glyphname)
+            else:
+                fontUtil.moveGlyph(oldfont, font, g.glyphname, PUAPointer)
+
+            PUAPointer += 1
+
         fontUtil.saveFont(FONTFAMILY, font)
         font.close()
         oldfont.close()

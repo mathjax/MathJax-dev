@@ -18,8 +18,8 @@
 
 # This table must be sorted.
 #
-# The script searching in this table assumes it to be sorted. If it does not
-# found a character, it will assume it is "NONUNICODE".
+# fontUtil::computeNormalSizeSplitting assumes the table to be sorted. If it
+# does not found a character, it will assume it is "NONUNICODE".
 #
 
 COPYRIGHT = "Copyright (c) 2013 The MathJax Consortium"
@@ -321,7 +321,7 @@ FONTSPLITTING = [
      (0xA720, 0xA7FF), # Latin Extended-D
      (0xFB00, 0xFB4F) # Alphabetic Presentation Forms
      ],
-    ["Alphabets"
+    ["Alphabets",
      (0x0384, 0x0390), # Greek and Coptic
      (0x03AA, 0x03B0), # Greek and Coptic
      (0x03CA, 0x03CE), # Greek and Coptic
@@ -372,5 +372,6 @@ FONTSPLITTING = [
      (0x2150, 0x218F), # Number Forms
      (0x2460, 0x24FF), # Enclosed Alphanumerics
      (0x2700, 0x27BF)  # Dingbats
-     ]
+     ],
+    ["Variants"] # Used for oldstyle numbers and glyph variants
     ]

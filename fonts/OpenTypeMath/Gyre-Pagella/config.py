@@ -22,6 +22,8 @@ FONTNAME_PREFIX="GyrePagellaMathJax"
 MATHFONT="texgyrepagella-math.otf"
 MAINFONTS = None
 
+FONTSPLITTING_EXTRA = {}
+
 FONTDATA = {
     "FileVersion": "2.3",
     "Year": "2013",
