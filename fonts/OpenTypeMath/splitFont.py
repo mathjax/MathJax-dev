@@ -129,6 +129,9 @@ if not(args.skipMainFonts):
                 font.selection.select(0xA0)
                 font.paste()
 
+            # FIXME fredw: for STIX fonts, add some postprocessing to move or
+            # remove duplicate glyphs among the different styles.
+
             fontUtil.saveFont(FONTFAMILY, font)
             font.close()
 
@@ -152,13 +155,7 @@ if not(args.skipMainFonts):
             if PUAPointer > 0xF8FF:
                 raise BaseException("Too many characters in the Plane 0 PUA. Not supported by the font splitter.")
 
-            if fontUtil.hasNonEmptyGlyph(oldfont, PUAPointer):
-                print("Warning: 0x%X is already present in the Plane 0 PUA of the original font. %s will not be moved." % (PUAPointer, g.glyphname),
-                      file=sys.stderr)
-                fontUtil.moveGlyph(oldfont, font, g.glyphname)
-            else:
-                fontUtil.moveGlyph(oldfont, font, g.glyphname, PUAPointer)
-
+            fontUtil.moveGlyph(oldfont, font, g.glyphname, PUAPointer)
             PUAPointer += 1
 
         fontUtil.saveFont(FONTFAMILY, font)
