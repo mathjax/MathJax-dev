@@ -22,7 +22,20 @@ FONTNAME_PREFIX = "NeoEulerMathJax"
 MATHFONT = "euler.otf"
 MAINFONTS = None
 
-FONTSPLITTING_EXTRA = {}
+FONTSPLITTING_EXTRA = {
+    "Variants": [
+        ("uni0030.onum", 0xE200), # old style numbers
+        ("uni0031.onum", 0xE201),
+        ("uni0032.onum", 0xE202),
+        ("uni0033.onum", 0xE203),
+        ("uni0034.onum", 0xE204),
+        ("uni0035.onum", 0xE205),
+        ("uni0036.onum", 0xE206),
+        ("uni0037.onum", 0xE207),
+        ("uni0038.onum", 0xE208),
+        ("uni0039.onum", 0xE209)
+    ]
+}
 
 FONTDATA = {
     "FileVersion": "2.3",
@@ -45,14 +58,14 @@ REMAPACCENT = {
 REMAPACCENTUNDER = {
     }
 
-STIXVARIANT = None
-STIXVARIANTFONTS = []
+VARIANT = None
+VARIANTFONTS = []
 
 TEXCALIGRAPHIC = None
 TEXCALIGRAPHICFONTS = []
 
-TEXOLDSTYLE = None
-TEXOLDSTYLEFONTS = []
+TEXOLDSTYLE = "offsetN: 0xE200"
+TEXOLDSTYLEFONTS = ["VARIANTS"]
 
 SMALLOPFONTS = None
 

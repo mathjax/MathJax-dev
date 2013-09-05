@@ -22,7 +22,20 @@ FONTNAME_PREFIX = "AsanaMathJax"
 MATHFONT = "Asana-Math.otf"
 MAINFONTS = None
 
-FONTSPLITTING_EXTRA = {}
+FONTSPLITTING_EXTRA = {
+    "Variants": [
+        ("zero.onum", 0xE200), # old style numbers
+        ("one.onum", 0xE201),
+        ("two.onum", 0xE202),
+        ("three.onum", 0xE203),
+        ("four.onum", 0xE204),
+        ("five.onum", 0xE205),
+        ("six.onum", 0xE206),
+        ("seven.onum", 0xE207),
+        ("eight.onum", 0xE208),
+        ("nine.onum", 0xE209)
+    ]
+}
 
 FONTDATA = {
     "FileVersion": "2.3",
@@ -45,14 +58,14 @@ REMAPACCENT = {
 REMAPACCENTUNDER = {
     }
 
-STIXVARIANT = None
-STIXVARIANTFONTS = []
+VARIANT = None
+VARIANTFONTS = []
 
 TEXCALIGRAPHIC = None
 TEXCALIGRAPHICFONTS = []
 
-TEXOLDSTYLE = None
-TEXOLDSTYLEFONTS = []
+TEXOLDSTYLE = "offsetN: 0xE200"
+TEXOLDSTYLEFONTS = ["VARIANTS"]
 
 SMALLOPFONTS = None
 

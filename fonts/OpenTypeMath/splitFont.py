@@ -99,6 +99,10 @@ if config.SMALLOPFONTS is None:
 
 ################################################################################
 
+# Split the Math font
+splitter=fontUtil.mathFontSplitter(FONTFAMILY, FONTDIR, config)
+splitter.split()
+
 # Split the Main fonts
 if not(args.skipMainFonts):
 
@@ -133,8 +137,17 @@ if not(args.skipMainFonts):
         PUAPointer = 0xE000
         for g in oldfont.glyphs():
 
-            if g.glyphname == ".notdef":
+            if g.glyphname == ".notdef" or g.unicode != -1:
                 continue
+
+            if g.glyphname in splitter.mMovedNonUnicodeGlyphs:
+                # This was already copied into SizeN.
+                continue
+
+            while (PUAPointer <= 0xF8FF and
+                   fontUtil.hasNonEmptyGlyph(oldfont, PUAPointer)):
+                # Move to the next empty glyph
+                PUAPointer += 1
 
             if PUAPointer > 0xF8FF:
                 raise BaseException("Too many characters in the Plane 0 PUA. Not supported by the font splitter.")
@@ -151,10 +164,6 @@ if not(args.skipMainFonts):
         fontUtil.saveFont(FONTFAMILY, font)
         font.close()
         oldfont.close()
-
-# Split the Math font
-splitter=fontUtil.mathFontSplitter(FONTFAMILY, FONTDIR, config)
-splitter.split()
 
 # Remove temporary files
 subprocess.call("rm -f %s/otf/*.tmp" % FONTFAMILY, shell=True)
@@ -397,19 +406,19 @@ if MATHONLY:
 for m in MODES:
     print(mathvariants, file=fontData[m])
 
-# STIX Variants
-if config.STIXVARIANT is not None:
-    fonts = config.STIXVARIANTFONTS
+# Variants
+if config.VARIANT is not None:
+    fonts = config.VARIANTFONTS
 
     for f in fontList2[""]:
-        if f not in config.STIXVARIANTFONTS:
+        if f not in config.VARIANTFONTS:
             fonts.append(f)
 
     fonts = ",".join(fonts)
 
     for m in MODES:
-        print('        "-STIX-Web-variant": {%s, fonts: [%s]},' %
-              (config.STIXVARIANT, fonts), file=fontData[m])
+        print('        "-%s-variant": {%s, fonts: [%s]},' %
+              (FONTFAMILY, config.VARIANT, fonts), file=fontData[m])
 
 # tex-caligraphic
 fonts = config.TEXCALIGRAPHICFONTS

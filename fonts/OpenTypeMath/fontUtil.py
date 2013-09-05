@@ -176,6 +176,7 @@ class mathFontSplitter:
 
         self.mDelimiters = aConfig.DELIMITERS
         self.mDelimitersExtra = aConfig.DELIMITERS_EXTRA
+        self.mFontSplittingExtra = aConfig.FONTSPLITTING_EXTRA
 
         # Open the fonts
         self.mMathFont = fontforge.open("%s/%s" % (aFontDir, aConfig.MATHFONT))
@@ -187,6 +188,8 @@ class mathFontSplitter:
         # Pointer to the PUA to store the horizontal/vertical components
         self.mPUAPointer=0xE000
         self.mPUAContent=dict()
+
+        self.mMovedNonUnicodeGlyphs=dict()
 
         # Lists of stretchy operators
         self.mStretchyOperators=dict()
@@ -442,30 +445,47 @@ operators. Please add a construction for it in DELIMITERS." %
                 continue
 
             found = False
-            for subset in FONTSPLITTING:
-                name = subset[0]
-                for i in range(1, len(subset)):
-                    r = subset[i]
-                    if type(r) == int:
-                        if r == codePoint:
-                            found = True
-                            break
-                        elif codePoint < r:
-                            break
-                    else:
-                        if (r[0] <= codePoint and codePoint <= r[1]):
-                            found = True
-                            break
-                        elif codePoint < r[0]:
-                            break
-        
-                if found:
-                    size0[codePoint] = name.upper()
-                    break
 
-            # FIXME: also search in FONTSPLITTING_EXTRA?
-            # (In theory this should not be needed, since NonUnicode components
-            # are directly copied into SizeMax).
+            if 0xE000 <= codePoint and codePoint <= 0xF8FF:
+                # Try to find the glyph in mFontSplittingExtra
+                for name in self.mFontSplittingExtra:
+                    for r in self.mFontSplittingExtra[name]:
+                        if type(r) == int:
+                            if r == codePoint:
+                                found = True
+                                break
+                        elif type(r) == tuple and type(r[0]) == int:
+                            if (r[0] <= codePoint and codePoint <= r[1]):
+                                found = True
+                                break
+                        # We ignore (glyphname, newcodepoint)
+
+                    if found:
+                        size0[codePoint] = name.upper()
+                        break
+
+            if not(found):
+                for subset in FONTSPLITTING:
+                    name = subset[0]
+                    for i in range(1, len(subset)):
+                        r = subset[i]
+                        if type(r) == int:
+                            if r == codePoint:
+                                found = True
+                                break
+                            elif codePoint < r:
+                                break
+                        else:
+                            if (r[0] <= codePoint and codePoint <= r[1]):
+                                found = True
+                                break
+                            elif codePoint < r[0]:
+                                break
+        
+                    if found:
+                        size0[codePoint] = name.upper()
+                        break
+
             if not(found):
                 size0[codePoint] = "NONUNICODE"
 
@@ -617,6 +637,7 @@ operators. Please add a construction for it in DELIMITERS." %
             self.mMathSize[self.mMaxSize-1].paste()
             self.mPUAContent[aGlyphName] = codePoint
             self.mPUAPointer += 1 # move to the next code point
+            self.mMovedNonUnicodeGlyphs[aGlyphName] = True
         else:
             # This piece was already copied into the PUA:
             # retrieve its code point.
@@ -642,6 +663,8 @@ operators. Please add a construction for it in DELIMITERS." %
                 # are the same as those from the Regular font.
                 style = "Regular"
         else:
+            if  self.isPrivateCharacter(aGlyphName):
+                self.mMovedNonUnicodeGlyphs[aGlyphName] = True
             self.mMathFont.selection.select(aGlyphName)
             self.mMathFont.copy()
             self.mMathSize[aSize-1].selection.select(aCodePoint)

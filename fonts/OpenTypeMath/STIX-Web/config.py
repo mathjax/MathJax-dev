@@ -29,7 +29,7 @@ MAINFONTS = {
 }
 
 FONTSPLITTING_EXTRA = {
-    "Alphabets": {
+    "Alphabets": [
         (0xE053,0xE057),
         0xE05D,
         0xE068,
@@ -39,19 +39,20 @@ FONTSPLITTING_EXTRA = {
         (0xE0DD,0xE0E2),
         (0xE17C,0xE1B3),
         (0xE2FC,0xE370)
-    },
-    "Marks": {
+    ],
+    "Marks": [
         0xE05E,
         (0xE061,0xE067),
         (0xE0D8,0xE0DA),
         (0xE28C,0xE28D)
-    },
-    "Arrows": {
+    ],
+    "Arrows": [
+        (0xE0B4,0xE0B6),
         (0xE112,0xE115),
         (0xE11A,0xE11F),
         (0xE120,0xE137)
-    },
-    "Operators": {
+    ],
+    "Operators": [
         (0xE004,0xE02B),
         (0xE035,0xE052),
         (0xE059,0xE05C),
@@ -63,12 +64,12 @@ FONTSPLITTING_EXTRA = {
         0xE28E,
         (0xE292,0xE293),
         (0xE3C2,0xE3C4)
-    },
-    "Symbols": {
+    ],
+    "Symbols": [
         (0xE0BF,0xE0D6), # Chemical structures
         (0xE09A,0xE09B)
-    },
-    "Shapes": {
+    ],
+    "Shapes": [
         (0xE000,0xE002),
         0xE099,
         (0xE0A7,0xE0B2),
@@ -83,10 +84,10 @@ FONTSPLITTING_EXTRA = {
         (0xE28F,0xE291),
         (0xE3C7,0xE3C8),
         ("uni25A9.var", 0xE400)
-   },
-    "Misc": {
+   ],
+    "Misc": [
         0xE02F,
-        (0xE0B4,0xE0B9),
+        (0xE0B7,0xE0B9),
         0xE0BC,
         (0xE0DB,0xE0DC),
         (0xE0A4,0xE0A6),
@@ -95,10 +96,10 @@ FONTSPLITTING_EXTRA = {
         (0xE0FB,0xE103),
         (0xE105,0xE108),
         (0xE138,0xE13A)
-    },
-    "Variants": {
+    ],
+    "Variants": [
         (0xE261,0xE285) # oldstyle numbers
-    }
+    ]
 }
 
 FONTDATA = {
@@ -127,11 +128,11 @@ REMAPACCENT = {
 REMAPACCENTUNDER = {
     }
 
-STIXVARIANT = "remap: {0x2A87: 0xE010, 0x2A88: 0xE00F, 0x2270: 0xE011, \
+VARIANT = "remap: {0x2A87: 0xE010, 0x2A88: 0xE00F, 0x2270: 0xE011, \
 0x2271: 0xE00E, 0x22E0: 0xE04B, 0x22E1: 0xE04F, 0x2288: 0xE016, \
 0x2289: 0xE018, 0x25B3: 0x25B5, 0x25BD: 0x25BF, \
 0x2205: [0x2205,MML.VARIANT.NORMAL]}"
-STIXVARIANTFONTS = ["NONUNICODE"]
+VARIANTFONTS = ["NONUNICODE"]
 
 TEXCALIGRAPHIC = "offsetA: 0xE22D, noLowerCase: 1"
 TEXCALIGRAPHICFONTS = ["NONUNICODEITALIC"]
@@ -668,7 +669,6 @@ DELIMITERS_EXTRA = [
     0x22C2,
     0x22C3,
     0x23AA,
-    0x23AF,
     0x23B4, # top square bracket
     0x23B5, # bottom square bracket
     0x23D0,
