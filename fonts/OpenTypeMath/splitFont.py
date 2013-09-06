@@ -409,16 +409,19 @@ for m in MODES:
     print(mathvariants, file=fontData[m])
 
 # Variants
-if config.VARIANT is not None:
-    fonts = config.VARIANTFONTS
+fonts = config.VARIANTFONTS
 
-    for f in fontList2[""]:
-        if f not in config.VARIANTFONTS:
-            fonts.append(f)
+for f in fontList2[""]:
+    if f not in config.VARIANTFONTS:
+        fonts.append(f)
 
-    fonts = ",".join(fonts)
+fonts = ",".join(fonts)
 
-    for m in MODES:
+for m in MODES:
+    if config.VARIANT is None:
+        print('        "-%s-variant": {fonts: [%s]},' %
+              (FONTFAMILY, fonts), file=fontData[m])
+    else:
         print('        "-%s-variant": {%s, fonts: [%s]},' %
               (FONTFAMILY, config.VARIANT, fonts), file=fontData[m])
 
