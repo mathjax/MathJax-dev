@@ -140,7 +140,13 @@ if not(args.skipMainFonts):
         PUAPointer = 0xE000
         for g in oldfont.glyphs():
 
-            if g.glyphname == ".notdef" or g.unicode != -1:
+            v = g.unicode
+
+            if (g.glyphname == ".notdef" or
+                not(v == -1 or
+                    (0xF0000 <= v and v <= 0xFFFFD) or
+                    (0x100000 <= v and v <= 0x10FFFD))):
+                # Ignore Plane 0 PUA, .notdef and Unicode glyphs
                 continue
 
             if g.glyphname in splitter.mMovedNonUnicodeGlyphs:
@@ -308,7 +314,6 @@ for s in styles:
             fontList2[s].append(name)
     if len(fontList2[s]) == 0:
         break
-    fontList2[s].append("NONUNICODE"+s)
     fontList2[s].append("SIZE1")
 
 # If styles are not defined, default to the regular list.
@@ -365,7 +370,7 @@ mathvariants = '\
             offsetA: 0x1D4D0\n\
           },\n\
           "sans-serif": {\n\
-            fonts: [SANSSERIF,NONUNICODE],\n\
+            fonts: [SANSSERIF],\n\
             offsetA: 0x1D5A0,\n\
             offsetN: 0x1D7E2,\n\
             offsetG: 0xE17D\n\
@@ -377,13 +382,13 @@ mathvariants = '\
             offsetG: 0x1D756\n\
           },\n\
           "sans-serif-italic": {\n\
-             fonts: [SANSSERIFITALIC,NONUNICODEITALIC], italic: true,\n\
+             fonts: [SANSSERIFITALIC], italic: true,\n\
              offsetA: 0x1D608,\n\
              offsetN: 0xE1B4,\n\
              offsetG: 0xE1BF\n\
           },\n\
           "sans-serif-bold-italic": {\n\
-             fonts: [SANSSERIFBOLDITALIC,NONUNICODEBOLDITALIC], bold:true, italic: true,\n\
+             fonts: [SANSSERIFBOLDITALIC], bold:true, italic: true,\n\
              offsetA: 0x1D63C,\n\
              offsetN: 0xE1F6,\n\
              offsetG: 0x1D790\n\

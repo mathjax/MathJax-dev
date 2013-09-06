@@ -373,5 +373,6 @@ FONTSPLITTING = [
      (0x2460, 0x24FF), # Enclosed Alphanumerics
      (0x2700, 0x27BF)  # Dingbats
      ],
-    ["Variants"] # Used for oldstyle numbers and glyph variants
+    ["Variants"], # Used for oldstyle numbers, caligraphic and glyph variants
+    ["NonUnicode"] # Font for remaining non-Unicode glyphs
     ]
