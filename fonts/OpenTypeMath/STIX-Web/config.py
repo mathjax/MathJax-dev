@@ -236,6 +236,48 @@ FONTSPLITTING_EXTRA = {
     ]
 }
 
+FONTSPLITTING_REMOVE = {
+    "Regular": {
+        (0x2145, 0x2149), # DoubleStruck Italic D, d, e, i, j
+        (0x1D56C,0x1D59F), # bold fraktur
+        0x210E, # planck constant (italic h)
+        (0x1D400,0x1D49B), # bold and italic math alpha num symbols
+        (0x1D6A4, 0x1D6A5), # dotless i j
+        (0x1D6A8, 0x1D755), # bold and italic greek
+        (0x1D7CE, 0x1D7D7), # bold digits
+        (0x1D5D4, 0x1D66F), # bold and italic sans-serif
+        (0x1D756, 0x1D7C9), # bold and italic sans-serif greek
+        (0x1D7EC, 0x1D7F5), # bold sans-serif digits
+        (0x1D4D0, 0x1D503)  # bold script
+    },
+    "Italic": {
+        0x00AC,
+        0x00AE,
+        0x00B1,
+        0x00D7,
+        0x00F7,
+        0x2026,
+        0x2122,
+        0x2212,
+        0x2423,
+        (0x2500,0x257F) # box drawing characters
+    },
+    "Bold": {
+        (0x2500,0x257F) # box drawing characters
+    },
+    "BoldItalic": {
+        0x00AC,
+        0x00AE,
+        0x00B1,
+        0x00D7,
+        0x00F7,
+        0x2026,
+        0x2122,
+        0x2212,
+        (0x2500,0x257F) # box drawing characters
+    }
+}
+
 FONTDATA = {
     "FileVersion": "2.3",
     "Year": "2013",

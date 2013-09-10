@@ -22,7 +22,8 @@ FONTNAME_PREFIX = "GyreTermesMathJax"
 MATHFONT="texgyretermes-math.otf"
 MAINFONTS = None
 
-FONTSPLITTING_EXTRA = {}
+FONTSPLITTING_EXTRA = None
+FONTSPLITTING_REMOVE = None
 
 FONTDATA = {
     "FileVersion": "2.3",

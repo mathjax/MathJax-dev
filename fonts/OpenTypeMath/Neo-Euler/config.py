@@ -36,6 +36,7 @@ FONTSPLITTING_EXTRA = {
         ("uni0039.onum", 0xE209)
     ]
 }
+FONTSPLITTING_REMOVE = None
 
 FONTDATA = {
     "FileVersion": "2.3",

@@ -116,7 +116,8 @@ if not(args.skipMainFonts):
             font=fontUtil.newFont(FONTFAMILY, fontFile, config, name, weight)
             fontUtil.moveSubset(oldfont, font, subset)
 
-            if name in config.FONTSPLITTING_EXTRA:
+            if config.FONTSPLITTING_EXTRA is not None and name in config.FONTSPLITTING_EXTRA:
+                # move additional glyphs
                 fontUtil.moveSubset(oldfont, font,
                                     config.FONTSPLITTING_EXTRA[name])
 
@@ -129,8 +130,10 @@ if not(args.skipMainFonts):
                 font.selection.select(0xA0)
                 font.paste()
 
-            # FIXME fredw: for STIX fonts, add some postprocessing to move or
-            # remove duplicate glyphs among the different styles.
+            if config.FONTSPLITTING_REMOVE is not None and weight in config.FONTSPLITTING_REMOVE:
+                # remove some duplicate glyphs
+                fontUtil.removeSubset(font,
+                                      config.FONTSPLITTING_REMOVE[weight])
 
             fontUtil.saveFont(FONTFAMILY, font)
             font.close()

@@ -118,7 +118,6 @@ def moveRange(aFontFrom, aFontTo, aRangeStart, aRangeEnd):
         moveGlyph(aFontFrom, aFontTo, codePoint)
 
 def moveSubset(aFontFrom, aFontTo, aSubset):
-    # move the glyphs in a subset described.
     for r in aSubset:
         if type(r) == int:
             # Single code point: move one glyph.
@@ -130,6 +129,17 @@ def moveSubset(aFontFrom, aFontTo, aSubset):
             elif type(r[0]) == str:
                 # (glyphname, newcodepoint): move a non-Unicode glyph
                 moveGlyph(aFontFrom, aFontTo, r[0], r[1])
+
+def removeSubset(aFont, aSubset):
+    aFont.selection.none()
+    for r in aSubset:
+        if type(r) == int:
+            # Single code point: select one glyph.
+            aFont.selection.select(("more",None),r)
+        elif type(r) == tuple:
+            # (start, end): move the range of glyphs.
+            aFont.selection.select(("ranges","more"), r[0], r[1])
+    aFont.clear()
 
 def getTestString(aFont, aMaxLength):
     s = ""
