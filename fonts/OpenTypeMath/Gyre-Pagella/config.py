@@ -22,7 +22,17 @@ FONTNAME_PREFIX="GyrePagellaMathJax"
 MATHFONT="texgyrepagella-math.otf"
 MAINFONTS = None
 
-FONTSPLITTING_EXTRA = None
+FONTSPLITTING_EXTRA = {
+    "Variants": [
+        ("minute.st",0x2032),
+        ("uni2033.st",0x2033),
+        ("uni2034.st",0x2034),
+        ("primereversed.st",0x2035),
+        ("uni2036.st",0x2036),
+        ("uni2037.st",0x2037),
+        ("uni2057.st",0x2057)
+    ]
+}
 FONTSPLITTING_REMOVE = None
 
 FONTDATA = {
@@ -47,7 +57,7 @@ REMAPACCENTUNDER = {
     }
 
 VARIANT = None
-VARIANTFONTS = []
+VARIANTFONTS = ["VARIANTS"]
 
 TEXCALIGRAPHIC = None
 TEXCALIGRAPHICFONTS = []

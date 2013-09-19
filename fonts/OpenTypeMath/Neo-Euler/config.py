@@ -33,7 +33,14 @@ FONTSPLITTING_EXTRA = {
         ("uni0036.onum", 0xE206),
         ("uni0037.onum", 0xE207),
         ("uni0038.onum", 0xE208),
-        ("uni0039.onum", 0xE209)
+        ("uni0039.onum", 0xE209),
+        ("minute.ssty1", 0x2032),
+        ("second.ssty1", 0x2033),
+        ("uni2034.ssty1", 0x2034),
+        ("uni2035.ssty1", 0x2035),
+        ("uni2036.ssty1", 0x2036),
+        ("uni2037.ssty1", 0x2037),
+        ("uni2057.ssty1", 0x2057)
     ]
 }
 FONTSPLITTING_REMOVE = None
@@ -60,7 +67,7 @@ REMAPACCENTUNDER = {
     }
 
 VARIANT = None
-VARIANTFONTS = []
+VARIANTFONTS = ["VARIANTS"]
 
 TEXCALIGRAPHIC = None
 TEXCALIGRAPHICFONTS = []
