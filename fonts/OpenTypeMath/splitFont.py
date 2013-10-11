@@ -238,6 +238,7 @@ for i in range(0,len(fontList)):
 # Neo-Euler lacks some characters from the Mathematical Alphanumeric Symbols
 # so map them to the normal font instead.
 # See https://github.com/khaledhosny/euler-otf/issues/14
+ISNEOEULER=(config.MATHFONT == "euler.otf")
 for variant in ["DOUBLESTRUCK", "SANSSERIF", "MONOSPACE"]:
     if variant not in fontVarList:
         fontDeclaration += ",\n"
@@ -336,13 +337,13 @@ for m in MODES:
 
     print('          "italic": {fonts: [%s], italic:true' %
           ",".join(fontList2["ITALIC"]), file=fontData[m], end="")
-    if MATHONLY:
+    if MATHONLY and not(ISNEOEULER):
         print(', offsetA: 0x1D434, offsetG: 0x1D6E2, remap: {0x1D455: 0x210E}', file=fontData[m], end="")
     print('},', file=fontData[m])
 
     print('          "bolditalic": {fonts: [%s], bold: true, italic:true' %
-          ",".join(fontList2["BOLDITALIC"]), file=fontData[m])
-    if MATHONLY:
+          ",".join(fontList2["BOLDITALIC"]), file=fontData[m], end="")
+    if MATHONLY and not(ISNEOEULER):
         print(', offsetA: 0x1D468, offsetG: 0x1D71C', file=fontData[m], end="")
     print('},', file=fontData[m])
 
