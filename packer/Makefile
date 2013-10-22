@@ -17,34 +17,12 @@
 # limitations under the License.
 #
 
-all: otf afm svg img ams tables
+include ../custom.cfg
 
-otf:
-	$(MAKE) -C OTF/TeX all
+all: core imageFonts
 
-afm:
-	$(MAKE) -C AFM/TeX all
-	$(MAKE) -C AFM/STIX-1.1 all
+core:
+	$(PERL) packMJ --force $(MATHJAXDIR)
 
-svg:
-	$(MAKE) -C SVG/TeX all
-
-img:
-	$(MAKE) -C IMG/TeX all
-
-ams:
-	$(MAKE) -C AMS all
-
-tables:
-	$(MAKE) -C Tables/STIX-1.1 all
-	$(MAKE) -C Tables/TeX all
-
-clean:
-	$(MAKE) -C OTF/TeX clean
-	$(MAKE) -C AFM/TeX clean
-	$(MAKE) -C AFM/STIX-1.1 clean
-	$(MAKE) -C SVG/TeX clean
-	$(MAKE) -C IMG/TeX clean
-	$(MAKE) -C AMS clean
-	$(MAKE) -C Tables/STIX-1.1 clean
-	$(MAKE) -C Tables/TeX clean
+imageFonts:
+	$(PERL) packMJfonts $(MATHJAXDIR)

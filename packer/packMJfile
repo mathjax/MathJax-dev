@@ -5,12 +5,13 @@
 #  
 #  Usage:  packMJfile src-file dest-file
 
-require "../custom.cfg.pl";
-
 use Cwd;
 use FindBin;
 
 $bindir = $FindBin::Bin;
+
+require "$bindir/../custom.cfg.pl";
+
 $YUIFILTER = "$bindir/yuiFilter";
 $src = shift; $dst = shift;
 

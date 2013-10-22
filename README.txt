@@ -1,3 +1,19 @@
+fredw: This must be updated now that MathJax-dev is configurable so that people
+feel more welcome to use it. Quick hints:
+
+cp default.cfg custom.cfg
+
+then install all dependencies indicated in custom.cfg and modify the paths if
+necessary. Now run
+
+make config
+
+and you should be ready to use at least the packer and font generator (other
+parts do not use the global configuration yet).
+
+Try "make help" for more information.
+--------------------------------------------------------------------------------
+
 These are developer tools for those who may need to modify MathJax.
 Users and page authors DO NOT NEED these files, so unless you are 
 writing extensions to MathJax, you need go no further.

@@ -2,7 +2,7 @@
 #
 # Version: Apache License 2.0
 #
-# Copyright (c) 2013 MathJax Project
+# Copyright (c) 2013 The MathJax Consortium
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -30,6 +30,9 @@ help:
 	@echo "make fonts"
 	@echo "  Generate and install MathJax fonts and related data."
 	@echo ""
+	@echo "make pack"
+	@echo "  Run MathJax packer"
+	@echo ""
 	@echo "make clean"
 	@echo "  Remove temporary directories and files."
 	@echo ""
@@ -52,6 +55,9 @@ config: $(CUSTOM).pl
 
 fonts: $(CUSTOM).pl
 	$(MAKE) -C fonts all
+
+pack: $(CUSTOM).pl
+	$(MAKE) -C packer all
 
 clean:
 	rm -f $(CUSTOM).pl
