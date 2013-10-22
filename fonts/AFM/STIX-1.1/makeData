@@ -20,18 +20,19 @@
   "STIXVariants-Regular",
 );
 
-open(DATA,">fontdata.js");
 foreach $file (@files) {
+  (my $name = $file) =~ s{\.[^.]+$}{};
   $file =~ s/STIX//;
   $file .= "-Regular" unless $file =~ m/-/;
   $file = "fonts/STIX/$file"; $file =~ s!-!/!g;
   $file .= (-e "$file/Main.js" ? "/Main.js" : "/All.js");
   open(FONT,$file) || print "Can't open $file\n";
-  $lines = "  ".join("  ",<FONT>);
+  $lines = join("",<FONT>);
   close(FONT);
-  $lines =~ s/.*FONTDATA/  HTMLCSS.FONTDATA/s;
+  $lines =~ s/.*FONTDATA/HTMLCSS.FONTDATA/s;
   $lines =~ s/};.*/};\n/s;
-  print DATA $lines,"\n";
+  print "Generating $name.js...\n";
+  open(DATA,">data/$name.js");
+  print DATA $lines;
+  close(DATA);
 }
-close(DATA);
-

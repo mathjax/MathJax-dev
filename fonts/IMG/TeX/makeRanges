@@ -5,6 +5,8 @@
 #  
 #  Usage:  ./makeRanges fontname
 
+require "../../../custom.cfg.pl";
+
 require "../../AFM/TeX/config.pl";
 require "../../Tables/TeX/unicode.pl";
 
@@ -46,7 +48,7 @@ foreach $n (sort {$a <=> $b} (keys %depth)) {
 }
 
 print " WxH";
-$lines = `file $dir/*/*.png`;
+$lines = `$FILE $dir/*/*.png`;
 foreach $file (split(/\n/,$lines)) {
   if ($file =~ m!/(\d+)/([^/]*)\.png:.*, (\d+) x (\d+),!) {
     $c = $HDW{"0x$2"}[$index{$1}];

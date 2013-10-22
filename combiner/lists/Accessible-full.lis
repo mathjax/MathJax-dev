@@ -26,6 +26,6 @@ menuSettings: {
   mpMouse: true
 },
 errorSettings: {
-  message: ["[Math Error]"]
+  message: ["[",["MathError","Math Error"],"]"]
 }
 

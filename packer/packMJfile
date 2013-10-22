@@ -9,7 +9,9 @@ use Cwd;
 use FindBin;
 
 $bindir = $FindBin::Bin;
-$YUI = "$bindir/yuicompressor-2.4.2/build/yuicompressor-2.4.2.jar";
+
+require "$bindir/../custom.cfg.pl";
+
 $YUIFILTER = "$bindir/yuiFilter";
 $src = shift; $dst = shift;
 
@@ -24,7 +26,7 @@ if ($src =~ m!/config/(local/local|default)\.js$!) {
 print "============================================\n";
 print "Compressing: $src\n";
 print "--------------------------------------------";
-system("java -jar '$YUI' -v -o '$dst' '$src' 2>&1 | $YUIFILTER");
+system("java -jar '$YUICOMPRESSOR' -v -o '$dst' '$src' 2>&1 | $YUIFILTER");
 
 open(MJX,"<", $dst);
 @lines = <MJX>;

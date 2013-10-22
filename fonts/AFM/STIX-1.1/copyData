@@ -1,0 +1,46 @@
+#! /bin/bash
+# Version: Apache License 2.0
+#
+# Copyright (c) 2013 MathJax Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+source ../../../custom.cfg
+
+FONTDATA=$MATHJAXDIR/unpacked/jax/output/HTML-CSS/fonts/STIX/fontdata.js
+
+for file in `cd data; ls *.js | $SED 's|\(.*\)\.js|\1|'`
+do
+    echo "Copying $file.js..."
+
+    # Get the name of HTMLCSS.FONTDATA.FONTS item
+    name=`$GREP HTMLCSS.FONTDATA.FONTS data/$file.js | $SED "s|.*\['\(.*\)'\].*|\1|"`
+
+    # Get the former indentation level
+    indent="`$SED -n "s/^\([ \t]*\)HTMLCSS\.FONTDATA\.FONTS\['$name'\] = {$/\1/p" $FONTDATA`"
+    
+    # Create an indented version of $file.js
+    $SED "s/^\(.*\)$/$indent\1/" <data/$file.js >tmp.js
+
+    # Now replace the old font data with the new one
+    # fredw: is there a way to tell sed to delete and insert at the same time,
+    # without using this temporary INSERT_HERE keyword?
+    $SED -i "/^\([ \t]*\)HTMLCSS\.FONTDATA\.FONTS\['$name'\] = {$/i INSERT_HERE" $FONTDATA
+    $SED -i "/^\([ \t]*\)HTMLCSS\.FONTDATA\.FONTS\['$name'\] = {$/,/};/ {d}" $FONTDATA
+    $SED -i "/INSERT_HERE/{
+r tmp.js
+d
+}" $FONTDATA
+done
+
+rm -f tmp.js
