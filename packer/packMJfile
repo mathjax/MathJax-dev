@@ -26,7 +26,8 @@ if ($src =~ m!/config/(local/local|default)\.js$!) {
 print "============================================\n";
 print "Compressing: $src\n";
 print "--------------------------------------------";
-system("java -jar '$YUICOMPRESSOR' -v -o '$dst' '$src' 2>&1 | $YUIFILTER");
+# Thed sed command uncomments the MathJax.isPacked = true; from MathJax.js
+system("cat '$src' | $SED \"s\/^.*\\(MathJax.isPacked = true;\\).*$\/\\1\/\" | $JAVA -jar '$YUICOMPRESSOR' -v -o '$dst' --type js 2>&1 | $YUIFILTER");
 
 open(MJX,"<", $dst);
 @lines = <MJX>;
@@ -34,7 +35,6 @@ close(MJX);
 $compressed = join("",@lines);
 
 $template = "$bindir/template.js";
-$template = "$bindir/template-MathJax.js" if $dst =~ m!(^|/)MathJax\.js$!;
 
 open(MJX,"<",$template);
 @lines = <MJX>;
