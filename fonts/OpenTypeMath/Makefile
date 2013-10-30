@@ -115,7 +115,7 @@ JAXDEST=$(MATHJAXDIR)/unpacked/jax/output/
 FONTDEST=$(MATHJAXDIR)/fonts/HTML-CSS/
 
 copyFontData:
-	@for f in Asana-Math Gyre-Pagella Gyre-Termes Latin-Modern Neo-Euler STIX-Web ; do \
+	@for f in Neo-Euler ; do \
 		rm -rf $(JAXDEST)/HTML-CSS/fonts/$$f; \
 		cp -r $$f/HTML-CSS $(JAXDEST)/HTML-CSS/fonts/$$f; \
 		rm -rf $(JAXDEST)/SVG/fonts/$$f; \

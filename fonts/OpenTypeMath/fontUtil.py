@@ -376,6 +376,10 @@ stretchy operators from the Open Type MATH table but is redefined in DELIMITERS.
 operators. Please add a construction for it in DELIMITERS." %
                                     codePoint)
 
+            # It's an alias, check the reference instead
+            if (self.mStretchyOperators[codePoint].mAlias is not None):
+                codePoint = self.mStretchyOperators[codePoint].mAlias
+
             # Target sizes (these values are from the TeX input jax)
             p_height = 1.2/.85
             bigSizes = [0.85,1.15,1.45,1.75]

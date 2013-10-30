@@ -35,6 +35,17 @@ def boolToString(b):
     else:
         return "false"
 
+def remapKeyValue(key, value):
+    if type(key) == str:
+        s = "\"%s\"" % key
+    else:
+        s = "0x%04X" % key
+    if type(value) == str:
+        s = "%s: \"%s\"" % (s, value)
+    else :
+        s = "%s: 0x%04X" % (s, value)
+    return s
+
 MODES = {0:"HTML-CSS", 1:"SVG"}
 HEADER='\
 /*************************************************************\n\
@@ -376,8 +387,13 @@ mathvariants = '\
           "sans-serif": {\n\
             fonts: [SANSSERIF],\n\
             offsetA: 0x1D5A0,\n\
-            offsetN: 0x1D7E2,\n\
-            offsetG: 0xE17D\n\
+            offsetN: 0x1D7E2'
+
+if config.SANSSERIFGREEK is not None:
+    mathvariants += ',\n\
+            offsetG: %s' % config.SANSSERIFGREEK
+
+mathvariants += '\n\
           },\n\
           "bold-sans-serif": {\n\
             fonts: [SANSSERIFBOLD], bold:true,\n\
@@ -387,14 +403,27 @@ mathvariants = '\
           },\n\
           "sans-serif-italic": {\n\
              fonts: [SANSSERIFITALIC], italic: true,\n\
-             offsetA: 0x1D608,\n\
-             offsetN: 0xE1B4,\n\
-             offsetG: 0xE1BF\n\
+             offsetA: 0x1D608'
+
+if config.SANSSERIFITALICNUMBER is not None:
+    mathvariants += ',\n\
+             offsetN: %s' % config.SANSSERIFITALICNUMBER
+
+if config.SANSSERIFITALICGREEK is not None:
+    mathvariants += ',\n\
+             offsetG: %s' % config.SANSSERIFITALICGREEK
+
+mathvariants += '\n\
           },\n\
           "sans-serif-bold-italic": {\n\
              fonts: [SANSSERIFBOLDITALIC], bold:true, italic: true,\n\
-             offsetA: 0x1D63C,\n\
-             offsetN: 0xE1F6,\n\
+             offsetA: 0x1D63C'
+
+if config.SANSSERIFBOLDITALICNUMBER is not None:
+    mathvariants += ',\n\
+             offsetN: %s' % config.SANSSERIFBOLDITALICNUMBER
+
+mathvariants += ',\n\
              offsetG: 0x1D790\n\
           },\n\
           "monospace": {\n\
@@ -502,7 +531,7 @@ for m in MODES:
             print(file=fontData[m])
         else:
             print(",", file=fontData[m])
-        print("        0x%04X: 0x%04X" % (key, config.REMAP[key]),
+        print("        %s" % remapKeyValue(key, config.REMAP[key]),
               end="", file=fontData[m])
     print(file=fontData[m])
     print("      },\n", file=fontData[m])
@@ -517,7 +546,7 @@ for m in MODES:
             print(file=fontData[m])
         else:
             print(",", file=fontData[m])
-        print('        "%s": "%s"' % (key, config.REMAPACCENT[key]),
+        print("        %s" % remapKeyValue(key, config.REMAPACCENT[key]),
               end="", file=fontData[m])
     print(file=fontData[m])
     print("      },\n", file=fontData[m])
@@ -532,7 +561,8 @@ for m in MODES:
             print(file=fontData[m])
         else:
             print(",", file=fontData[m])
-            print('        "%s": "%s"' % (key, config.REMAPACCENTUNDER[key]),
+            print("        %s" % remapKeyValue(key,
+                                               config.REMAPACCENTUNDER[key]),
                   end="", file=fontData[m])
     print(file=fontData[m])
     print("      },\n", file=fontData[m])
