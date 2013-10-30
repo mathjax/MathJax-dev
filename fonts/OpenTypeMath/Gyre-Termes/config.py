@@ -48,13 +48,24 @@ FONTDATA = {
 RULECHAR = 0x0305
 
 REMAP = {
-    }
+        0x203E: 0x305,                  # overline
+        0xFE37: 0x23DE, 0xFE38: 0x23DF, # OverBrace, UnderBrace
+        0x2B9: 0x2032,                  # prime,
+        0x3D2: 0x3A5,                   # Upsilon
+        0x25B4: 0x25B2,                 # blacktriangle
+        0x25B5: 0x25B3, 0x25B8: 0x25B6, # triangle, blacktriangleright
+        0x25BE: 0x25BC, 0x25BF: 0x25BD, # blacktriangledown, triangledown
+        0x25C2: 0x25C0,                 # blacktriangleleft
+        0x3008: 0x27E8, 0x3009: 0x27E9, # langle, rangle
+        0x2758: 0x2223,                 # VerticalSeparator
+        0x25FB: 0x25A1, 0x25FC: 0x25A0  # square, blacksquare
+}
 
 REMAPACCENT = {
-    }
+}
 
 REMAPACCENTUNDER = {
-    }
+}
 
 VARIANT = None
 VARIANTFONTS = ["VARIANTS"]
