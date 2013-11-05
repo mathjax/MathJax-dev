@@ -491,6 +491,39 @@ for m in MODES:
         print('          "-tex-oldstyle": {%s, fonts: [%s]},' %
               (config.TEXOLDSTYLE, fonts), file=fontData[m])
 
+
+# -tex-caligraphic-bold
+fonts = config.TEXCALIGRAPHICBOLDFONTS
+
+for f in fontList2["BOLDITALIC"]:
+    if f not in config.TEXCALIGRAPHICBOLDFONTS:
+        fonts.append(f)
+
+fonts = ",".join(fonts)
+
+for m in MODES:
+    if config.TEXCALIGRAPHICBOLD is None:
+        print('          "-tex-caligraphic-bold": {fonts: [%s], italic: true, bold: true},' % fonts, file=fontData[m])
+    else:
+        print('          "-tex-caligraphic-bold": {%s, fonts: [%s], italic: true, bold: true},' %
+              (config.TEXCALIGRAPHICBOLD, fonts), file=fontData[m])
+
+# -tex-oldstyle-bold
+fonts = config.TEXOLDSTYLEBOLDFONTS
+
+for f in fontList2["BOLD"]:
+    if f not in config.TEXOLDSTYLEBOLDFONTS:
+        fonts.append(f)
+
+fonts = ",".join(fonts)
+
+for m in MODES:
+    if config.TEXOLDSTYLEBOLD is None:
+        print('          "-tex-oldstyle-bold": {fonts: [%s], bold: true},' % fonts, file=fontData[m])
+    else:
+        print('          "-tex-oldstyle-bold": {%s, fonts: [%s], bold: true},' %
+              (config.TEXOLDSTYLEBOLD, fonts), file=fontData[m])
+
 # mathit
 for m in MODES:
     print('          "-tex-mathit": {fonts: [%s], italic:true, noIC:true},' %
