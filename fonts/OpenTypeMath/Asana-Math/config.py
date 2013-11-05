@@ -34,7 +34,7 @@ FONTSPLITTING_EXTRA = {
         ("seven.onum", 0xE207),
         ("eight.onum", 0xE208),
         ("nine.onum", 0xE209),
-        ("u1D49C.salt", 0xE20A),
+        ("u1D49C.salt", 0xE20A), # script salt (used as caligraphic)
         ("uni212C.salt", 0xE20B),
         ("u1D49E.salt", 0xE20C), 
         ("u1D49F.salt", 0xE20D), 
@@ -60,6 +60,32 @@ FONTSPLITTING_EXTRA = {
         ("u1D4B3.salt", 0xE221), 
         ("u1D4B4.salt", 0xE222), 
         ("u1D4B5.salt", 0xE223),
+        ("u1D4D0.salt", 0xE224), # bold script salt (used as bold caligraphic)
+        ("u1D4D1.salt", 0xE225),
+        ("u1D4D2.salt", 0xE226),
+        ("u1D4D3.salt", 0xE227),
+        ("u1D4D4.salt", 0xE228),
+        ("u1D4D5.salt", 0xE229),
+        ("u1D4D6.salt", 0xE22A),
+        ("u1D4D7.salt", 0xE22B),
+        ("u1D4D8.salt", 0xE22C),
+        ("u1D4D9.salt", 0xE22D),
+        ("u1D4DA.salt", 0xE22E),
+        ("u1D4DB.salt", 0xE22F),
+        ("u1D4DC.salt", 0xE230),
+        ("u1D4DD.salt", 0xE231),
+        ("u1D4DE.salt", 0xE232),
+        ("u1D4DF.salt", 0xE233),
+        ("u1D4E0.salt", 0xE234),
+        ("u1D4E1.salt", 0xE235),
+        ("u1D4E2.salt", 0xE236),
+        ("u1D4E3.salt", 0xE237),
+        ("u1D4E4.salt", 0xE238),
+        ("u1D4E5.salt", 0xE239),
+        ("u1D4E6.salt", 0xE23A),
+        ("u1D4E7.salt", 0xE23B),
+        ("u1D4E8.salt", 0xE23C),
+        ("u1D4E9.salt", 0xE23D)
     ]
 }
 FONTSPLITTING_REMOVE = None
@@ -115,8 +141,8 @@ TEXCALIGRAPHICFONTS = ["VARIANTS"]
 TEXOLDSTYLE = "offsetN: 0xE200"
 TEXOLDSTYLEFONTS = ["VARIANTS"]
 
-TEXCALIGRAPHICBOLD = None
-TEXCALIGRAPHICBOLDFONTS = []
+TEXCALIGRAPHICBOLD = "offsetA: 0xE224, noLowerCase: 1"
+TEXCALIGRAPHICBOLDFONTS = ["VARIANTS"]
 
 TEXOLDSTYLEBOLD = None
 TEXOLDSTYLEBOLDFONTS = []
