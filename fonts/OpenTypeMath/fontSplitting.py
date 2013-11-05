@@ -63,7 +63,8 @@ FONTSPLITTING = [
      (0x030A,0x030C),
      0x0338,
 
-     (0x0370, 0x0383), # Greek and Coptic
+     (0x0370, 0x037D), # Greek and Coptic
+     (0x037F, 0x0383), # Greek and Coptic
      (0x0391, 0x03A9), # Greek and Coptic
      (0x03B1, 0x03C9), # Greek and Coptic
      (0x03CF, 0x03FF), # Greek and Coptic
@@ -72,6 +73,7 @@ FONTSPLITTING = [
      (0x2002,0x2006),
      (0x2009,0x200A),
      (0x2013,0x2014),
+     0x2016,
      (0x2018,0x2019),
      (0x201C,0x201D),
      (0x2020,0x2021),
@@ -81,6 +83,7 @@ FONTSPLITTING = [
      0x2034, # triple prime
      0x2035, # MathJax_AMS
      0x203E, # overline
+     0x2044,
      0x2057, # quadruple prime
 
      # MathJax_Main, Combining Diacritical Marks for Symbols
@@ -236,8 +239,9 @@ FONTSPLITTING = [
      0x2997,
      0x2998,
      0x29EB,
-     0x29F7,
+     0x29F5,
      0x29F8,
+     0x29F9,
 
      # MathJax_Main, Supplemental Mathematical
      0x2A3F,
