@@ -84,6 +84,11 @@ REMAP = {
 }
 
 REMAPACCENT = {
+    "\u2192": "\u20D7", # vector arrow
+    "\u2032": "\u0301", # acute accent
+    "\u2035": "\u0300", # grave accent
+    "\u005E": "\u0302", # hat
+    "\u007E": "\u0303"  # tilde
 }
 
 REMAPACCENTUNDER = {
