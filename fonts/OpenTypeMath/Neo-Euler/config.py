@@ -86,9 +86,11 @@ REMAP = {
 REMAPACCENT = {
     "\u2192": "\u20D7", # vector arrow
     "\u2032": "\u0301", # acute accent
+    "\u007E": "\u0303", # tilde
     "\u2035": "\u0300", # grave accent
     "\u005E": "\u0302", # hat
-    "\u007E": "\u0303"  # tilde
+    "\u0060": "\u0300",
+    "\u00B4": "\u0301"
 }
 
 REMAPACCENTUNDER = {
@@ -124,21 +126,14 @@ DELIMITERS = {
         "HW": [0x003D],
         "stretch": [(0x003D,"rep")]
     },
-    0x005E: {"alias": 0x23DC, "dir": "H"}, # wide hat
     0x005F: {"alias": 0x00AF, "dir": "H"}, # low line
-    0x007E: {"alias": 0x23DC, "dir": "H"}, # wide tilde
     0x00AF:
     {
         "dir": "H",
         "HW": [0x00AF],
         "stretch": [(0x00AF,"rep")]
     },
-    0x02C6: {"alias": 0x23DC, "dir": "H"},
     0x00C9: {"alias": 0x00AF, "dir": "H"},
-    0x02DC: {"alias": 0x23DC, "dir": "H"},
-    0x0302: {"alias": 0x23DC, "dir": "H"},
-    0x0303: {"alias": 0x23DC, "dir": "H"},
-    0x030C: {"alias": 0x23DD, "dir": "H"},
     0x0332: {"alias": 0x00AF, "dir": "H"},
     0x2015: {"alias": 0x00AF, "dir": "H"},
     0x2017: {"alias": 0x00AF, "dir": "H"},

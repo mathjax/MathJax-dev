@@ -62,10 +62,13 @@ REMAP = {
 }
 
 REMAPACCENT = {
+    "\u2192": "\u20D7", # vector arrow
     "\u2032": "\u0301", # acute accent
+    "\u007E": "\u0303", # tilde
     "\u2035": "\u0300", # grave accent
     "\u005E": "\u0302", # hat
-    "\u007E": "\u0303"  # tilde
+    "\u0060": "\u0300",
+    "\u00B4": "\u0301"
 }
 
 REMAPACCENTUNDER = {
@@ -97,6 +100,7 @@ DELIMITERS = {
     0x002D: {"alias": 0x0305, "dir": "H"}, # hyphen-minus
     0x005E: {"alias": 0x0302, "dir": "H"}, # wide hat
     0x005F: {"alias": 0x0332, "dir": "H"}, # low line
+    0x007E: {"alias": 0x0303, "dir": "H"},
     0x00AF: {"alias": 0x0332, "dir": "H"}, # low line
     0x02C6: {"alias": 0x0302, "dir": "H"},
     0x02C9: {"alias": 0x0305, "dir": "H"}, # macron
