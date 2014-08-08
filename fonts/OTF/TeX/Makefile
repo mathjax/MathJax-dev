@@ -97,11 +97,11 @@ ttf: ff
 	mkdir -p ttf
 	rm -f ttf/*
 
-        # Handle the MathJax_Size4 font first as it used by other fonts.
-	@echo "MathJax_Size4.ff"
-	$(FONTFORGE) -lang=ff -script ff/MathJax_Size4.ff
+        # Handle the KaTeX_Size4 font first as it used by other fonts.
+	@echo "KaTeX_Size4.ff"
+	$(FONTFORGE) -lang=ff -script ff/KaTeX_Size4.ff
 
-	@for file in `cd ff; ls *.ff | $(GREP) -v MathJax_Size4`; do \
+	@for file in `cd ff; ls *.ff | $(GREP) -v KaTeX_Size4`; do \
 		echo ""; \
 		echo $$file; \
 		$(FONTFORGE) -lang=ff -script ff/$$file; \
@@ -149,8 +149,8 @@ css: woff
 		$(PERL) woff2css $$file > css/$$file.css; \
 		end
 
-	$(PERL) css2all css/*.css > MathJax-All.css
-	mv MathJax-All.css css
+	$(PERL) css2all css/*.css > KaTeX-All.css
+	mv KaTeX-All.css css
 
 OTFandTTF: ttf
 
@@ -158,12 +158,12 @@ fonts: OTFandTTF eot svg woff # css
 
 install:
         #Copy the font files into the system font directory
-        #rm -f $FONTDIR/MathJax_*
+        #rm -f $FONTDIR/KaTeX_*
 	cp `ls otf/*.otf | $(GREP) -v 'Greek'` $(FONTDIR)
         # echo `ls ttf/*.ttf | $(GREP) -Ev 'WinChro|WinIE6'`
 	cp ttf/*Greek*.ttf $(FONTDIR)
 
-        #  Put the fonts into the MathJax fonts folder
+        #  Put the fonts into the KaTeX fonts folder
 	rm -f $(MATHJAXDIR)/fonts/HTML-CSS/TeX/otf/*.*
 	rm -f $(MATHJAXDIR)/fonts/HTML-CSS/TeX/eot/*.*
 	rm -f $(MATHJAXDIR)/fonts/HTML-CSS/TeX/svg/*.*
