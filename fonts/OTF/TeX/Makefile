@@ -106,6 +106,8 @@ ttf: ff
 		echo $$file; \
 		$(FONTFORGE) -lang=ff -script ff/$$file; \
 		done
+
+	./fix_os2_metrics.rb ttf/
 eot: ttf
 	mkdir -p eot
 	rm -f eot/*
