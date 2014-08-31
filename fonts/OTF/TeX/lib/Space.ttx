@@ -109,7 +109,7 @@
 
   <name>
     <namerecord nameID="0" platformID="1" platEncID="0" langID="0x0">
-      Copyright (c) 2009-2010 Design Science, Inc.
+      Copyright (c) 2009-2010 Design Science, Inc.&#10;Copyright (c) 2014 Khan Academy
     </namerecord>
     <namerecord nameID="1" platformID="1" platEncID="0" langID="0x0">
       *NAME*
@@ -130,7 +130,7 @@
       *NAME*-*WEIGHT*
     </namerecord>
     <namerecord nameID="13" platformID="1" platEncID="0" langID="0x0">
-      Copyright (c) 2009-2010, Design Science, Inc. (&lt;www.mathjax.org>),&#10;with Reserved Font Name *NAME*.&#10;&#10;This Font Software is licensed under the SIL Open Font License, Version 1.1.&#10;This license available with a FAQ at:&#10;http://scripts.sil.org/OFL
+      Copyright (c) 2009-2010, Design Science, Inc. (&lt;www.mathjax.org>)&#10;Copyright (c) 2014 Khan Academy (&lt;www.khanacademy.org>),&#10;with Reserved Font Name *NAME*.&#10;&#10;This Font Software is licensed under the SIL Open Font License, Version 1.1.&#10;This license available with a FAQ at:&#10;http://scripts.sil.org/OFL
     </namerecord>
     <namerecord nameID="14" platformID="1" platEncID="0" langID="0x0">
       http://scripts.sil.org/OFL
@@ -142,7 +142,7 @@
       *WEIGHT*
     </namerecord>
     <namerecord nameID="0" platformID="3" platEncID="1" langID="0x409">
-      Copyright (c) 2009-2010 Design Science, Inc.
+      Copyright (c) 2009-2010 Design Science, Inc.&#10;Copyright (c) 2014 Khan Academy
     </namerecord>
     <namerecord nameID="1" platformID="3" platEncID="1" langID="0x409">
       *NAME*
@@ -163,7 +163,7 @@
       *NAME*-*WEIGHT*
     </namerecord>
     <namerecord nameID="13" platformID="3" platEncID="1" langID="0x409">
-      Copyright (c) 2009-2010, Design Science, Inc. (&lt;www.mathjax.org>),&#10;with Reserved Font Name *NAME*.&#10;&#10;This Font Software is licensed under the SIL Open Font License, Version 1.1.&#10;This license available with a FAQ at:&#10;http://scripts.sil.org/OFL
+      Copyright (c) 2009-2010, Design Science, Inc. (&lt;www.mathjax.org>)&#10;Copyright (c) 2014 Khan Academy (&lt;www.khanacademy.org>),&#10;with Reserved Font Name *NAME*.&#10;&#10;This Font Software is licensed under the SIL Open Font License, Version 1.1.&#10;This license available with a FAQ at:&#10;http://scripts.sil.org/OFL
     </namerecord>
     <namerecord nameID="14" platformID="3" platEncID="1" langID="0x409">
       http://scripts.sil.org/OFL
@@ -460,7 +460,7 @@
 
     <CFFFont name="*NAME*-*WEIGHT*">
       <version value="001.001"/>
-      <Notice value="Copyright (c) 2009-2010 Design Science, Inc."/>
+      <Notice value="Copyright (c) 2009-2010 Design Science, Inc., Copyright (c) 2014 Khan Academy"/>
       <FullName value="*NAME*-*WEIGHT*"/>
       <FamilyName value="*NAME*"/>
       <Weight value="*NORMAL*"/>
