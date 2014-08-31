@@ -33,6 +33,6 @@ glob = File.join(font_dir, "*.ttf")
 Dir.glob(glob).each do |file_name|
   ascent, descent = metrics_for_file(file_name)
 
-  `./modify_ascent_descent.py #{file_name} #{ascent} #{descent}`
+  system("./modify_ascent_descent.py", file_name, ascent.to_s, descent.to_s)
 end
 
