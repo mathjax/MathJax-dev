@@ -132,14 +132,14 @@ svg: ttf
 	rm -f svg/*WinIE6* svg/*Greek*
 
 woff: otf ttf
-	@for file in `ls otf/*.otf | $(SED) 's|otf/\(.*\)\.otf|\1|'`; do \
+	@for file in `ls ttf/*.ttf | $(SED) 's|ttf/\(.*\)\.ttf|\1|'`; do \
 		echo "Generating $$file.woff..."; \
-		$(SFNT2WOFF) otf/$$file.otf; \
+		$(SFNT2WOFF) ttf/$$file.ttf; \
 		done
 
 	mkdir -p woff
 	rm -f woff/*
-	mv otf/*.woff woff
+	mv ttf/*.woff woff
 	rm -f woff/*WinChrom* woff/*WinIE6* woff/*Greek*
 
 css: woff
