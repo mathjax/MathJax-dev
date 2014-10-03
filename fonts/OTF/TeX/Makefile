@@ -142,6 +142,17 @@ woff: otf ttf
 	mv ttf/*.woff woff
 	rm -f woff/*WinChrom* woff/*WinIE6* woff/*Greek*
 
+woff2: woff
+	@for file in `ls ttf/*.ttf | $(SED) 's|ttf/\(.*\)\.ttf|\1|'`; do \
+		echo "Generating $$file.woff2..."; \
+		$(WOFF2) ttf/$$file.ttf; \
+		done
+
+	mkdir -p woff2
+	rm -f woff2/*
+	mv ttf/*.woff2 woff2
+	rm -f woff2/*WinChrom* woff2/*WinIE6* woff2/*Greek*
+
 css: woff
 	mkdir -p css
 	rm -f css/*
