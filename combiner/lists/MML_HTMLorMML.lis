@@ -9,3 +9,4 @@ extensions/MathMenu.js
 jax/element/mml/jax.js
 extensions/toMathML.js
 jax/input/MathML/jax.js
+extensions/CHTML-preview.js

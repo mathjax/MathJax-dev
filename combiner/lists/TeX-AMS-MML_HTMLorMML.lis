@@ -16,3 +16,4 @@ jax/input/TeX/jax.js
 extensions/TeX/AMSmath.js
 extensions/TeX/AMSsymbols.js
 jax/input/MathML/jax.js
+extensions/CHTML-preview.js

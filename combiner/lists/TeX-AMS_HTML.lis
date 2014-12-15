@@ -11,3 +11,4 @@ extensions/TeX/noUndefined.js
 jax/input/TeX/jax.js
 extensions/TeX/AMSmath.js
 extensions/TeX/AMSsymbols.js
+extensions/CHTML-preview.js

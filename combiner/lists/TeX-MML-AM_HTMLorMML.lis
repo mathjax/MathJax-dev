@@ -19,3 +19,4 @@ extensions/TeX/AMSmath.js
 extensions/TeX/AMSsymbols.js
 jax/input/MathML/jax.js
 jax/input/AsciiMath/jax.js
+extensions/CHTML-preview.js

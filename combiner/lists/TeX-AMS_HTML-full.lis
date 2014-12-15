@@ -13,3 +13,4 @@ extensions/TeX/AMSmath.js
 extensions/TeX/AMSsymbols.js
 jax/output/HTML-CSS/jax.js
 jax/output/HTML-CSS/autoload/mtable.js
+extensions/CHTML-preview.js

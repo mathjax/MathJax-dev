@@ -16,3 +16,4 @@ extensions/TeX/AMSsymbols.js
 jax/input/MathML/jax.js
 jax/output/SVG/jax.js
 jax/output/SVG/autoload/mtable.js
+extensions/CHTML-preview.js
