@@ -1,6 +1,7 @@
 jax/input/TeX/config.js
 jax/input/MathML/config.js
 jax/output/SVG/config.js
+jax/output/CommonHTML/config.js
 extensions/tex2jax.js
 extensions/mml2jax.js
 extensions/MathEvents.js
@@ -16,3 +17,5 @@ extensions/TeX/AMSsymbols.js
 jax/input/MathML/jax.js
 jax/output/SVG/jax.js
 jax/output/SVG/autoload/mtable.js
+jax/output/CommonHTML/jax.js
+extensions/CHTML-preview.js
