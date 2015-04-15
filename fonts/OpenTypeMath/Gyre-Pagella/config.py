@@ -109,6 +109,9 @@ DELIMITERS = {
     0x2017: {"alias": 0x0305, "dir": "H"}, # horizontal line
     0x203E: {"alias": 0x0305, "dir": "H"}, # overline
     0x2215: {"alias": 0x2044, "dir": "V"}, # division slash
+    0x2312: {"alias": 0x23DC, "dir": "H"}, # arc
+    0x2322: {"alias": 0x23DC, "dir": "H"}, # frown
+    0x2323: {"alias": 0x23DD, "dir": "H"}, # smile
     0x23AA: # \bracevert
     {
         "dir": "V",

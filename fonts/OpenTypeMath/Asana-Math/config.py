@@ -195,6 +195,9 @@ DELIMITERS = {
     }, 
     0x2212: {"alias": 0x0305, "dir": "H"}, # minus
     0x2215: {"alias": 0x2044, "dir": "V"}, # division slash
+    0x2312: {"alias": 0x23DC, "dir": "H"}, # arc
+    0x2322: {"alias": 0x23DC, "dir": "H"}, # frown
+    0x2323: {"alias": 0x23DD, "dir": "H"}, # smile
     0x2329: {"alias": 0x27E8, "dir": "V"}, # langle
     0x232A: {"alias": 0x27E9, "dir": "V"}, # rangle
     0x23AA: # \bracevert
