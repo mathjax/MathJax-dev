@@ -107,6 +107,16 @@ ttf: ff
 		$(FONTFORGE) -lang=ff -script ff/$$file; \
 		done
 
+	@for file in `ls ttf/*.ttf`; do \
+		echo "hinting $$file"; \
+		if echo "$$file" | $(GREP) -q -e "Greek" -e "Size[1-4]" -e "Typewriter" -e "Win"; then \
+			$(TTFAUTOHINT) --windows-compatibility --symbol $$file $$file.hinted; \
+		else \
+			$(TTFAUTOHINT) --windows-compatibility $$file $$file.hinted; \
+		fi; \
+		mv $$file.hinted $$file; \
+		done
+
 	./fix_os2_metrics.rb ttf/
 eot: ttf
 	mkdir -p eot
