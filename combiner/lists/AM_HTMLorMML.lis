@@ -12,3 +12,4 @@ extensions/toMathML.js
 jax/input/AsciiMath/jax.js
 jax/output/CommonHTML/jax.js
 extensions/CHTML-preview.js
+extensions/AssistiveMML.js

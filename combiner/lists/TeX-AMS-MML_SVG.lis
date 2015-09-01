@@ -17,3 +17,4 @@ extensions/TeX/AMSsymbols.js
 jax/input/MathML/jax.js
 jax/output/CommonHTML/jax.js
 extensions/CHTML-preview.js
+extensions/AssistiveMML.js

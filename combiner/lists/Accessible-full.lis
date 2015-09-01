@@ -22,6 +22,7 @@ jax/output/HTML-CSS/jax.js
 jax/output/HTML-CSS/autoload/mtable.js
 jax/output/CommonHTML/jax.js
 extensions/CHTML-preview.js
+extensions/AssistiveMML.js
 
 menuSettings: {
   zoom: "Double-Click",
@@ -31,4 +32,3 @@ menuSettings: {
 errorSettings: {
   message: ["[",["MathError","Math Error"],"]"]
 }
-
