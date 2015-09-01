@@ -2,7 +2,7 @@ jax/input/TeX/config.js
 jax/input/MathML/config.js
 jax/output/HTML-CSS/config.js
 jax/output/NativeMML/config.js
-jax/output/CommonHTML/config.js
+jax/output/FastHTML/config.js
 config/MMLorHTML.js
 extensions/tex2jax.js
 extensions/mml2jax.js
@@ -17,6 +17,6 @@ jax/input/TeX/jax.js
 extensions/TeX/AMSmath.js
 extensions/TeX/AMSsymbols.js
 jax/input/MathML/jax.js
-jax/output/CommonHTML/jax.js
-extensions/CHTML-preview.js
+jax/output/FastHTML/jax.js
+extensions/fast-preview.js
 extensions/AssistiveMML.js

@@ -1,0 +1,12 @@
+jax/input/TeX/config.js
+jax/output/CommonHTML/config.js
+extensions/tex2jax.js
+extensions/MathEvents.js
+extensions/MathZoom.js
+extensions/MathMenu.js
+jax/element/mml/jax.js
+extensions/toMathML.js
+jax/input/TeX/jax.js
+extensions/TeX/AMSmath.js
+extensions/TeX/AMSsymbols.js
+extensions/AssistiveMML.js

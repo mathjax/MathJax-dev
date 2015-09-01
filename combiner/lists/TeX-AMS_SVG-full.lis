@@ -1,0 +1,17 @@
+jax/input/TeX/config.js
+jax/output/SVG/config.js
+jax/output/FastHTML/config.js
+extensions/tex2jax.js
+extensions/MathEvents.js
+extensions/MathZoom.js
+extensions/MathMenu.js
+jax/element/mml/jax.js
+extensions/toMathML.js
+jax/input/TeX/jax.js
+extensions/TeX/AMSmath.js
+extensions/TeX/AMSsymbols.js
+jax/output/SVG/jax.js
+jax/output/SVG/autoload/mtable.js
+jax/output/FastHTML/jax.js
+extensions/fast-preview.js
+extensions/AssistiveMML.js
