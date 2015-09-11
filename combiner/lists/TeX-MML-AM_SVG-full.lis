@@ -1,7 +1,11 @@
 jax/input/TeX/config.js
-jax/output/HTML-CSS/config.js
+jax/input/MathML/config.js
+jax/input/AsciiMath/config.js
+jax/output/SVG/config.js
 jax/output/PreviewHTML/config.js
 extensions/tex2jax.js
+extensions/mml2jax.js
+extensions/asciimath2jax.js
 extensions/MathEvents.js
 extensions/MathZoom.js
 extensions/MathMenu.js
@@ -12,6 +16,10 @@ extensions/TeX/noUndefined.js
 jax/input/TeX/jax.js
 extensions/TeX/AMSmath.js
 extensions/TeX/AMSsymbols.js
+jax/input/MathML/jax.js
+jax/input/AsciiMath/jax.js
+jax/output/SVG/jax.js
+jax/output/SVG/autoload/mtable.js
 jax/output/PreviewHTML/jax.js
 extensions/fast-preview.js
 extensions/AssistiveMML.js

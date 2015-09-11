@@ -1,8 +1,5 @@
 jax/input/MathML/config.js
-jax/output/HTML-CSS/config.js
-jax/output/NativeMML/config.js
-jax/output/PreviewHTML/config.js
-config/MMLorHTML.js
+jax/output/CommonHTML/config.js
 extensions/mml2jax.js
 extensions/MathEvents.js
 extensions/MathZoom.js
@@ -10,6 +7,6 @@ extensions/MathMenu.js
 jax/element/mml/jax.js
 extensions/toMathML.js
 jax/input/MathML/jax.js
-jax/output/PreviewHTML/jax.js
-extensions/fast-preview.js
+jax/output/CommonHTML/jax.js
+jax/output/CommonHTML/autoload/mtable.js
 extensions/AssistiveMML.js
