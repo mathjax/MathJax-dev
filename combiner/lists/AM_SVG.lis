@@ -7,5 +7,6 @@ extensions/MathZoom.js
 extensions/MathMenu.js
 jax/element/mml/jax.js
 extensions/toMathML.js
+jax/input/AsciiMath/jax.js
 extensions/fast-preview.js
 extensions/AssistiveMML.js
