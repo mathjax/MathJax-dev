@@ -1,7 +1,7 @@
 jax/input/AsciiMath/config.js
 jax/output/HTML-CSS/config.js
 jax/output/NativeMML/config.js
-jax/output/FastHTML/config.js
+jax/output/PreviewHTML/config.js
 config/MMLorHTML.js
 extensions/asciimath2jax.js
 extensions/MathEvents.js
@@ -13,6 +13,6 @@ jax/input/AsciiMath/jax.js
 jax/output/NativeMML/jax.js
 jax/output/HTML-CSS/jax.js
 jax/output/HTML-CSS/autoload/mtable.js
-jax/output/FastHTML/jax.js
+jax/output/PreviewHTML/jax.js
 extensions/fast-preview.js
 extensions/AssistiveMML.js

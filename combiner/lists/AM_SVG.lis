@@ -1,6 +1,6 @@
 jax/input/AsciiMath/config.js
 jax/output/SVG/config.js
-jax/output/FastHTML/config.js
+jax/output/PreviewHTML/config.js
 extensions/asciimath2jax.js
 extensions/MathEvents.js
 extensions/MathZoom.js
