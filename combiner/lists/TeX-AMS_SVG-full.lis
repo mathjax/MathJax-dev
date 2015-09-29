@@ -7,6 +7,8 @@ extensions/MathZoom.js
 extensions/MathMenu.js
 jax/element/mml/jax.js
 extensions/toMathML.js
+extensions/TeX/noErrors.js
+extensions/TeX/noUndefined.js
 jax/input/TeX/jax.js
 extensions/TeX/AMSmath.js
 extensions/TeX/AMSsymbols.js
