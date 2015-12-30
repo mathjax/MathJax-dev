@@ -1,5 +1,6 @@
 jax/input/TeX/config.js
 jax/output/CommonHTML/config.js
+jax/output/PreviewHTML/config.js
 extensions/tex2jax.js
 extensions/MathEvents.js
 extensions/MathZoom.js
@@ -11,4 +12,6 @@ extensions/TeX/noUndefined.js
 jax/input/TeX/jax.js
 extensions/TeX/AMSmath.js
 extensions/TeX/AMSsymbols.js
+jax/output/PreviewHTML/jax.js
+extensions/fast-preview.js
 extensions/AssistiveMML.js
