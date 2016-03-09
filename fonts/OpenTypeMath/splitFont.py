@@ -352,7 +352,7 @@ for m in MODES:
         print(', offsetA: 0x1D434, offsetG: 0x1D6E2, remap: {0x1D455: 0x210E}', file=fontData[m], end="")
     print('},', file=fontData[m])
 
-    print('          "bolditalic": {fonts: [%s], bold: true, italic:true' %
+    print('          "bold-italic": {fonts: [%s], bold: true, italic:true' %
           ",".join(fontList2["BOLDITALIC"]), file=fontData[m], end="")
     if MATHONLY and not(ISNEOEULER):
         print(', offsetA: 0x1D468, offsetG: 0x1D71C', file=fontData[m], end="")
@@ -392,6 +392,9 @@ mathvariants = '\
 if config.SANSSERIFGREEK is not None:
     mathvariants += ',\n\
             offsetG: %s' % config.SANSSERIFGREEK
+    if config.SANSSERIFGREEK is "0xE17D":
+        mathvariants += ',\n\
+            offsetE: %s' % config.SANSSERIFGREEK
 
 mathvariants += '\n\
           },\n\
@@ -412,6 +415,9 @@ if config.SANSSERIFITALICNUMBER is not None:
 if config.SANSSERIFITALICGREEK is not None:
     mathvariants += ',\n\
              offsetG: %s' % config.SANSSERIFITALICGREEK
+    if config.SANSSERIFITALICGREEK is "0xE1BF":
+        mathvariants += ',\n\
+            offsetE: %s' % config.SANSSERIFITALICGREEK
 
 mathvariants += '\n\
           },\n\
@@ -544,6 +550,7 @@ for m in MODES:
         {name: "alpha", low: 0x61, high: 0x7A, offset: "A", add: 26},\n\
         {name: "Alpha", low: 0x41, high: 0x5A, offset: "A"},\n\
         {name: "number", low: 0x30, high: 0x39, offset: "N"},\n\
+        {name: "greek-non-unicode", low: 0x03B1, high: 0x03C9, offset: "G", add: 25},\n\
         {name: "greek", low: 0x03B1, high: 0x03C9, offset: "G", add: 26},\n\
         {name: "Greek", low: 0x0391, high: 0x03F6, offset: "G",\n\
            remap: {0x03F5: 52, 0x03D1: 53, 0x03F0: 54, 0x03D5: 55, 0x03F1: 56, 0x03D6: 57, 0x03F4: 17}}\n\

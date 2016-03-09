@@ -298,7 +298,13 @@ REMAP = {
     }
 
 REMAPACCENT = {
-    "\u2192": "\u20D7"
+    "\u007E": "\u0303",
+    "\u2192": "\u20D7",
+    "\u0060": "\u0300",
+    "\u005E": "\u0302",
+    "\u00B4": "\u0301",
+    "\u2032": "\u0301",
+    "\u2035": "\u0300"
 }
 
 REMAPACCENTUNDER = {
@@ -764,6 +770,9 @@ DELIMITERS = {
     0x2017: {"alias": 0x23AF, "dir": "H"}, # horizontal line
     0x2212: {"alias": 0x23AF, "dir": "H"}, # minus
     0x2215: {"alias": 0x002F, "dir": "V"}, # division slash
+    0x2312: {"alias": 0x23DC, "dir": "H"}, # arc
+    0x2322: {"alias": 0x23DC, "dir": "H"}, # frown
+    0x2323: {"alias": 0x23DD, "dir": "H"}, # smile
     0x2329: {"alias": 0x27E8, "dir": "V"}, # langle
     0x232A: {"alias": 0x27E9, "dir": "V"}, # rangle
     0x2500: {"alias": 0x2212, "dir": "H"}, # horizontal line

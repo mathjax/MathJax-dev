@@ -1,5 +1,5 @@
 jax/input/TeX/config.js
-jax/output/HTML-CSS/config.js
+jax/output/SVG/config.js
 jax/output/PreviewHTML/config.js
 extensions/tex2jax.js
 extensions/MathEvents.js

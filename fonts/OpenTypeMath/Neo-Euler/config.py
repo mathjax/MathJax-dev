@@ -193,6 +193,9 @@ DELIMITERS = {
         "stretch": [(0x21D1,"top"),(0x2016,"ext"),(0x21D3,"bot")]
     },
     0x2212: {"alias": 0x00AF, "dir": "H"}, # minus
+    0x2312: {"alias": 0x23DC, "dir": "H"}, # arc
+    0x2322: {"alias": 0x23DC, "dir": "H"}, # frown
+    0x2323: {"alias": 0x23DD, "dir": "H"}, # smile
     0x23AA: # \bracevert
     {
         "dir": "V",
