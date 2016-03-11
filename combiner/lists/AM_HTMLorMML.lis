@@ -1,6 +1,7 @@
 jax/input/AsciiMath/config.js
 jax/output/HTML-CSS/config.js
 jax/output/NativeMML/config.js
+jax/output/PreviewHTML/config.js
 config/MMLorHTML.js
 extensions/asciimath2jax.js
 extensions/MathEvents.js
@@ -9,3 +10,6 @@ extensions/MathMenu.js
 jax/element/mml/jax.js
 extensions/toMathML.js
 jax/input/AsciiMath/jax.js
+jax/output/PreviewHTML/jax.js
+extensions/fast-preview.js
+extensions/AssistiveMML.js

@@ -1,7 +1,7 @@
 /*
  *  %%% NAME %%%
  *  
- *  Copyright (c) 2010-11 Design Science, Inc.
+ *  Copyright (c) 2010-2015 The MathJax Consortium
  *
  *  Part of the MathJax library.
  *  See http://www.mathjax.org for details.

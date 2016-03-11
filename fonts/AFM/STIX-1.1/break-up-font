@@ -4,6 +4,7 @@
 
 require "config.pl";
 require "../../Tables/STIX/unicode.pl";
+require "../../../custom.cfg.pl";
 
 $font = shift; $font =~ s/\.afm//;
 $FONT = $font; $FONT .= ".afm";
@@ -38,7 +39,7 @@ while ($line = <INFILE>) {
     next if $name =~ m/uniEFF[DEF]/;  # used for version number and style information (width encodes version and style)
     if ($C == -1) {
       if ($name =~ m/^uni[A-F0-9]/) {$C = hex(substr($name,3))} else {
-        $C = `fontforge -lang=ff -c 'Print(UnicodeFromName("$name"))' 2>/dev/null`;
+        $C = `$FONTFORGE -lang=ff -c 'Print(UnicodeFromName("$name"))' 2>/dev/null`;
         chomp($C);
       }
     }

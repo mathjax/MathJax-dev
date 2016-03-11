@@ -6,7 +6,7 @@
 #  Usage:  ./makeUnicode > unicode.pl
 
 sub GetTableData {
-  open(INFILE,"STIX character list.html");
+  open(INFILE,"allGlyphs.html");
   my @lines = <INFILE>;
   close(INFILE);
   chomp(@lines);

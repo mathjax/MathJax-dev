@@ -9,7 +9,9 @@ use Cwd;
 use FindBin;
 
 $bindir = $FindBin::Bin;
-$YUI = "$bindir/yuicompressor-2.4.2/build/yuicompressor-2.4.2.jar";
+
+require "$bindir/../custom.cfg.pl";
+
 $YUIFILTER = "$bindir/yuiFilter";
 $src = shift; $dst = shift;
 
@@ -24,7 +26,8 @@ if ($src =~ m!/config/(local/local|default)\.js$!) {
 print "============================================\n";
 print "Compressing: $src\n";
 print "--------------------------------------------";
-system("java -jar '$YUI' -v -o '$dst' '$src' 2>&1 | $YUIFILTER");
+# The sed command uncomments the 'MathJax.isPacked = true;' from MathJax.js
+system("cat '$src' | $SED \"s\/^.*\\/\\/ \\(MathJax.isPacked = true;\\).*$\/\\1\/\" | $JAVA -jar '$YUICOMPRESSOR' -v -o '$dst' --type js 2>&1 | $YUIFILTER");
 
 open(MJX,"<", $dst);
 @lines = <MJX>;
@@ -32,7 +35,6 @@ close(MJX);
 $compressed = join("",@lines);
 
 $template = "$bindir/template.js";
-$template = "$bindir/template-MathJax.js" if $dst =~ m!(^|/)MathJax\.js$!;
 
 open(MJX,"<",$template);
 @lines = <MJX>;

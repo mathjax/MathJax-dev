@@ -2,6 +2,7 @@ jax/input/TeX/config.js
 jax/input/MathML/config.js
 jax/output/HTML-CSS/config.js
 jax/output/NativeMML/config.js
+jax/output/PreviewHTML/config.js
 config/MMLorHTML.js
 extensions/tex2jax.js
 extensions/mml2jax.js
@@ -19,3 +20,6 @@ jax/input/MathML/jax.js
 jax/output/NativeMML/jax.js
 jax/output/HTML-CSS/jax.js
 jax/output/HTML-CSS/autoload/mtable.js
+jax/output/PreviewHTML/jax.js
+extensions/fast-preview.js
+extensions/AssistiveMML.js
