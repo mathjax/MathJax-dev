@@ -9,7 +9,7 @@ while ($line = <>) {
     $line = <>; $line = <>; # skip next two lines
   } elsif ($line =~ m/Using 'eval' is not recommended/) {
     $line = <>; $line = <>; # skip next two lines
-  } elsif ($line =~ m/Using charset MacRoman/) {
+  } elsif ($line =~ m/Using charset (MacRoman|UTF)/) {
     $line = <>; # skip blank line
   } else {
     print $line;

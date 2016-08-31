@@ -54,11 +54,10 @@ print "Creating $outfile\n";
 open(CONFIG,">","$MJX/$outfile") || die "Can't write $MJX/$outfile: $!\n";
 print CONFIG $config;
 
-if (scalar(@config)) {
-  print CONFIG "MathJax.Hub.Config({\n  ";
-  print CONFIG join("\n  ",@config);
-  print CONFIG "\n});\n\n";
-}
+print CONFIG "MathJax.Hub.Config({\n";
+print CONFIG "  extensions: ['[Contrib]/a11y/accessibility-menu.js']";
+print CONFIG ",\n  ",join("\n  ",@config) if scalar(@config);
+print CONFIG "\n});\n\n";
 
 foreach $file (@files) {
   print "  $file\n";

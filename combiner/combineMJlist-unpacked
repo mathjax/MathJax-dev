@@ -42,6 +42,8 @@ foreach $file (@files) {
   if ($file =~ m!^config/(.*)!) {push(@CONFIG,"\"$1\"")}
 }
 
+push(@EXTENSIONS,"[Contrib]/a11y/accessibility-menu.js");
+
 @HUB = ();
 push(@HUB,"config: [".join(",",@CONFIG)."]") if scalar(@CONFIG);
 push(@HUB,"extensions: [".join(",",@EXTENSIONS)."]") if scalar(@EXTENSIONS);
