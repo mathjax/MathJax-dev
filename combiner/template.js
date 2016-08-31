@@ -16,5 +16,3 @@ MathJax.Ajax.Preloading(
 %%% FILES %%%
 );
 
-MathJax.Hub.Config({"v1.0-compatible":false});
-
