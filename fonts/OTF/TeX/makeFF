@@ -72,7 +72,7 @@ $map{cmr10} = {
     0x1C => 0xF8,           # o with slash
     0x1D => 0xC6,           # AE ligature
     0x1E => 0x152,          # OE ligature
-    0x1F => 0xD8,           # O with slash         
+    0x1F => 0xD8,           # O with slash
   ],
 
   "Greek" => [
@@ -645,7 +645,7 @@ $map{cmti10} = {
     0x1C => 0xF8,           # o with slash
     0x1D => 0xC6,           # AE ligature
     0x1E => 0x152,          # OE ligature
-    0x1F => 0xD8,           # O with slash       
+    0x1F => 0xD8,           # O with slash
   ],
 
   "WinChrome" => [
@@ -714,7 +714,7 @@ $map{cmbx10} = {
     0x1C => 0xF8,           # o with slash
     0x1D => 0xC6,           # AE ligature
     0x1E => 0x152,          # OE ligature
-    0x1F => 0xD8,           # O with slash       
+    0x1F => 0xD8,           # O with slash
   ],
 
   "Greek-Bold" => [
@@ -1521,8 +1521,8 @@ $map{cmtt10} = {
 
     [0x21,0x7F] => 0x21,
 
-    0x27 => 0x2018,         # left quote
-    0x60 => 0x2019,         # right quote
+    0x60 => 0x2018,         # left quote
+    0x27 => 0x2019,         # right quote
     0x5E => [0x302,-525,0], # \hat (combining)
     0x7E => [0x303,-525,0], # \tilde (combining)
     0x7F => [0x308,-525,0], # \ddot (combining)
