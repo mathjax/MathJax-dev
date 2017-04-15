@@ -20,6 +20,7 @@ jax/input/MathML/jax.js
 jax/output/PreviewHTML/jax.js
 extensions/fast-preview.js
 extensions/AssistiveMML.js
+extensions/a11y/accessibility-menu.js
 
 menuSettings: {
   zoom: "Double-Click",

@@ -21,3 +21,4 @@ jax/input/AsciiMath/jax.js
 jax/output/PreviewHTML/jax.js
 extensions/fast-preview.js
 extensions/AssistiveMML.js
+extensions/a11y/accessibility-menu.js
