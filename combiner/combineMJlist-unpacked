@@ -38,7 +38,8 @@ while ($file = <>) {
 
 foreach $file (@files) {
   if ($file =~ m!^jax/(.*)/config.js!) {push(@JAX,"\"$1\"")}
-  if ($file =~ m!^extensions/(.*)!) {push(@EXTENSIONS,"\"$1\"")}
+  if ($file =~ m!^extensions/a11y/(.*)!) {push(@EXTENSIONS,"\"[a11y]/$1\"")}
+  elsif ($file =~ m!^extensions/(.*)!) {push(@EXTENSIONS,"\"$1\"")}
   if ($file =~ m!^config/(.*)!) {push(@CONFIG,"\"$1\"")}
 }
 
