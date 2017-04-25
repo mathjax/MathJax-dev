@@ -1,7 +1,7 @@
 #! /usr/bin/perl
 
 #  Creates the FontForge files needed to create the
-#  MathJax fonts from the TeX source files, constructing some
+#  KaTeX fonts from the TeX source files, constructing some
 #  glyphs from two or more parts, when needed.
 #
 #  Usage:  ./makeFF
@@ -66,6 +66,13 @@ $map{cmr10} = {
     0x7E => [0x303,-500,0], # \tilde (combining)
     0x7F => 0xA8,           # \ddot
     0x7F => [0x308,-500,0], # \ddot (combining)
+    0x19 => 0xDF,           # sharp S
+    0x1A => 0xE6,           # ae ligature
+    0x1B => 0x153,          # oe ligature
+    0x1C => 0xF8,           # o with slash
+    0x1D => 0xC6,           # AE ligature
+    0x1E => 0x152,          # OE ligature
+    0x1F => 0xD8,           # O with slash         
   ],
 
   "Greek" => [
@@ -1704,10 +1711,10 @@ $extra{'Main-Regular'} = {
   mapsto => [
     'Select(0u2192)','Copy()',
     'Select(0u21A6)','Paste()',
-    'Generate("otf/MathJax_Main-Regular.otf")',
+    'Generate("otf/KaTeX_Main-Regular.otf")',
     'Open("pfa/cmsy10.pfa")',
     'Select(0x37)','Copy()',
-    'Open("otf/MathJax_Main-Regular.otf")',
+    'Open("otf/KaTeX_Main-Regular.otf")',
     'Select(0u21A6)',
     'PasteWithOffset(0,0)',
     'RemoveOverlap()','Simplify()',
@@ -1716,10 +1723,10 @@ $extra{'Main-Regular'} = {
   xlongmapsto => [
     'Select(0u27F6)','Copy()',
     'Select(0u27FC)','Paste()',
-    'Generate("otf/MathJax_Main-Regular.otf")',
+    'Generate("otf/KaTeX_Main-Regular.otf")',
     'Open("pfa/cmsy10.pfa")',
     'Select(0x37)','Copy()',
-    'Open("otf/MathJax_Main-Regular.otf")',
+    'Open("otf/KaTeX_Main-Regular.otf")',
     'Select(0u27FC)',
     'PasteWithOffset(0,0)',
     'RemoveOverlap()','Simplify()',
@@ -1728,10 +1735,10 @@ $extra{'Main-Regular'} = {
   hookleftarrow => [
     'Select(0u2190)','Copy()',
     'Select(0u21A9)','Paste()',
-    'Generate("otf/MathJax_Main-Regular.otf")',
+    'Generate("otf/KaTeX_Main-Regular.otf")',
     'Open("pfa/cmmi10.pfa")',
     'Select(0x2D)','Copy()',
-    'Open("otf/MathJax_Main-Regular.otf")',
+    'Open("otf/KaTeX_Main-Regular.otf")',
     'Select(0u21A9)',
     'PasteWithOffset(848,0)',
     'SetRBearing(126,1)',
@@ -1739,10 +1746,10 @@ $extra{'Main-Regular'} = {
   ],
 
   hookrightarrow => [
-    'Generate("otf/MathJax_Main-Regular.otf")',
+    'Generate("otf/KaTeX_Main-Regular.otf")',
     'Open("pfa/cmmi10.pfa")',
     'Select(0x2C)','Copy()',
-    'Open("otf/MathJax_Main-Regular.otf")',
+    'Open("otf/KaTeX_Main-Regular.otf")',
     'Select(0u21AA)','Paste()',
     'Select(0u2192)','Copy()',
     'Select(0u21AA)',
@@ -1761,8 +1768,8 @@ $extra{'Main-Regular'} = {
   ],
 
   lgroup => [
-    'Generate("otf/MathJax_Main-Regular.otf")',
-    'Open("otf/MathJax_Size4-Regular.otf")',
+    'Generate("otf/KaTeX_Main-Regular.otf")',
+    'Open("otf/KaTeX_Size4-Regular.otf")',
     'Select(0u23A7)','Copy()',
     'Select(0u23B8)','Paste()',
     'Select(0u23A9)','Copy()',
@@ -1772,13 +1779,13 @@ $extra{'Main-Regular'} = {
     'RemoveOverlap()','Simplify()',
     'SetRBearing(-38,1)',
     'Copy()','Clear()',
-    'Open("otf/MathJax_Main-Regular.otf")',
+    'Open("otf/KaTeX_Main-Regular.otf")',
     'Select(0u27EE)','Paste()',
   ],
 
   rgroup => [
-    'Generate("otf/MathJax_Main-Regular.otf")',
-    'Open("otf/MathJax_Size4-Regular.otf")',
+    'Generate("otf/KaTeX_Main-Regular.otf")',
+    'Open("otf/KaTeX_Size4-Regular.otf")',
     'Select(0u23AB)','Copy()',
     'Select(0u23B8)','Paste()',
     'Select(0u23AD)','Copy()',
@@ -1788,13 +1795,13 @@ $extra{'Main-Regular'} = {
     'RemoveOverlap()','Simplify()',
     'SetRBearing(-38,1)',
     'Copy()','Clear()',
-    'Open("otf/MathJax_Main-Regular.otf")',
+    'Open("otf/KaTeX_Main-Regular.otf")',
     'Select(0u27EF)','Paste()',
   ],
 
   lmoustache => [
-    'Generate("otf/MathJax_Main-Regular.otf")',
-    'Open("otf/MathJax_Size4-Regular.otf")',
+    'Generate("otf/KaTeX_Main-Regular.otf")',
+    'Open("otf/KaTeX_Size4-Regular.otf")',
     'Select(0u23A7)','Copy()',
     'Select(0u23B8)','Paste()',
     'Select(0u23AD)','Copy()',
@@ -1804,13 +1811,13 @@ $extra{'Main-Regular'} = {
     'RemoveOverlap()','Simplify()',
     'SetRBearing(-38,1)',
     'Copy()','Clear()',
-    'Open("otf/MathJax_Main-Regular.otf")',
+    'Open("otf/KaTeX_Main-Regular.otf")',
     'Select(0u23B0)','Paste()',
   ],
 
   rmoustache => [
-    'Generate("otf/MathJax_Main-Regular.otf")',
-    'Open("otf/MathJax_Size4-Regular.otf")',
+    'Generate("otf/KaTeX_Main-Regular.otf")',
+    'Open("otf/KaTeX_Size4-Regular.otf")',
     'Select(0u23AB)','Copy()',
     'Select(0u23B8)','Paste()',
     'Select(0u23A9)','Copy()',
@@ -1820,7 +1827,7 @@ $extra{'Main-Regular'} = {
     'RemoveOverlap()','Simplify()',
     'SetRBearing(-38,1)',
     'Copy()','Clear()',
-    'Open("otf/MathJax_Main-Regular.otf")',
+    'Open("otf/KaTeX_Main-Regular.otf")',
     'Select(0u23B1)','Paste()',
   ],
 
@@ -2030,10 +2037,10 @@ $extra{'Main-Bold'} = {
   mapsto => [
     'Select(0u2192)','Copy()',
     'Select(0u21A6)','Paste()',
-    'Generate("otf/MathJax_Main-Bold.otf")',
+    'Generate("otf/KaTeX_Main-Bold.otf")',
     'Open("pfa/cmbsy10.pfa")',
     'Select(0x37)','Copy()',
-    'Open("otf/MathJax_Main-Bold.otf")',
+    'Open("otf/KaTeX_Main-Bold.otf")',
     'Select(0u21A6)',
     'PasteWithOffset(0,0)',
     'RemoveOverlap()','Simplify()',
@@ -2042,10 +2049,10 @@ $extra{'Main-Bold'} = {
   xlongmapsto => [
     'Select(0u27F6)','Copy()',
     'Select(0u27FC)','Paste()',
-    'Generate("otf/MathJax_Main-Bold.otf")',
+    'Generate("otf/KaTeX_Main-Bold.otf")',
     'Open("pfa/cmbsy10.pfa")',
     'Select(0x37)','Copy()',
-    'Open("otf/MathJax_Main-Bold.otf")',
+    'Open("otf/KaTeX_Main-Bold.otf")',
     'Select(0u27FC)',
     'PasteWithOffset(0,0)',
     'RemoveOverlap()','Simplify()',
@@ -2054,10 +2061,10 @@ $extra{'Main-Bold'} = {
   hookleftarrow => [
     'Select(0u2190)','Copy()',
     'Select(0u21A9)','Paste()',
-    'Generate("otf/MathJax_Main-Bold.otf")',
+    'Generate("otf/KaTeX_Main-Bold.otf")',
     'Open("pfa/cmmib10.pfa")',
     'Select(0x2D)','Copy()',
-    'Open("otf/MathJax_Main-Bold.otf")',
+    'Open("otf/KaTeX_Main-Bold.otf")',
     'Select(0u21A9)',
     'PasteWithOffset(965,0)',
     'SetRBearing(132,1)',
@@ -2065,10 +2072,10 @@ $extra{'Main-Bold'} = {
   ],
 
   hookrightarrow => [
-    'Generate("otf/MathJax_Main-Bold.otf")',
+    'Generate("otf/KaTeX_Main-Bold.otf")',
     'Open("pfa/cmmib10.pfa")',
     'Select(0x2C)','Copy()',
-    'Open("otf/MathJax_Main-Bold.otf")',
+    'Open("otf/KaTeX_Main-Bold.otf")',
     'Select(0u21AA)','Paste()',
     'Select(0u2192)','Copy()',
     'Select(0u21AA)',
@@ -2170,7 +2177,7 @@ $extra{'Size4'} = {
   braceext => [
     'Open("lib/Extra.otf")',
     'Select(0u5F)','Copy()',
-    'Open("otf/MathJax_Size4-Regular.otf")',
+    'Open("otf/KaTeX_Size4-Regular.otf")',
     'Select(0uE154)','Paste()',
   ],
 };
@@ -2219,26 +2226,26 @@ $extra{"SansSerif-Bold"} = {
 
 $extra{"WinIE6"} = {
   neq => [
-    'Generate("otf/MathJax_WinIE6-Regular.otf")',
-    'Open("otf/MathJax_Main-Regular.otf")',
+    'Generate("otf/KaTeX_WinIE6-Regular.otf")',
+    'Open("otf/KaTeX_Main-Regular.otf")',
     'Select(0u2260)','Copy()',
-    'Open("otf/MathJax_WinIE6-Regular.otf")',
+    'Open("otf/KaTeX_WinIE6-Regular.otf")',
     'Select(0uE220)','Paste()'
   ],
 
   neq_bold => [
-    'Generate("otf/MathJax_WinIE6-Regular.otf")',
-    'Open("otf/MathJax_Main-Bold.otf")',
+    'Generate("otf/KaTeX_WinIE6-Regular.otf")',
+    'Open("otf/KaTeX_Main-Bold.otf")',
     'Select(0u2260)','Copy()',
-    'Open("otf/MathJax_WinIE6-Regular.otf")',
+    'Open("otf/KaTeX_WinIE6-Regular.otf")',
     'Select(0uE260)','Paste()'
   ],
 
   angle_bold => [
-    'Generate("otf/MathJax_WinIE6-Regular.otf")',
-    'Open("otf/MathJax_Main-Bold.otf")',
+    'Generate("otf/KaTeX_WinIE6-Regular.otf")',
+    'Open("otf/KaTeX_Main-Bold.otf")',
     'Select(0u2220)','Copy()',
-    'Open("otf/MathJax_WinIE6-Regular.otf")',
+    'Open("otf/KaTeX_WinIE6-Regular.otf")',
     'Select(0uE256)','Paste()'
   ]
 };
@@ -2296,7 +2303,7 @@ sub checkSkew {
 foreach $cmfont (sort (keys %map)) {
   print "Reading $cmfont...\n";
   foreach $mjfont (keys %{$map{$cmfont}}) {
-    $fontname = "MathJax_$mjfont";
+    $fontname = "KaTeX_$mjfont";
     $style = $fontname; $style =~ s/.*?(-|$)//; $style = "Regular" unless $style;
     $normal = "Normal"; $normal = "Bold" if style =~ m/Bold/;
     $family = $fontname; $family =~ s/-.*//;
@@ -2309,7 +2316,7 @@ foreach $cmfont (sort (keys %map)) {
       $lines =~ s/\*WEIGHT_S\*/$STYLE/g; $lines =~ s/\*NORMAL\*/$normal/g;
       if ($style eq "Regular") {$lines =~ s/\* WEIGHT\*//g} else {$lines =~ s/\* WEIGHT\*/ $STYLE/g}
       open(SPACE,">Space.ttx"); print SPACE $lines; close(SPACE);
-      `$TTX Space.ttx; mv Space.otf '$otf'`; unlink("Space.ttx");
+      `$TTX Space.ttx; mv Space.ttf '$otf'`; unlink("Space.ttx");
       $script{$mjfont} = [
         'Open("'.$otf.'")',
         'SetPanose([0,0,'.($style eq 'Bold' ? '8' : '0').',0,0,0,0,0,0,0])',
@@ -2367,15 +2374,15 @@ foreach $font (keys %extra) {
 foreach $font (sort keys %script) {
   $family = $font; $family .= "-Regular" unless $family =~ m/-/;
   $style = $family; $style =~ s/.*-//;
-  print "MathJax_$font\n";
-  open(SCRIPT,">","ff/MathJax_$font.ff");
+  print "KaTeX_$font\n";
+  open(SCRIPT,">","ff/KaTeX_$font.ff");
   print SCRIPT join(";\n",@{$script{$font}},@{$style{$style}},"",
                     'SelectAll()','RoundToInt()',
 		    'Simplify()','AddExtrema()','Simplify()',
 		    'ClearHints()','AutoHint()','RoundToInt()',
-		    'Generate("otf/MathJax_'.$family.'.otf")',
+		    'Generate("otf/KaTeX_'.$family.'.otf")',
 		    'SelectAll()','AutoInstr()',
-                    'Generate("ttf/MathJax_'.$family.'.ttf")'),"\n";
+                    'Generate("ttf/KaTeX_'.$family.'.ttf")'),"\n";
   close(SCRIPT);
 }
 
@@ -2385,7 +2392,7 @@ foreach $font (sort keys %script) {
 open(SKEWFILE,">skew.js");
 foreach $mjfont (sort(keys %SKEW)) {
   next if $mjfont eq "Math-Regular";
-  $name = "MathJax_$mjfont";
+  $name = "KaTeX_$mjfont";
   $name =~ s/-Regular//; $name =~ s/BoldItalic/Bold-Italic/;
   $name =~ s/-I/-i/; $name =~ s/-B/-b/;
   print SKEWFILE "  HTMLCSS.FONTDATA.FONTS['$name'].skew = {";
