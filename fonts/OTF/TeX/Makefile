@@ -112,7 +112,7 @@ eot: ttf
 
 	@for file in `ls ttf/*.ttf | $(SED) 's|ttf/\(.*\)\.ttf|\1|'`; do \
 		echo "Generating $$file.eot..."; \
-		$(TTF2EOT) < ttf/$$file.ttf > eot/$$file.eot; \
+		$(TTF2EOT) ttf/$$file.ttf > eot/$$file.eot; \
 		done
 
 	rm -f eot/*WinChrome* eot/*Greek*
