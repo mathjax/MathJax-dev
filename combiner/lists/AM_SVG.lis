@@ -11,3 +11,5 @@ jax/input/AsciiMath/jax.js
 extensions/fast-preview.js
 extensions/AssistiveMML.js
 extensions/a11y/accessibility-menu.js
+
+extensions: ['[a11y]/accessibility-menu.js']

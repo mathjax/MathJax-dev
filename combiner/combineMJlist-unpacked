@@ -27,7 +27,9 @@ while ($file = <>) {
   } else {
     @config = <>;
     chomp(@config);
+    @config = grep {!/^extensions:/} @config;
     while (scalar(@config) && $config[-1] !~ m/\S/) {pop(@config)}
+    $config[-1] =~ s/,$// if scalar(@config);
     last;
   }
 }
