@@ -102,7 +102,7 @@ foreach $file (sort(keys %lines)) {
   print JSFILE " *  \n";
   print JSFILE " *  Defines the image size data needed for the HTML-CSS OutputJax\n";
   print JSFILE " *  to display mathematics using fallback images when the fonts\n";
-  print JSFILE " *  are not availble to the client browser.\n";
+  print JSFILE " *  are not available to the client browser.\n";
   print JSFILE " *\n";
   print JSFILE " *  ---------------------------------------------------------------------\n";
   print JSFILE " *\n";
