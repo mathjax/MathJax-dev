@@ -1,0 +1,35 @@
+import {mathjax} from '../mathjax3/mathjax.js';
+
+import {TeX} from '../mathjax3/input/tex.js';
+import {CHTML} from '../mathjax3/output/chtml.js';
+//import {SVG} from '../mathjax3/output/svg.js';
+import {RegisterHTMLHandler} from '../mathjax3/handlers/html.js';
+import {browserAdaptor} from '../mathjax3/adaptors/browserAdaptor.js';
+
+import {AllPackages} from '../mathjax3/input/tex/AllPackages.js';
+
+const packages = AllPackages.filter(name => name !== 'noerrors');
+
+RegisterHTMLHandler(browserAdaptor());
+
+const OPTIONS = {
+  InputJax: new TeX({packages}),
+  OutputJax: new /*SVG() */CHTML()
+};
+
+const html = mathjax.document(document, OPTIONS);
+
+mathjax.handleRetriesFor(() => {
+
+    html.findMath()
+        .compile()
+        .getMetrics()
+        .typeset()
+        .updateDocument();
+        
+//    console.log(adaptor.outerHTML(adaptor.parent(adaptor.body(html.document))));
+
+}).catch(err => console.log(err.stack));
+
+import {Package} from '../mathjax3/components/package.js';
+console.log(Package.packages);

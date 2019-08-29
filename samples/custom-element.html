@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="./lib/custom-element-config.js"></script>
+    <script src="https://rawcdn.githack.com/mathjax/mj3-demos/3.0.0-beta.4/mathjax3/mml-chtml.js"</script>
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="./lib/custom-element.js"></script>
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Custom Element MathML test</h1>
+
+    <p>MathML outside of a custom element: <math><mrow><mfrac><mn>10</mn><mrow><mn>12</mn></mrow></mfrac></mrow></math></p>
+    <custom-element>This text shouldn't be visible unless the custom element isn't recognized.</custom-element>
+  </body>
+</html>
