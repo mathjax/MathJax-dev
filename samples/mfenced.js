@@ -1,8 +1,8 @@
-import {mathjax} from '../mathjax3/mathjax.js';
+import {mathjax} from '../mathjax3/js/mathjax.js';
 
-import {MathML} from '../mathjax3/input/mathml.js';
-import {RegisterHTMLHandler} from '../mathjax3/handlers/html.js';
-import {chooseAdaptor} from '../mathjax3/adaptors/chooseAdaptor.js';
+import {MathML} from '../mathjax3/js/input/mathml.js';
+import {RegisterHTMLHandler} from '../mathjax3/js/handlers/html.js';
+import {chooseAdaptor} from '../mathjax3/js/adaptors/chooseAdaptor.js';
 
 RegisterHTMLHandler(chooseAdaptor());
 

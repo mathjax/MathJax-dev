@@ -1,7 +1,7 @@
-import {mathjax} from '../mathjax3/mathjax.js';
+import {mathjax} from '../mathjax3/js/mathjax.js';
 
-import {AsciiMath} from '../mathjax3/input/asciimath.js';
-import {CHTML} from '../mathjax3/output/chtml.js';
+import {AsciiMath} from '../mathjax3/js/input/asciimath.js';
+import {CHTML} from '../mathjax3/js/output/chtml.js';
 import {adaptor, htmlDocument} from './lib/chooseHTML.js';
 
 const OPTIONS = {

@@ -1,4 +1,4 @@
-import {Styles} from '../mathjax3/util/styles.js';
+import {Styles} from '../mathjax3/js/util/styles.js';
 
 import {JSDOM} from 'jsdom';
 

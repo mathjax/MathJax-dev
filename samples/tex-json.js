@@ -1,10 +1,10 @@
-import {mathjax} from '../mathjax3/mathjax.js';
+import {mathjax} from '../mathjax3/js/mathjax.js';
 
-import {TeX} from '../mathjax3/input/tex.js';
-import {RegisterHTMLHandler} from '../mathjax3/handlers/html.js';
-import {chooseAdaptor} from '../mathjax3/adaptors/chooseAdaptor.js';
-import {STATE} from '../mathjax3/core/MathItem.js';
-import '../mathjax3/input/tex/AllPackages.js';
+import {TeX} from '../mathjax3/js/input/tex.js';
+import {RegisterHTMLHandler} from '../mathjax3/js/handlers/html.js';
+import {chooseAdaptor} from '../mathjax3/js/adaptors/chooseAdaptor.js';
+import {STATE} from '../mathjax3/js/core/MathItem.js';
+import {AllPackages} from '../mathjax3/js/input/tex/AllPackages.js';
 
 RegisterHTMLHandler(chooseAdaptor());
 
@@ -12,7 +12,7 @@ let html = mathjax.document('<html></html>', {
   InputJax: new TeX({packages: AllPackages})
 });
 
-import {JsonMmlVisitor} from '../mathjax3/core/MmlTree/JsonMmlVisitor.js';
+import {JsonMmlVisitor} from '../mathjax3/js/core/MmlTree/JsonMmlVisitor.js';
 let visitor = new JsonMmlVisitor();
 let toJSON = (node => visitor.visitTree(node));
 

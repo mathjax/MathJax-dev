@@ -4,7 +4,7 @@ global.MathJax = {
         load: ['adaptors/liteDOM', 'input/tex', /*'a11y/semantic-enrich'*/ '[tex]/tagFormat'],
         paths: {
             mathjax: '../components/dist',
-            sre: '../mathjax3/a11y/sre-node'
+            sre: '../mathjax3/js/a11y/sre-node'
         },
         source: require('../components/src/source.js').source,
 //        require: (url) => System.import(url)

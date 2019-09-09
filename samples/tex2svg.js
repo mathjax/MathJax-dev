@@ -1,9 +1,9 @@
-import {mathjax} from '../mathjax3/mathjax.js';
+import {mathjax} from '../mathjax3/js/mathjax.js';
 
-import {TeX} from '../mathjax3/input/tex.js';
-import {SVG} from '../mathjax3/output/svg.js';
-import {RegisterHTMLHandler} from '../mathjax3/handlers/html.js';
-import {chooseAdaptor} from '../mathjax3/adaptors/chooseAdaptor.js';
+import {TeX} from '../mathjax3/js/input/tex.js';
+import {SVG} from '../mathjax3/js/output/svg.js';
+import {RegisterHTMLHandler} from '../mathjax3/js/handlers/html.js';
+import {chooseAdaptor} from '../mathjax3/js/adaptors/chooseAdaptor.js';
 
 const adaptor = chooseAdaptor();
 RegisterHTMLHandler(adaptor);

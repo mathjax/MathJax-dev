@@ -1,14 +1,14 @@
-import {mathjax} from '../mathjax3/mathjax.js';
+import {mathjax} from '../mathjax3/js/mathjax.js';
 
-import {TeX} from '../mathjax3/input/tex.js';
-import {RegisterHTMLHandler} from '../mathjax3/handlers/html.js';
-import {chooseAdaptor} from '../mathjax3/adaptors/chooseAdaptor.js';
-import {APPEND} from '../mathjax3/util/Options.js';
+import {TeX} from '../mathjax3/js/input/tex.js';
+import {RegisterHTMLHandler} from '../mathjax3/js/handlers/html.js';
+import {chooseAdaptor} from '../mathjax3/js/adaptors/chooseAdaptor.js';
+import {APPEND} from '../mathjax3/js/util/Options.js';
 
-import '../mathjax3/input/tex/base/BaseConfiguration.js';
-import '../mathjax3/input/tex/require/RequireConfiguration.js';
-import '../mathjax3/input/tex/config_macros/ConfigMacrosConfiguration.js';
-import '../mathjax3/input/tex/autoload/AutoloadConfiguration.js';
+import '../mathjax3/js/input/tex/base/BaseConfiguration.js';
+import '../mathjax3/js/input/tex/require/RequireConfiguration.js';
+import '../mathjax3/js/input/tex/config_macros/ConfigMacrosConfiguration.js';
+import '../mathjax3/js/input/tex/autoload/AutoloadConfiguration.js';
 
 global.mathjax.config.loader.require = require;
 global.mathjax.config.loader.source = require('../components/src/source.js').source;
@@ -25,7 +25,7 @@ let html = mathjax.document('<html></html>', {
     })
 });
 
-import {SerializedMmlVisitor} from '../mathjax3/core/MmlTree/SerializedMmlVisitor.js';
+import {SerializedMmlVisitor} from '../mathjax3/js/core/MmlTree/SerializedMmlVisitor.js';
 let visitor = new SerializedMmlVisitor();
 let toMml = (node => visitor.visitTree(node));
 
