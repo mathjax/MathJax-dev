@@ -1,5 +1,5 @@
 import {ParserTest} from './parser-tests.js';
-import 'mathjax3/input/tex/action/ActionConfiguration.js';
+import 'mathjax3/js/input/tex/action/ActionConfiguration.js';
 
 class ParserActionTest extends ParserTest {
 

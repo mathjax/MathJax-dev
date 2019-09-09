@@ -1,5 +1,5 @@
 import {ParserTest} from './parser-tests.js';
-import 'mathjax3/input/tex/boldsymbol/BoldsymbolConfiguration.js';
+import 'mathjax3/js/input/tex/boldsymbol/BoldsymbolConfiguration.js';
 
 class ParserBoldsymbolTest extends ParserTest {
 
