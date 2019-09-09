@@ -3,6 +3,7 @@ import {mathjax} from '../mathjax3/js/mathjax.js';
 import {AsciiMath} from '../mathjax3/js/input/asciimath.js';
 import {RegisterHTMLHandler} from '../mathjax3/js/handlers/html.js';
 import {chooseAdaptor} from '../mathjax3/js/adaptors/chooseAdaptor.js';
+import {STATE} from '../mathjax3/js/core/MathItem.js';
 
 RegisterHTMLHandler(chooseAdaptor());
 
@@ -16,8 +17,7 @@ const toJSON = (node => visitor.visitTree(node));
 
 mathjax.handleRetriesFor(() => {
 
-    html.TestMath(process.argv[3] || '').compile();
-    let math = html.math.pop().root;
+    let math = html.convert(process.argv[3] || '', {end: STATE.CONVERT});
     math.setTeXclass();
     console.log(JSON.stringify(toJSON(math)));
 
