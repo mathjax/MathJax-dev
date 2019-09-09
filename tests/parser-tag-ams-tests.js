@@ -5,7 +5,7 @@ class ParserTagAmsTest extends ParserTest {
 
   constructor() {
     super();
-    this.settings = {tags: 'AMS'};
+    this.settings = {tags: 'ams'};
   }
 
 }
