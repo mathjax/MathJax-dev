@@ -1,4 +1,4 @@
-# MathJax v3 Developers Tools 
+# MathJax v3 Developers Tools
 
 Some developers tools for testing local MathJax v3 code base.
 
@@ -23,7 +23,7 @@ nmp install mj-context-menu
 ```
 
 Then run the lab by loading `v3-lab.html` in your webbrowser via a local
-webserver. E.g., create a symbolic link 
+webserver. E.g., create a symbolic link
 
 
 ``` shell
@@ -37,14 +37,14 @@ localhost/MathJax-dev/v3-lab.html
 ```
 
 
-## Running Samples 
+## Running Samples
 
 Samples are small scripts to test various MathJax features or to use MathJax
 directly for a specific purpose. They are particularly useful to work with local
 MathJax variants or test changes to the code base directly. Samples can be run
 using `node` or in a browser.
 
-### Running Samples in Node 
+### Running Samples in Node
 
 Samples are run using `node` and loaded using the `load.js` script. The general command is:
 
@@ -67,7 +67,7 @@ node load.js samples/tex2mml.js x^2
 </math>
 ```
 
-### Running Samples in Node 
+### Running Samples in Node
 
 Samples can be run in the browser using the `load.html` page. This either loads
 the `main.js` file or the particular sample file given in the parameters. For example, running
@@ -95,7 +95,7 @@ will print the corresponding MathML expression in the console:
 ### Scripts
 
 Not all sample scripts are currently working. Here are two lists of the samples
-that are currently working or broken. Sample names should be self-explanatory. 
+that are currently working or broken. Sample names should be self-explanatory.
 
 
 #### Working scripts
@@ -161,7 +161,7 @@ You first need to install tape:
 nmp install tape
 ```
 
-Then run tests with 
+Then run tests with
 
 ``` shell
 ./tests.sh
