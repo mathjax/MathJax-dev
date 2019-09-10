@@ -71,10 +71,17 @@ Not all sample scripts are currently working. Here is a list of working and curr
 ``` shell
 samples/asciimath2mml.js
 samples/asciimath-json.js
+samples/notagids.js
+samples/mml2html.js
+samples/mml2svg.js
+samples/mml-bbox.js
+samples/mml-nodes.js
+samples/tag-format.js
 samples/tex2html.js
 samples/tex2mml.js
 samples/tex2svg.js
 samples/tex-json.js
+samples/tex-nodes.js
 samples/tex-string.js
 ```
 
@@ -94,12 +101,6 @@ samples/find-tex-dollars.js
 samples/find-tex.js
 samples/html-full.js
 samples/mfenced.js
-samples/mml2html.js
-samples/mml2svg.js
-samples/mml-bbox.js
-samples/mml-nodes.js
-samples/notagids.js
-samples/tag-format.js
 samples/test-adaptor.js
 samples/test-styles.js
 samples/tex2mml-component.js
@@ -108,7 +109,6 @@ samples/tex2mml-speech.js
 samples/tex2svg-speech.js
 samples/tex-document.js
 samples/tex-multi-document.js
-samples/tex-nodes.js
 samples/tex-typeset.js
 ```
 
