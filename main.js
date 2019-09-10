@@ -1,22 +1,22 @@
-import {MathJax} from './mathjax3/mathjax.js';
+import {mathjax} from './mathjax3/js/mathjax.js';
 
-import {TeX} from './mathjax3/input/tex.js';
-import {RegisterHTMLHandler} from './mathjax3/handlers/html.js';
-import {chooseAdaptor} from './mathjax3/adaptors/chooseAdaptor.js';
-import {CHTML} from './mathjax3/output/chtml.js';
+import {TeX} from './mathjax3/js/input/tex.js';
+import {RegisterHTMLHandler} from './mathjax3/js/handlers/html.js';
+import {chooseAdaptor} from './mathjax3/js/adaptors/chooseAdaptor.js';
+import {CHTML} from './mathjax3/js/output/chtml.js';
+import {STATE} from './mathjax3/js/core/MathItem.js';
 
 const adaptor = chooseAdaptor();
 RegisterHTMLHandler(adaptor);
 
-const html = MathJax.document('<html></html>', {
+const html = mathjax.document('<html></html>', {
   InputJax: new TeX(),
   OutputJax: new CHTML()
 });
 
-MathJax.handleRetriesFor(() => {
+mathjax.handleRetriesFor(() => {
 
-    html.TestMath(process.argv[3] || '').compile().typeset();
-    let math = html.math.pop();
-    console.log(adaptor.outerHTML(math.typesetRoot));
+    let math = html.convert(process.argv[3] || '', {end: STATE.TYPESET});
+    console.log(adaptor.outerHTML(math));
 
 }).catch(err => console.log(err.stack));

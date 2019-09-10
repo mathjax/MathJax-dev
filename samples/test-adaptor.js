@@ -1,7 +1,7 @@
 import {liteAdaptor} from '../mathjax3/js/adaptors/liteAdaptor.js';
 import {jsdomAdaptor} from '../mathjax3/js/adaptors/jsdomAdaptor.js';
 
-import {JSDOM} from 'jsdom';
+let JSDOM = System.nodeRequire('jsdom').JSDOM;
 
 const adaptor = liteAdaptor();
 const jsdom = jsdomAdaptor(JSDOM);

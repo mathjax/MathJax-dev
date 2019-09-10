@@ -1,6 +1,6 @@
-import {Styles} from '../mathjax3/js/util/styles.js';
+import {Styles} from '../mathjax3/js/util/Styles.js';
 
-import {JSDOM} from 'jsdom';
+let JSDOM = System.nodeRequire('jsdom').JSDOM;
 
 const document = new JSDOM().window.document;
 const span = document.createElement('span');

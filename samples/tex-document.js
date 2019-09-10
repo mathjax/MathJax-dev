@@ -18,12 +18,7 @@ const html = htmlDocument(HTML, OPTIONS);
 
 mathjax.handleRetriesFor(() => {
 
-    html.findMath()
-        .compile()
-        .getMetrics()
-        .typeset()
-        .updateDocument();
-        
-    console.log(adaptor.outerHTML(adaptor.parent(adaptor.body(html.document))));
+  html.render();
+  console.log(adaptor.outerHTML(adaptor.parent(adaptor.body(html.document))));
 
 }).catch(err => console.log(err.stack));

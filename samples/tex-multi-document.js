@@ -24,13 +24,8 @@ const html = htmlDocument(HTML, OPTIONS);
 
 mathjax.handleRetriesFor(() => {
 
-    html.findMath({elements: ['#p1']})
-        .compile()
-        .getMetrics()
-        .typeset()
-        .updateDocument()
-        .reset();
-        
-    console.log(adaptor.outerHTML(adaptor.parent(adaptor.body(html.document))));
+  html.options.elements = ['#p1'];
+  html.render();
+  console.log(adaptor.outerHTML(adaptor.parent(adaptor.body(html.document))));
 
 }).catch(err => console.log(err.stack));

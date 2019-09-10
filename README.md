@@ -37,11 +37,14 @@ localhost/MathJax-dev/v3-lab.html
 ```
 
 
-## Running samples 
+## Running Samples 
 
 Samples are small scripts to test various MathJax features or to use MathJax
 directly for a specific purpose. They are particularly useful to work with local
-MathJax variants or test changes to the code base directly.
+MathJax variants or test changes to the code base directly. Samples can be run
+using `node` or in a browser.
+
+### Running Samples in Node 
 
 Samples are run using `node` and loaded using the `load.js` script. The general command is:
 
@@ -64,52 +67,89 @@ node load.js samples/tex2mml.js x^2
 </math>
 ```
 
-Not all sample scripts are currently working. Here is a list of working and currently unusable samples:
+### Running Samples in Node 
+
+Samples can be run in the browser using the `load.html` page. This either loads
+the `main.js` file or the particular sample file given in the parameters. For example, running
+
+[http://localhost/v3-dev/load.html?samples/asciimath-document.js](http://localhost/v3-dev/load.html?samples/asciimath-document.js)
+
+will give you a rendered page of AsciiMath expressions in the browser. Note,
+that the output will also be displayed on the console. In fact, many scripts
+will only produce console output. For example, the URL:
+
+[http://localhost/v3-dev/load.html?samples/tex2mml.js&x^2](http://localhost/v3-dev/load.html?samples/tex2mml.js&x^2)
+
+will print the corresponding MathML expression in the console:
+
+``` html
+<math display="block">
+  <msup>
+    <mi>x</mi>
+    <mn>2</mn>
+  </msup>
+</math>
+```
+
+
+### Scripts
+
+Not all sample scripts are currently working. Here are two lists of the samples
+that are currently working or broken. Sample names should be self-explanatory. 
+
 
 #### Working scripts
 
+
 ``` shell
 samples/asciimath2mml.js
-samples/asciimath-json.js
-samples/notagids.js
-samples/mml2html.js
-samples/mml2svg.js
-samples/mml-bbox.js
-samples/mml-nodes.js
-samples/tag-format.js
-samples/tex2html.js
-samples/tex2mml.js
-samples/tex2svg.js
-samples/tex-json.js
-samples/tex-nodes.js
-samples/tex-string.js
-```
-
-#### Broken scripts
-
-``` shell
-samples/asciimath2mml-component.js
 samples/asciimath-document.js
+samples/asciimath-json.js
 samples/asyncLoad.js
 samples/bits.js
-samples/convert-tex2mml.js
 samples/css.js
 samples/find-asciimath.js
 samples/find-mml.js
 samples/find-strings.js
 samples/find-tex-dollars.js
 samples/find-tex.js
-samples/html-full.js
-samples/mfenced.js
+samples/mml2html.js
+samples/mml2svg.js
+samples/mml-bbox.js
+samples/mml-nodes.js
+samples/notagids.js
+samples/tag-format.js
 samples/test-adaptor.js
 samples/test-styles.js
+samples/tex2html.js
+samples/tex2mml.js
+samples/tex2svg.js
+samples/tex-document.js
+samples/tex-json.js
+samples/tex-multi-document.js
+samples/tex-nodes.js
+samples/tex-string.js
+```
+#### Obsolete Packages
+
+``` shell
+samples/convert-tex2mml.js  same as tex2mml.js
+samples/tex-typeset.js same as tex2html.js
+
+```
+
+
+#### Broken scripts
+
+``` shell
+samples/asciimath2mml-component.js
+samples/html-full.js
+samples/mfenced.js
 samples/tex2mml-component.js
 samples/tex2mml-require.js
 samples/tex2mml-speech.js
 samples/tex2svg-speech.js
-samples/tex-document.js
-samples/tex-multi-document.js
-samples/tex-typeset.js
+
 ```
 
 
