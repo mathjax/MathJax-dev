@@ -67,7 +67,7 @@ node load.js samples/tex2mml.js x^2
 </math>
 ```
 
-### Running Samples in Node
+### Running Samples in a Browser
 
 Samples can be run in the browser using the `load.html` page. This either loads
 the `main.js` file or the particular sample file given in the parameters. For example, running
