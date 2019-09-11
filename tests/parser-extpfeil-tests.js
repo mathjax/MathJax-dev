@@ -1,5 +1,5 @@
 import {ParserTest} from './parser-tests.js';
-import 'mathjax3/input/tex/extpfeil/ExtpfeilConfiguration.js';
+import 'mathjax3/js/input/tex/extpfeil/ExtpfeilConfiguration.js';
 
 
 class ParserExtpfeilTest extends ParserTest {

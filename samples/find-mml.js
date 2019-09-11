@@ -1,6 +1,6 @@
-import {mathjax} from '../mathjax3/mathjax.js';
+import {mathjax} from '../mathjax3/js/mathjax.js';
 
-import {MathML} from '../mathjax3/input/mathml.js';
+import {MathML} from '../mathjax3/js/input/mathml.js';
 import {htmlDocument} from './lib/chooseHTML.js';
 
 const OPTIONS = {

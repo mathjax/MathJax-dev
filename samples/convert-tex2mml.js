@@ -1,12 +1,12 @@
-import {mathjax} from '../mathjax3/mathjax.js';
+import {mathjax} from '../mathjax3/js/mathjax.js';
 
-import {TeX} from '../mathjax3/input/tex.js';
-import {CHTML} from '../mathjax3/output/chtml.js';
-import {RegisterHTMLHandler} from '../mathjax3/handlers/html.js';
-import {chooseAdaptor} from '../mathjax3/adaptors/chooseAdaptor.js';
-import {STATE} from '../mathjax3/core/MathItem.js';
+import {TeX} from '../mathjax3/js/input/tex.js';
+import {CHTML} from '../mathjax3/js/output/chtml.js';
+import {RegisterHTMLHandler} from '../mathjax3/js/handlers/html.js';
+import {chooseAdaptor} from '../mathjax3/js/adaptors/chooseAdaptor.js';
+import {STATE} from '../mathjax3/js/core/MathItem.js';
 
-import {SerializedMmlVisitor} from '../mathjax3/core/MmlTree/SerializedMmlVisitor.js';
+import {SerializedMmlVisitor} from '../mathjax3/js/core/MmlTree/SerializedMmlVisitor.js';
 
 const adaptor = chooseAdaptor();
 RegisterHTMLHandler(adaptor);

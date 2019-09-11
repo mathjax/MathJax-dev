@@ -1,9 +1,10 @@
-import {mathjax} from '../mathjax3/mathjax.js';
+import {mathjax} from '../mathjax3/js/mathjax.js';
 
-import {TeX} from '../mathjax3/input/tex.js';
-import {SVG} from '../mathjax3/output/svg.js';
-import {RegisterHTMLHandler} from '../mathjax3/handlers/html.js';
-import {chooseAdaptor} from '../mathjax3/adaptors/chooseAdaptor.js';
+import {TeX} from '../mathjax3/js/input/tex.js';
+import {SVG} from '../mathjax3/js/output/svg.js';
+import {RegisterHTMLHandler} from '../mathjax3/js/handlers/html.js';
+import {chooseAdaptor} from '../mathjax3/js/adaptors/chooseAdaptor.js';
+import {STATE} from '../mathjax3/js/core/MathItem.js';
 
 const adaptor = chooseAdaptor();
 RegisterHTMLHandler(adaptor);
@@ -15,8 +16,7 @@ let html = mathjax.document('<html></html>', {
 
 mathjax.handleRetriesFor(() => {
 
-    html.TestMath(process.argv[3] || '').compile().typeset();
-    let math = html.math.pop();
-    console.log(adaptor.outerHTML(math.typesetRoot));
+    let math = html.convert(process.argv[3] || '', {end: STATE.TYPESET});
+    console.log(adaptor.outerHTML(math));
 
 }).catch(err => console.log(err.stack));

@@ -1,7 +1,7 @@
-import {mathjax} from '../mathjax3/mathjax.js';
+import {mathjax} from '../mathjax3/js/mathjax.js';
 
-import {TeX} from '../mathjax3/input/tex.js';
-import {APPEND} from '../mathjax3/util/Options.js';
+import {TeX} from '../mathjax3/js/input/tex.js';
+import {APPEND} from '../mathjax3/js/util/Options.js';
 import {htmlDocument} from './lib/chooseHTML.js';
 import {printFound} from './lib/found.js';
 

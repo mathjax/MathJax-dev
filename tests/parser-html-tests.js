@@ -1,5 +1,5 @@
 import {ParserTest} from './parser-tests.js';
-import 'mathjax3/input/tex/html/HtmlConfiguration.js';
+import 'mathjax3/js/input/tex/html/HtmlConfiguration.js';
 
 
 class ParserHtmlTest extends ParserTest {

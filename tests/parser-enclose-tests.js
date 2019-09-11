@@ -1,5 +1,5 @@
 import {ParserTest} from './parser-tests.js';
-import 'mathjax3/input/tex/enclose/EncloseConfiguration.js';
+import 'mathjax3/js/input/tex/enclose/EncloseConfiguration.js';
 
 
 class ParserEncloseTest extends ParserTest {

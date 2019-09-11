@@ -1,13 +1,13 @@
 // Testing environments with AMS labelling to contrast regular and starred
 // environments.
 import {ParserTest} from './parser-tests.js';
-import {TagsFactory} from 'mathjax3/input/tex/Tags.js';
+import {TagsFactory} from 'mathjax3/js/input/tex/Tags.js';
 
 class ParserAmsenvTest extends ParserTest {
 
   constructor() {
     super();
-    this.settings = {tags: 'AMS'};
+    this.settings = {tags: 'ams'};
   }
 
 }

@@ -1,5 +1,5 @@
 import {ParserTest} from './parser-tests.js';
-import 'mathjax3/input/tex/ams_cd/AmsCdConfiguration.js';
+import 'mathjax3/js/input/tex/ams_cd/AmsCdConfiguration.js';
 
 class ParserAmsCDTest extends ParserTest {
 
