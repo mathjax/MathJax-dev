@@ -1673,113 +1673,6 @@ parserTest.runTest(
 );
 
 parserTest.runTest(
-  'Color Frac', '\\frac{{\\cal \\color{red}{X}}}{\\color{blue}{\\sf y}}',
-  {"kind":"math",
-   "texClass":null,
-   "attributes":{"display":"block"},
-   "inherited":{"displaystyle":true,
-                "scriptlevel":0},
-   "properties":{},
-   "childNodes":[
-     {"kind":"mrow",
-      "texClass":null,
-      "attributes":{},
-      "inherited":{
-        "displaystyle":true,
-        "scriptlevel":0},
-      "properties":{},
-      "childNodes":[
-        {"kind":"mfrac",
-         "texClass":null,
-         "attributes":{},
-         "inherited":{
-           "displaystyle":true,
-           "scriptlevel":0},
-         "properties":{},
-         "childNodes":[
-           {"kind":"TeXAtom",
-            "texClass":0,
-            "attributes":{},
-            "inherited":{
-              "displaystyle":false,
-              "scriptlevel":0},
-            "properties":{},
-            "childNodes":[
-              {"kind":"mrow",
-               "texClass":0,
-               "attributes":{},
-               "inherited":{
-                 "displaystyle":false,
-                 "scriptlevel":0},
-               "properties":{},
-               "childNodes":[
-                 {"kind":"mstyle",
-                  "texClass":0,
-                  "attributes":{"mathcolor":"red"},
-                  "inherited":{
-                    "displaystyle":false,
-                    "scriptlevel":0},
-                  "properties":{},
-                  "childNodes":[
-                    {"kind":"mrow",
-                     "texClass":0,
-                     "attributes":{},
-                     "inherited":{
-                       "mathcolor":"red",
-                       "displaystyle":false,
-                       "scriptlevel":0},
-                     "properties":{},
-                     "childNodes":[
-                       {"kind":"mi",
-                        "texClass":0,
-                        "attributes":{"mathvariant":"-tex-caligraphic"},
-                        "inherited":{
-                          "mathcolor":"red",
-                          "displaystyle":false,
-                          "scriptlevel":0,
-                          "mathvariant":"italic"},
-                        "properties":{},
-                        "childNodes":[
-                          {"kind":"text",
-                           "text":"X"}]}],
-                     "isInferred":true}]}],
-               "isInferred":true}]},
-           {"kind":"mstyle",
-            "texClass":0,
-            "attributes":{"mathcolor":"blue"},
-            "inherited":{
-              "displaystyle":false,
-              "scriptlevel":0},
-            "properties":{"texprimestyle":true},
-            "childNodes":[
-              {"kind":"mrow",
-               "texClass":0,
-               "attributes":{},
-               "inherited":{
-                 "mathcolor":"blue",
-                 "displaystyle":false,
-                 "scriptlevel":0},
-               "properties":{"texprimestyle":true},
-               "childNodes":[
-                 {"kind":"mi",
-                  "texClass":0,
-                  "attributes":{"mathvariant":"sans-serif"},
-                  "inherited":{
-                    "mathcolor":"blue",
-                    "displaystyle":false,
-                    "scriptlevel":0,
-                    "mathvariant":"italic"},
-                  "properties":{"texprimestyle":true},
-                  "childNodes":[
-                    {"kind":"text",
-                     "text":"y"}]}],
-               "isInferred":true}]}]}],
-      "isInferred":true}]}
-
-);
-
-
-parserTest.runTest(
   'Negation Simple', 'a \\not= b',
   {"kind":"math",
    "texClass":0,
@@ -3925,7 +3818,7 @@ parserTest.runTest(
               "childNodes": [
                 {"kind": "mi",
                   "texClass": 0,
-                  "attributes": {"mathvariant": "-tex-caligraphic"},
+                  "attributes": {"mathvariant": "-tex-calligraphic"},
                   "inherited": {"displaystyle": true,
                     "scriptlevel": 0,
                     "mathvariant": "italic"},
