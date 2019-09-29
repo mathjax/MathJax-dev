@@ -552,14 +552,14 @@ parserTest.runTest(
          "properties": {},
          "childNodes": [
            {"kind": "mrow",
-            "texClass": -1,
+            "texClass": 0,
             "attributes": {},
             "inherited": {"displaystyle": true,
                           "scriptlevel": 0},
             "properties": {},
             "childNodes": [
               {"kind": "mover",
-               "texClass": -1,
+               "texClass": 0,
                "attributes": {},
                "inherited": {"displaystyle": true,
                              "scriptlevel": 0,
