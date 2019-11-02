@@ -44,7 +44,7 @@ parserTest.runTest(
             "childNodes": [
               {"kind": "mi",
                "texClass": 0,
-               "attributes": {"mathvariant": "-tex-caligraphic"},
+               "attributes": {"mathvariant": "-tex-calligraphic"},
                "inherited": {"displaystyle": true,
                              "scriptlevel": 0,
                              "mathvariant": "italic"},
@@ -211,7 +211,7 @@ parserTest.runTest(
             "childNodes": [
               {"kind": "mi",
                "texClass": 0,
-               "attributes": {"mathvariant": "-tex-caligraphic"},
+               "attributes": {"mathvariant": "-tex-calligraphic"},
                "inherited": {"displaystyle": true,
                              "scriptlevel": 0,
                              "mathvariant": "italic"},
@@ -378,7 +378,7 @@ parserTest.runTest(
             "childNodes": [
               {"kind": "mi",
                "texClass": 0,
-               "attributes": {"mathvariant": "-tex-caligraphic"},
+               "attributes": {"mathvariant": "-tex-calligraphic"},
                "inherited": {"displaystyle": true,
                              "scriptlevel": 0,
                              "mathvariant": "italic"},
@@ -555,7 +555,7 @@ parserTest.runTest(
             "childNodes": [
               {"kind": "mi",
                "texClass": 0,
-               "attributes": {"mathvariant": "-tex-caligraphic"},
+               "attributes": {"mathvariant": "-tex-calligraphic"},
                "inherited": {"displaystyle": true,
                              "scriptlevel": 0,
                              "mathvariant": "italic"},
@@ -732,7 +732,7 @@ parserTest.runTest(
             "childNodes": [
               {"kind": "mi",
                "texClass": 0,
-               "attributes": {"mathvariant": "-tex-caligraphic"},
+               "attributes": {"mathvariant": "-tex-calligraphic"},
                "inherited": {"displaystyle": true,
                              "scriptlevel": 0,
                              "mathvariant": "italic"},
@@ -877,7 +877,7 @@ parserTest.runTest(
             "childNodes": [
               {"kind": "mi",
                "texClass": 0,
-               "attributes": {"mathvariant": "-tex-caligraphic"},
+               "attributes": {"mathvariant": "-tex-calligraphic"},
                "inherited": {"displaystyle": true,
                              "scriptlevel": 0,
                              "mathvariant": "italic"},
@@ -1022,7 +1022,7 @@ parserTest.runTest(
             "childNodes": [
               {"kind": "mi",
                "texClass": 0,
-               "attributes": {"mathvariant": "-tex-caligraphic"},
+               "attributes": {"mathvariant": "-tex-calligraphic"},
                "inherited": {"displaystyle": true,
                              "scriptlevel": 0,
                              "mathvariant": "italic"},

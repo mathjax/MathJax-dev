@@ -18,6 +18,7 @@ if [ $# -eq 0 ]; then
     node load.js tests/parser-internal-math-tests.js
     node load.js tests/parser-multline-shove-tests.js
     node load.js tests/parser-matrix-tests.js
+    node load.js tests/parser-colorv2-tests.js
 
 
     # AMS package tests.
@@ -36,7 +37,6 @@ if [ $# -eq 0 ]; then
     node load.js tests/parser-amscd-tests.js
     node load.js tests/parser-bbox-tests.js
     node load.js tests/parser-boldsymbol-tests.js
-    node load.js tests/parser-cancel-tests.js
     node load.js tests/parser-cancel-tests.js
     node load.js tests/parser-enclose-tests.js
     node load.js tests/parser-extpfeil-tests.js

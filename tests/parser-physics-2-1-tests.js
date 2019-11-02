@@ -123,7 +123,7 @@ parserTest.runTest(
               "childNodes": [
                 {"kind": "mi",
                   "texClass": 0,
-                  "attributes": {"mathvariant": "-tex-caligraphic"},
+                  "attributes": {"mathvariant": "-tex-calligraphic"},
                   "inherited": {"displaystyle": true,
                     "scriptlevel": 0,
                     "mathvariant": "italic"},
@@ -552,14 +552,14 @@ parserTest.runTest(
          "properties": {},
          "childNodes": [
            {"kind": "mrow",
-            "texClass": -1,
+            "texClass": 0,
             "attributes": {},
             "inherited": {"displaystyle": true,
                           "scriptlevel": 0},
             "properties": {},
             "childNodes": [
               {"kind": "mover",
-               "texClass": -1,
+               "texClass": 0,
                "attributes": {},
                "inherited": {"displaystyle": true,
                              "scriptlevel": 0,
