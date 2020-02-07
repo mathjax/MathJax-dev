@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=edge">
 <title>MathJax v3 Interactive Lab</title>
+<!--[if IE 11]>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<![endif]-->
 <script src="lib/traceur.min.js"></script>
 <script src="lib/system.js"></script>
 <style>
@@ -73,7 +78,7 @@ body {
 }
 #package {
   margin-top: .5em;
-  white-space: initial ! important;
+  white-space: normal ! important;
 }
 #package > span > span {
   display: inline-block;
@@ -141,8 +146,12 @@ input[disabled] + label {
 </div>
 
 <script>
+__dirname = String(location.href).replace(/v3-lab\.html.*/, 'mathjax3/components/src');
+</script>
+
+<script>
 System.import('./lib/v3-lab.js')
-  .then(() => System.import('./mathjax3/components/src/startup/startup.js'))
+  .then(function () {return System.import('./mathjax3/components/src/startup/startup.js')})
   .catch(function (error) {console.log(error.message)});
 </script>
 </body>
