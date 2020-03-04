@@ -22,6 +22,12 @@ You need to install the MathJax context menu first:
 nmp install mj-context-menu
 ```
 
+Create a symbolic link for the context menu. MathJax expects it to be _in parallel_ to its code.
+
+``` sheel
+ln -s node_modules/mj-context-menu
+```
+
 Then run the lab by loading `v3-lab.html` in your webbrowser via a local
 webserver. E.g., create a symbolic link
 
