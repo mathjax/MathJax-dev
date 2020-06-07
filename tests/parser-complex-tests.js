@@ -3761,7 +3761,7 @@ parserTest.runTest(
                                   "childNodes": [
                                     {"kind": "mi",
                                       "texClass": 0,
-                                      "attributes": {"mathvariant": "normal"},
+                                      "attributes": {},
                                       "inherited": {"displaystyle": false,
                                         "scriptlevel": 1,
                                         "mathvariant": "italic"},
@@ -3788,7 +3788,7 @@ parserTest.runTest(
                                   "childNodes": [
                                     {"kind": "mi",
                                       "texClass": 0,
-                                      "attributes": {"mathvariant": "normal"},
+                                      "attributes": {},
                                       "inherited": {"displaystyle": false,
                                         "scriptlevel": 1,
                                         "mathvariant": "italic"},
@@ -3839,7 +3839,7 @@ parserTest.runTest(
                                   "childNodes": [
                                     {"kind": "mi",
                                       "texClass": 0,
-                                      "attributes": {"mathvariant": "normal"},
+                                      "attributes": {},
                                       "inherited": {"displaystyle": false,
                                         "scriptlevel": 1,
                                         "mathvariant": "italic"},
@@ -3866,7 +3866,7 @@ parserTest.runTest(
                                   "childNodes": [
                                     {"kind": "mi",
                                       "texClass": 0,
-                                      "attributes": {"mathvariant": "normal"},
+                                      "attributes": {},
                                       "inherited": {"displaystyle": false,
                                         "scriptlevel": 1,
                                         "mathvariant": "italic"},
@@ -3952,7 +3952,7 @@ parserTest.runTest(
                                   "childNodes": [
                                     {"kind": "mi",
                                       "texClass": 0,
-                                      "attributes": {"mathvariant": "normal"},
+                                      "attributes": {},
                                       "inherited": {"displaystyle": false,
                                         "scriptlevel": 1,
                                         "mathvariant": "italic"},
@@ -3979,7 +3979,7 @@ parserTest.runTest(
                                   "childNodes": [
                                     {"kind": "mi",
                                       "texClass": 0,
-                                      "attributes": {"mathvariant": "normal"},
+                                      "attributes": {},
                                       "inherited": {"displaystyle": false,
                                         "scriptlevel": 1,
                                         "mathvariant": "italic"},
@@ -4030,7 +4030,7 @@ parserTest.runTest(
                                   "childNodes": [
                                     {"kind": "mi",
                                       "texClass": 0,
-                                      "attributes": {"mathvariant": "normal"},
+                                      "attributes": {},
                                       "inherited": {"displaystyle": false,
                                         "scriptlevel": 1,
                                         "mathvariant": "italic"},
@@ -4057,7 +4057,7 @@ parserTest.runTest(
                                   "childNodes": [
                                     {"kind": "mi",
                                       "texClass": 0,
-                                      "attributes": {"mathvariant": "normal"},
+                                      "attributes": {},
                                       "inherited": {"displaystyle": false,
                                         "scriptlevel": 1,
                                         "mathvariant": "italic"},
