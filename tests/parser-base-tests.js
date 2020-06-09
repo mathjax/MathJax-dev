@@ -1373,7 +1373,7 @@ parserTest.runTest(
             "text": "⁡"}],
          "isEmbellished": true},
         {"kind": "mrow",
-         "texClass": 4,
+         "texClass": 7,
          "attributes": {},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
