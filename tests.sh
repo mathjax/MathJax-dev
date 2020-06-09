@@ -32,6 +32,15 @@ if [ $# -eq 0 ]; then
     node load.js tests/parser-tag-ams-tests.js
     node load.js tests/parser-tag-all-tests.js
 
+    # Definition/extension related.
+    node load.js tests/parser-newcommand-tests.js
+    node load.js tests/parser-macros-tests.js
+
+    # Error handling.
+    node load.js tests/parser-ncerror-tests.js
+    node load.js tests/parser-noerror-tests.js
+    node load.js tests/parser-noundefined-tests.js
+
     # Other standard packages
     node load.js tests/parser-action-tests.js
     node load.js tests/parser-amscd-tests.js
@@ -41,10 +50,6 @@ if [ $# -eq 0 ]; then
     node load.js tests/parser-enclose-tests.js
     node load.js tests/parser-extpfeil-tests.js
     node load.js tests/parser-html-tests.js
-    node load.js tests/parser-ncerror-tests.js
-    node load.js tests/parser-newcommand-tests.js
-    node load.js tests/parser-noerror-tests.js
-    node load.js tests/parser-noundefined-tests.js
     node load.js tests/parser-unicode-tests.js
     node load.js tests/parser-verb-tests.js
 
