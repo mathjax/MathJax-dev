@@ -1,6 +1,6 @@
 /* globals System: true */
 
-let test = System.nodeRequire('tape');
+let test = require('tape');
 
 export class Test {
 

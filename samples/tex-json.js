@@ -10,7 +10,7 @@ import {CHTML} from '../mathjax3/js/output/chtml.js';
 RegisterHTMLHandler(chooseAdaptor());
 
 let html = mathjax.document('<html></html>', {
-  InputJax: new TeX({packages: AllPackages}),
+  InputJax: new TeX({packages: ['base', 'physics']}),
   OutputJax: new CHTML()   // Needed for bussproofs
 });
 
@@ -20,7 +20,7 @@ let toJSON = (node => visitor.visitTree(node));
 
 mathjax.handleRetriesFor(() => {
 
-    let math = html.convert(process.argv[3] || '', {end: STATE.CONVERT});
+    let math = html.convert(process.argv[2] || '', {end: STATE.CONVERT});
     math.setTeXclass();
     console.log(JSON.stringify(toJSON(math)));
 

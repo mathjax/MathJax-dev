@@ -1,6 +1,6 @@
 // Testing some real world examples with AMS environments without labelling.
 import {ParserTest} from './parser-tests.js';
-import {TagsFactory} from 'mathjax3/js/input/tex/Tags.js';
+import {TagsFactory} from '../mathjax3/js/input/tex/Tags.js';
 
 class ParserAmsComplexTest extends ParserTest {
 

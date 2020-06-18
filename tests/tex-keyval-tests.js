@@ -1,6 +1,4 @@
-// import {MathJax} from 'mathjax3/js/mathjax.js';
-
-import ParseUtil from 'mathjax3/js/input/tex/ParseUtil.js';
+import ParseUtil from '../mathjax3/js/input/tex/ParseUtil.js';
 import {Test} from './tests.js';
 
 
