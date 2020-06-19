@@ -17,7 +17,7 @@ let toMathML = (node => visitor.visitTree(node, html.document));
 
 mathjax.handleRetriesFor(() => {
 
-    let math = html.convert(process.argv[3] || '', {end: STATE.COMPILE});
+    let math = html.convert(process.argv[2] || '', {end: STATE.COMPILE});
     math.setTeXclass();
     console.log(toMathML(math));
 

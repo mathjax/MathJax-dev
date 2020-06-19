@@ -10,8 +10,8 @@ import {CHTML} from '../mathjax3/js/output/chtml.js';
 RegisterHTMLHandler(chooseAdaptor());
 
 let html = mathjax.document('<html></html>', {
-  InputJax: new TeX({packages: ['base', 'physics']}),
-  OutputJax: new CHTML()   // Needed for bussproofs
+  InputJax: new TeX({packages: AllPackages}),
+  OutputJax: new CHTML()
 });
 
 import {JsonMmlVisitor} from '../mathjax3/js/core/MmlTree/JsonMmlVisitor.js';

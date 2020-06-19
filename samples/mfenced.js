@@ -3,6 +3,7 @@ import {mathjax} from '../mathjax3/js/mathjax.js';
 import {MathML} from '../mathjax3/js/input/mathml.js';
 import {RegisterHTMLHandler} from '../mathjax3/js/handlers/html.js';
 import {chooseAdaptor} from '../mathjax3/js/adaptors/chooseAdaptor.js';
+import {STATE} from '../mathjax3/js/core/MathItem.js';
 
 RegisterHTMLHandler(chooseAdaptor());
 
@@ -37,8 +38,7 @@ const html = mathjax.document('<html></html>', {InputJax: MML});
 
 mathjax.handleRetriesFor(() => {
 
-    html.TestMath(process.argv[3] || '<math></math>').compile();
-    let math = html.math.pop();
-    console.log(math.root.toString());
+  let math = html.convert(process.argv[2] || '<math></math>', {end: STATE.COMPILE});
+  console.log(math.toString());
 
 }).catch(err => console.log(err.stack));

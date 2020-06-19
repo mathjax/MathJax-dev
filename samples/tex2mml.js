@@ -11,7 +11,7 @@ RegisterHTMLHandler(chooseAdaptor());
 
 let html = mathjax.document('<html></html>', {
   InputJax: new TeX({packages: AllPackages}),
-  OutputJax: new CHTML()   // Needed for bussproofs
+  OutputJax: new CHTML()
 });
 
 import {SerializedMmlVisitor as MmlVisitor} from '../mathjax3/js/core/MmlTree/SerializedMmlVisitor.js';
@@ -20,7 +20,7 @@ let toMml = (node => visitor.visitTree(node, html.document));
 
 mathjax.handleRetriesFor(() => {
 
-    let math = html.convert(process.argv[3] || '', {end: STATE.CONVERT});
+    let math = html.convert(process.argv[2] || '', {end: STATE.CONVERT});
     console.log(toMml(math));
 
 }).catch(err => console.log(err.stack));
