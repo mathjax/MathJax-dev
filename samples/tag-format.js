@@ -29,7 +29,7 @@ let toMml = (node => visitor.visitTree(node));
 
 mathjax.handleRetriesFor(() => {
 
-    let math = html.convert(process.argv[3] || '', {end: STATE.COMPILE});
+    let math = html.convert(process.argv[2] || '', {end: STATE.COMPILE});
     console.log(toMml(math));
 
 }).catch(err => console.log(err.stack));

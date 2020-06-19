@@ -13,7 +13,6 @@ mathjax.handleRetriesFor(() => {
       .compile()
       .getMetrics()
       .typeset()
-      .addEventHandlers()
       .updateDocument();
 
 }).then(() => console.log('Worked!'))

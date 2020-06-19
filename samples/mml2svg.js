@@ -16,7 +16,7 @@ let html = mathjax.document('<html></html>', {
 
 mathjax.handleRetriesFor(() => {
 
-    let math = html.convert(process.argv[3] || '<math></math>', {end: STATE.TYPESET});
+    let math = html.convert(process.argv[2] || '<math></math>', {end: STATE.TYPESET});
     console.log(adaptor.outerHTML(math));
 
 }).catch(err => console.log(err.stack));

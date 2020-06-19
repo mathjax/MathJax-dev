@@ -13,7 +13,7 @@ let html = mathjax.document('<html></html>', {
 
 mathjax.handleRetriesFor(() => {
 
-    let math = html.convert(process.argv[3] || '', {end: STATE.CONVERT});
+    let math = html.convert(process.argv[2] || '', {end: STATE.CONVERT});
     console.log(math.toString());
 
 }).catch(err => console.log(err.stack));
