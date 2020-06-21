@@ -406,7 +406,9 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {},
+         "attributes": {
+           "data-mjx-error":"Missing open brace for superscript"
+         },
          "inherited": {
            "displaystyle": true,
            "scriptlevel": 0},

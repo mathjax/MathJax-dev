@@ -30,7 +30,9 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {},
+         "attributes": {
+           "data-mjx-error":"Parameters for \\bar must be numbered sequentially"
+         },
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -76,7 +78,9 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {},
+         "attributes": {
+           "data-mjx-error":"\\def must be followed by a control sequence"
+         },
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -122,7 +126,9 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {},
+         "attributes": {
+           "data-mjx-error":"Illegal use of # in template for \\bar"
+         },
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -168,7 +174,9 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {},
+         "attributes": {
+           "data-mjx-error":"Missing replacement string for definition of \\def"
+         },
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -214,7 +222,9 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {},
+         "attributes": {
+           "data-mjx-error":"Runaway argument for \\bar?"
+         },
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -260,7 +270,9 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {},
+         "attributes": {
+           "data-mjx-error":"Illegal control sequence name for \\newcommand"
+         },
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -306,7 +318,9 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {},
+         "attributes": {
+           "data-mjx-error":"Illegal number of parameters specified in \\newenvironment"
+         },
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -352,7 +366,9 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {},
+         "attributes": {
+           "data-mjx-error":"Undefined control sequence \\aa"
+         },
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -398,7 +414,9 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {},
+         "attributes": {
+           "data-mjx-error":"Use of \\bar doesn't match its definition"
+         },
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -444,7 +462,9 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {},
+         "attributes": {
+           "data-mjx-error":"Missing argument for \\aa"
+         },
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -490,7 +510,9 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {},
+         "attributes": {
+           "data-mjx-error":"Missing argument for \\bb"
+         },
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -536,7 +558,9 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {},
+         "attributes": {
+           "data-mjx-error":"Missing argument for \\textbf"
+         },
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -582,7 +606,9 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {},
+         "attributes": {
+           "data-mjx-error":"Illegal number of parameters specified in \\newcommand"
+         },
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -628,7 +654,9 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {},
+         "attributes": {
+           "data-mjx-error":"You can't use 'macro parameter character #' in math mode"
+         },
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
