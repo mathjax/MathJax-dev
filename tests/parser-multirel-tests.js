@@ -16,7 +16,7 @@ class ParserMultirelTest extends ParserTest {
       lesssim: ['\u2272', {lspace: '1pt'}],
       gtrsim: ['\u2278', {rspace: '1pt'}]
     });
-    Configuration.create('multirel-test', {handler: {macro: ['shadow']}});
+    Configuration.create('multirel-test', {handler: {macro: ['shadow']}, priority: 4});
     super();
     this.packages = ['base', 'ams', 'multirel-test'];
   }
