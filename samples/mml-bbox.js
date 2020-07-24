@@ -29,7 +29,7 @@ function showBBox(node, jax, document, space) {
 
 mathjax.handleRetriesFor(() => {
 
-    let math = html.convert(process.argv[3] || '<math></math>', {end: STATE.TYPESET});
+    let math = html.convert(process.argv[2] || '<math></math>', {end: STATE.TYPESET});
     let chtml = html.options.OutputJax;
     console.log('');
     showBBox(chtml.math.root, chtml, html, '');

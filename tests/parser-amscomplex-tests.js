@@ -1,6 +1,6 @@
 // Testing some real world examples with AMS environments without labelling.
 import {ParserTest} from './parser-tests.js';
-import {TagsFactory} from 'mathjax3/js/input/tex/Tags.js';
+import {TagsFactory} from '../mathjax3/js/input/tex/Tags.js';
 
 class ParserAmsComplexTest extends ParserTest {
 
@@ -809,7 +809,7 @@ parserTest.runTest(
                         "childNodes": [
                           {"kind": "mi",
                            "texClass": 0,
-                           "attributes": {"mathvariant": "normal"},
+                           "attributes": {},
                            "inherited": {"displaystyle": false,
                                          "scriptlevel": 0,
                                          "mathvariant": "italic"},
@@ -887,7 +887,7 @@ parserTest.runTest(
                         "childNodes": [
                           {"kind": "mi",
                            "texClass": 0,
-                           "attributes": {"mathvariant": "normal"},
+                           "attributes": {},
                            "inherited": {"displaystyle": false,
                                          "scriptlevel": 0,
                                          "mathvariant": "italic"},
@@ -1449,7 +1449,7 @@ parserTest.runTest(
                               "childNodes": [
                                 {"kind": "mi",
                                   "texClass": 0,
-                                  "attributes": {"mathvariant": "normal"},
+                                  "attributes": {},
                                   "inherited": {"displaystyle": false,
                                     "scriptlevel": 0,
                                     "mathvariant": "italic"},
@@ -1527,7 +1527,7 @@ parserTest.runTest(
                               "childNodes": [
                                 {"kind": "mi",
                                   "texClass": 0,
-                                  "attributes": {"mathvariant": "normal"},
+                                  "attributes": {},
                                   "inherited": {"displaystyle": false,
                                     "scriptlevel": 0,
                                     "mathvariant": "italic"},

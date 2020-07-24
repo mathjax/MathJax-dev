@@ -3,11 +3,10 @@ global.MathJax = {
         failed: (error => console.log(`>> MathJax(${error.package || '?'}): ${error.message} ${error.stack}`)),
         load: ['adaptors/liteDOM', 'input/tex', /*'a11y/semantic-enrich'*/ '[tex]/tagFormat'],
         paths: {
-            mathjax: '../mathjax3/components/dist',
+            mathjax: '../mathjax3/es5',
             sre: '../mathjax3/js/a11y/sre-node'
         },
         source: require('../mathjax3/components/src/source.js').source,
-//        require: (url) => System.import(url)
         require: require
     },
     tex: {
@@ -25,7 +24,7 @@ global.MathJax = {
         ready() {
             const startup = global.MathJax.startup;
             startup.defaultReady();
-            global.MathJax.tex2mmlPromise(process.argv[3] || '')
+            global.MathJax.tex2mmlPromise(process.argv[2] || '')
                 .then((result) => console.log(result))
                 .catch((err) => console.log(err.message));
         }

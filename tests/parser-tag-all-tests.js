@@ -1,5 +1,5 @@
 import {ParserTest} from './parser-tests.js';
-import {TagsFactory} from 'mathjax3/js/input/tex/Tags.js';
+import {TagsFactory} from '../mathjax3/js/input/tex/Tags.js';
 
 class ParserTagAllTest extends ParserTest {
 
@@ -1388,7 +1388,9 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {},
+         "attributes": {
+           "data-mjx-error":"\\tag not allowed in split environment"
+         },
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -1433,7 +1435,9 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {},
+         "attributes": {
+           "data-mjx-error":"Multiple \\tag"
+         },
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -1478,7 +1482,9 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {},
+         "attributes": {
+           "data-mjx-error":"Multiple \\label"
+         },
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -1523,7 +1529,9 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {},
+         "attributes": {
+           "data-mjx-error":"Label 'A' multiply defined"
+         },
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},

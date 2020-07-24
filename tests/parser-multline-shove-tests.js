@@ -1,5 +1,5 @@
 import {ParserTest} from './parser-tests.js';
-import {TagsFactory} from 'mathjax3/js/input/tex/Tags.js';
+import {TagsFactory} from '../mathjax3/js/input/tex/Tags.js';
 
 class ParserMultlineShoveTest extends ParserTest {
 
@@ -1254,7 +1254,9 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {},
+         "attributes": {
+           "data-mjx-error":"\\shoveleft must come at the beginning of the line"
+         },
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -1299,7 +1301,9 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {},
+         "attributes": {
+           "data-mjx-error":"\\shoveleft must come at the beginning of the line"
+         },
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -1344,7 +1348,9 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {},
+         "attributes": {
+           "data-mjx-error":"\\shoveleft must come at the beginning of the line"
+         },
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -1390,7 +1396,9 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {},
+         "attributes": {
+           "data-mjx-error":"\\shoveleft only allowed in multline environment"
+         },
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},

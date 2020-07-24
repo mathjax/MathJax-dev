@@ -9,6 +9,7 @@ import {STATE} from '../mathjax3/js/core/MathItem.js';
 import {AbstractTags, TagsFactory} from '../mathjax3/js/input/tex/Tags.js';
 
 class NoIdTags extends AbstractTags {
+
     formatId(id) {
         return 'abc-' + id;
     }
@@ -23,10 +24,11 @@ class NoIdTags extends AbstractTags {
 
 TagsFactory.add('noID', NoIdTags);
 
-
 RegisterHTMLHandler(chooseAdaptor());
 
-let html = mathjax.document('', {InputJax: new TeX({packages: AllPackages, tags: 'noID'})});
+let html = mathjax.document(
+  '',
+  {InputJax: new TeX({packages: {'[-]': ['bussproofs']}, tags: 'noID'})});
 
 import {SerializedMmlVisitor} from '../mathjax3/js/core/MmlTree/SerializedMmlVisitor.js';
 let visitor = new SerializedMmlVisitor();
@@ -34,7 +36,7 @@ let toMml = (node => visitor.visitTree(node));
 
 mathjax.handleRetriesFor(() => {
 
-    let math = html.convert(process.argv[3] || '', {end: STATE.COMPILE});
+    let math = html.convert(process.argv[2] || '', {end: STATE.COMPILE});
     console.log(toMml(math));
 
 }).catch(err => console.log(err.stack));

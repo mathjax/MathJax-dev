@@ -1,5 +1,5 @@
 import {ParserTest} from './parser-tests.js';
-import 'mathjax3/js/input/tex/bussproofs/BussproofsConfiguration.js';
+import '../mathjax3/js/input/tex/bussproofs/BussproofsConfiguration.js';
 
 class ParserBussproofsRegProofsTest extends ParserTest {
 

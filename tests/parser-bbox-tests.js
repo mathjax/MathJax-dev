@@ -1,5 +1,5 @@
 import {ParserTest} from './parser-tests.js';
-import 'mathjax3/js/input/tex/bbox/BboxConfiguration.js';
+import '../mathjax3/js/input/tex/bbox/BboxConfiguration.js';
 
 
 class ParserBboxTest extends ParserTest {
@@ -368,7 +368,9 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {},
+         "attributes": {
+           "data-mjx-error":"Background specified twice in \\bbox"
+         },
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -414,7 +416,9 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {},
+         "attributes": {
+           "data-mjx-error":"Padding specified twice in \\bbox"
+         },
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -460,7 +464,9 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {},
+         "attributes": {
+           "data-mjx-error":"Style specified twice in \\bbox"
+         },
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -506,7 +512,9 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {},
+         "attributes": {
+           "data-mjx-error":"\"22-11=color\" doesn't look like a color, a padding dimension, or a style"
+         },
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},

@@ -17,7 +17,7 @@ let toMml = (node => visitor.visitTree(node, html.document));
 
 mathjax.handleRetriesFor(() => {
 
-    let math = html.convert(process.argv[3] || '', {end: STATE.CONVERT});
+    let math = html.convert(process.argv[2] || '', {end: STATE.CONVERT});
     console.log(toMml(math));
 
 }).catch(err => console.log(err.stack));

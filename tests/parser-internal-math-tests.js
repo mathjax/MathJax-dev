@@ -573,7 +573,9 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {},
+         "attributes": {
+           "data-mjx-error":"Math not terminated in text box"
+         },
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},

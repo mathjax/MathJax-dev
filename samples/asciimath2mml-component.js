@@ -14,7 +14,7 @@ global.MathJax = {
     startup: {
         typeset: false,
         pageReady() {
-            MathJax.asciimath2mmlPromise(process.argv[3] || '')
+            MathJax.asciimath2mmlPromise(process.argv[2] || '')
                 .then((result) => console.log(result))
                 .catch((err) => console.log(err.message));
         }

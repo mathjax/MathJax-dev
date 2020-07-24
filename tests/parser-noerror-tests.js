@@ -1,5 +1,5 @@
 import {ParserTest} from './parser-tests.js';
-import 'mathjax3/js/input/tex/noerrors/NoErrorsConfiguration.js';
+import '../mathjax3/js/input/tex/noerrors/NoErrorsConfiguration.js';
 
 
 class ParserNoErrorTest extends ParserTest {
@@ -34,7 +34,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Misplaced &"},
+         "attributes": {"data-mjx-error": "Misplaced &",
+                       "title":"Misplaced &"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -80,7 +81,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Missing argument for \\frac"},
+         "attributes": {"data-mjx-error": "Missing argument for \\frac",
+                       "title":"Missing argument for \\frac"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -126,7 +128,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Undefined control sequence \\nonsense"},
+         "attributes": {"data-mjx-error": "Undefined control sequence \\nonsense",
+                       "title":"Undefined control sequence \\nonsense"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -172,7 +175,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Unknown environment 'nonsense'"},
+         "attributes": {"data-mjx-error": "Unknown environment 'nonsense'",
+                       "title":"Unknown environment 'nonsense'"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -217,7 +221,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Double exponent: use braces to clarify"},
+         "attributes": {"data-mjx-error": "Double exponent: use braces to clarify",
+                       "title":"Double exponent: use braces to clarify"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -262,7 +267,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Double exponent: use braces to clarify"},
+         "attributes": {"data-mjx-error": "Double exponent: use braces to clarify",
+                       "title":"Double exponent: use braces to clarify"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -308,7 +314,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "\\limits is allowed only on operators"},
+         "attributes": {"data-mjx-error": "\\limits is allowed only on operators",
+                       "title":"\\limits is allowed only on operators"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -354,7 +361,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Double subscripts: use braces to clarify"},
+         "attributes": {"data-mjx-error": "Double subscripts: use braces to clarify",
+                       "title":"Double subscripts: use braces to clarify"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -400,7 +408,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Double subscripts: use braces to clarify"},
+         "attributes": {"data-mjx-error": "Double subscripts: use braces to clarify",
+                       "title":"Double subscripts: use braces to clarify"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -446,7 +455,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Missing open brace for superscript"},
+         "attributes": {"data-mjx-error": "Missing open brace for superscript",
+                       "title":"Missing open brace for superscript"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -492,7 +502,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Prime causes double exponent: use braces to clarify"},
+         "attributes": {"data-mjx-error": "Prime causes double exponent: use braces to clarify",
+                       "title":"Prime causes double exponent: use braces to clarify"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -537,7 +548,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "You can't use 'macro parameter character #' in math mode"},
+         "attributes": {"data-mjx-error": "You can't use 'macro parameter character #' in math mode",
+                       "title":"You can't use 'macro parameter character #' in math mode"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -583,7 +595,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Extra \\left or missing \\right"},
+         "attributes": {"data-mjx-error": "Extra \\left or missing \\right",
+                       "title":"Extra \\left or missing \\right"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -629,7 +642,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "\\middle must be within \\left and \\right"},
+         "attributes": {"data-mjx-error": "\\middle must be within \\left and \\right",
+                       "title":"\\middle must be within \\left and \\right"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -675,7 +689,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "\\middle must be within \\left and \\right"},
+         "attributes": {"data-mjx-error": "\\middle must be within \\left and \\right",
+                       "title":"\\middle must be within \\left and \\right"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -721,7 +736,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "\\uproot can appear only within a root"},
+         "attributes": {"data-mjx-error": "\\uproot can appear only within a root",
+                       "title":"\\uproot can appear only within a root"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -767,7 +783,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Multiple use of \\uproot"},
+         "attributes": {"data-mjx-error": "Multiple use of \\uproot",
+                       "title":"Multiple use of \\uproot"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -813,7 +830,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "The argument to \\uproot must be an integer"},
+         "attributes": {"data-mjx-error": "The argument to \\uproot must be an integer",
+                       "title":"The argument to \\uproot must be an integer"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -858,7 +876,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Ambiguous use of \\over"},
+         "attributes": {"data-mjx-error": "Ambiguous use of \\over",
+                       "title":"Ambiguous use of \\over"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -904,7 +923,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "mk is not a token element"},
+         "attributes": {"data-mjx-error": "mk is not a token element",
+                       "title":"mk is not a token element"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -950,7 +970,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "mrow is not a token element"},
+         "attributes": {"data-mjx-error": "mrow is not a token element",
+                       "title":"mrow is not a token element"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -996,7 +1017,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Invalid MathML attribute: m1=true"},
+         "attributes": {"data-mjx-error": "Invalid MathML attribute: m1=true",
+                       "title":"Invalid MathML attribute: m1=true"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -1042,7 +1064,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "nothing is not a recognized attribute for mo"},
+         "attributes": {"data-mjx-error": "nothing is not a recognized attribute for mo",
+                       "title":"nothing is not a recognized attribute for mo"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -1088,7 +1111,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "movablelimit is not a recognized attribute for mi"},
+         "attributes": {"data-mjx-error": "movablelimit is not a recognized attribute for mi",
+                       "title":"movablelimit is not a recognized attribute for mi"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -1133,7 +1157,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Missing \\begin{array} or extra \\end{array}"},
+         "attributes": {"data-mjx-error": "Missing \\begin{array} or extra \\end{array}",
+                       "title":"Missing \\begin{array} or extra \\end{array}"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -1178,7 +1203,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Extra close brace or missing open brace"},
+         "attributes": {"data-mjx-error": "Extra close brace or missing open brace",
+                       "title":"Extra close brace or missing open brace"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -1223,7 +1249,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Missing \\left or extra \\right"},
+         "attributes": {"data-mjx-error": "Missing \\left or extra \\right",
+                       "title":"Missing \\left or extra \\right"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -1268,7 +1295,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Extra open brace or missing close brace"},
+         "attributes": {"data-mjx-error": "Extra open brace or missing close brace",
+                       "title":"Extra open brace or missing close brace"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -1313,7 +1341,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Missing superscript or subscript argument"},
+         "attributes": {"data-mjx-error": "Missing superscript or subscript argument",
+                       "title":"Missing superscript or subscript argument"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -1358,7 +1387,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Missing superscript or subscript argument"},
+         "attributes": {"data-mjx-error": "Missing superscript or subscript argument",
+                       "title":"Missing superscript or subscript argument"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -1403,7 +1433,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Missing open brace for superscript"},
+         "attributes": {"data-mjx-error": "Missing open brace for superscript",
+                       "title":"Missing open brace for superscript"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -1448,7 +1479,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Missing open brace for subscript"},
+         "attributes": {"data-mjx-error": "Missing open brace for subscript",
+                       "title":"Missing open brace for subscript"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -1493,7 +1525,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Extra \\left or missing \\right"},
+         "attributes": {"data-mjx-error": "Extra \\left or missing \\right",
+                       "title":"Extra \\left or missing \\right"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -1539,7 +1572,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Misplaced \\cr"},
+         "attributes": {"data-mjx-error": "Misplaced \\cr",
+                       "title":"Misplaced \\cr"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -1585,7 +1619,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Bracket argument to \\\\ must be a dimension"},
+         "attributes": {"data-mjx-error": "Bracket argument to \\\\ must be a dimension",
+                       "title":"Bracket argument to \\\\ must be a dimension"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -1631,7 +1666,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Missing argument for \\sqrt"},
+         "attributes": {"data-mjx-error": "Missing argument for \\sqrt",
+                       "title":"Missing argument for \\sqrt"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -1676,7 +1712,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Extra close brace or missing open brace"},
+         "attributes": {"data-mjx-error": "Extra close brace or missing open brace",
+                       "title":"Extra close brace or missing open brace"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -1721,7 +1758,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Missing close brace"},
+         "attributes": {"data-mjx-error": "Missing close brace",
+                       "title":"Missing close brace"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -1766,7 +1804,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Extra close brace while looking for ']'"},
+         "attributes": {"data-mjx-error": "Extra close brace while looking for ']'",
+                       "title":"Extra close brace while looking for ']'"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -1811,7 +1850,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Could not find closing ']' for argument to \\sqrt"},
+         "attributes": {"data-mjx-error": "Could not find closing ']' for argument to \\sqrt",
+                       "title":"Could not find closing ']' for argument to \\sqrt"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -1856,7 +1896,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Missing or unrecognized delimiter for \\left"},
+         "attributes": {"data-mjx-error": "Missing or unrecognized delimiter for \\left",
+                       "title":"Missing or unrecognized delimiter for \\left"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -1901,7 +1942,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Missing or unrecognized delimiter for \\right"},
+         "attributes": {"data-mjx-error": "Missing or unrecognized delimiter for \\right",
+                       "title":"Missing or unrecognized delimiter for \\right"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -1946,7 +1988,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Missing dimension or its units for \\rule"},
+         "attributes": {"data-mjx-error": "Missing dimension or its units for \\rule",
+                       "title":"Missing dimension or its units for \\rule"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -1991,7 +2034,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Could not find \\of for \\root"},
+         "attributes": {"data-mjx-error": "Could not find \\of for \\root",
+                       "title":"Could not find \\of for \\root"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -2036,7 +2080,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Extra close brace while looking for \\of"},
+         "attributes": {"data-mjx-error": "Extra close brace while looking for \\of",
+                       "title":"Extra close brace while looking for \\of"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -2081,7 +2126,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Undefined control sequence \\genfrac"},
+         "attributes": {"data-mjx-error": "Undefined control sequence \\genfrac",
+                       "title":"Undefined control sequence \\genfrac"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -2127,7 +2173,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Erroneous nesting of equation structures"},
+         "attributes": {"data-mjx-error": "Erroneous nesting of equation structures",
+                       "title":"Erroneous nesting of equation structures"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -2174,7 +2221,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Extra alignment tab in \\cases text"},
+         "attributes": {"data-mjx-error": "Extra alignment tab in \\cases text",
+                       "title":"Extra alignment tab in \\cases text"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -2219,7 +2267,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Misplaced \\hline"},
+         "attributes": {"data-mjx-error": "Misplaced \\hline",
+                       "title":"Misplaced \\hline"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -2264,7 +2313,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Unsupported use of \\hfill"},
+         "attributes": {"data-mjx-error": "Unsupported use of \\hfill",
+                       "title":"Unsupported use of \\hfill"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -2309,7 +2359,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Invalid environment name '\\ff'"},
+         "attributes": {"data-mjx-error": "Invalid environment name '\\ff'",
+                       "title":"Invalid environment name '\\ff'"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -2356,7 +2407,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "\\begin{equation} ended with \\end{array}"},
+         "attributes": {"data-mjx-error": "\\begin{equation} ended with \\end{array}",
+                       "title":"\\begin{equation} ended with \\end{array}"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -2401,7 +2453,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Missing \\end{array}"},
+         "attributes": {"data-mjx-error": "Missing \\end{array}",
+                       "title":"Missing \\end{array}"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -2446,7 +2499,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Missing box for \\raise"},
+         "attributes": {"data-mjx-error": "Missing box for \\raise",
+                       "title":"Missing box for \\raise"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -2491,7 +2545,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Missing close brace"},
+         "attributes": {"data-mjx-error": "Missing close brace",
+                       "title":"Missing close brace"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},
@@ -2536,7 +2591,8 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {"data-mjx-error": "Missing \\end{equation}"},
+         "attributes": {"data-mjx-error": "Missing \\end{equation}",
+                       "title":"Missing \\end{equation}"},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
          "properties": {},

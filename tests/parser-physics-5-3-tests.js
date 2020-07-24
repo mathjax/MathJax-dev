@@ -1,5 +1,5 @@
 import {ParserTest} from './parser-tests.js';
-import 'mathjax3/js/input/tex/physics/PhysicsConfiguration.js';
+import '../mathjax3/js/input/tex/physics/PhysicsConfiguration.js';
 
 class ParserPhysicsTest5_3 extends ParserTest {
 
@@ -947,34 +947,26 @@ parserTest.runTest(
          "childNodes": [
            {"kind": "text",
             "text": "A"}]},
-        {"kind": "mrow",
+        {"kind": "mi",
          "texClass": 0,
          "attributes": {},
          "inherited": {"displaystyle": true,
-                       "scriptlevel": 0},
+                       "scriptlevel": 0,
+                       "mathvariant": "italic"},
          "properties": {},
          "childNodes": [
-           {"kind": "mi",
-            "texClass": 0,
-            "attributes": {},
-            "inherited": {"displaystyle": true,
-                          "scriptlevel": 0,
-                          "mathvariant": "italic"},
-            "properties": {},
-            "childNodes": [
-                {"kind": "text",
-                  "text": "δ"}]},
-            {"kind": "mi",
-              "texClass": 0,
-              "attributes": {},
-              "inherited": {"displaystyle": true,
-                "scriptlevel": 0,
-                "mathvariant": "italic"},
-              "properties": {},
-              "childNodes": [
-                {"kind": "text",
-                  "text": "A"}]}],
-          "isInferred": true},
+           {"kind": "text",
+            "text": "δ"}]},
+        {"kind": "mi",
+         "texClass": 0,
+          "attributes": {},
+          "inherited": {"displaystyle": true,
+            "scriptlevel": 0,
+            "mathvariant": "italic"},
+          "properties": {},
+          "childNodes": [
+            {"kind": "text",
+              "text": "A"}]},
         {"kind": "mi",
           "texClass": 0,
           "attributes": {},

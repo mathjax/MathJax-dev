@@ -17,7 +17,7 @@ const toJSON = (node => visitor.visitTree(node));
 
 mathjax.handleRetriesFor(() => {
 
-    let math = html.convert(process.argv[3] || '', {end: STATE.CONVERT});
+    let math = html.convert(process.argv[2] || '', {end: STATE.CONVERT});
     math.setTeXclass();
     console.log(JSON.stringify(toJSON(math)));
 

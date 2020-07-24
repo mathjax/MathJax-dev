@@ -39,7 +39,18 @@ sudo ln -s <MathJax-dev-PATH> /var/www/html/
 Run the lab on `localhost` using the URL
 
 ``` shell
-localhost/MathJax-dev/v3-lab.html
+http://localhost/MathJax-dev/v3-lab.html
+```
+
+Or alternatively serve directly from the directory, i.e., by running a python server:
+
+``` shell
+python -m SimpleHTTPServer 8000
+```
+and then run the lab at the following URL
+
+``` shell
+http://localhost:8000/v3-lab.html
 ```
 
 
@@ -52,16 +63,22 @@ using `node` or in a browser.
 
 ### Running Samples in Node
 
-Samples are run using `node` and loaded using the `load.js` script. The general command is:
+Samples are run in `node` using the `esm` package on load. You need to first install `esm` by
 
 ``` shell
-node load.js samples/<SCRIPT>.js <INPUT>
+npm install esm
+```
+
+The general command to run scripts is then:
+
+``` shell
+node -r esm samples/<SCRIPT>.js <INPUT>
 ```
 
 As example consider the script to parse LaTeX expressions into MathML:
 
 ``` shell
-node load.js samples/tex2mml.js x^2
+node -r esm samples/tex2mml.js x^2
 ```
 
 ``` html
@@ -100,17 +117,13 @@ will print the corresponding MathML expression in the console:
 
 ### Scripts
 
-Not all sample scripts are currently working. Here are two lists of the samples
-that are currently working or broken. Sample names should be self-explanatory.
-
-
-#### Working scripts
-
+Sample names should be self-explanatory.
 
 ``` shell
-samples/asciimath2mml.js
 samples/asciimath-document.js
 samples/asciimath-json.js
+samples/asciimath2mml-component.js
+samples/asciimath2mml.js
 samples/asyncLoad.js
 samples/bits.js
 samples/css.js
@@ -119,45 +132,34 @@ samples/find-mml.js
 samples/find-strings.js
 samples/find-tex-dollars.js
 samples/find-tex.js
-samples/mml2html.js
-samples/mml2svg.js
+samples/html-full.js
+samples/mfenced.js
 samples/mml-bbox.js
 samples/mml-nodes.js
+samples/mml2html.js
+samples/mml2svg.js
 samples/notagids.js
 samples/tag-format.js
-samples/test-adaptor.js
-samples/test-styles.js
-samples/tex2html.js
-samples/tex2mml.js
-samples/tex2svg.js
 samples/tex-document.js
 samples/tex-json.js
 samples/tex-multi-document.js
 samples/tex-nodes.js
 samples/tex-string.js
-```
-#### Obsolete Packages
-
-``` shell
-samples/convert-tex2mml.js  same as tex2mml.js
-samples/tex-typeset.js same as tex2html.js
-
-```
-
-
-#### Broken scripts
-
-``` shell
-samples/asciimath2mml-component.js
-samples/html-full.js
-samples/mfenced.js
+samples/tex2html.js
 samples/tex2mml-component.js
 samples/tex2mml-require.js
 samples/tex2mml-speech.js
+samples/tex2mml.js
 samples/tex2svg-speech.js
-
+samples/tex2svg.js
 ```
 
+The following two scripts need `jsdom` package for testing:
+
+``` shell
+samples/test-adaptor.js
+samples/test-styles.js
+```
 
 ## Running TeX Parser Tests
 
