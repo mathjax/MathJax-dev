@@ -1,5 +1,5 @@
 import {ParserTest} from './parser-tests.js';
-import 'mathjax3/js/input/tex/mhchem/MhchemConfiguration.js';
+import '../mathjax3/js/input/tex/mhchem/MhchemConfiguration.js';
 
 
 class ParserMhchemTest8 extends ParserTest {
@@ -1077,7 +1077,7 @@ parserTest.runTest(
                "isEmbellished": true},
               {"kind": "mspace",
                "texClass": 0,
-               "attributes": {"width": "6mu"},
+               "attributes": {"width": "0.333em"},
                "inherited": {"displaystyle": true,
                              "scriptlevel": 0},
                "properties": {},
@@ -1140,7 +1140,7 @@ parserTest.runTest(
                "isEmbellished": true},
               {"kind": "mspace",
                "texClass": 0,
-               "attributes": {"width": "6mu"},
+               "attributes": {"width": "0.333em"},
                "inherited": {"displaystyle": true,
                              "scriptlevel": 0},
                "properties": {},
@@ -1203,7 +1203,7 @@ parserTest.runTest(
                "isEmbellished": true},
               {"kind": "mspace",
                "texClass": 0,
-               "attributes": {"width": "6mu"},
+               "attributes": {"width": "0.333em"},
                "inherited": {"displaystyle": true,
                              "scriptlevel": 0},
                "properties": {},
@@ -2062,9 +2062,9 @@ parserTest.runTest(
                                           "isEmbellished": true}]}]}]},
                             {"kind": "mpadded",
                               "texClass": 0,
-                              "attributes": {"height": "-7mu",
-                                "depth": "+7mu",
-                                "voffset": "-7mu"},
+                              "attributes": {"height": "-0.389em",
+                                "depth": "+0.389em",
+                                "voffset": "-0.389em"},
                               "inherited": {"displaystyle": false,
                                 "scriptlevel": 1},
                               "properties": {"texprimestyle": true},
@@ -3189,9 +3189,9 @@ parserTest.runTest(
                                           "isEmbellished": true}]}]}]},
                             {"kind": "mpadded",
                               "texClass": 0,
-                              "attributes": {"height": "-7mu",
-                                "depth": "+7mu",
-                                "voffset": "-7mu"},
+                              "attributes": {"height": "-0.389em",
+                                "depth": "+0.389em",
+                                "voffset": "-0.389em"},
                               "inherited": {"displaystyle": false,
                                 "scriptlevel": 1},
                               "properties": {"texprimestyle": true},

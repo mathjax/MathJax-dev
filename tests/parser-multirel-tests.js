@@ -1,7 +1,7 @@
 import {ParserTest} from './parser-tests.js';
-import {Configuration} from 'mathjax3/js/input/tex/Configuration.js';
-import {CharacterMap} from 'mathjax3/js/input/tex/SymbolMap.js';
-import ParseMethods from 'mathjax3/js/input/tex/ParseMethods.js';
+import {Configuration} from '../mathjax3/js/input/tex/Configuration.js';
+import {CharacterMap} from '../mathjax3/js/input/tex/SymbolMap.js';
+import ParseMethods from '../mathjax3/js/input/tex/ParseMethods.js';
 
 
 class ParserMultirelTest extends ParserTest {
@@ -16,7 +16,7 @@ class ParserMultirelTest extends ParserTest {
       lesssim: ['\u2272', {lspace: '1pt'}],
       gtrsim: ['\u2278', {rspace: '1pt'}]
     });
-    Configuration.create('multirel-test', {handler: {macro: ['shadow']}});
+    Configuration.create('multirel-test', {handler: {macro: ['shadow']}, priority: 4});
     super();
     this.packages = ['base', 'ams', 'multirel-test'];
   }

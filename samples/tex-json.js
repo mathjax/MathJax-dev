@@ -7,7 +7,6 @@ import {STATE} from '../mathjax3/js/core/MathItem.js';
 import {AllPackages} from '../mathjax3/js/input/tex/AllPackages.js';
 import {CHTML} from '../mathjax3/js/output/chtml.js';
 
-
 RegisterHTMLHandler(chooseAdaptor());
 
 let html = mathjax.document('<html></html>', {

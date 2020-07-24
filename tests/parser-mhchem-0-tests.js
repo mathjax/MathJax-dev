@@ -1,5 +1,5 @@
 import {ParserTest} from './parser-tests.js';
-import 'mathjax3/js/input/tex/mhchem/MhchemConfiguration.js';
+import '../mathjax3/js/input/tex/mhchem/MhchemConfiguration.js';
 
 
 class ParserMhchemTest0 extends ParserTest {
@@ -642,8 +642,8 @@ parserTest.runTest(
                         "isEmbellished": true},
                        {"kind": "mpadded",
                         "texClass": 0,
-                        "attributes": {"width": "+11mu",
-                                       "lspace": "5mu",
+                        "attributes": {"width": "+0.611em",
+                                       "lspace": "0.278em",
                                        "voffset": ".15em"},
                         "inherited": {"displaystyle": false,
                                       "scriptlevel": 1},
@@ -1036,8 +1036,8 @@ parserTest.runTest(
                               "isEmbellished": true},
                             {"kind": "mpadded",
                               "texClass": 0,
-                              "attributes": {"width": "+11mu",
-                                "lspace": "5mu",
+                              "attributes": {"width": "+0.611em",
+                                "lspace": "0.278em",
                                 "voffset": ".15em"},
                               "inherited": {"displaystyle": false,
                                 "scriptlevel": 1},
@@ -1918,7 +1918,7 @@ parserTest.runTest(
                   "isInferred": true}]},
               {"kind": "mspace",
                "texClass": 0,
-               "attributes": {"width": "2mu"},
+               "attributes": {"width": "0.111em"},
                "inherited": {"displaystyle": true,
                              "scriptlevel": 0},
                "properties": {},
@@ -2136,7 +2136,7 @@ parserTest.runTest(
                               "isInferred": true}]},
                           {"kind": "mspace",
                            "texClass": 0,
-                           "attributes": {"width": "3mu"},
+                           "attributes": {"width": "0.167em"},
                            "inherited": {"displaystyle": false,
                                          "scriptlevel": 1},
                            "properties": {"texprimestyle": true},

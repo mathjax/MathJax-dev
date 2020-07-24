@@ -406,7 +406,9 @@ parserTest.runTest(
       "childNodes": [
         {"kind": "merror",
          "texClass": 0,
-         "attributes": {},
+         "attributes": {
+           "data-mjx-error":"Missing open brace for superscript"
+         },
          "inherited": {
            "displaystyle": true,
            "scriptlevel": 0},
@@ -1373,7 +1375,7 @@ parserTest.runTest(
             "text": "⁡"}],
          "isEmbellished": true},
         {"kind": "mrow",
-         "texClass": 4,
+         "texClass": 7,
          "attributes": {},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
@@ -3623,21 +3625,19 @@ parserTest.runTest(
                        "scriptlevel": 0},
          "properties": {"movesupsub": true},
          "childNodes": [
-           {"kind": "mo",
+           {"kind": "mi",
             "texClass": 1,
-            "attributes": {"movablelimits": true,
-                           "lspace": "0",
-                           "rspace": "0"},
+            "attributes": {"mathvariant": "normal"},
             "inherited": {"displaystyle": true,
                           "scriptlevel": 0,
-                          "form": "infix"},
+                          "mathvariant": "italic"},
             "properties": {"texClass": 1,
                            "movablelimits": true,
-                           "texprimestyle": true},
+                "movesupsub": true,
+                "texprimestyle": true},
               "childNodes": [
                 {"kind": "text",
-                  "text": "a"}],
-              "isEmbellished": true},
+                  "text": "a"}]},
             {"kind": "mi",
               "texClass": 0,
               "attributes": {},
@@ -3647,11 +3647,8 @@ parserTest.runTest(
               "properties": {},
               "childNodes": [
                 {"kind": "text",
-                  "text": "b"}]}],
-          "isEmbellished": true}],
-      "isInferred": true,
-      "isEmbellished": true}],
-  "isEmbellished": true}
+                  "text": "b"}]}]}],
+      "isInferred": true}]}
 );
 
 
@@ -3678,20 +3675,18 @@ parserTest.runTest(
                        "scriptlevel": 0},
          "properties": {"movesupsub": true},
          "childNodes": [
-           {"kind": "mo",
+           {"kind": "mi",
             "texClass": 1,
-            "attributes": {"movablelimits": true,
-                           "lspace": "0",
-                           "rspace": "0"},
+            "attributes": {"mathvariant": "normal"},
             "inherited": {"displaystyle": true,
                           "scriptlevel": 0,
-                          "form": "infix"},
+                          "mathvariant": "italic"},
             "properties": {"texClass": 1,
-                           "movablelimits": true},
-            "childNodes": [
+                           "movablelimits": true,
+                "movesupsub": true},
+              "childNodes": [
                 {"kind": "text",
-                  "text": "a"}],
-              "isEmbellished": true},
+                  "text": "a"}]},
             {"kind": "mi",
               "texClass": 0,
               "attributes": {},
@@ -3701,11 +3696,8 @@ parserTest.runTest(
               "properties": {"texprimestyle": true},
               "childNodes": [
                 {"kind": "text",
-                  "text": "b"}]}],
-          "isEmbellished": true}],
-      "isInferred": true,
-      "isEmbellished": true}],
-  "isEmbellished": true}
+                  "text": "b"}]}]}],
+      "isInferred": true}]}
 );
 
 
@@ -3732,22 +3724,20 @@ parserTest.runTest(
                        "scriptlevel": 0},
          "properties": {"movesupsub": true},
          "childNodes": [
-           {"kind": "mo",
+           {"kind": "mi",
             "texClass": 1,
-            "attributes": {"movablelimits": true,
-                           "lspace": "0",
-                           "rspace": "0"},
+            "attributes": {"mathvariant": "normal"},
             "inherited": {"displaystyle": true,
                           "scriptlevel": 0,
-                          "form": "infix"},
+                          "mathvariant": "italic"},
             "properties": {"texClass": 1,
                            "movablelimits": true,
+                           "movesupsub": true,
                            "texprimestyle": true},
             "childNodes": [
               {"kind": "text",
-               "text": "a"}],
-            "isEmbellished": true},
-           {"kind": "mi",
+               "text": "a"}]},
+            {"kind": "mi",
               "texClass": 0,
               "attributes": {},
               "inherited": {"displaystyle": false,
@@ -3766,11 +3756,8 @@ parserTest.runTest(
               "properties": {},
               "childNodes": [
                 {"kind": "text",
-                  "text": "c"}]}],
-          "isEmbellished": true}],
-      "isInferred": true,
-      "isEmbellished": true}],
-  "isEmbellished": true}
+                  "text": "c"}]}]}],
+      "isInferred": true}]}
 );
 
 

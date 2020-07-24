@@ -1,5 +1,5 @@
 import {ParserTest} from './parser-tests.js';
-import 'mathjax3/js/input/tex/color_v2/ColorV2Configuration.js';
+import '../mathjax3/js/input/tex/color_v2/ColorV2Configuration.js';
 
 
 class ParserColorV2Test extends ParserTest {

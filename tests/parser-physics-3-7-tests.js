@@ -1,5 +1,5 @@
 import {ParserTest} from './parser-tests.js';
-import 'mathjax3/js/input/tex/physics/PhysicsConfiguration.js';
+import '../mathjax3/js/input/tex/physics/PhysicsConfiguration.js';
 
 class ParserPhysicsTest3_7 extends ParserTest {
 
@@ -393,7 +393,7 @@ parserTest.runTest(
             "text": "⁡"}],
          "isEmbellished": true},
         {"kind": "mrow",
-         "texClass": 4,
+         "texClass": 7,
          "attributes": {},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},
@@ -1298,7 +1298,7 @@ parserTest.runTest(
             "text": "⁡"}],
          "isEmbellished": true},
         {"kind": "mrow",
-         "texClass": 4,
+         "texClass": 7,
          "attributes": {},
          "inherited": {"displaystyle": true,
                        "scriptlevel": 0},

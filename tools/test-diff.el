@@ -211,6 +211,11 @@
             "]"
             )))
 
+(defun json-reformat:tree-sibling-to-plist (root)
+  (let (pl)
+    (dolist (key (hash-table-keys root) pl)
+      (setq pl (plist-put pl key (gethash key root))))))
+
 (defun json-my-reformat ()
   (interactive)
   (let ((start (point))
