@@ -1,7 +1,6 @@
-#!/bin/bash
+!/bin/bash
 NODE="node -r esm"
-DIR="."
-
+DIR=`dirname $0`
 
 if [ $# -eq 0 ]; then
 

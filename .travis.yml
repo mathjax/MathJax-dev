@@ -5,4 +5,4 @@ sudo: false
 branches:
 install:
   - cd tests; npm install
-script: tests/tests.sh
+script: cd tests; ./tests.sh
