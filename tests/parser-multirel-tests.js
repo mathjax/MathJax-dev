@@ -1,7 +1,7 @@
 import {ParserTest} from './parser-tests.js';
-import {Configuration} from '../mathjax3/js/input/tex/Configuration.js';
-import {CharacterMap} from '../mathjax3/js/input/tex/SymbolMap.js';
-import ParseMethods from '../mathjax3/js/input/tex/ParseMethods.js';
+import {Configuration} from './node_modules/mathjax-full/js/input/tex/Configuration.js';
+import {CharacterMap} from './node_modules/mathjax-full/js/input/tex/SymbolMap.js';
+import ParseMethods from './node_modules/mathjax-full/js/input/tex/ParseMethods.js';
 
 
 class ParserMultirelTest extends ParserTest {

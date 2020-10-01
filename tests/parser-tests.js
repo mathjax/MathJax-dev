@@ -1,17 +1,17 @@
-import {mathjax} from '../mathjax3/js/mathjax.js';
+import {mathjax} from './node_modules/mathjax-full/js/mathjax.js';
 
-import {TeX} from '../mathjax3/js/input/tex.js';
-import {RegisterHTMLHandler} from "../mathjax3/js/handlers/html.js";
-import {chooseAdaptor} from "../mathjax3/js/adaptors/chooseAdaptor.js";
-import {JsonMmlVisitor} from '../mathjax3/js/core/MmlTree/JsonMmlVisitor.js';
-import {STATE} from '../mathjax3/js/core/MathItem.js';
+import {TeX} from './node_modules/mathjax-full/js/input/tex.js';
+import {RegisterHTMLHandler} from "./node_modules/mathjax-full/js/handlers/html.js";
+import {chooseAdaptor} from "./node_modules/mathjax-full/js/adaptors/chooseAdaptor.js";
+import {JsonMmlVisitor} from './node_modules/mathjax-full/js/core/MmlTree/JsonMmlVisitor.js';
+import {STATE} from './node_modules/mathjax-full/js/core/MathItem.js';
 
-import {TagsFactory} from '../mathjax3/js/input/tex/Tags.js';
-import {MapHandler} from "../mathjax3/js/input/tex/MapHandler.js";
+import {TagsFactory} from './node_modules/mathjax-full/js/input/tex/Tags.js';
+import {MapHandler} from "./node_modules/mathjax-full/js/input/tex/MapHandler.js";
 
 import {Test} from './tests.js';
-import '../mathjax3/js/input/tex/base/BaseConfiguration.js';
-import '../mathjax3/js/input/tex/ams/AmsConfiguration.js';
+import './node_modules/mathjax-full/js/input/tex/base/BaseConfiguration.js';
+import './node_modules/mathjax-full/js/input/tex/ams/AmsConfiguration.js';
 
 
 RegisterHTMLHandler(chooseAdaptor());

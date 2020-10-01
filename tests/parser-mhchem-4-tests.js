@@ -1,5 +1,5 @@
 import {ParserTest} from './parser-tests.js';
-import '../mathjax3/js/input/tex/mhchem/MhchemConfiguration.js';
+import './node_modules/mathjax-full/js/input/tex/mhchem/MhchemConfiguration.js';
 
 
 class ParserMhchemTest4 extends ParserTest {

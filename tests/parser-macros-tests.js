@@ -1,5 +1,5 @@
 import {ParserTest} from './parser-tests.js';
-import '../mathjax3/js/input/tex/configmacros/ConfigMacrosConfiguration.js';
+import './node_modules/mathjax-full/js/input/tex/configmacros/ConfigMacrosConfiguration.js';
 
 
 class ParserConfigMacrosTest extends ParserTest {

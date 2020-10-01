@@ -1,5 +1,5 @@
 import {ParserTest} from './parser-tests.js';
-import {TagsFactory} from '../mathjax3/js/input/tex/Tags.js';
+import {TagsFactory} from './node_modules/mathjax-full/js/input/tex/Tags.js';
 
 class ParserTagNoneTest extends ParserTest {
 
