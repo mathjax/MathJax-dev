@@ -9,7 +9,7 @@ import {STATE} from './node_modules/mathjax-full/js/core/MathItem.js';
 import {TagsFactory} from './node_modules/mathjax-full/js/input/tex/Tags.js';
 import {MapHandler} from "./node_modules/mathjax-full/js/input/tex/MapHandler.js";
 
-import {Test} from './tests.js';
+import {Test} from './test.js';
 import './node_modules/mathjax-full/js/input/tex/base/BaseConfiguration.js';
 import './node_modules/mathjax-full/js/input/tex/ams/AmsConfiguration.js';
 

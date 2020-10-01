@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 NODE="node -r esm"
 DIR=`dirname $0`
 

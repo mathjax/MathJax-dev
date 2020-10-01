@@ -1,4 +1,4 @@
-import {ParserTest} from './parser-tests.js';
+import {ParserTest} from './parser-test.js';
 import {TagsFactory} from './node_modules/mathjax-full/js/input/tex/Tags.js';
 
 class ParserTagAmsTest extends ParserTest {

@@ -1,4 +1,4 @@
-import {ParserTest} from './parser-tests.js';
+import {ParserTest} from './parser-test.js';
 import './node_modules/mathjax-full/js/input/tex/physics/PhysicsConfiguration.js';
 
 class ParserPhysicsTest3_2 extends ParserTest {

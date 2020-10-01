@@ -1,4 +1,4 @@
-import {ParserTest} from './parser-tests.js';
+import {ParserTest} from './parser-test.js';
 
 let patternUS = /^(?:[0-9]+(?:\{,\}[0-9]{3})*(?:\.[0-9]*)?|\.[0-9]+)/;
 

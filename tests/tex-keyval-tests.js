@@ -1,5 +1,5 @@
 import ParseUtil from './node_modules/mathjax-full/js/input/tex/ParseUtil.js';
-import {Test} from './tests.js';
+import {Test} from './test.js';
 
 
 class KeyvalTest extends Test {

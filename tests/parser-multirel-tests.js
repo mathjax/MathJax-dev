@@ -1,4 +1,4 @@
-import {ParserTest} from './parser-tests.js';
+import {ParserTest} from './parser-test.js';
 import {Configuration} from './node_modules/mathjax-full/js/input/tex/Configuration.js';
 import {CharacterMap} from './node_modules/mathjax-full/js/input/tex/SymbolMap.js';
 import ParseMethods from './node_modules/mathjax-full/js/input/tex/ParseMethods.js';
