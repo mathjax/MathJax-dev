@@ -4,4 +4,6 @@ node_js:
 sudo: false
 branches:
 install:
-  - npm install
+  - cd tests; npm install
+script
+  - tests/tests.sh
