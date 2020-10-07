@@ -1,5 +1,5 @@
-import {ParserTest} from './parser-tests.js';
-import '../mathjax3/js/input/tex/noundefined/NoUndefinedConfiguration.js';
+import {ParserTest} from './parser-test.js';
+import './node_modules/mathjax-full/js/input/tex/noundefined/NoUndefinedConfiguration.js';
 
 class ParserNoundefinedTest extends ParserTest {
 

@@ -1,5 +1,5 @@
-import {ParserTest} from './parser-tests.js';
-import '../mathjax3/js/input/tex/unicode/UnicodeConfiguration.js';
+import {ParserTest} from './parser-test.js';
+import './node_modules/mathjax-full/js/input/tex/unicode/UnicodeConfiguration.js';
 
 class ParserUnicodeTest extends ParserTest {
 

@@ -1,4 +1,4 @@
-import {ParserTest} from './parser-tests.js';
+import {ParserTest} from './parser-test.js';
 
 class ParserVerbTest extends ParserTest {
 

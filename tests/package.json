@@ -1,0 +1,20 @@
+{
+  "name": "MathJax-tex-tests",
+  "version": "0.2.0",
+  "description": "Test framework for MathJax v3 TeX parser.",
+  "scripts": {
+    "test": "./tests.sh"
+  },
+  "maintainers": [
+    "Volker Sorge <V.Sorge@mathjax.org> (http://mathjax.org)"
+  ],
+  "bugs": {
+    "email": "V.Sorge@mathjax.org",
+    "url": "https://github.com/MathJax/MathJax-dev/issues"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "mathjax-full": "^3.1.2",
+    "tape": "^5.0.1"
+  }
+}

@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  - "stable"
+sudo: false
+branches:
+install:
+  - cd tests; npm install
+script: cd tests; ./tests.sh

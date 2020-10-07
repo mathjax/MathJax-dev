@@ -1,5 +1,5 @@
-import {ParserTest} from './parser-tests.js';
-import '../mathjax3/js/input/tex/newcommand/NewcommandConfiguration.js';
+import {ParserTest} from './parser-test.js';
+import './node_modules/mathjax-full/js/input/tex/newcommand/NewcommandConfiguration.js';
 
 class ParserNewcommandErrorTest extends ParserTest {
 
