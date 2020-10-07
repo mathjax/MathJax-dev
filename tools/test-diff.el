@@ -125,6 +125,8 @@
 
 ;;; Replacing an entire file
 
+;;; file: The source file
+;;; diff: The diff file
 (defun replace-all-in-file (file diff &optional dir)
   (interactive)
   (find-file (if dir
