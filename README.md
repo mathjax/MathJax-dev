@@ -24,7 +24,7 @@ nmp install mj-context-menu
 
 Create a symbolic link for the context menu. MathJax expects it to be _in parallel_ to its code.
 
-``` sheel
+``` shell
 ln -s node_modules/mj-context-menu
 ```
 
