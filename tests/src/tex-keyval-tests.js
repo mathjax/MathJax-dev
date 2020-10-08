@@ -1,4 +1,4 @@
-import ParseUtil from './node_modules/mathjax-full/js/input/tex/ParseUtil.js';
+import ParseUtil from '../node_modules/mathjax-full/js/input/tex/ParseUtil.js';
 import {Test} from './test.js';
 
 

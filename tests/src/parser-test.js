@@ -1,20 +1,20 @@
-import {mathjax} from './node_modules/mathjax-full/js/mathjax.js';
+import {mathjax} from '../node_modules/mathjax-full/js/mathjax.js';
 
-import {TeX} from './node_modules/mathjax-full/js/input/tex.js';
-import {SVG} from './node_modules/mathjax-full/js/output/svg.js';
-import {RegisterHTMLHandler} from "./node_modules/mathjax-full/js/handlers/html.js";
-import {chooseAdaptor} from "./node_modules/mathjax-full/js/adaptors/chooseAdaptor.js";
-import {JsonMmlVisitor} from './node_modules/mathjax-full/js/core/MmlTree/JsonMmlVisitor.js';
-import {STATE} from './node_modules/mathjax-full/js/core/MathItem.js';
+import {TeX} from '../node_modules/mathjax-full/js/input/tex.js';
+import {SVG} from '../node_modules/mathjax-full/js/output/svg.js';
+import {RegisterHTMLHandler} from "../node_modules/mathjax-full/js/handlers/html.js";
+import {chooseAdaptor} from "../node_modules/mathjax-full/js/adaptors/chooseAdaptor.js";
+import {JsonMmlVisitor} from '../node_modules/mathjax-full/js/core/MmlTree/JsonMmlVisitor.js';
+import {STATE} from '../node_modules/mathjax-full/js/core/MathItem.js';
 
-import {TagsFactory} from './node_modules/mathjax-full/js/input/tex/Tags.js';
-import {MapHandler} from "./node_modules/mathjax-full/js/input/tex/MapHandler.js";
+import {TagsFactory} from '../node_modules/mathjax-full/js/input/tex/Tags.js';
+import {MapHandler} from "../node_modules/mathjax-full/js/input/tex/MapHandler.js";
 
 import {JsonTest, Test} from './test.js';
 
-import {AllPackages} from './node_modules/mathjax-full/js/input/tex/AllPackages.js';
-import './node_modules/mathjax-full/js/input/tex/base/BaseConfiguration.js';
-import './node_modules/mathjax-full/js/input/tex/ams/AmsConfiguration.js';
+import {AllPackages} from '../node_modules/mathjax-full/js/input/tex/AllPackages.js';
+import '../node_modules/mathjax-full/js/input/tex/base/BaseConfiguration.js';
+import '../node_modules/mathjax-full/js/input/tex/ams/AmsConfiguration.js';
 
 let fs = require('fs');
 
