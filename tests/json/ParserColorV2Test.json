@@ -1,0 +1,369 @@
+{
+  "name": "ParserColorV2Test",
+  "factory": "parserTest",
+  "packages": [
+    "base",
+    "colorv2"
+  ],
+  "settings": {
+    "tags": "none"
+  },
+  "tests": {
+    "Color Open": {
+      "input": "\\color{red}{ab}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mstyle",
+                "texClass": 0,
+                "attributes": {
+                  "mathcolor": "red"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "mathcolor": "red",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mi",
+                        "texClass": 0,
+                        "attributes": {},
+                        "inherited": {
+                          "mathcolor": "red",
+                          "displaystyle": true,
+                          "scriptlevel": 0,
+                          "mathvariant": "italic"
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "text",
+                            "text": "a"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "mi",
+                        "texClass": 0,
+                        "attributes": {},
+                        "inherited": {
+                          "mathcolor": "red",
+                          "displaystyle": true,
+                          "scriptlevel": 0,
+                          "mathvariant": "italic"
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "text",
+                            "text": "b"
+                          }
+                        ]
+                      }
+                    ],
+                    "isInferred": true
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Color Enclosed": {
+      "input": "\\color{red}ab",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mstyle",
+                "texClass": 0,
+                "attributes": {
+                  "mathcolor": "red"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "mathcolor": "red",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mi",
+                        "texClass": 0,
+                        "attributes": {},
+                        "inherited": {
+                          "mathcolor": "red",
+                          "displaystyle": true,
+                          "scriptlevel": 0,
+                          "mathvariant": "italic"
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "text",
+                            "text": "a"
+                          }
+                        ]
+                      }
+                    ],
+                    "isInferred": true
+                  }
+                ]
+              },
+              {
+                "kind": "mi",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "mathvariant": "italic"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "b"
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Color Frac": {
+      "input": "\\frac{{\\cal \\color{red}{X}}}{\\color{blue}{\\sf y}}",
+      "expected": {
+        "kind": "math",
+        "texClass": null,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": null,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mfrac",
+                "texClass": null,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "TeXAtom",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": false,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mrow",
+                        "texClass": 0,
+                        "attributes": {},
+                        "inherited": {
+                          "displaystyle": false,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mstyle",
+                            "texClass": 0,
+                            "attributes": {
+                              "mathcolor": "red"
+                            },
+                            "inherited": {
+                              "displaystyle": false,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mrow",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "mathcolor": "red",
+                                  "displaystyle": false,
+                                  "scriptlevel": 0
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "mi",
+                                    "texClass": 0,
+                                    "attributes": {
+                                      "mathvariant": "-tex-calligraphic"
+                                    },
+                                    "inherited": {
+                                      "mathcolor": "red",
+                                      "displaystyle": false,
+                                      "scriptlevel": 0,
+                                      "mathvariant": "italic"
+                                    },
+                                    "properties": {},
+                                    "childNodes": [
+                                      {
+                                        "kind": "text",
+                                        "text": "X"
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "isInferred": true
+                              }
+                            ]
+                          }
+                        ],
+                        "isInferred": true
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "mstyle",
+                    "texClass": 0,
+                    "attributes": {
+                      "mathcolor": "blue"
+                    },
+                    "inherited": {
+                      "displaystyle": false,
+                      "scriptlevel": 0
+                    },
+                    "properties": {
+                      "texprimestyle": true
+                    },
+                    "childNodes": [
+                      {
+                        "kind": "mrow",
+                        "texClass": 0,
+                        "attributes": {},
+                        "inherited": {
+                          "mathcolor": "blue",
+                          "displaystyle": false,
+                          "scriptlevel": 0
+                        },
+                        "properties": {
+                          "texprimestyle": true
+                        },
+                        "childNodes": [
+                          {
+                            "kind": "mi",
+                            "texClass": 0,
+                            "attributes": {
+                              "mathvariant": "sans-serif"
+                            },
+                            "inherited": {
+                              "mathcolor": "blue",
+                              "displaystyle": false,
+                              "scriptlevel": 0,
+                              "mathvariant": "italic"
+                            },
+                            "properties": {
+                              "texprimestyle": true
+                            },
+                            "childNodes": [
+                              {
+                                "kind": "text",
+                                "text": "y"
+                              }
+                            ]
+                          }
+                        ],
+                        "isInferred": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    }
+  }
+}

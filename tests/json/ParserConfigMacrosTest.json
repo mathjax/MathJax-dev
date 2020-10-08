@@ -1,0 +1,462 @@
+{
+  "name": "ParserConfigMacrosTest",
+  "factory": "parserConfigMacros",
+  "packages": [
+    "base",
+    "configmacros"
+  ],
+  "settings": {
+    "tags": "none",
+    "macros": {}
+  },
+  "tests": {
+    "Macros Simple": {
+      "macro": {"RR": "{\\bf R}"},
+      "control": "{\\bf R}",
+      "input": "\\RR",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "TeXAtom",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mi",
+                        "texClass": 0,
+                        "attributes": {
+                          "mathvariant": "bold"
+                        },
+                        "inherited": {
+                          "displaystyle": true,
+                          "scriptlevel": 0,
+                          "mathvariant": "italic"
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "text",
+                            "text": "R"
+                          }
+                        ]
+                      }
+                    ],
+                    "isInferred": true
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Macros Argument": {
+      "macro": {"bold": ["{\\bf #1}", 1]},
+      "control": "{\\bf bold}",
+      "input": "\\bold{bold}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "TeXAtom",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mi",
+                        "texClass": 0,
+                        "attributes": {
+                          "mathvariant": "bold"
+                        },
+                        "inherited": {
+                          "displaystyle": true,
+                          "scriptlevel": 0,
+                          "mathvariant": "italic"
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "text",
+                            "text": "b"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "mi",
+                        "texClass": 0,
+                        "attributes": {
+                          "mathvariant": "bold"
+                        },
+                        "inherited": {
+                          "displaystyle": true,
+                          "scriptlevel": 0,
+                          "mathvariant": "italic"
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "text",
+                            "text": "o"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "mi",
+                        "texClass": 0,
+                        "attributes": {
+                          "mathvariant": "bold"
+                        },
+                        "inherited": {
+                          "displaystyle": true,
+                          "scriptlevel": 0,
+                          "mathvariant": "italic"
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "text",
+                            "text": "l"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "mi",
+                        "texClass": 0,
+                        "attributes": {
+                          "mathvariant": "bold"
+                        },
+                        "inherited": {
+                          "displaystyle": true,
+                          "scriptlevel": 0,
+                          "mathvariant": "italic"
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "text",
+                            "text": "d"
+                          }
+                        ]
+                      }
+                    ],
+                    "isInferred": true
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Macros Aux Argument": {
+      "macro": {"foo": ["\\mbox{first } #1 \\mbox{ second } #2", 2, ["[", "]"]]},
+      "control": "\\mbox{first } hi \\mbox{ second } there",
+      "input": "\\foo[hi]{there}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mstyle",
+                "texClass": 0,
+                "attributes": {
+                  "displaystyle": false,
+                  "scriptlevel": 0
+                },
+                "inherited": {},
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": false,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtext",
+                        "texClass": 0,
+                        "attributes": {},
+                        "inherited": {
+                          "displaystyle": false,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "text",
+                            "text": "first "
+                          }
+                        ],
+                        "isSpacelike": true
+                      }
+                    ],
+                    "isInferred": true,
+                    "isSpacelike": true
+                  }
+                ],
+                "isSpacelike": true
+              },
+              {
+                "kind": "mi",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "mathvariant": "italic"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "h"
+                  }
+                ]
+              },
+              {
+                "kind": "mi",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "mathvariant": "italic"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "i"
+                  }
+                ]
+              },
+              {
+                "kind": "mstyle",
+                "texClass": 0,
+                "attributes": {
+                  "displaystyle": false,
+                  "scriptlevel": 0
+                },
+                "inherited": {},
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": false,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtext",
+                        "texClass": 0,
+                        "attributes": {},
+                        "inherited": {
+                          "displaystyle": false,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "text",
+                            "text": " second "
+                          }
+                        ],
+                        "isSpacelike": true
+                      }
+                    ],
+                    "isInferred": true,
+                    "isSpacelike": true
+                  }
+                ],
+                "isSpacelike": true
+              },
+              {
+                "kind": "mi",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "mathvariant": "italic"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "t"
+                  }
+                ]
+              },
+              {
+                "kind": "mi",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "mathvariant": "italic"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "h"
+                  }
+                ]
+              },
+              {
+                "kind": "mi",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "mathvariant": "italic"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "e"
+                  }
+                ]
+              },
+              {
+                "kind": "mi",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "mathvariant": "italic"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "r"
+                  }
+                ]
+              },
+              {
+                "kind": "mi",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "mathvariant": "italic"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "e"
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    }
+  }
+}
