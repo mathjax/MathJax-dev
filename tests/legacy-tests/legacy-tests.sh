@@ -1,4 +1,8 @@
 #!/bin/bash
+
+## Legacy tests for saving in tag.
+## run npm install followed by ./legacy-tests.sh
+
 NODE="node -r esm"
 DIR=`dirname $0`
 
