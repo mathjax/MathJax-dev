@@ -11,6 +11,8 @@ import {TagsFactory} from './node_modules/mathjax-full/js/input/tex/Tags.js';
 import {MapHandler} from "./node_modules/mathjax-full/js/input/tex/MapHandler.js";
 
 import {JsonTest, Test} from './test.js';
+
+import {AllPackages} from './node_modules/mathjax-full/js/input/tex/AllPackages.js';
 import './node_modules/mathjax-full/js/input/tex/base/BaseConfiguration.js';
 import './node_modules/mathjax-full/js/input/tex/ams/AmsConfiguration.js';
 
@@ -23,9 +25,11 @@ export class ParserTest extends Test {
   json = {};
   packages = ['ams', 'base'];
   settings = {tags: 'none'};
+  output = false;
 
   constructor() {
     super();
+    console.log(this.constructor.name);
     console.log('\u001B\u005B\u0033\u0034\u006D' +
                 'Running tests from ' + this.constructor.name +
                 '\u001B\u005B\u0033\u0037\u006D');
@@ -41,12 +45,15 @@ export class ParserTest extends Test {
 
   printTime() {
     super.printTime();
-    if (!Object.keys(this.runningTests).length) {
+    if (this.output && !Object.keys(this.runningTests).length) {
       console.log('Out: ' + this.json.name);
+      this.json.name = this.constructor.name;
+      this.json.packages = this.packages;
+      this.json.settings = this.settings;
       fs.writeFileSync('json3/' + this.json.name + '.json', JSON.stringify(this.json, null, 2));
     }
   }
-  
+
   // Tests exclusively the timing of the Translate method.
   runTest(name, tex, expected) {
     this.outTest(name, tex,expected);
@@ -71,10 +78,10 @@ export class ParserTest extends Test {
       }
     );
   }
-  
+
   ignoreTest(name, tex, expected) {
   }
-  
+
 }
 
 
@@ -82,34 +89,30 @@ export class ParserJsonTest extends JsonTest {
 
   packages = ['ams', 'base'];
   settings = {tags: 'none'};
+  name = '';
 
-  constructor(file) {
-    super(file);
+  constructor(json) {
+    super(json);
     this.packages = this.json['packages'] || this.packages;
+    this.name = this.json['name'] || this.name;
     this.settings = this.json['settings'] || this.settings;
+    this.processSettings();
     console.log('\u001B\u005B\u0033\u0034\u006D' +
-                'Running tests from ' + this.constructor.name +
+                'Running tests from ' + (this.name || this.constructor.name) +
                 '\u001B\u005B\u0033\u0037\u006D');
-    // this.json.name = this.constructor.name;
-    // this.json.packages = this.packages;
-    // this.json.settings = this.settings;
-    // this.json.tests = {};
   }
 
-  // outTest(name, tex, expected) {
-  //   this.json.tests[name] = {input: tex, expected: expected};
-  // }
+  processSettings() {
+    // Processing regular expressions.
+    for (let set of ['digit', 'letter', 'special']) {
+      if (this.settings[set]) {
+        this.settings[set] = RegExp(this.settings[set]);
+      }
+    }
+  }
 
-  // printTime() {
-  //   super.printTime();
-  //   if (!Object.keys(this.runningTests).length) {
-  //     fs.writeFileSync('json2/' + this.json.name + '.json', JSON.stringify(this.json, null, 2));
-  //   }
-  // }
-  
-  // Tests exclusively the timing of the Translate method.
-  runTest(name, tex, expected) {
-    // this.outTest(name, tex,expected);
+
+  runTest(name, tex, expected, rest) {
     this.test(
       name,
       t => {
@@ -117,7 +120,7 @@ export class ParserJsonTest extends JsonTest {
           let options = {packages: this.packages};
           Object.assign(options, this.settings);
           let html = mathjax.document('<html></html>', {
-            InputJax: new TeX(options),
+            InputJax: new TeX(options), OutputJax: new SVG()
           });
           let root = html.convert(tex, {end: STATE.CONVERT});
           let jv = new JsonMmlVisitor();
@@ -131,21 +134,5 @@ export class ParserJsonTest extends JsonTest {
       }
     );
   }
-  
-  ignoreTest(name, tex, expected) {
-  }
-  
+
 }
-
-let testDir = 'json2';
-
-let allParserTests = function() {
-  let files = [];
-  if (fs.lstatSync(testDir).isDirectory()) {
-    files = fs.readdirSync(testDir).filter(x => x.match(/\.json$/));
-  }
-  files.forEach(file =>
-                (new ParserJsonTest(testDir + '/' + file)).runTests());
-};
-
-// allParserTests();

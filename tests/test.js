@@ -89,7 +89,7 @@ export class Test {
     });
   }
 
-  runTest(name, input, expected) {}
+  runTest(name, input, expected, rest) {}
 
 }
 
@@ -100,21 +100,20 @@ export class JsonTest extends Test {
   name = '';
   tests = {};
   
-  constructor(file) {
+  constructor(json) {
     super();
-    this.file = file;
+    this.json = json;
     this.parseJson();
   }
   
   parseJson()  {
-    this.json = JSON.parse(fs.readFileSync(this.file));
     this.name = this.json.name || '';
     this.tests = this.json.tests || {};
   }
 
   runTests() {
-    for (const [name, {input: input, expected: expected}] of Object.entries(this.tests)) {
-      this.runTest(name, input, expected);
+    for (const [name, {input, expected, ...rest}] of Object.entries(this.tests)) {
+      this.runTest(name, input, expected, rest);
     }
     this.printTime();
   }
