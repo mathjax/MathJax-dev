@@ -4517,3 +4517,5 @@ parserTest.runTest(
             "isInferred": true}]}],
       "isInferred": true}]}
 );
+
+parserTest.printTime();

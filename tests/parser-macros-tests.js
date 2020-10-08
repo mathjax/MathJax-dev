@@ -285,3 +285,5 @@ parserTest.runTest(
               "text": "e"}]}],
       "isInferred": true}]}
 );
+
+parserTest.printTime();

@@ -701,3 +701,5 @@ parserTest.runTest(
       "isEmbellished": true}],
   "isEmbellished": true}
 );
+
+parserTest.printTime();

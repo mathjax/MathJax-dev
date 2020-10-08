@@ -3760,3 +3760,5 @@ parserTest.runTest(
 );
 
 
+
+parserTest.printTime();

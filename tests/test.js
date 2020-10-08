@@ -1,9 +1,14 @@
 /* globals System: true */
 
 let test = require('tape');
+let fs = require('fs');
 
 export class Test {
 
+  failedTests = [];
+  failed = false;
+  time = 0;
+  
   constructor() {
     /**
      * @type {Object.<string, number>}
@@ -24,12 +29,20 @@ export class Test {
    * @private
    */
   startTest(name) {
-    this.runningTests[name] = (new Date()).getTime();
+    this.concludedTests[name] = (new Date()).getTime();
+  }
+
+  /**
+   * @param {string} name The name of the test.
+   * @private
+   */
+  registerTest(name) {
+    this.runningTests[name] = true;
   }
 
   stopTest(name) {
     this.concludedTests[name] =
-        (new Date()).getTime() - this.runningTests[name];
+        (new Date()).getTime() - this.concludedTests[name];
     delete this.runningTests[name];
   }
 
@@ -39,17 +52,17 @@ export class Test {
       setTimeout(this.printTime.bind(this), 100);
       return;
     }
-    let time = 0;
     for (var test in this.concludedTests) {
-      time += this.concludedTests[test];
+      this.time += this.concludedTests[test];
       delete this.concludedTests[test];
     }
-    process.stdout.write(this.constructor.name + ': ' + time + 'ms\n');
+    process.stdout.write(this.constructor.name + ': ' + this.time + 'ms\n');
   }
 
   test(name, func) {
-    this.startTest(name);
+    this.registerTest(name);
     test(name, function(t) {
+      this.startTest(name);
       t.plan(1);
       func(t);
       this.stopTest(name);
@@ -67,6 +80,8 @@ export class Test {
                              '\u001B\u005B\u0033\u0037\u006D')) +
                            '\n');
       if (result.ok) return;
+      this.failed = true;
+      this.failedTests.push(result.name);
       process.stdout.write('Actual: \n');
       process.stdout.write(JSON.stringify(result.actual) + '\n');
       process.stdout.write('Expected: \n');
@@ -76,4 +91,32 @@ export class Test {
 
   runTest(name, input, expected) {}
 
+}
+
+
+export class JsonTest extends Test { 
+
+  json = {};
+  name = '';
+  tests = {};
+  
+  constructor(file) {
+    super();
+    this.file = file;
+    this.parseJson();
+  }
+  
+  parseJson()  {
+    this.json = JSON.parse(fs.readFileSync(this.file));
+    this.name = this.json.name || '';
+    this.tests = this.json.tests || {};
+  }
+
+  runTests() {
+    for (const [name, {input: input, expected: expected}] of Object.entries(this.tests)) {
+      this.runTest(name, input, expected);
+    }
+    this.printTime();
+  }
+  
 }

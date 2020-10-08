@@ -1,6 +1,7 @@
 import {mathjax} from './node_modules/mathjax-full/js/mathjax.js';
 
 import {TeX} from './node_modules/mathjax-full/js/input/tex.js';
+import {SVG} from './node_modules/mathjax-full/js/output/svg.js';
 import {RegisterHTMLHandler} from "./node_modules/mathjax-full/js/handlers/html.js";
 import {chooseAdaptor} from "./node_modules/mathjax-full/js/adaptors/chooseAdaptor.js";
 import {JsonMmlVisitor} from './node_modules/mathjax-full/js/core/MmlTree/JsonMmlVisitor.js';
@@ -9,27 +10,106 @@ import {STATE} from './node_modules/mathjax-full/js/core/MathItem.js';
 import {TagsFactory} from './node_modules/mathjax-full/js/input/tex/Tags.js';
 import {MapHandler} from "./node_modules/mathjax-full/js/input/tex/MapHandler.js";
 
-import {Test} from './test.js';
+import {JsonTest, Test} from './test.js';
 import './node_modules/mathjax-full/js/input/tex/base/BaseConfiguration.js';
 import './node_modules/mathjax-full/js/input/tex/ams/AmsConfiguration.js';
 
+let fs = require('fs');
 
 RegisterHTMLHandler(chooseAdaptor());
 
 export class ParserTest extends Test {
 
-  
+  json = {};
+  packages = ['ams', 'base'];
+  settings = {tags: 'none'};
+
   constructor() {
     super();
-    this.packages = ['ams', 'base'];
-    this.settings = {tags: 'none'};
     console.log('\u001B\u005B\u0033\u0034\u006D' +
                 'Running tests from ' + this.constructor.name +
                 '\u001B\u005B\u0033\u0037\u006D');
+    this.json.name = this.constructor.name;
+    this.json.packages = this.packages;
+    this.json.settings = this.settings;
+    this.json.tests = {};
   }
 
+  outTest(name, tex, expected) {
+    this.json.tests[name] = {input: tex, expected: expected};
+  }
+
+  printTime() {
+    super.printTime();
+    if (!Object.keys(this.runningTests).length) {
+      console.log('Out: ' + this.json.name);
+      fs.writeFileSync('json3/' + this.json.name + '.json', JSON.stringify(this.json, null, 2));
+    }
+  }
+  
   // Tests exclusively the timing of the Translate method.
   runTest(name, tex, expected) {
+    this.outTest(name, tex,expected);
+    this.test(
+      name,
+      t => {
+        mathjax.handleRetriesFor(function() {
+          let options = {packages: this.packages};
+          Object.assign(options, this.settings);
+          let html = mathjax.document('<html></html>', {
+            InputJax: new TeX(options), OutputJax: new SVG()
+          });
+          let root = html.convert(tex, {end: STATE.CONVERT});
+          let jv = new JsonMmlVisitor();
+          root.setTeXclass(null);
+          let actual = jv.visitTree(root);
+          t.deepEqual(actual, expected, name);
+        }.bind(this)).catch(err => {
+          console.log(err.message);
+          console.log(err.stack.replace(/\n.*\/system\.js:(.|\n)*/, ''));
+        });
+      }
+    );
+  }
+  
+  ignoreTest(name, tex, expected) {
+  }
+  
+}
+
+
+export class ParserJsonTest extends JsonTest {
+
+  packages = ['ams', 'base'];
+  settings = {tags: 'none'};
+
+  constructor(file) {
+    super(file);
+    this.packages = this.json['packages'] || this.packages;
+    this.settings = this.json['settings'] || this.settings;
+    console.log('\u001B\u005B\u0033\u0034\u006D' +
+                'Running tests from ' + this.constructor.name +
+                '\u001B\u005B\u0033\u0037\u006D');
+    // this.json.name = this.constructor.name;
+    // this.json.packages = this.packages;
+    // this.json.settings = this.settings;
+    // this.json.tests = {};
+  }
+
+  // outTest(name, tex, expected) {
+  //   this.json.tests[name] = {input: tex, expected: expected};
+  // }
+
+  // printTime() {
+  //   super.printTime();
+  //   if (!Object.keys(this.runningTests).length) {
+  //     fs.writeFileSync('json2/' + this.json.name + '.json', JSON.stringify(this.json, null, 2));
+  //   }
+  // }
+  
+  // Tests exclusively the timing of the Translate method.
+  runTest(name, tex, expected) {
+    // this.outTest(name, tex,expected);
     this.test(
       name,
       t => {
@@ -56,3 +136,16 @@ export class ParserTest extends Test {
   }
   
 }
+
+let testDir = 'json2';
+
+let allParserTests = function() {
+  let files = [];
+  if (fs.lstatSync(testDir).isDirectory()) {
+    files = fs.readdirSync(testDir).filter(x => x.match(/\.json$/));
+  }
+  files.forEach(file =>
+                (new ParserJsonTest(testDir + '/' + file)).runTests());
+};
+
+// allParserTests();

@@ -120,6 +120,10 @@ if [ $# -eq 0 ]; then
     $NODE $DIR/parser-physics-7-10-tests.js
     $NODE $DIR/parser-physics-7-11-tests.js
 
+    # bussproofs
+    $NODE $DIR/parser-bussproofs-reginf-tests.js
+    $NODE $DIR/parser-bussproofs-regproofs-tests.js
+
     exit 0
 else
     repeat=$1
