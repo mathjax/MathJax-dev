@@ -1,5 +1,5 @@
-import {ParserJsonTest} from './parser-test.js';
-import {KeyvalTest, ParserMultirelTest, ParserConfigMacrosTest} from './other-test.js';
+import * as pt from './parser-test.js';
+import {KeyvalTest} from './other-test.js';
 import {JsonTest} from './test.js';
 let fs = require('fs');
 
@@ -7,9 +7,10 @@ export class TestFactory {
 
   static factory = {
     'keyvalTest': KeyvalTest,
-    'parserConfigMacros': ParserConfigMacrosTest,
-    'parserMultirel': ParserMultirelTest,
-    'parserTest': ParserJsonTest,
+    'parserConfigMacros': pt.ParserConfigMacrosTest,
+    'parserMultirel': pt.ParserMultirelTest,
+    'parserOutput': pt.ParserOutputTest,
+    'parserTest': pt.ParserJsonTest,
     'test': JsonTest
   }
 
