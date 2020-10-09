@@ -5,7 +5,8 @@ JSON=$DIR/json
 
 if [ $# -eq 0 ]; then
 
-    $NODE $DIR/src/tex-keyval-tests.js
+    $NODE src/run-test.js $JSON/KeyvalTest.json
+    ## $NODE $DIR/src/tex-keyval-tests.js
 
     $NODE src/run-test.js $JSON/ParserActionTest.json
     ## Reordered

@@ -1,0 +1,170 @@
+{
+  "name": "KeyvalTest",
+  "factory": "keyvalTest",
+  "tests": {
+    "Keyval Trival": {
+      "input": "key={{}}",
+      "expected": {"key": true}
+    },
+    "Keyval Trivial 2": {
+      "input": "key1={{}},key2={{{{}}}}",
+      "expected": {"key1": true, "key2": true}
+    },
+    "Keyval Trival3": {
+      "input": "key={{}{}}",
+      "expected": {"key": "{}{}"}
+    },
+    "Keyval Trivial 4": {
+      "input": "key1= { { }   },key2= {{ { {  }} } }",
+      "expected": {"key1": true, "key2": true}
+    },
+    "Keyval Single": {
+      "input": "key=a",
+      "expected": {"key": "a"}
+    },
+    "Keyval Double": {
+      "input": "key1=a,key2=b",
+      "expected": {"key1": "a", "key2": "b"}
+    },
+    "Keyval Space": {
+      "input": "key1 = a   , key2 =    b",
+      "expected": {"key1": "a", "key2": "b"}
+    },
+    "Keyval Single True": {
+      "input": "key1",
+      "expected": {"key1": true}
+    },
+    "Keyval Double True": {
+      "input": "key1,key2",
+      "expected": {"key1": true, "key2": true}
+    },
+    "Keyval Mixed": {
+      "input": "key1=a,key2,key3=c",
+      "expected": {"key1": "a", "key2": true, "key3": "c"}
+    },
+    "Keyval Empty Comma Begin": {
+      "input": ",key1=a,key2,key3=c",
+      "expected": {"key1": "a", "key2": true, "key3": "c"}
+    },
+    "Keyval Empty Comma Mid": {
+      "input": "key1=a,,key2,key3=c",
+      "expected": {"key1": "a", "key2": true, "key3": "c"}
+    },
+    "Keyval Empty Comma End": {
+      "input": "key1=a,key2,key3=c,",
+      "expected": {"key1": "a", "key2": true, "key3": "c"}
+    },
+    "Keyval Empty Comma Multi": {
+      "input": ",,key1=a,,,,key2,key3=c,,",
+      "expected": {"key1": "a", "key2": true, "key3": "c"}
+    },
+    "Keyval Braces": {
+      "input": "key1={a},key2=b",
+      "expected": {"key1": "a", "key2": "b"}
+    },
+    "Keyval Braces 2": {
+      "input": "key1={{a}},key2=b",
+      "expected": {"key1": "a", "key2": "b"}
+    },
+    "Keyval Braces 3": {
+      "input": "key1={{{a}}},key2=b",
+      "expected": {"key1": "a", "key2": "b"}
+    },
+    "Keyval Braces Comma": {
+      "input": "key1={a,b,c},key2=b",
+      "expected": {"key1": "a,b,c", "key2": "b"}
+    },
+    "Keyval Braces Equal": {
+      "input": "key1={a=c},key2=b",
+      "expected": {"key1": "a=c", "key2": "b"}
+    },
+    "Keyval Braces Comma Equal": {
+      "input": "key1={a=c,b},key2=b",
+      "expected": {"key1": "a=c,b", "key2": "b"}
+    },
+    "Keyval Braces Simple 1": {
+      "input": "key1={{a}}",
+      "expected": {"key1": "a"}
+    },
+    "Keyval Braces Simple 2": {
+      "input": "key1={{a{b}}}",
+      "expected": {"key1": "a{b}"}
+    },
+    "Keyval Braces Simple 3": {
+      "input": "key1={{a={b}}}",
+      "expected": {"key1": "a={b}"}
+    },
+    "Keyval Braces Prefix": {
+      "input": "key1={{}a}",
+      "expected": {"key1": "{}a"}
+    },
+    "Keyval Braces Prefix 2": {
+      "input": "key1={{{}}a}",
+      "expected": {"key1": "{{}}a"}
+    },
+    "Keyval Braces Prefix 3": {
+      "input": "key1={{}{}a}",
+      "expected": {"key1": "{}{}a"}
+    },
+    "Keyval Braces Prefix 4": {
+      "input": "key1={{{}{}a}}",
+      "expected": {"key1": "{}{}a"}
+    },
+    "Keyval Braces Prefix 5": {
+      "input": "key1={{}{a}}",
+      "expected": {"key1": "{}{a}"}
+    },
+    "Keyval Braces Prefix 6": {
+      "input": "key1={{{}}{a}}",
+      "expected": {"key1": "{{}}{a}"}
+    },
+    "Keyval Braces Mixed 1": {
+      "input": "key1={{a},{b}},key2=b",
+      "expected": {"key1": "{a},{b}", "key2": "b"}
+    },
+    "Keyval Braces Mixed 2": {
+      "input": "key1={{{a},{b}}},key2=b",
+      "expected": {"key1": "{a},{b}", "key2": "b"}
+    },
+    "Keyval Braces Mixed 3": {
+      "input": "key1={{{a}},{{b},{c}}},key2=b",
+      "expected": {"key1": "{{a}},{{b},{c}}", "key2": "b"}
+    },
+    "Keyval Braces Mixed 3 Spaces": {
+      "input": "key1 = { { { a}},{{b},{c} } }   ,key2=b",
+      "expected": {"key1": "{ { a}},{{b},{c} }", "key2": "b"}
+    },
+    "Keyval Braces Mixed 4 Spaces": {
+      "input": "key1 = { { { { { { a}},{{b},{c} } } } } }   ,key2=b",
+      "expected": {"key1": "{ { a}},{{b},{c} }", "key2": "b"}
+    },
+    "Keyval Braces Equals Mixed 3": {
+      "input": "key1={{{a}}={{b},{c}}},key2=b",
+      "expected": {"key1": "{{a}}={{b},{c}}", "key2": "b"}
+    },
+    "Keyval Error 1": {
+      "input": "key={{a}",
+      "expected": "Extra open brace or missing close brace"
+    },
+    "Keyval Error 2": {
+      "input": "key={{a}{}",
+      "expected": "Extra open brace or missing close brace"
+    },
+    "Keyval Error 3": {
+      "input": "key1=}, key2={",
+      "expected": "Extra open brace or missing close brace"
+    },
+    "Keyval Unbalanced 1": {
+      "input": "key={a}}",
+      "expected": {"key": "a}"}
+    },
+    "Keyval Unbalanced 2": {
+      "input": "key1={a}}, key2=}b",
+      "expected": {"key1": "a}", "key2": "}b"}
+    },
+    "Keyval Unbalanced 3": {
+      "input": "key1=}, key2={}}",
+      "expected": {"key1": true, "key2": true}
+    }
+  }
+}
