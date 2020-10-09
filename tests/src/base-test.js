@@ -22,8 +22,6 @@
  * @author v.sorge@mathjax.org (Volker Sorge)
  */
 
-/* globals System: true */
-
 export class Test {
 
   runTest(name, input, expected, rest) {}
