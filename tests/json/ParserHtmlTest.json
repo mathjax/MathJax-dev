@@ -1,0 +1,837 @@
+{
+  "name": "ParserHtmlTest",
+  "factory": "parserTest",
+  "packages": [
+    "base",
+    "html"
+  ],
+  "settings": {
+    "tags": "none"
+  },
+  "tests": {
+    "Html Href Simple": {
+      "input": "\\href{https://mathjax.org}{a}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mi",
+                "texClass": 0,
+                "attributes": {
+                  "href": "https://mathjax.org"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "mathvariant": "italic"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "a"
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Html Href Complex": {
+      "input": "\\href{https://mathjax.org}{\\frac{a}{b}}",
+      "expected": {
+        "kind": "math",
+        "texClass": null,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": null,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mfrac",
+                "texClass": null,
+                "attributes": {
+                  "href": "https://mathjax.org"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mi",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": false,
+                      "scriptlevel": 0,
+                      "mathvariant": "italic"
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "text",
+                        "text": "a"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "mi",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": false,
+                      "scriptlevel": 0,
+                      "mathvariant": "italic"
+                    },
+                    "properties": {
+                      "texprimestyle": true
+                    },
+                    "childNodes": [
+                      {
+                        "kind": "text",
+                        "text": "b"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Html Href Inner": {
+      "input": "\\frac{a}{\\href{https://mathjax.org}{b}}",
+      "expected": {
+        "kind": "math",
+        "texClass": null,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": null,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mfrac",
+                "texClass": null,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mi",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": false,
+                      "scriptlevel": 0,
+                      "mathvariant": "italic"
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "text",
+                        "text": "a"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "mi",
+                    "texClass": 0,
+                    "attributes": {
+                      "href": "https://mathjax.org"
+                    },
+                    "inherited": {
+                      "displaystyle": false,
+                      "scriptlevel": 0,
+                      "mathvariant": "italic"
+                    },
+                    "properties": {
+                      "texprimestyle": true
+                    },
+                    "childNodes": [
+                      {
+                        "kind": "text",
+                        "text": "b"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Html Style Simple": {
+      "input": "\\style{color:green;background-color:blue}{a}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mi",
+                "texClass": 0,
+                "attributes": {
+                  "style": "color:green;background-color:blue"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "mathvariant": "italic"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "a"
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Html Style Complex": {
+      "input": "\\style{color:green;background-color:blue}{\\frac{a}{b}}",
+      "expected": {
+        "kind": "math",
+        "texClass": null,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": null,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mfrac",
+                "texClass": null,
+                "attributes": {
+                  "style": "color:green;background-color:blue"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mi",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": false,
+                      "scriptlevel": 0,
+                      "mathvariant": "italic"
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "text",
+                        "text": "a"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "mi",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": false,
+                      "scriptlevel": 0,
+                      "mathvariant": "italic"
+                    },
+                    "properties": {
+                      "texprimestyle": true
+                    },
+                    "childNodes": [
+                      {
+                        "kind": "text",
+                        "text": "b"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Html Style Inner": {
+      "input": "\\frac{a}{\\style{color:green;background-color:blue}{b}}",
+      "expected": {
+        "kind": "math",
+        "texClass": null,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": null,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mfrac",
+                "texClass": null,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mi",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": false,
+                      "scriptlevel": 0,
+                      "mathvariant": "italic"
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "text",
+                        "text": "a"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "mi",
+                    "texClass": 0,
+                    "attributes": {
+                      "style": "color:green;background-color:blue"
+                    },
+                    "inherited": {
+                      "displaystyle": false,
+                      "scriptlevel": 0,
+                      "mathvariant": "italic"
+                    },
+                    "properties": {
+                      "texprimestyle": true
+                    },
+                    "childNodes": [
+                      {
+                        "kind": "text",
+                        "text": "b"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Html Class Simple": {
+      "input": "\\class{myclass}{a}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"},
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0},
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0},
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mi",
+                "texClass": 0,
+                "attributes": {
+                  "class": "myclass"},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "mathvariant": "italic"},
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "a"}]}],
+            "isInferred": true}]}
+    },
+    "Html Class Medium": {
+      "input": "\\class{myclass}{\\frac{a}{b}}",
+      "expected": {
+        "kind": "math",
+        "texClass": null,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": null,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mfrac",
+                "texClass": null,
+                "attributes": {
+                  "class": "myclass"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mi",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": false,
+                      "scriptlevel": 0,
+                      "mathvariant": "italic"
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "text",
+                        "text": "a"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "mi",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": false,
+                      "scriptlevel": 0,
+                      "mathvariant": "italic"
+                    },
+                    "properties": {
+                      "texprimestyle": true
+                    },
+                    "childNodes": [
+                      {
+                        "kind": "text",
+                        "text": "b"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Html Class Complex": {
+      "input": "\\frac{a}{\\class{myclass}{b}}",
+      "expected": {
+        "kind": "math",
+        "texClass": null,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": null,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mfrac",
+                "texClass": null,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mi",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": false,
+                      "scriptlevel": 0,
+                      "mathvariant": "italic"
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "text",
+                        "text": "a"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "mi",
+                    "texClass": 0,
+                    "attributes": {
+                      "class": "myclass"
+                    },
+                    "inherited": {
+                      "displaystyle": false,
+                      "scriptlevel": 0,
+                      "mathvariant": "italic"
+                    },
+                    "properties": {
+                      "texprimestyle": true
+                    },
+                    "childNodes": [
+                      {
+                        "kind": "text",
+                        "text": "b"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Html Id Inner": {
+      "input": "\\cssId{myid-0}{a}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mi",
+                "texClass": 0,
+                "attributes": {
+                  "id": "myid-0"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "mathvariant": "italic"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "a"
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Html Id Simple": {
+      "input": "\\cssId{myid-1}{\\frac{a}{b}}",
+      "expected": {
+        "kind": "math",
+        "texClass": null,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": null,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mfrac",
+                "texClass": null,
+                "attributes": {
+                  "id": "myid-1"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mi",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": false,
+                      "scriptlevel": 0,
+                      "mathvariant": "italic"
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "text",
+                        "text": "a"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "mi",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": false,
+                      "scriptlevel": 0,
+                      "mathvariant": "italic"
+                    },
+                    "properties": {
+                      "texprimestyle": true
+                    },
+                    "childNodes": [
+                      {
+                        "kind": "text",
+                        "text": "b"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Html Id Complex": {
+      "input": "\\frac{a}{\\cssId{myid-2}{b}}",
+      "expected": {
+        "kind": "math",
+        "texClass": null,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": null,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mfrac",
+                "texClass": null,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mi",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": false,
+                      "scriptlevel": 0,
+                      "mathvariant": "italic"
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "text",
+                        "text": "a"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "mi",
+                    "texClass": 0,
+                    "attributes": {
+                      "id": "myid-2"
+                    },
+                    "inherited": {
+                      "displaystyle": false,
+                      "scriptlevel": 0,
+                      "mathvariant": "italic"
+                    },
+                    "properties": {
+                      "texprimestyle": true
+                    },
+                    "childNodes": [
+                      {
+                        "kind": "text",
+                        "text": "b"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    }
+  }
+}

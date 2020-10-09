@@ -1,124 +1,112 @@
 #!/bin/bash
 NODE="node -r esm"
 DIR=`dirname $0`
+JSON=$DIR/json
 
 if [ $# -eq 0 ]; then
 
-    $NODE $DIR/tex-keyval-tests.js
+    $NODE $DIR/src/tex-keyval-tests.js
 
-    $NODE $DIR/parser-base-tests.js
-    $NODE $DIR/parser-digits-tests.js
-    $NODE $DIR/parser-digits-european-tests.js
-    $NODE $DIR/parser-other-tests.js
-    $NODE $DIR/parser-fenced-tests.js
-    $NODE $DIR/parser-movlim-tests.js
-    $NODE $DIR/parser-mathchoice-tests.js
-    $NODE $DIR/parser-multirel-tests.js
-    $NODE $DIR/parser-array-tests.js
-    $NODE $DIR/parser-error-tests.js
-    $NODE $DIR/parser-complex-tests.js
-    $NODE $DIR/parser-internal-math-tests.js
-    $NODE $DIR/parser-multline-shove-tests.js
-    $NODE $DIR/parser-matrix-tests.js
-    $NODE $DIR/parser-colorv2-tests.js
-
-
-    # AMS package tests.
-    $NODE $DIR/parser-ams-tests.js
-    $NODE $DIR/parser-amsenv-tests.js
-    $NODE $DIR/parser-amserror-tests.js
-    $NODE $DIR/parser-amscomplex-tests.js
-
-    # The tag tests.
-    $NODE $DIR/parser-tag-none-tests.js
-    $NODE $DIR/parser-tag-ams-tests.js
-    $NODE $DIR/parser-tag-all-tests.js
-
-    # Definition/extension related.
-    $NODE $DIR/parser-newcommand-tests.js
-    $NODE $DIR/parser-macros-tests.js
-
-    # Error handling.
-    $NODE $DIR/parser-ncerror-tests.js
-    $NODE $DIR/parser-noerror-tests.js
-    $NODE $DIR/parser-noundefined-tests.js
-
-    # Other standard packages
-    $NODE $DIR/parser-action-tests.js
-    $NODE $DIR/parser-amscd-tests.js
-    $NODE $DIR/parser-bbox-tests.js
-    $NODE $DIR/parser-boldsymbol-tests.js
-    $NODE $DIR/parser-cancel-tests.js
-    $NODE $DIR/parser-enclose-tests.js
-    $NODE $DIR/parser-extpfeil-tests.js
-    $NODE $DIR/parser-html-tests.js
-    $NODE $DIR/parser-unicode-tests.js
-    $NODE $DIR/parser-verb-tests.js
-
-    # BraKet package.
-    $NODE $DIR/parser-braket-tests.js
-
-    # mhchem package.
-    $NODE $DIR/parser-mhchem-0-tests.js
-    $NODE $DIR/parser-mhchem-1-tests.js
-    $NODE $DIR/parser-mhchem-2-tests.js
-    $NODE $DIR/parser-mhchem-3-tests.js
-    $NODE $DIR/parser-mhchem-4-tests.js
-    $NODE $DIR/parser-mhchem-5-tests.js
-    $NODE $DIR/parser-mhchem-6-tests.js
-    $NODE $DIR/parser-mhchem-7-tests.js
-    $NODE $DIR/parser-mhchem-8-tests.js
-    $NODE $DIR/parser-mhchem-9-tests.js
-
-    ## Physics package.
-    $NODE $DIR/parser-physics-1-0-tests.js
-    $NODE $DIR/parser-physics-1-1-tests.js
-    $NODE $DIR/parser-physics-1-2-tests.js
-    $NODE $DIR/parser-physics-1-3-tests.js
-    $NODE $DIR/parser-physics-1-4-tests.js
-    $NODE $DIR/parser-physics-1-5-tests.js
-    $NODE $DIR/parser-physics-1-6-tests.js
-    $NODE $DIR/parser-physics-1-7-tests.js
-    $NODE $DIR/parser-physics-2-0-tests.js
-    $NODE $DIR/parser-physics-2-1-tests.js
-    $NODE $DIR/parser-physics-2-2-tests.js
-    $NODE $DIR/parser-physics-2-3-tests.js
-    $NODE $DIR/parser-physics-2-4-tests.js
-    $NODE $DIR/parser-physics-2-5-tests.js
-    $NODE $DIR/parser-physics-2-6-tests.js
-    $NODE $DIR/parser-physics-2-7-tests.js
-    $NODE $DIR/parser-physics-3-0-tests.js
-    $NODE $DIR/parser-physics-3-1-tests.js
-    $NODE $DIR/parser-physics-3-2-tests.js
-    $NODE $DIR/parser-physics-3-3-tests.js
-    $NODE $DIR/parser-physics-3-4-tests.js
-    $NODE $DIR/parser-physics-3-5-tests.js
-    $NODE $DIR/parser-physics-3-6-tests.js
-    $NODE $DIR/parser-physics-3-7-tests.js
-    $NODE $DIR/parser-physics-4-0-tests.js
-    $NODE $DIR/parser-physics-5-0-tests.js
-    $NODE $DIR/parser-physics-5-1-tests.js
-    $NODE $DIR/parser-physics-5-2-tests.js
-    $NODE $DIR/parser-physics-5-3-tests.js
-    $NODE $DIR/parser-physics-5-4-tests.js
-    $NODE $DIR/parser-physics-5-5-tests.js
-    $NODE $DIR/parser-physics-6-0-tests.js
-    $NODE $DIR/parser-physics-6-1-tests.js
-    $NODE $DIR/parser-physics-6-2-tests.js
-    $NODE $DIR/parser-physics-6-3-tests.js
-    $NODE $DIR/parser-physics-6-4-tests.js
-    $NODE $DIR/parser-physics-7-0-tests.js
-    $NODE $DIR/parser-physics-7-1-tests.js
-    $NODE $DIR/parser-physics-7-2-tests.js
-    $NODE $DIR/parser-physics-7-3-tests.js
-    $NODE $DIR/parser-physics-7-4-tests.js
-    $NODE $DIR/parser-physics-7-5-tests.js
-    $NODE $DIR/parser-physics-7-6-tests.js
-    $NODE $DIR/parser-physics-7-7-tests.js
-    $NODE $DIR/parser-physics-7-8-tests.js
-    $NODE $DIR/parser-physics-7-9-tests.js
-    $NODE $DIR/parser-physics-7-10-tests.js
-    $NODE $DIR/parser-physics-7-11-tests.js
+    $NODE src/run-test.js $JSON/ParserActionTest.json
+    ## Reordered
+    $NODE src/run-test.js $JSON/ParserAmsTest.json
+    $NODE src/run-test.js $JSON/ParserAmsCDTest.json
+    $NODE src/run-test.js $JSON/ParserAmsComplexTest.json
+    $NODE src/run-test.js $JSON/ParserAmsenvTest.json
+    $NODE src/run-test.js $JSON/ParserAmserrorTest.json
+    $NODE src/run-test.js $JSON/ParserArrayTest.json
+    $NODE src/run-test.js $JSON/ParserBaseTest.json
+    $NODE src/run-test.js $JSON/ParserBboxTest.json
+    $NODE src/run-test.js $JSON/ParserBoldsymbolTest.json
+    $NODE src/run-test.js $JSON/ParserBraketTest.json
+    $NODE src/run-test.js $JSON/ParserBussproofsRegInfTest.json
+    $NODE src/run-test.js $JSON/ParserBussproofsRegProofsTest.json
+    $NODE src/run-test.js $JSON/ParserCancelTest.json
+    $NODE src/run-test.js $JSON/ParserColorV2Test.json
+    $NODE src/run-test.js $JSON/ParserComplexTest.json
+    $NODE src/run-test.js $JSON/ParserDigitsEuropeanTest.json
+    $NODE src/run-test.js $JSON/ParserDigitsTest.json
+    $NODE src/run-test.js $JSON/ParserEncloseTest.json
+    $NODE src/run-test.js $JSON/ParserErrorTest.json
+    $NODE src/run-test.js $JSON/ParserExtpfeilTest.json
+    $NODE src/run-test.js $JSON/ParserFencedTest.json
+    $NODE src/run-test.js $JSON/ParserHtmlTest.json
+    $NODE src/run-test.js $JSON/ParserInternalMathTest.json
+    ## Reordered
+    $NODE src/run-test.js $JSON/ParserConfigMacrosTest.json
+    $NODE src/run-test.js $JSON/ParserMathchoiceTest.json
+    $NODE src/run-test.js $JSON/ParserMatrixTest.json
+    $NODE src/run-test.js $JSON/ParserMhchemTest0.json
+    $NODE src/run-test.js $JSON/ParserMhchemTest1.json
+    $NODE src/run-test.js $JSON/ParserMhchemTest2.json
+    $NODE src/run-test.js $JSON/ParserMhchemTest3.json
+    $NODE src/run-test.js $JSON/ParserMhchemTest4.json
+    $NODE src/run-test.js $JSON/ParserMhchemTest5.json
+    $NODE src/run-test.js $JSON/ParserMhchemTest6.json
+    $NODE src/run-test.js $JSON/ParserMhchemTest7.json
+    $NODE src/run-test.js $JSON/ParserMhchemTest8.json
+    $NODE src/run-test.js $JSON/ParserMhchemTest9.json
+    $NODE src/run-test.js $JSON/ParserMovlimTest.json
+    $NODE src/run-test.js $JSON/ParserMultirelTest.json
+    $NODE src/run-test.js $JSON/ParserMultlineShoveTest.json
+    $NODE src/run-test.js $JSON/ParserNewcommandErrorTest.json
+    $NODE src/run-test.js $JSON/ParserNewcommandTest.json
+    $NODE src/run-test.js $JSON/ParserNoErrorTest.json
+    $NODE src/run-test.js $JSON/ParserNoundefinedTest.json
+    $NODE src/run-test.js $JSON/ParserOtherTest.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest1_0.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest1_1.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest1_2.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest1_3.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest1_4.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest1_5.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest1_6.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest1_7.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest2_0.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest2_1.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest2_2.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest2_3.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest2_4.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest2_5.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest2_6.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest2_7.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest3_0.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest3_1.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest3_2.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest3_3.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest3_4.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest3_5.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest3_6.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest3_7.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest4_0.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest5_0.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest5_1.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest5_2.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest5_3.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest5_4.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest5_5.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest6_0.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest6_1.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest6_2.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest6_3.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest6_4.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest7_0.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest7_10.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest7_11.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest7_1.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest7_2.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest7_3.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest7_4.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest7_5.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest7_6.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest7_7.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest7_8.json
+    $NODE src/run-test.js $JSON/ParserPhysicsTest7_9.json
+    $NODE src/run-test.js $JSON/ParserTagAllTest.json
+    $NODE src/run-test.js $JSON/ParserTagAmsTest.json
+    $NODE src/run-test.js $JSON/ParserTagNoneTest.json
+    $NODE src/run-test.js $JSON/ParserUnicodeTest.json
+    $NODE src/run-test.js $JSON/ParserVerbTest.json
 
     exit 0
 else

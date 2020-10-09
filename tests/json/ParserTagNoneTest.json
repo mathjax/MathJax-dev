@@ -1,0 +1,4669 @@
+{
+  "name": "ParserTagNoneTest",
+  "factory": "parserTest",
+  "packages": [
+    "ams",
+    "base"
+  ],
+  "settings": {
+    "tags": "none"
+  },
+  "tests": {
+    "Single Expression": {
+      "input": "a",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mi",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "mathvariant": "italic"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "a"
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Simple Tag": {
+      "input": "a\\tag{0}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mtable",
+                "texClass": 0,
+                "attributes": {
+                  "displaystyle": true
+                },
+                "inherited": {
+                  "scriptlevel": 0
+                },
+                "properties": {
+                  "useHeight": 1
+                },
+                "childNodes": [
+                  {
+                    "kind": "mlabeledtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "center",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {
+                          "id": "mjx-eqn-0"
+                        },
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mtext",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "(0)"
+                                  }
+                                ],
+                                "isSpacelike": true
+                              }
+                            ],
+                            "isInferred": true,
+                            "isSpacelike": true
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "center",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "a"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Align": {
+      "input": "\\begin{align}a\\end{align}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mtable",
+                "texClass": 0,
+                "attributes": {
+                  "columnalign": "right left right left right left right left right left right left",
+                  "rowspacing": "3pt",
+                  "columnspacing": "0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em",
+                  "displaystyle": true
+                },
+                "inherited": {
+                  "scriptlevel": 0
+                },
+                "properties": {
+                  "useHeight": 1
+                },
+                "childNodes": [
+                  {
+                    "kind": "mtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "right left right left right left right left right left right left",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "a"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Split": {
+      "input": "\\begin{split}a\\end{split}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mtable",
+                "texClass": 0,
+                "attributes": {
+                  "columnalign": "right left",
+                  "rowspacing": "3pt",
+                  "columnspacing": "0em",
+                  "displaystyle": true
+                },
+                "inherited": {
+                  "scriptlevel": 0
+                },
+                "properties": {
+                  "useHeight": 1
+                },
+                "childNodes": [
+                  {
+                    "kind": "mtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "right left",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "a"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "MultLine": {
+      "input": "\\begin{multline}a\\\\ b\\\\ c\\end{multline}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mtable",
+                "texClass": 0,
+                "attributes": {
+                  "columnwidth": "100%",
+                  "width": "85%",
+                  "rowspacing": ".5em",
+                  "displaystyle": true
+                },
+                "inherited": {
+                  "scriptlevel": 0
+                },
+                "properties": {
+                  "useHeight": 1
+                },
+                "childNodes": [
+                  {
+                    "kind": "mtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "center",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {
+                          "columnalign": "left"
+                        },
+                        "inherited": {
+                          "columnalign": "center",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "a"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "mtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "center",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "center",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "b"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "mtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "center",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {
+                          "columnalign": "right"
+                        },
+                        "inherited": {
+                          "columnalign": "center",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "c"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Label Empty": {
+      "input": "\\begin{align}a\\label{}\\end{align}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mtable",
+                "texClass": 0,
+                "attributes": {
+                  "columnalign": "right left right left right left right left right left right left",
+                  "rowspacing": "3pt",
+                  "columnspacing": "0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em",
+                  "displaystyle": true
+                },
+                "inherited": {
+                  "scriptlevel": 0
+                },
+                "properties": {
+                  "useHeight": 1
+                },
+                "childNodes": [
+                  {
+                    "kind": "mtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "right left right left right left right left right left right left",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "a"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Label": {
+      "input": "\\begin{align}a\\label{A}\\end{align}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mtable",
+                "texClass": 0,
+                "attributes": {
+                  "columnalign": "right left right left right left right left right left right left",
+                  "rowspacing": "3pt",
+                  "columnspacing": "0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em",
+                  "displaystyle": true
+                },
+                "inherited": {
+                  "scriptlevel": 0
+                },
+                "properties": {
+                  "useHeight": 1
+                },
+                "childNodes": [
+                  {
+                    "kind": "mtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "right left right left right left right left right left right left",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "a"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Notag Align": {
+      "input": "\\begin{align}a\\notag\\end{align}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mtable",
+                "texClass": 0,
+                "attributes": {
+                  "columnalign": "right left right left right left right left right left right left",
+                  "rowspacing": "3pt",
+                  "columnspacing": "0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em",
+                  "displaystyle": true
+                },
+                "inherited": {
+                  "scriptlevel": 0
+                },
+                "properties": {
+                  "useHeight": 1
+                },
+                "childNodes": [
+                  {
+                    "kind": "mtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "right left right left right left right left right left right left",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "a"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Notag Multline": {
+      "input": "\\begin{multline}a\\\\ b\\\\ c\\notag\\end{multline}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mtable",
+                "texClass": 0,
+                "attributes": {
+                  "columnwidth": "100%",
+                  "width": "85%",
+                  "rowspacing": ".5em",
+                  "displaystyle": true
+                },
+                "inherited": {
+                  "scriptlevel": 0
+                },
+                "properties": {
+                  "useHeight": 1
+                },
+                "childNodes": [
+                  {
+                    "kind": "mtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "center",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {
+                          "columnalign": "left"
+                        },
+                        "inherited": {
+                          "columnalign": "center",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "a"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "mtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "center",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "center",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "b"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "mtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "center",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {
+                          "columnalign": "right"
+                        },
+                        "inherited": {
+                          "columnalign": "center",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "c"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Notag Tag": {
+      "input": "\\begin{align}a\\tag{A}\\notag\\end{align}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mtable",
+                "texClass": 0,
+                "attributes": {
+                  "columnalign": "right left right left right left right left right left right left",
+                  "rowspacing": "3pt",
+                  "columnspacing": "0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em",
+                  "displaystyle": true
+                },
+                "inherited": {
+                  "scriptlevel": 0
+                },
+                "properties": {
+                  "useHeight": 1
+                },
+                "childNodes": [
+                  {
+                    "kind": "mtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "right left right left right left right left right left right left",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "a"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Ref": {
+      "input": "\\begin{align}a\\label{A}\\end{align}\\ref{A}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mtable",
+                "texClass": 0,
+                "attributes": {
+                  "columnalign": "right left right left right left right left right left right left",
+                  "rowspacing": "3pt",
+                  "columnspacing": "0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em",
+                  "displaystyle": true
+                },
+                "inherited": {
+                  "scriptlevel": 0
+                },
+                "properties": {
+                  "useHeight": 1
+                },
+                "childNodes": [
+                  {
+                    "kind": "mtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "right left right left right left right left right left right left",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "a"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "mrow",
+                "texClass": 0,
+                "attributes": {
+                  "class": "MathJax_ref",
+                  "href": "#"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mtext",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "text",
+                        "text": "???"
+                      }
+                    ],
+                    "isSpacelike": true
+                  }
+                ],
+                "isSpacelike": true
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Ref Unknown": {
+      "input": "\\begin{align}a\\label{A}\\end{align}\\ref{B}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mtable",
+                "texClass": 0,
+                "attributes": {
+                  "columnalign": "right left right left right left right left right left right left",
+                  "rowspacing": "3pt",
+                  "columnspacing": "0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em",
+                  "displaystyle": true
+                },
+                "inherited": {
+                  "scriptlevel": 0
+                },
+                "properties": {
+                  "useHeight": 1
+                },
+                "childNodes": [
+                  {
+                    "kind": "mtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "right left right left right left right left right left right left",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "a"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "mrow",
+                "texClass": 0,
+                "attributes": {
+                  "class": "MathJax_ref",
+                  "href": "#"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mtext",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "text",
+                        "text": "???"
+                      }
+                    ],
+                    "isSpacelike": true
+                  }
+                ],
+                "isSpacelike": true
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Eqref": {
+      "input": "\\begin{align}a\\label{A}\\end{align}\\eqref{A}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mtable",
+                "texClass": 0,
+                "attributes": {
+                  "columnalign": "right left right left right left right left right left right left",
+                  "rowspacing": "3pt",
+                  "columnspacing": "0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em",
+                  "displaystyle": true
+                },
+                "inherited": {
+                  "scriptlevel": 0
+                },
+                "properties": {
+                  "useHeight": 1
+                },
+                "childNodes": [
+                  {
+                    "kind": "mtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "right left right left right left right left right left right left",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "a"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "mrow",
+                "texClass": 0,
+                "attributes": {
+                  "class": "MathJax_ref",
+                  "href": "#"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mtext",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "text",
+                        "text": "(???)"
+                      }
+                    ],
+                    "isSpacelike": true
+                  }
+                ],
+                "isSpacelike": true
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Align Two labels": {
+      "input": "\\begin{align}a=b\\label{A}\\\\ c&=d \\label{B}\\end{align}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mtable",
+                "texClass": 0,
+                "attributes": {
+                  "columnalign": "right left right left right left right left right left right left",
+                  "rowspacing": "3pt",
+                  "columnspacing": "0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em",
+                  "displaystyle": true
+                },
+                "inherited": {
+                  "scriptlevel": 0
+                },
+                "properties": {
+                  "useHeight": 1
+                },
+                "childNodes": [
+                  {
+                    "kind": "mtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "right left right left right left right left right left right left",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "a"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "mo",
+                                "texClass": 3,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "form": "infix"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "="
+                                  }
+                                ],
+                                "isEmbellished": true
+                              },
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "b"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "mtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "right left right left right left right left right left right left",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "c"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "left",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0
+                                },
+                                "properties": {},
+                                "childNodes": []
+                              },
+                              {
+                                "kind": "mo",
+                                "texClass": 3,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "form": "infix"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "="
+                                  }
+                                ],
+                                "isEmbellished": true
+                              },
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "d"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Illegal Tag Error": {
+      "input": "\\begin{split}a\\tag{A}\\end{split}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "merror",
+                "texClass": 0,
+                "attributes": {
+                  "data-mjx-error": "\\tag not allowed in split environment"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtext",
+                        "texClass": 0,
+                        "attributes": {},
+                        "inherited": {
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "text",
+                            "text": "\\tag not allowed in split environment"
+                          }
+                        ],
+                        "isSpacelike": true
+                      }
+                    ],
+                    "isInferred": true,
+                    "isSpacelike": true
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Double Tag Error": {
+      "input": "\\begin{align}a\\tag{A}\\tag{B}\\end{align}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "merror",
+                "texClass": 0,
+                "attributes": {
+                  "data-mjx-error": "Multiple \\tag"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtext",
+                        "texClass": 0,
+                        "attributes": {},
+                        "inherited": {
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "text",
+                            "text": "Multiple \\tag"
+                          }
+                        ],
+                        "isSpacelike": true
+                      }
+                    ],
+                    "isInferred": true,
+                    "isSpacelike": true
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Double Label Error": {
+      "input": "\\begin{align}a\\label{A}\\label{B}\\end{align}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "merror",
+                "texClass": 0,
+                "attributes": {
+                  "data-mjx-error": "Multiple \\label"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtext",
+                        "texClass": 0,
+                        "attributes": {},
+                        "inherited": {
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "text",
+                            "text": "Multiple \\label"
+                          }
+                        ],
+                        "isSpacelike": true
+                      }
+                    ],
+                    "isInferred": true,
+                    "isSpacelike": true
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Duplicate Label Error": {
+      "input": "\\begin{align}a\\label{A}\\\\ b\\label{A}\\end{align}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "merror",
+                "texClass": 0,
+                "attributes": {
+                  "data-mjx-error": "Label 'A' multiply defined"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtext",
+                        "texClass": 0,
+                        "attributes": {},
+                        "inherited": {
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "text",
+                            "text": "Label 'A' multiply defined"
+                          }
+                        ],
+                        "isSpacelike": true
+                      }
+                    ],
+                    "isInferred": true,
+                    "isSpacelike": true
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Tag Default": {
+      "input": "\\begin{align}a\\end{align}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mtable",
+                "texClass": 0,
+                "attributes": {
+                  "columnalign": "right left right left right left right left right left right left",
+                  "rowspacing": "3pt",
+                  "columnspacing": "0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em",
+                  "displaystyle": true
+                },
+                "inherited": {
+                  "scriptlevel": 0
+                },
+                "properties": {
+                  "useHeight": 1
+                },
+                "childNodes": [
+                  {
+                    "kind": "mtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "right left right left right left right left right left right left",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "a"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Tag Named": {
+      "input": "\\begin{align}a\\tag{A}\\end{align}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mtable",
+                "texClass": 0,
+                "attributes": {
+                  "columnalign": "right left right left right left right left right left right left",
+                  "rowspacing": "3pt",
+                  "columnspacing": "0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em",
+                  "displaystyle": true
+                },
+                "inherited": {
+                  "scriptlevel": 0
+                },
+                "properties": {
+                  "useHeight": 1
+                },
+                "childNodes": [
+                  {
+                    "kind": "mlabeledtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "right left right left right left right left right left right left",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {
+                          "id": "mjx-eqn-A"
+                        },
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mtext",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "(A)"
+                                  }
+                                ],
+                                "isSpacelike": true
+                              }
+                            ],
+                            "isInferred": true,
+                            "isSpacelike": true
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "a"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Tag Named Default": {
+      "input": "\\begin{align}a\\tag{A}\\\\b\\end{align}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mtable",
+                "texClass": 0,
+                "attributes": {
+                  "columnalign": "right left right left right left right left right left right left",
+                  "rowspacing": "3pt",
+                  "columnspacing": "0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em",
+                  "displaystyle": true
+                },
+                "inherited": {
+                  "scriptlevel": 0
+                },
+                "properties": {
+                  "useHeight": 1
+                },
+                "childNodes": [
+                  {
+                    "kind": "mlabeledtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "right left right left right left right left right left right left",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {
+                          "id": "mjx-eqn-A"
+                        },
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mtext",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "(A)"
+                                  }
+                                ],
+                                "isSpacelike": true
+                              }
+                            ],
+                            "isInferred": true,
+                            "isSpacelike": true
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "a"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "mtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "right left right left right left right left right left right left",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "b"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Tag Named Named": {
+      "input": "\\begin{align}a\\tag{A}\\\\b\\tag{B}\\end{align}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mtable",
+                "texClass": 0,
+                "attributes": {
+                  "columnalign": "right left right left right left right left right left right left",
+                  "rowspacing": "3pt",
+                  "columnspacing": "0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em",
+                  "displaystyle": true
+                },
+                "inherited": {
+                  "scriptlevel": 0
+                },
+                "properties": {
+                  "useHeight": 1
+                },
+                "childNodes": [
+                  {
+                    "kind": "mlabeledtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "right left right left right left right left right left right left",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {
+                          "id": "mjx-eqn-A"
+                        },
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mtext",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "(A)"
+                                  }
+                                ],
+                                "isSpacelike": true
+                              }
+                            ],
+                            "isInferred": true,
+                            "isSpacelike": true
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "a"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "mlabeledtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "right left right left right left right left right left right left",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {
+                          "id": "mjx-eqn-B"
+                        },
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mtext",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "(B)"
+                                  }
+                                ],
+                                "isSpacelike": true
+                              }
+                            ],
+                            "isInferred": true,
+                            "isSpacelike": true
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "b"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Label Default": {
+      "input": "\\begin{align}a\\label{A}\\end{align}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mtable",
+                "texClass": 0,
+                "attributes": {
+                  "columnalign": "right left right left right left right left right left right left",
+                  "rowspacing": "3pt",
+                  "columnspacing": "0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em",
+                  "displaystyle": true
+                },
+                "inherited": {
+                  "scriptlevel": 0
+                },
+                "properties": {
+                  "useHeight": 1
+                },
+                "childNodes": [
+                  {
+                    "kind": "mtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "right left right left right left right left right left right left",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "a"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Label Named": {
+      "input": "\\begin{align}a\\tag{A}\\label{A}\\end{align}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mtable",
+                "texClass": 0,
+                "attributes": {
+                  "columnalign": "right left right left right left right left right left right left",
+                  "rowspacing": "3pt",
+                  "columnspacing": "0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em",
+                  "displaystyle": true
+                },
+                "inherited": {
+                  "scriptlevel": 0
+                },
+                "properties": {
+                  "useHeight": 1
+                },
+                "childNodes": [
+                  {
+                    "kind": "mlabeledtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "right left right left right left right left right left right left",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {
+                          "id": "mjx-eqn-A"
+                        },
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mtext",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "(A)"
+                                  }
+                                ],
+                                "isSpacelike": true
+                              }
+                            ],
+                            "isInferred": true,
+                            "isSpacelike": true
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "a"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Label Named Default": {
+      "input": "\\begin{align}a\\tag{A}\\label{A}\\\\b\\label{B}\\end{align}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mtable",
+                "texClass": 0,
+                "attributes": {
+                  "columnalign": "right left right left right left right left right left right left",
+                  "rowspacing": "3pt",
+                  "columnspacing": "0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em",
+                  "displaystyle": true
+                },
+                "inherited": {
+                  "scriptlevel": 0
+                },
+                "properties": {
+                  "useHeight": 1
+                },
+                "childNodes": [
+                  {
+                    "kind": "mlabeledtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "right left right left right left right left right left right left",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {
+                          "id": "mjx-eqn-A"
+                        },
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mtext",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "(A)"
+                                  }
+                                ],
+                                "isSpacelike": true
+                              }
+                            ],
+                            "isInferred": true,
+                            "isSpacelike": true
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "a"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "mtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "right left right left right left right left right left right left",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "b"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Label Named Named": {
+      "input": "\\begin{align}a\\tag{A}\\label{A}\\\\b\\tag{B}\\label{B}\\end{align}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mtable",
+                "texClass": 0,
+                "attributes": {
+                  "columnalign": "right left right left right left right left right left right left",
+                  "rowspacing": "3pt",
+                  "columnspacing": "0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em",
+                  "displaystyle": true
+                },
+                "inherited": {
+                  "scriptlevel": 0
+                },
+                "properties": {
+                  "useHeight": 1
+                },
+                "childNodes": [
+                  {
+                    "kind": "mlabeledtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "right left right left right left right left right left right left",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {
+                          "id": "mjx-eqn-A"
+                        },
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mtext",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "(A)"
+                                  }
+                                ],
+                                "isSpacelike": true
+                              }
+                            ],
+                            "isInferred": true,
+                            "isSpacelike": true
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "a"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "mlabeledtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "right left right left right left right left right left right left",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {
+                          "id": "mjx-eqn-B"
+                        },
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mtext",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "(B)"
+                                  }
+                                ],
+                                "isSpacelike": true
+                              }
+                            ],
+                            "isInferred": true,
+                            "isSpacelike": true
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "b"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Ref Default": {
+      "input": "\\begin{align}a\\label{A}\\end{align}\\ref{A}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mtable",
+                "texClass": 0,
+                "attributes": {
+                  "columnalign": "right left right left right left right left right left right left",
+                  "rowspacing": "3pt",
+                  "columnspacing": "0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em",
+                  "displaystyle": true
+                },
+                "inherited": {
+                  "scriptlevel": 0
+                },
+                "properties": {
+                  "useHeight": 1
+                },
+                "childNodes": [
+                  {
+                    "kind": "mtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "right left right left right left right left right left right left",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "a"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "mrow",
+                "texClass": 0,
+                "attributes": {
+                  "class": "MathJax_ref",
+                  "href": "#"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mtext",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "text",
+                        "text": "???"
+                      }
+                    ],
+                    "isSpacelike": true
+                  }
+                ],
+                "isSpacelike": true
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Ref Named": {
+      "input": "\\begin{align}a\\tag{A}\\label{A}\\end{align}\\ref{A}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mtable",
+                "texClass": 0,
+                "attributes": {
+                  "columnalign": "right left right left right left right left right left right left",
+                  "rowspacing": "3pt",
+                  "columnspacing": "0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em",
+                  "displaystyle": true
+                },
+                "inherited": {
+                  "scriptlevel": 0
+                },
+                "properties": {
+                  "useHeight": 1
+                },
+                "childNodes": [
+                  {
+                    "kind": "mlabeledtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "right left right left right left right left right left right left",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {
+                          "id": "mjx-eqn-A"
+                        },
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mtext",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "(A)"
+                                  }
+                                ],
+                                "isSpacelike": true
+                              }
+                            ],
+                            "isInferred": true,
+                            "isSpacelike": true
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "a"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "mrow",
+                "texClass": 0,
+                "attributes": {
+                  "class": "MathJax_ref",
+                  "href": "#mjx-eqn-A"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mtext",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "text",
+                        "text": "A"
+                      }
+                    ],
+                    "isSpacelike": true
+                  }
+                ],
+                "isSpacelike": true
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Ref Named Default": {
+      "input": "\\begin{align}a\\tag{A}\\label{A}\\\\b\\label{B}\\end{align}\\ref{A}\\ref{B}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mtable",
+                "texClass": 0,
+                "attributes": {
+                  "columnalign": "right left right left right left right left right left right left",
+                  "rowspacing": "3pt",
+                  "columnspacing": "0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em",
+                  "displaystyle": true
+                },
+                "inherited": {
+                  "scriptlevel": 0
+                },
+                "properties": {
+                  "useHeight": 1
+                },
+                "childNodes": [
+                  {
+                    "kind": "mlabeledtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "right left right left right left right left right left right left",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {
+                          "id": "mjx-eqn-A"
+                        },
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mtext",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "(A)"
+                                  }
+                                ],
+                                "isSpacelike": true
+                              }
+                            ],
+                            "isInferred": true,
+                            "isSpacelike": true
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "a"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "mtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "right left right left right left right left right left right left",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "b"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "mrow",
+                "texClass": 0,
+                "attributes": {
+                  "class": "MathJax_ref",
+                  "href": "#mjx-eqn-A"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mtext",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "text",
+                        "text": "A"
+                      }
+                    ],
+                    "isSpacelike": true
+                  }
+                ],
+                "isSpacelike": true
+              },
+              {
+                "kind": "mrow",
+                "texClass": 0,
+                "attributes": {
+                  "class": "MathJax_ref",
+                  "href": "#"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mtext",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "text",
+                        "text": "???"
+                      }
+                    ],
+                    "isSpacelike": true
+                  }
+                ],
+                "isSpacelike": true
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Ref Named Named": {
+      "input": "\\begin{align}a\\tag{A}\\label{A}\\\\b\\tag{B}\\label{B}\\end{align}\\ref{A}\\ref{B}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mtable",
+                "texClass": 0,
+                "attributes": {
+                  "columnalign": "right left right left right left right left right left right left",
+                  "rowspacing": "3pt",
+                  "columnspacing": "0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em",
+                  "displaystyle": true
+                },
+                "inherited": {
+                  "scriptlevel": 0
+                },
+                "properties": {
+                  "useHeight": 1
+                },
+                "childNodes": [
+                  {
+                    "kind": "mlabeledtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "right left right left right left right left right left right left",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {
+                          "id": "mjx-eqn-A"
+                        },
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mtext",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "(A)"
+                                  }
+                                ],
+                                "isSpacelike": true
+                              }
+                            ],
+                            "isInferred": true,
+                            "isSpacelike": true
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "a"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "mlabeledtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "right left right left right left right left right left right left",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {
+                          "id": "mjx-eqn-B"
+                        },
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mtext",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "(B)"
+                                  }
+                                ],
+                                "isSpacelike": true
+                              }
+                            ],
+                            "isInferred": true,
+                            "isSpacelike": true
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "right",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "b"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "mrow",
+                "texClass": 0,
+                "attributes": {
+                  "class": "MathJax_ref",
+                  "href": "#mjx-eqn-A"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mtext",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "text",
+                        "text": "A"
+                      }
+                    ],
+                    "isSpacelike": true
+                  }
+                ],
+                "isSpacelike": true
+              },
+              {
+                "kind": "mrow",
+                "texClass": 0,
+                "attributes": {
+                  "class": "MathJax_ref",
+                  "href": "#mjx-eqn-B"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mtext",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "text",
+                        "text": "B"
+                      }
+                    ],
+                    "isSpacelike": true
+                  }
+                ],
+                "isSpacelike": true
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,1746 @@
+{
+  "name": "ParserPhysicsTest2_3",
+  "factory": "parserTest",
+  "packages": [
+    "base",
+    "physics"
+  ],
+  "settings": {
+    "tags": "none"
+  },
+  "tests": {
+    "Vector_Unit_0": {
+      "input": "\\vu{=}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "TeXAtom",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": 3,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mover",
+                        "texClass": 3,
+                        "attributes": {},
+                        "inherited": {
+                          "displaystyle": true,
+                          "scriptlevel": 0,
+                          "accent": true
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mo",
+                            "texClass": 3,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0,
+                              "form": "infix"
+                            },
+                            "properties": {
+                              "movablelimits": false,
+                              "texprimestyle": true
+                            },
+                            "childNodes": [
+                              {
+                                "kind": "text",
+                                "text": "="
+                              }
+                            ],
+                            "isEmbellished": true
+                          },
+                          {
+                            "kind": "mo",
+                            "texClass": 3,
+                            "attributes": {
+                              "stretchy": false
+                            },
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0,
+                              "form": "infix",
+                              "accent": true,
+                              "stretchy": true
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "text",
+                                "text": "^"
+                              }
+                            ],
+                            "isEmbellished": true
+                          }
+                        ],
+                        "isEmbellished": true
+                      }
+                    ],
+                    "isInferred": true,
+                    "isEmbellished": true
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "Vector_Unit_1": {
+      "input": "\\vectorunit{a}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "TeXAtom",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mover",
+                        "texClass": 0,
+                        "attributes": {},
+                        "inherited": {
+                          "displaystyle": true,
+                          "scriptlevel": 0,
+                          "accent": true
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mi",
+                            "texClass": 0,
+                            "attributes": {
+                              "mathvariant": "bold"
+                            },
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0,
+                              "mathvariant": "italic"
+                            },
+                            "properties": {
+                              "texprimestyle": true
+                            },
+                            "childNodes": [
+                              {
+                                "kind": "text",
+                                "text": "a"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "mo",
+                            "texClass": 3,
+                            "attributes": {
+                              "stretchy": false
+                            },
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0,
+                              "form": "infix",
+                              "accent": true,
+                              "stretchy": true
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "text",
+                                "text": "^"
+                              }
+                            ],
+                            "isEmbellished": true
+                          }
+                        ]
+                      }
+                    ],
+                    "isInferred": true
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Vector_Unit_2": {
+      "input": "\\vu{a}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "TeXAtom",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mover",
+                        "texClass": 0,
+                        "attributes": {},
+                        "inherited": {
+                          "displaystyle": true,
+                          "scriptlevel": 0,
+                          "accent": true
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mi",
+                            "texClass": 0,
+                            "attributes": {
+                              "mathvariant": "bold"
+                            },
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0,
+                              "mathvariant": "italic"
+                            },
+                            "properties": {
+                              "texprimestyle": true
+                            },
+                            "childNodes": [
+                              {
+                                "kind": "text",
+                                "text": "a"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "mo",
+                            "texClass": 3,
+                            "attributes": {
+                              "stretchy": false
+                            },
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0,
+                              "form": "infix",
+                              "accent": true,
+                              "stretchy": true
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "text",
+                                "text": "^"
+                              }
+                            ],
+                            "isEmbellished": true
+                          }
+                        ]
+                      }
+                    ],
+                    "isInferred": true
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Vector_Unit_3": {
+      "input": "\\vu{\\Gamma}\\Gamma",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "TeXAtom",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mover",
+                        "texClass": 0,
+                        "attributes": {},
+                        "inherited": {
+                          "displaystyle": true,
+                          "scriptlevel": 0,
+                          "accent": true
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mi",
+                            "texClass": 0,
+                            "attributes": {
+                              "mathvariant": "bold"
+                            },
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0,
+                              "mathvariant": "italic"
+                            },
+                            "properties": {
+                              "texprimestyle": true
+                            },
+                            "childNodes": [
+                              {
+                                "kind": "text",
+                                "text": "Γ"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "mo",
+                            "texClass": 3,
+                            "attributes": {
+                              "stretchy": false
+                            },
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0,
+                              "form": "infix",
+                              "accent": true,
+                              "stretchy": true
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "text",
+                                "text": "^"
+                              }
+                            ],
+                            "isEmbellished": true
+                          }
+                        ]
+                      }
+                    ],
+                    "isInferred": true
+                  }
+                ]
+              },
+              {
+                "kind": "mi",
+                "texClass": 0,
+                "attributes": {
+                  "mathvariant": "normal"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "mathvariant": "italic"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "Γ"
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Vector_Unit_4": {
+      "input": "\\vu{2}2",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "TeXAtom",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mover",
+                        "texClass": 0,
+                        "attributes": {},
+                        "inherited": {
+                          "displaystyle": true,
+                          "scriptlevel": 0,
+                          "accent": true
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mn",
+                            "texClass": 0,
+                            "attributes": {
+                              "mathvariant": "bold"
+                            },
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {
+                              "texprimestyle": true
+                            },
+                            "childNodes": [
+                              {
+                                "kind": "text",
+                                "text": "2"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "mo",
+                            "texClass": 3,
+                            "attributes": {
+                              "stretchy": false
+                            },
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0,
+                              "form": "infix",
+                              "accent": true,
+                              "stretchy": true
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "text",
+                                "text": "^"
+                              }
+                            ],
+                            "isEmbellished": true
+                          }
+                        ]
+                      }
+                    ],
+                    "isInferred": true
+                  }
+                ]
+              },
+              {
+                "kind": "mn",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "2"
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Vector_Unit_5": {
+      "input": "\\vu{\\theta}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "TeXAtom",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mover",
+                        "texClass": 0,
+                        "attributes": {},
+                        "inherited": {
+                          "displaystyle": true,
+                          "scriptlevel": 0,
+                          "accent": true
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mi",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0,
+                              "mathvariant": "italic"
+                            },
+                            "properties": {
+                              "texprimestyle": true
+                            },
+                            "childNodes": [
+                              {
+                                "kind": "text",
+                                "text": "θ"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "mo",
+                            "texClass": 3,
+                            "attributes": {
+                              "stretchy": false
+                            },
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0,
+                              "form": "infix",
+                              "accent": true,
+                              "stretchy": true
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "text",
+                                "text": "^"
+                              }
+                            ],
+                            "isEmbellished": true
+                          }
+                        ]
+                      }
+                    ],
+                    "isInferred": true
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Vector_Unit_6": {
+      "input": "\\vu{\\theta\\Gamma a\\delta \\frac{\\theta}{b}}\\frac{\\theta}{b}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "TeXAtom",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mover",
+                        "texClass": 0,
+                        "attributes": {},
+                        "inherited": {
+                          "displaystyle": true,
+                          "scriptlevel": 0,
+                          "accent": true
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {
+                              "texprimestyle": true
+                            },
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {
+                                  "texprimestyle": true
+                                },
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "θ"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {
+                                  "mathvariant": "bold"
+                                },
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {
+                                  "texprimestyle": true
+                                },
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "Γ"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {
+                                  "mathvariant": "bold"
+                                },
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {
+                                  "texprimestyle": true
+                                },
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "a"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {
+                                  "texprimestyle": true
+                                },
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "δ"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "mfrac",
+                                "texClass": null,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0
+                                },
+                                "properties": {
+                                  "texprimestyle": true
+                                },
+                                "childNodes": [
+                                  {
+                                    "kind": "mi",
+                                    "texClass": 0,
+                                    "attributes": {},
+                                    "inherited": {
+                                      "displaystyle": false,
+                                      "scriptlevel": 0,
+                                      "mathvariant": "italic"
+                                    },
+                                    "properties": {
+                                      "texprimestyle": true
+                                    },
+                                    "childNodes": [
+                                      {
+                                        "kind": "text",
+                                        "text": "θ"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "kind": "mi",
+                                    "texClass": 0,
+                                    "attributes": {
+                                      "mathvariant": "bold"
+                                    },
+                                    "inherited": {
+                                      "displaystyle": false,
+                                      "scriptlevel": 0,
+                                      "mathvariant": "italic"
+                                    },
+                                    "properties": {
+                                      "texprimestyle": true
+                                    },
+                                    "childNodes": [
+                                      {
+                                        "kind": "text",
+                                        "text": "b"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "mo",
+                            "texClass": 3,
+                            "attributes": {
+                              "stretchy": false
+                            },
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0,
+                              "form": "infix",
+                              "accent": true,
+                              "stretchy": true
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "text",
+                                "text": "^"
+                              }
+                            ],
+                            "isEmbellished": true
+                          }
+                        ]
+                      }
+                    ],
+                    "isInferred": true
+                  }
+                ]
+              },
+              {
+                "kind": "mfrac",
+                "texClass": null,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mi",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": false,
+                      "scriptlevel": 0,
+                      "mathvariant": "italic"
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "text",
+                        "text": "θ"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "mi",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": false,
+                      "scriptlevel": 0,
+                      "mathvariant": "italic"
+                    },
+                    "properties": {
+                      "texprimestyle": true
+                    },
+                    "childNodes": [
+                      {
+                        "kind": "text",
+                        "text": "b"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Vector_Unit_7": {
+      "input": "\\vectorunit*{a}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "TeXAtom",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mover",
+                        "texClass": 0,
+                        "attributes": {},
+                        "inherited": {
+                          "displaystyle": true,
+                          "scriptlevel": 0,
+                          "accent": true
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mi",
+                            "texClass": 0,
+                            "attributes": {
+                              "mathvariant": "bold-italic"
+                            },
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0,
+                              "mathvariant": "italic"
+                            },
+                            "properties": {
+                              "texprimestyle": true
+                            },
+                            "childNodes": [
+                              {
+                                "kind": "text",
+                                "text": "a"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "mo",
+                            "texClass": 3,
+                            "attributes": {
+                              "stretchy": false
+                            },
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0,
+                              "form": "infix",
+                              "accent": true,
+                              "stretchy": true
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "text",
+                                "text": "^"
+                              }
+                            ],
+                            "isEmbellished": true
+                          }
+                        ]
+                      }
+                    ],
+                    "isInferred": true
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Vector_Unit_8": {
+      "input": "\\vu*{a}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "TeXAtom",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mover",
+                        "texClass": 0,
+                        "attributes": {},
+                        "inherited": {
+                          "displaystyle": true,
+                          "scriptlevel": 0,
+                          "accent": true
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mi",
+                            "texClass": 0,
+                            "attributes": {
+                              "mathvariant": "bold-italic"
+                            },
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0,
+                              "mathvariant": "italic"
+                            },
+                            "properties": {
+                              "texprimestyle": true
+                            },
+                            "childNodes": [
+                              {
+                                "kind": "text",
+                                "text": "a"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "mo",
+                            "texClass": 3,
+                            "attributes": {
+                              "stretchy": false
+                            },
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0,
+                              "form": "infix",
+                              "accent": true,
+                              "stretchy": true
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "text",
+                                "text": "^"
+                              }
+                            ],
+                            "isEmbellished": true
+                          }
+                        ]
+                      }
+                    ],
+                    "isInferred": true
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Vector_Unit_9": {
+      "input": "\\vu*{2}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "TeXAtom",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mover",
+                        "texClass": 0,
+                        "attributes": {},
+                        "inherited": {
+                          "displaystyle": true,
+                          "scriptlevel": 0,
+                          "accent": true
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mn",
+                            "texClass": 0,
+                            "attributes": {
+                              "mathvariant": "bold-italic"
+                            },
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {
+                              "texprimestyle": true
+                            },
+                            "childNodes": [
+                              {
+                                "kind": "text",
+                                "text": "2"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "mo",
+                            "texClass": 3,
+                            "attributes": {
+                              "stretchy": false
+                            },
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0,
+                              "form": "infix",
+                              "accent": true,
+                              "stretchy": true
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "text",
+                                "text": "^"
+                              }
+                            ],
+                            "isEmbellished": true
+                          }
+                        ]
+                      }
+                    ],
+                    "isInferred": true
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Vector_Unit_10": {
+      "input": "\\vu*{\\Gamma}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "TeXAtom",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mover",
+                        "texClass": 0,
+                        "attributes": {},
+                        "inherited": {
+                          "displaystyle": true,
+                          "scriptlevel": 0,
+                          "accent": true
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mi",
+                            "texClass": 0,
+                            "attributes": {
+                              "mathvariant": "bold-italic"
+                            },
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0,
+                              "mathvariant": "italic"
+                            },
+                            "properties": {
+                              "texprimestyle": true
+                            },
+                            "childNodes": [
+                              {
+                                "kind": "text",
+                                "text": "Γ"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "mo",
+                            "texClass": 3,
+                            "attributes": {
+                              "stretchy": false
+                            },
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0,
+                              "form": "infix",
+                              "accent": true,
+                              "stretchy": true
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "text",
+                                "text": "^"
+                              }
+                            ],
+                            "isEmbellished": true
+                          }
+                        ]
+                      }
+                    ],
+                    "isInferred": true
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Vector_Unit_11": {
+      "input": "\\vu*{\\theta}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "TeXAtom",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mover",
+                        "texClass": 0,
+                        "attributes": {},
+                        "inherited": {
+                          "displaystyle": true,
+                          "scriptlevel": 0,
+                          "accent": true
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mi",
+                            "texClass": 0,
+                            "attributes": {
+                              "mathvariant": "bold-italic"
+                            },
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0,
+                              "mathvariant": "italic"
+                            },
+                            "properties": {
+                              "texprimestyle": true
+                            },
+                            "childNodes": [
+                              {
+                                "kind": "text",
+                                "text": "θ"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "mo",
+                            "texClass": 3,
+                            "attributes": {
+                              "stretchy": false
+                            },
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0,
+                              "form": "infix",
+                              "accent": true,
+                              "stretchy": true
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "text",
+                                "text": "^"
+                              }
+                            ],
+                            "isEmbellished": true
+                          }
+                        ]
+                      }
+                    ],
+                    "isInferred": true
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Vector_Unit_12": {
+      "input": "\\vu{a}\\hat{a}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "TeXAtom",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mover",
+                        "texClass": 0,
+                        "attributes": {},
+                        "inherited": {
+                          "displaystyle": true,
+                          "scriptlevel": 0,
+                          "accent": true
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mi",
+                            "texClass": 0,
+                            "attributes": {
+                              "mathvariant": "bold"
+                            },
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0,
+                              "mathvariant": "italic"
+                            },
+                            "properties": {
+                              "texprimestyle": true
+                            },
+                            "childNodes": [
+                              {
+                                "kind": "text",
+                                "text": "a"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "mo",
+                            "texClass": 3,
+                            "attributes": {
+                              "stretchy": false
+                            },
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0,
+                              "form": "infix",
+                              "accent": true,
+                              "stretchy": true
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "text",
+                                "text": "^"
+                              }
+                            ],
+                            "isEmbellished": true
+                          }
+                        ]
+                      }
+                    ],
+                    "isInferred": true
+                  }
+                ]
+              },
+              {
+                "kind": "TeXAtom",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mover",
+                        "texClass": 0,
+                        "attributes": {},
+                        "inherited": {
+                          "displaystyle": true,
+                          "scriptlevel": 0,
+                          "accent": true
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mi",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0,
+                              "mathvariant": "italic"
+                            },
+                            "properties": {
+                              "texprimestyle": true
+                            },
+                            "childNodes": [
+                              {
+                                "kind": "text",
+                                "text": "a"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "mo",
+                            "texClass": 3,
+                            "attributes": {
+                              "stretchy": false
+                            },
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0,
+                              "form": "infix",
+                              "accent": true,
+                              "stretchy": true
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "text",
+                                "text": "^"
+                              }
+                            ],
+                            "isEmbellished": true
+                          }
+                        ]
+                      }
+                    ],
+                    "isInferred": true
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    }
+  }
+}

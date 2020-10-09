@@ -1,0 +1,861 @@
+{
+  "name": "ParserBboxTest",
+  "factory": "parserTest",
+  "packages": [
+    "base",
+    "bbox"
+  ],
+  "settings": {
+    "tags": "none"
+  },
+  "tests": {
+    "Bbox-Background": {
+      "input": "\\bbox[yellow]{a}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mstyle",
+                "texClass": 0,
+                "attributes": {
+                  "mathbackground": "yellow"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "mathbackground": "yellow",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mi",
+                        "texClass": 0,
+                        "attributes": {},
+                        "inherited": {
+                          "mathbackground": "yellow",
+                          "displaystyle": true,
+                          "scriptlevel": 0,
+                          "mathvariant": "italic"
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "text",
+                            "text": "a"
+                          }
+                        ]
+                      }
+                    ],
+                    "isInferred": true
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Bbox-Padding": {
+      "input": "\\bbox[5px]{a}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mpadded",
+                "texClass": 0,
+                "attributes": {
+                  "height": "+5px",
+                  "depth": "+5px",
+                  "lspace": "5px",
+                  "width": "+10px"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mi",
+                        "texClass": 0,
+                        "attributes": {},
+                        "inherited": {
+                          "displaystyle": true,
+                          "scriptlevel": 0,
+                          "mathvariant": "italic"
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "text",
+                            "text": "a"
+                          }
+                        ]
+                      }
+                    ],
+                    "isInferred": true
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Bbox-Frame": {
+      "input": "\\bbox[border:5px solid red]{a}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mstyle",
+                "texClass": 0,
+                "attributes": {
+                  "style": "border:5px solid red"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mi",
+                        "texClass": 0,
+                        "attributes": {},
+                        "inherited": {
+                          "displaystyle": true,
+                          "scriptlevel": 0,
+                          "mathvariant": "italic"
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "text",
+                            "text": "a"
+                          }
+                        ]
+                      }
+                    ],
+                    "isInferred": true
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Bbox-Background-Padding": {
+      "input": "\\bbox[yellow,5px]{a}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mstyle",
+                "texClass": 0,
+                "attributes": {
+                  "mathbackground": "yellow"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "mathbackground": "yellow",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mpadded",
+                        "texClass": 0,
+                        "attributes": {
+                          "height": "+5px",
+                          "depth": "+5px",
+                          "lspace": "5px",
+                          "width": "+10px"
+                        },
+                        "inherited": {
+                          "mathbackground": "yellow",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "mathbackground": "yellow",
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "mathbackground": "yellow",
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "a"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ],
+                    "isInferred": true
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Bbox-Padding-Frame": {
+      "input": "\\bbox[5px,border:2px solid red]{a}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mstyle",
+                "texClass": 0,
+                "attributes": {
+                  "style": "border:2px solid red"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mpadded",
+                        "texClass": 0,
+                        "attributes": {
+                          "height": "+5px",
+                          "depth": "+5px",
+                          "lspace": "5px",
+                          "width": "+10px"
+                        },
+                        "inherited": {
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "a"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ],
+                    "isInferred": true
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Bbox-Background-Padding-Frame": {
+      "input": "\\bbox[yellow,5px,border:2px solid red]{a}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mstyle",
+                "texClass": 0,
+                "attributes": {
+                  "mathbackground": "yellow",
+                  "style": "border:2px solid red"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "mathbackground": "yellow",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mpadded",
+                        "texClass": 0,
+                        "attributes": {
+                          "height": "+5px",
+                          "depth": "+5px",
+                          "lspace": "5px",
+                          "width": "+10px"
+                        },
+                        "inherited": {
+                          "mathbackground": "yellow",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "mathbackground": "yellow",
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "mathbackground": "yellow",
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "a"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ],
+                    "isInferred": true
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Bbox-Background-Error": {
+      "input": "\\bbox[yellow,green]{a}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "merror",
+                "texClass": 0,
+                "attributes": {
+                  "data-mjx-error": "Background specified twice in \\bbox"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtext",
+                        "texClass": 0,
+                        "attributes": {},
+                        "inherited": {
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "text",
+                            "text": "Background specified twice in \\bbox"
+                          }
+                        ],
+                        "isSpacelike": true
+                      }
+                    ],
+                    "isInferred": true,
+                    "isSpacelike": true
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Bbox-Padding-Error": {
+      "input": "\\bbox[5px,6px]{a}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "merror",
+                "texClass": 0,
+                "attributes": {
+                  "data-mjx-error": "Padding specified twice in \\bbox"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtext",
+                        "texClass": 0,
+                        "attributes": {},
+                        "inherited": {
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "text",
+                            "text": "Padding specified twice in \\bbox"
+                          }
+                        ],
+                        "isSpacelike": true
+                      }
+                    ],
+                    "isInferred": true,
+                    "isSpacelike": true
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Bbox-Frame-Error": {
+      "input": "\\bbox[border:2px solid red,border:2px solid green]{a}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "merror",
+                "texClass": 0,
+                "attributes": {
+                  "data-mjx-error": "Style specified twice in \\bbox"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtext",
+                        "texClass": 0,
+                        "attributes": {},
+                        "inherited": {
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "text",
+                            "text": "Style specified twice in \\bbox"
+                          }
+                        ],
+                        "isSpacelike": true
+                      }
+                    ],
+                    "isInferred": true,
+                    "isSpacelike": true
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    },
+    "Bbox-General-Error": {
+      "input": "\\bbox[22-11=color]{a}",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "merror",
+                "texClass": 0,
+                "attributes": {
+                  "data-mjx-error": "\"22-11=color\" doesn't look like a color, a padding dimension, or a style"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtext",
+                        "texClass": 0,
+                        "attributes": {},
+                        "inherited": {
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "text",
+                            "text": "\"22-11=color\" doesn't look like a color, a padding dimension, or a style"
+                          }
+                        ],
+                        "isSpacelike": true
+                      }
+                    ],
+                    "isInferred": true,
+                    "isSpacelike": true
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
+    }
+  }
+}
