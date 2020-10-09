@@ -161,18 +161,55 @@ samples/test-adaptor.js
 samples/test-styles.js
 ```
 
-## Running TeX Parser Tests
+## Tests
 
-You first need to install tape:
+All tests are located in the `./tests/` directory. We use
+[Jest](https://jestjs.io) as test framework.
+
+### Running Tests
+
+Just go to the `./tests/` directory and run the following two commands:
 
 ``` shell
-nmp install tape
+npm install
+npm test
 ```
 
-Then run tests with
+TeX parser tests in particular are run with the command:
 
 ``` shell
-./tests.sh
+npx jest src/parser.test.js
 ```
 
-Tests are located in the `tests` sub-directory.
+To only test a single file run
+
+``` shell
+npx jest src/parser.test.js json/FILE.json
+```
+
+Tests initially run against `mathjax-full` package. They can be run against your
+local repository by rerouting the `js` and `es5` directories.
+
+### Test Format
+
+Tests are provided in a JSON test format.
+
+
+``` json
+{
+  "name": NameOfTest,
+  "factory": TestFactory,
+  "tests": {
+    "TEST1": {
+    "input": INPUT
+    "expected": EXPECTED
+    ...rest
+    }
+    ...more tests
+  }
+}
+
+```
+
+To add new tests, simply add a new `.json` file in the `json` sub-directory. For
+new test classes add a new entry in `src/test-factory.js`.
