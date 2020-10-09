@@ -1,13 +1,6 @@
 {
   "name": "ParserBaseTest",
   "factory": "parserTest",
-  "packages": [
-    "ams",
-    "base"
-  ],
-  "settings": {
-    "tags": "none"
-  },
   "tests": {
     "Identifier": {
       "input": "x",

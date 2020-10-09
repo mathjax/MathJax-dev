@@ -6,8 +6,7 @@
     "base"
   ],
   "settings": {
-    "tags": "none",
-    "digits": {}
+    "tags": "none"
   },
   "tests": {
     "Integer": {
