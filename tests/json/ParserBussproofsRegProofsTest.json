@@ -1,6 +1,6 @@
 {
   "name": "ParserBussproofsRegProofsTest",
-  "factory": "parserOutputTest",
+  "factory": "parserOutput",
   "packages": [
     "base",
     "ams",

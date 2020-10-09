@@ -114,7 +114,6 @@ export class ParserOutputTest extends ParserJsonTest {
    * @override
    */
   document(options) {
-    console.log('In SVG');
     return mathjax.document('<html></html>', {
       InputJax: new TeX(options), OutputJax: new SVG()
     });
