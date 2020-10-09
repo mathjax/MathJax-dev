@@ -34,7 +34,7 @@ import {TagsFactory} from '../node_modules/mathjax-full/js/input/tex/Tags.js';
 import {MapHandler} from "../node_modules/mathjax-full/js/input/tex/MapHandler.js";
 import {AllPackages} from '../node_modules/mathjax-full/js/input/tex/AllPackages.js';
 
-import {JsonTest, Test} from './test.js';
+import {JsonTest, Test} from './base-test.js';
 
 let fs = require('fs');
 

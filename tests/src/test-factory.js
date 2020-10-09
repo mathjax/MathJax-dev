@@ -24,7 +24,7 @@
 
 import * as pt from './parser-test.js';
 import {KeyvalTest} from './other-test.js';
-import {JsonTest} from './test.js';
+import {JsonTest} from './base-test.js';
 let fs = require('fs');
 
 export class TestFactory {

@@ -22,7 +22,7 @@
  * @author v.sorge@mathjax.org (Volker Sorge)
  */
 
-import {JsonTest} from './test.js';
+import {JsonTest} from './base-test.js';
 import ParseUtil from '../node_modules/mathjax-full/js/input/tex/ParseUtil.js';
 
 
