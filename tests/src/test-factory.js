@@ -58,7 +58,7 @@ export class TestFactory {
     if (fs.lstatSync(TestFactory.testDir).isDirectory()) {
       files = fs.readdirSync(TestFactory.testDir).filter(x => x.match(/\.json$/));
     }
-    let tests = files.filter(
+    let tests = files.map(
       file => TestFactory.create(TestFactory.testDir + '/' + file));
     return tests;
   }

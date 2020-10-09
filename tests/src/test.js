@@ -24,7 +24,6 @@
 
 /* globals System: true */
 
-let test = require('tape');
 let fs = require('fs');
 
 export class Test {
@@ -44,7 +43,7 @@ export class Test {
      */
     this.concludedTests = {};
 
-    this.createStream();
+    // this.createStream();
   }
 
 
@@ -80,7 +79,7 @@ export class Test {
       this.time += this.concludedTests[test];
       delete this.concludedTests[test];
     }
-    process.stdout.write(this.constructor.name + ': ' + this.time + 'ms\n');
+    process.stdout.write(this.name + ': ' + this.time + 'ms\n');
   }
 
   test(name, func) {
@@ -136,10 +135,13 @@ export class JsonTest extends Test {
   }
 
   runTests() {
-    for (const [name, {input, expected, ...rest}] of Object.entries(this.tests)) {
-      this.runTest(name, input, expected, rest);
-    }
-    this.printTime();
+    describe(
+      'Running tests from ' + this.name, () =>
+        {             
+          for (const [name, {input, expected, ...rest}] of Object.entries(this.tests)) {
+            this.runTest(name, input, expected, rest);
+          }});
+    // this.printTime();
   }
   
 }

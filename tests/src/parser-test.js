@@ -59,9 +59,9 @@ export class ParserJsonTest extends JsonTest {
     this.name = this.json['name'] || this.name;
     this.settings = this.json['settings'] || this.settings;
     this.processSettings();
-    console.log('\u001B\u005B\u0033\u0034\u006D' +
-                'Running tests from ' + (this.name || this.constructor.name) +
-                '\u001B\u005B\u0033\u0037\u006D');
+    // console.log('\u001B\u005B\u0033\u0034\u006D' +
+    //             'Running tests from ' + (this.name || this.constructor.name) +
+    //             '\u001B\u005B\u0033\u0037\u006D');
   }
 
   processSettings() {
@@ -83,20 +83,18 @@ export class ParserJsonTest extends JsonTest {
    * @override
    */
   runTest(name, tex, expected, rest) {
-    this.test(
+    test(
       name,
-      t => {
-        mathjax.handleRetriesFor(function() {
+      () => {
+        return mathjax.handleRetriesFor(function() {
           let options = {packages: this.packages};
           Object.assign(options, this.settings);
           let root = this.document(options).convert(tex, {end: STATE.CONVERT});
           let jv = new JsonMmlVisitor();
           root.setTeXclass(null);
-          let actual = jv.visitTree(root);
-          t.deepEqual(actual, expected, name);
-        }.bind(this)).catch(err => {
-          console.log(err.message);
-          console.log(err.stack.replace(/\n.*\/system\.js:(.|\n)*/, ''));
+          return jv.visitTree(root);
+        }.bind(this)).then(data => {
+          expect(data).toEqual(expected);
         });
       }
     );
@@ -116,6 +114,7 @@ export class ParserOutputTest extends ParserJsonTest {
    * @override
    */
   document(options) {
+    console.log('In SVG');
     return mathjax.document('<html></html>', {
       InputJax: new TeX(options), OutputJax: new SVG()
     });

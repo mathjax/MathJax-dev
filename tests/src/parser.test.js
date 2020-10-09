@@ -17,29 +17,31 @@
 
 
 /**
- * @fileoverview Various test classes that use JSON input.
+ * @fileoverview The current test runner.
  *
  * @author v.sorge@mathjax.org (Volker Sorge)
  */
 
-import {JsonTest} from './test.js';
-import ParseUtil from '../node_modules/mathjax-full/js/input/tex/ParseUtil.js';
+import {TestFactory} from './test-factory.js';
+let process = require('process');
 
 
-export class KeyvalTest extends JsonTest {
+let file = null;
 
-  runTest(name, input, expected) {
-      test(
-        name,
-        () => {
-          try {
-            let keyval = ParseUtil.keyvalOptions(input);
-            expect(keyval).toEqual(expected);
-        } catch (e) {
-          expect(e.message).toEqual(expected);
-        }
-      }
-    );
+if (process.argv.length > 2) {
+  let last = process.argv[process.argv.length - 1];
+  if (!last.match(/^--/) && last.match(/\.json/)) {
+    file = last;
   }
-
 }
+
+if (file) {
+  TestFactory.create(file).runTests();
+  process.exit;
+}
+
+if (!file) {
+  let tests = TestFactory.allParserTests();
+  tests.forEach( x => x.runTests());
+}
+
