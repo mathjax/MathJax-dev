@@ -17,29 +17,42 @@
 
 
 /**
- * @fileoverview Various test classes that use JSON input.
+ * @fileoverview Basic abstract test classes.
  *
  * @author v.sorge@mathjax.org (Volker Sorge)
  */
 
-import {JsonTest} from './base-test.js';
-import ParseUtil from '../node_modules/mathjax-full/js/input/tex/ParseUtil.js';
+export class Test {
+
+  runTest(name, input, expected, rest) {}
+
+}
 
 
-export class KeyvalTest extends JsonTest {
+export class JsonTest extends Test { 
 
-  runTest(name, input, expected) {
-      test(
-        name,
-        () => {
-          try {
-            let keyval = ParseUtil.keyvalOptions(input);
-            expect(keyval).toEqual(expected);
-        } catch (e) {
-          expect(e.message).toEqual(expected);
-        }
-      }
-    );
+  json = {};
+  name = '';
+  tests = {};
+  
+  constructor(json) {
+    super();
+    this.json = json;
+    this.parseJson();
+  }
+  
+  parseJson()  {
+    this.name = this.json.name || '';
+    this.tests = this.json.tests || {};
   }
 
+  runTests() {
+    describe(
+      'Running tests from ' + this.name, () =>
+        {             
+          for (const [name, {input, expected, ...rest}] of Object.entries(this.tests)) {
+            this.runTest(name, input, expected, rest);
+          }});
+  }
+  
 }

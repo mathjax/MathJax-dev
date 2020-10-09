@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "description": "Test framework for MathJax v3 TeX parser.",
   "scripts": {
-    "test": "./tests.sh"
+    "test": "jest"
   },
   "maintainers": [
     "Volker Sorge <V.Sorge@mathjax.org> (http://mathjax.org)"
@@ -14,7 +14,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "mathjax-full": "^3.1.2",
-    "tape": "^5.0.1"
+    "@babel/preset-env": "^7.11.5",
+    "babel-jest": "^26.5.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "jest": "^26.5.2",
+    "mathjax-full": "^3.1.2"
   }
 }

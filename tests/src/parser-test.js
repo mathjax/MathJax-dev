@@ -34,9 +34,7 @@ import {TagsFactory} from '../node_modules/mathjax-full/js/input/tex/Tags.js';
 import {MapHandler} from "../node_modules/mathjax-full/js/input/tex/MapHandler.js";
 import {AllPackages} from '../node_modules/mathjax-full/js/input/tex/AllPackages.js';
 
-import {JsonTest, Test} from './test.js';
-
-let fs = require('fs');
+import {JsonTest, Test} from './base-test.js';
 
 RegisterHTMLHandler(chooseAdaptor());
 
@@ -59,14 +57,11 @@ export class ParserJsonTest extends JsonTest {
     this.name = this.json['name'] || this.name;
     this.settings = this.json['settings'] || this.settings;
     this.processSettings();
-    console.log('\u001B\u005B\u0033\u0034\u006D' +
-                'Running tests from ' + (this.name || this.constructor.name) +
-                '\u001B\u005B\u0033\u0037\u006D');
   }
 
   processSettings() {
     // Processing regular expressions.
-    for (let set of ['digit', 'letter', 'special']) {
+    for (let set of ['digits', 'letter', 'special']) {
       if (this.settings[set]) {
         this.settings[set] = RegExp(this.settings[set]);
       }
@@ -83,20 +78,18 @@ export class ParserJsonTest extends JsonTest {
    * @override
    */
   runTest(name, tex, expected, rest) {
-    this.test(
+    test(
       name,
-      t => {
-        mathjax.handleRetriesFor(function() {
+      () => {
+        return mathjax.handleRetriesFor(function() {
           let options = {packages: this.packages};
           Object.assign(options, this.settings);
           let root = this.document(options).convert(tex, {end: STATE.CONVERT});
           let jv = new JsonMmlVisitor();
           root.setTeXclass(null);
-          let actual = jv.visitTree(root);
-          t.deepEqual(actual, expected, name);
-        }.bind(this)).catch(err => {
-          console.log(err.message);
-          console.log(err.stack.replace(/\n.*\/system\.js:(.|\n)*/, ''));
+          return jv.visitTree(root);
+        }.bind(this)).then(data => {
+          expect(data).toEqual(expected);
         });
       }
     );
@@ -168,4 +161,3 @@ export class ParserConfigMacrosTest extends ParserJsonTest {
   }
   
 }
-

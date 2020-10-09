@@ -24,7 +24,7 @@
 
 import * as pt from './parser-test.js';
 import {KeyvalTest} from './other-test.js';
-import {JsonTest} from './test.js';
+import {JsonTest} from './base-test.js';
 let fs = require('fs');
 
 export class TestFactory {
@@ -58,7 +58,7 @@ export class TestFactory {
     if (fs.lstatSync(TestFactory.testDir).isDirectory()) {
       files = fs.readdirSync(TestFactory.testDir).filter(x => x.match(/\.json$/));
     }
-    let tests = files.filter(
+    let tests = files.map(
       file => TestFactory.create(TestFactory.testDir + '/' + file));
     return tests;
   }
