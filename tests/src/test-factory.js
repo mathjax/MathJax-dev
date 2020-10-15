@@ -25,7 +25,9 @@
 import * as pt from './parser-test.js';
 import {KeyvalTest} from './other-test.js';
 import {JsonTest} from './base-test.js';
-let fs = require('fs');
+import * as fs from 'fs';
+import * as process from 'process';
+import * as path from 'path';
 
 export class TestFactory {
 
@@ -43,24 +45,75 @@ export class TestFactory {
     let constructor = TestFactory.factory[json.factory] || JsonTest;
     return new constructor(json);
   }
-  
+
   /**
-   *  
+   *
    * Below is the code for automatically running all tests in the json
    * subdirectory.
    *
    */
+  static baseDir = __dirname;
   static testDir = 'json';
 
-  // Currently this does not work due to async interactions.
-  static allParserTests = function() {
-    let files = [];
-    if (fs.lstatSync(TestFactory.testDir).isDirectory()) {
-      files = fs.readdirSync(TestFactory.testDir).filter(x => x.match(/\.json$/));
+  static testsRecursive = function(path, result) {
+    if (typeof path === 'undefined') {
+      return;
     }
-    let tests = files.map(
-      file => TestFactory.create(TestFactory.testDir + '/' + file));
+    if (fs.lstatSync(path).isDirectory()) {
+      let files = fs.readdirSync(path);
+      files.forEach(
+        x => TestFactory.testsRecursive(path ? path + '/' + x : x, result));
+      return;
+    }
+    if (path.match(/\.json$/)) {
+      result.push(path);
+    }
+  }
+
+  static allJsonTests = function(jsonDir) {
+    let dir = TestFactory.getDir(jsonDir);
+    let files = [];
+    TestFactory.testsRecursive(dir, files);
+    let tests = files.map(TestFactory.create);
     return tests;
+  }
+
+  static someJsonTests = function() {
+    return process.argv.filter(x => x.match(/\.json$/))
+      .map(TestFactory.create);
+  }
+
+  static getDir = function(dir) {
+    try {
+      fs.lstatSync(dir).isDirectory();
+      return dir;
+    } catch (e) {
+      dir = path.join(TestFactory.baseDir, '..', dir);
+    }
+    try {
+      fs.lstatSync(dir).isDirectory();
+      return dir;
+    } catch (e) {
+      dir = path.join(TestFactory.testDir, dir);
+    }
+    try {
+      fs.lstatSync(dir).isDirectory();
+      return dir;
+    } catch (e) {
+      dir = path.join(TestFactory.baseDir, '..', TestFactory.testDir, dir);
+    }
+    try {
+      fs.lstatSync(dir).isDirectory();
+      return dir;
+    } catch (e) {
+      return dir;
+    }
+  }
+
+  static runTests = function(jsonDir = TestFactory.testDir) {
+    let tests = TestFactory.someJsonTests();
+    tests = tests.length ? tests : TestFactory.allJsonTests(jsonDir);
+    tests.forEach( x => x.runTests());
   }
 
 }

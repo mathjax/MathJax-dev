@@ -17,31 +17,12 @@
 
 
 /**
- * @fileoverview The current test runner.
+ * @fileoverview The tex parser tests.
  *
  * @author v.sorge@mathjax.org (Volker Sorge)
  */
 
 import {TestFactory} from './test-factory.js';
-let process = require('process');
 
-
-let file = null;
-
-if (process.argv.length > 2) {
-  let last = process.argv[process.argv.length - 1];
-  if (!last.match(/^--/) && last.match(/\.json/)) {
-    file = last;
-  }
-}
-
-if (file) {
-  TestFactory.create(file).runTests();
-  process.exit;
-}
-
-if (!file) {
-  let tests = TestFactory.allParserTests();
-  tests.forEach( x => x.runTests());
-}
+TestFactory.runTests('json/tex_packages');
 
