@@ -139,7 +139,8 @@ let specialMacros = function(key, char, packages) {
   if (key.match(/^(cr|h.*line)$/)) {
     str = `\\array{a\\\\\\${key} b}`;
   }
-  return [str, str ? convert(str, packages) : null];
+  let [conversion, error] = str ? convert(str, packages) : [str, true];
+  return [str, error ? null : conversion];
 };
 
 let convertMacro = function(key, char, packages) {

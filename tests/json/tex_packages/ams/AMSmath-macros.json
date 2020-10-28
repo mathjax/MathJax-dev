@@ -3793,461 +3793,455 @@
     },
     "shoveleft": {
       "input": "\\begin{multline}\\shoveleft a\\\\ b\\\\ c\\end{multline}",
-      "expected": [
-        {
-          "kind": "math",
-          "texClass": 0,
-          "attributes": {
-            "display": "block"
-          },
-          "inherited": {
-            "displaystyle": true,
-            "scriptlevel": 0
-          },
-          "properties": {},
-          "childNodes": [
-            {
-              "kind": "mrow",
-              "texClass": 0,
-              "attributes": {},
-              "inherited": {
-                "displaystyle": true,
-                "scriptlevel": 0
-              },
-              "properties": {},
-              "childNodes": [
-                {
-                  "kind": "mtable",
-                  "texClass": 0,
-                  "attributes": {
-                    "displaystyle": true,
-                    "rowspacing": ".5em",
-                    "columnwidth": "100%",
-                    "width": "85%"
-                  },
-                  "inherited": {
-                    "scriptlevel": 0
-                  },
-                  "properties": {
-                    "useHeight": 1
-                  },
-                  "childNodes": [
-                    {
-                      "kind": "mtr",
-                      "texClass": null,
-                      "attributes": {},
-                      "inherited": {
-                        "columnalign": "center",
-                        "rowalign": "baseline",
-                        "displaystyle": true,
-                        "scriptlevel": 0
-                      },
-                      "properties": {},
-                      "childNodes": [
-                        {
-                          "kind": "mtd",
-                          "texClass": null,
-                          "attributes": {
-                            "columnalign": "left"
-                          },
-                          "inherited": {
-                            "columnalign": "center",
-                            "rowalign": "baseline",
-                            "displaystyle": true,
-                            "scriptlevel": 0
-                          },
-                          "properties": {},
-                          "childNodes": [
-                            {
-                              "kind": "mrow",
-                              "texClass": 0,
-                              "attributes": {},
-                              "inherited": {
-                                "displaystyle": true,
-                                "scriptlevel": 0
-                              },
-                              "properties": {},
-                              "childNodes": [
-                                {
-                                  "kind": "mi",
-                                  "texClass": 0,
-                                  "attributes": {},
-                                  "inherited": {
-                                    "displaystyle": true,
-                                    "scriptlevel": 0,
-                                    "mathvariant": "italic"
-                                  },
-                                  "properties": {},
-                                  "childNodes": [
-                                    {
-                                      "kind": "text",
-                                      "text": "a"
-                                    }
-                                  ]
-                                }
-                              ],
-                              "isInferred": true
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "kind": "mtr",
-                      "texClass": null,
-                      "attributes": {},
-                      "inherited": {
-                        "columnalign": "center",
-                        "rowalign": "baseline",
-                        "displaystyle": true,
-                        "scriptlevel": 0
-                      },
-                      "properties": {},
-                      "childNodes": [
-                        {
-                          "kind": "mtd",
-                          "texClass": null,
-                          "attributes": {},
-                          "inherited": {
-                            "columnalign": "center",
-                            "rowalign": "baseline",
-                            "displaystyle": true,
-                            "scriptlevel": 0
-                          },
-                          "properties": {},
-                          "childNodes": [
-                            {
-                              "kind": "mrow",
-                              "texClass": 0,
-                              "attributes": {},
-                              "inherited": {
-                                "displaystyle": true,
-                                "scriptlevel": 0
-                              },
-                              "properties": {},
-                              "childNodes": [
-                                {
-                                  "kind": "mi",
-                                  "texClass": 0,
-                                  "attributes": {},
-                                  "inherited": {
-                                    "displaystyle": true,
-                                    "scriptlevel": 0,
-                                    "mathvariant": "italic"
-                                  },
-                                  "properties": {},
-                                  "childNodes": [
-                                    {
-                                      "kind": "text",
-                                      "text": "b"
-                                    }
-                                  ]
-                                }
-                              ],
-                              "isInferred": true
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "kind": "mtr",
-                      "texClass": null,
-                      "attributes": {},
-                      "inherited": {
-                        "columnalign": "center",
-                        "rowalign": "baseline",
-                        "displaystyle": true,
-                        "scriptlevel": 0
-                      },
-                      "properties": {},
-                      "childNodes": [
-                        {
-                          "kind": "mtd",
-                          "texClass": null,
-                          "attributes": {
-                            "columnalign": "right"
-                          },
-                          "inherited": {
-                            "columnalign": "center",
-                            "rowalign": "baseline",
-                            "displaystyle": true,
-                            "scriptlevel": 0
-                          },
-                          "properties": {},
-                          "childNodes": [
-                            {
-                              "kind": "mrow",
-                              "texClass": 0,
-                              "attributes": {},
-                              "inherited": {
-                                "displaystyle": true,
-                                "scriptlevel": 0
-                              },
-                              "properties": {},
-                              "childNodes": [
-                                {
-                                  "kind": "mi",
-                                  "texClass": 0,
-                                  "attributes": {},
-                                  "inherited": {
-                                    "displaystyle": true,
-                                    "scriptlevel": 0,
-                                    "mathvariant": "italic"
-                                  },
-                                  "properties": {},
-                                  "childNodes": [
-                                    {
-                                      "kind": "text",
-                                      "text": "c"
-                                    }
-                                  ]
-                                }
-                              ],
-                              "isInferred": true
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ],
-              "isInferred": true
-            }
-          ]
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
         },
-        false
-      ]
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mtable",
+                "texClass": 0,
+                "attributes": {
+                  "displaystyle": true,
+                  "rowspacing": ".5em",
+                  "columnwidth": "100%",
+                  "width": "85%"
+                },
+                "inherited": {
+                  "scriptlevel": 0
+                },
+                "properties": {
+                  "useHeight": 1
+                },
+                "childNodes": [
+                  {
+                    "kind": "mtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "center",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {
+                          "columnalign": "left"
+                        },
+                        "inherited": {
+                          "columnalign": "center",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "a"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "mtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "center",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "center",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "b"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "mtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "center",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {
+                          "columnalign": "right"
+                        },
+                        "inherited": {
+                          "columnalign": "center",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "c"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
     },
     "shoveright": {
       "input": "\\begin{multline}\\shoveright a\\\\ b\\\\ c\\end{multline}",
-      "expected": [
-        {
-          "kind": "math",
-          "texClass": 0,
-          "attributes": {
-            "display": "block"
-          },
-          "inherited": {
-            "displaystyle": true,
-            "scriptlevel": 0
-          },
-          "properties": {},
-          "childNodes": [
-            {
-              "kind": "mrow",
-              "texClass": 0,
-              "attributes": {},
-              "inherited": {
-                "displaystyle": true,
-                "scriptlevel": 0
-              },
-              "properties": {},
-              "childNodes": [
-                {
-                  "kind": "mtable",
-                  "texClass": 0,
-                  "attributes": {
-                    "displaystyle": true,
-                    "rowspacing": ".5em",
-                    "columnwidth": "100%",
-                    "width": "85%"
-                  },
-                  "inherited": {
-                    "scriptlevel": 0
-                  },
-                  "properties": {
-                    "useHeight": 1
-                  },
-                  "childNodes": [
-                    {
-                      "kind": "mtr",
-                      "texClass": null,
-                      "attributes": {},
-                      "inherited": {
-                        "columnalign": "center",
-                        "rowalign": "baseline",
-                        "displaystyle": true,
-                        "scriptlevel": 0
-                      },
-                      "properties": {},
-                      "childNodes": [
-                        {
-                          "kind": "mtd",
-                          "texClass": null,
-                          "attributes": {
-                            "columnalign": "right"
-                          },
-                          "inherited": {
-                            "columnalign": "center",
-                            "rowalign": "baseline",
-                            "displaystyle": true,
-                            "scriptlevel": 0
-                          },
-                          "properties": {},
-                          "childNodes": [
-                            {
-                              "kind": "mrow",
-                              "texClass": 0,
-                              "attributes": {},
-                              "inherited": {
-                                "displaystyle": true,
-                                "scriptlevel": 0
-                              },
-                              "properties": {},
-                              "childNodes": [
-                                {
-                                  "kind": "mi",
-                                  "texClass": 0,
-                                  "attributes": {},
-                                  "inherited": {
-                                    "displaystyle": true,
-                                    "scriptlevel": 0,
-                                    "mathvariant": "italic"
-                                  },
-                                  "properties": {},
-                                  "childNodes": [
-                                    {
-                                      "kind": "text",
-                                      "text": "a"
-                                    }
-                                  ]
-                                }
-                              ],
-                              "isInferred": true
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "kind": "mtr",
-                      "texClass": null,
-                      "attributes": {},
-                      "inherited": {
-                        "columnalign": "center",
-                        "rowalign": "baseline",
-                        "displaystyle": true,
-                        "scriptlevel": 0
-                      },
-                      "properties": {},
-                      "childNodes": [
-                        {
-                          "kind": "mtd",
-                          "texClass": null,
-                          "attributes": {},
-                          "inherited": {
-                            "columnalign": "center",
-                            "rowalign": "baseline",
-                            "displaystyle": true,
-                            "scriptlevel": 0
-                          },
-                          "properties": {},
-                          "childNodes": [
-                            {
-                              "kind": "mrow",
-                              "texClass": 0,
-                              "attributes": {},
-                              "inherited": {
-                                "displaystyle": true,
-                                "scriptlevel": 0
-                              },
-                              "properties": {},
-                              "childNodes": [
-                                {
-                                  "kind": "mi",
-                                  "texClass": 0,
-                                  "attributes": {},
-                                  "inherited": {
-                                    "displaystyle": true,
-                                    "scriptlevel": 0,
-                                    "mathvariant": "italic"
-                                  },
-                                  "properties": {},
-                                  "childNodes": [
-                                    {
-                                      "kind": "text",
-                                      "text": "b"
-                                    }
-                                  ]
-                                }
-                              ],
-                              "isInferred": true
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "kind": "mtr",
-                      "texClass": null,
-                      "attributes": {},
-                      "inherited": {
-                        "columnalign": "center",
-                        "rowalign": "baseline",
-                        "displaystyle": true,
-                        "scriptlevel": 0
-                      },
-                      "properties": {},
-                      "childNodes": [
-                        {
-                          "kind": "mtd",
-                          "texClass": null,
-                          "attributes": {
-                            "columnalign": "right"
-                          },
-                          "inherited": {
-                            "columnalign": "center",
-                            "rowalign": "baseline",
-                            "displaystyle": true,
-                            "scriptlevel": 0
-                          },
-                          "properties": {},
-                          "childNodes": [
-                            {
-                              "kind": "mrow",
-                              "texClass": 0,
-                              "attributes": {},
-                              "inherited": {
-                                "displaystyle": true,
-                                "scriptlevel": 0
-                              },
-                              "properties": {},
-                              "childNodes": [
-                                {
-                                  "kind": "mi",
-                                  "texClass": 0,
-                                  "attributes": {},
-                                  "inherited": {
-                                    "displaystyle": true,
-                                    "scriptlevel": 0,
-                                    "mathvariant": "italic"
-                                  },
-                                  "properties": {},
-                                  "childNodes": [
-                                    {
-                                      "kind": "text",
-                                      "text": "c"
-                                    }
-                                  ]
-                                }
-                              ],
-                              "isInferred": true
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ],
-              "isInferred": true
-            }
-          ]
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
         },
-        false
-      ]
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mtable",
+                "texClass": 0,
+                "attributes": {
+                  "displaystyle": true,
+                  "rowspacing": ".5em",
+                  "columnwidth": "100%",
+                  "width": "85%"
+                },
+                "inherited": {
+                  "scriptlevel": 0
+                },
+                "properties": {
+                  "useHeight": 1
+                },
+                "childNodes": [
+                  {
+                    "kind": "mtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "center",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {
+                          "columnalign": "right"
+                        },
+                        "inherited": {
+                          "columnalign": "center",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "a"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "mtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "center",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {},
+                        "inherited": {
+                          "columnalign": "center",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "b"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "mtr",
+                    "texClass": null,
+                    "attributes": {},
+                    "inherited": {
+                      "columnalign": "center",
+                      "rowalign": "baseline",
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mtd",
+                        "texClass": null,
+                        "attributes": {
+                          "columnalign": "right"
+                        },
+                        "inherited": {
+                          "columnalign": "center",
+                          "rowalign": "baseline",
+                          "displaystyle": true,
+                          "scriptlevel": 0
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "mrow",
+                            "texClass": 0,
+                            "attributes": {},
+                            "inherited": {
+                              "displaystyle": true,
+                              "scriptlevel": 0
+                            },
+                            "properties": {},
+                            "childNodes": [
+                              {
+                                "kind": "mi",
+                                "texClass": 0,
+                                "attributes": {},
+                                "inherited": {
+                                  "displaystyle": true,
+                                  "scriptlevel": 0,
+                                  "mathvariant": "italic"
+                                },
+                                "properties": {},
+                                "childNodes": [
+                                  {
+                                    "kind": "text",
+                                    "text": "c"
+                                  }
+                                ]
+                              }
+                            ],
+                            "isInferred": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
     },
     "xrightarrow": {
       "input": "\\xrightarrow A",

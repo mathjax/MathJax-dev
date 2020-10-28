@@ -8,57 +8,54 @@
   "tests": {
     "verb": {
       "input": "\\verb+\\A+",
-      "expected": [
-        {
-          "kind": "math",
-          "texClass": 0,
-          "attributes": {
-            "display": "block"
-          },
-          "inherited": {
-            "displaystyle": true,
-            "scriptlevel": 0
-          },
-          "properties": {},
-          "childNodes": [
-            {
-              "kind": "mrow",
-              "texClass": 0,
-              "attributes": {},
-              "inherited": {
-                "displaystyle": true,
-                "scriptlevel": 0
-              },
-              "properties": {},
-              "childNodes": [
-                {
-                  "kind": "mtext",
-                  "texClass": 0,
-                  "attributes": {
-                    "mathvariant": "monospace"
-                  },
-                  "inherited": {
-                    "displaystyle": true,
-                    "scriptlevel": 0
-                  },
-                  "properties": {},
-                  "childNodes": [
-                    {
-                      "kind": "text",
-                      "text": "\\A"
-                    }
-                  ],
-                  "isSpacelike": true
-                }
-              ],
-              "isInferred": true,
-              "isSpacelike": true
-            }
-          ],
-          "isSpacelike": true
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
         },
-        false
-      ]
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mtext",
+                "texClass": 0,
+                "attributes": {
+                  "mathvariant": "monospace"
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "\\A"
+                  }
+                ],
+                "isSpacelike": true
+              }
+            ],
+            "isInferred": true,
+            "isSpacelike": true
+          }
+        ],
+        "isSpacelike": true
+      }
     }
   }
 }

@@ -8,82 +8,79 @@
   "tests": {
     "toggle": {
       "input": "\\toggle{A}{B}\\endtoggle",
-      "expected": [
-        {
-          "kind": "math",
-          "texClass": 0,
-          "attributes": {
-            "display": "block"
-          },
-          "inherited": {
-            "displaystyle": true,
-            "scriptlevel": 0
-          },
-          "properties": {},
-          "childNodes": [
-            {
-              "kind": "mrow",
-              "texClass": 0,
-              "attributes": {},
-              "inherited": {
-                "displaystyle": true,
-                "scriptlevel": 0
-              },
-              "properties": {},
-              "childNodes": [
-                {
-                  "kind": "maction",
-                  "texClass": 0,
-                  "attributes": {},
-                  "inherited": {
-                    "displaystyle": true,
-                    "scriptlevel": 0
-                  },
-                  "properties": {},
-                  "childNodes": [
-                    {
-                      "kind": "mi",
-                      "texClass": 0,
-                      "attributes": {},
-                      "inherited": {
-                        "displaystyle": true,
-                        "scriptlevel": 0,
-                        "mathvariant": "italic"
-                      },
-                      "properties": {},
-                      "childNodes": [
-                        {
-                          "kind": "text",
-                          "text": "A"
-                        }
-                      ]
-                    },
-                    {
-                      "kind": "mi",
-                      "texClass": 0,
-                      "attributes": {},
-                      "inherited": {
-                        "displaystyle": true,
-                        "scriptlevel": 0,
-                        "mathvariant": "italic"
-                      },
-                      "properties": {},
-                      "childNodes": [
-                        {
-                          "kind": "text",
-                          "text": "B"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ],
-              "isInferred": true
-            }
-          ]
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
         },
-        false
-      ]
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "maction",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mi",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0,
+                      "mathvariant": "italic"
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "text",
+                        "text": "A"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "mi",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0,
+                      "mathvariant": "italic"
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "text",
+                        "text": "B"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "isInferred": true
+          }
+        ]
+      }
     },
     "mathtip": {
       "input": "\\mathtip{A}{B}",
