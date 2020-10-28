@@ -1,0 +1,9 @@
+{
+  "name": "unicode unicode table test",
+  "factory": "parserTest",
+  "packages": [
+    "base",
+    "unicode"
+  ],
+  "tests": {}
+}
