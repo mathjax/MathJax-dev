@@ -24,5 +24,5 @@
 
 import {TestFactory} from './test-factory.js';
 
-TestFactory.runTests('json/tex_packages');
+TestFactory.runTests('json');
 
