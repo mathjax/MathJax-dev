@@ -90,6 +90,20 @@ let collateCharacters = function(map, packages) {
   return result;
 };
 
+let collateDelimiters = function(map, packages) {
+  let result = {};
+  for (let [key, char] of map.map) {
+    let entry = `\\left${key} A \\middle${key} B \\right${key}`;
+    let [conversion, error] = convert(entry, packages);
+    if (error) {
+      console.log('Error: ' + char._symbol);
+    } else {
+      result[key] = {'input': entry, 'expected': conversion};
+    }
+  }
+  return result;
+};
+
 let collateMacros = function(map) {
   
 };
@@ -178,14 +192,26 @@ let collateCommands = function(map, packages) {
   return result;
 };
 
-let collateEnvironments = function(map) {
-  
+let collateEnvironments = function(map, packages) {
 };
+
 
 let writeJson = function(json, name, pkg) {
   let dir = `${DIR}/${pkg}/${name}.json`;
   fs.writeFileSync(dir, JSON.stringify(json, null, 2));
 };
+
+
+let collateMap = function(table, packages, pkg, method) {
+  let json = {
+    name: `${pkg} ${table.name} table test`,
+    factory: 'parserTest',
+    packages: packages,
+    tests: method(table, packages)
+  };
+  writeJson(json, table.name, pkg);
+};
+
 
 for (let pkg of ConfigurationHandler.keys()) {
   if (pkg === 'bussproofs' || pkg === 'newcommand') continue;
@@ -197,26 +223,15 @@ for (let pkg of ConfigurationHandler.keys()) {
       let table = MapHandler.getMap(handler);
       if (table instanceof sm.RegExpMap) continue;
       //TODO: Be careful if the table is a delimiter table!
-      if (table instanceof sm.DelimiterMap) continue;
+      if (table instanceof sm.DelimiterMap) {
+        collateMap(table, packages, pkg, collateDelimiters);
+      };
       if (table instanceof sm.CharacterMap) {
-        let json = {
-          name: `${pkg} ${table.name} table test`,
-          factory: 'parserTest',
-          packages: packages,
-          tests: collateCharacters(table, packages)
-        };
-        writeJson(json, table.name, pkg);
+        collateMap(table, packages, pkg, collateCharacters);
       }
       if (table instanceof sm.EnvironmentMap) continue;
       if (table instanceof sm.CommandMap) {
-        console.log(`${pkg}: ${table.name}`);
-        let json = {
-          name: `${pkg} ${table.name} table test`,
-          factory: 'parserTest',
-          packages: packages,
-          tests: collateCommands(table, packages)
-        };
-        writeJson(json, table.name, pkg);
+        collateMap(table, packages, pkg, collateCommands);
       }
       // Not sure what do with those.
       if (table instanceof sm.MacroMap) continue;
