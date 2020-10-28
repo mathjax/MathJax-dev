@@ -73,7 +73,6 @@ let document = function(packages, output = false) {
 };
 
 
-
 let convert = function(command, packages) {
   let doc = document(packages);
   let root = doc.convert(command, {end: STATE.CONVERT});
@@ -96,7 +95,7 @@ let collateDelimiters = function(map, packages) {
     let entry = `\\left${key} A \\middle${key} B \\right${key}`;
     let [conversion, error] = convert(entry, packages);
     if (error) {
-      console.log('Error: ' + char._symbol);
+      console.log('Delimiter Error: ' + char._symbol);
     } else {
       result[key] = {'input': entry, 'expected': conversion};
     }
@@ -175,7 +174,7 @@ let convertMacro = function(key, char, packages) {
     [conversion, error] = convert(str, packages);
   }
   if (error) {
-    console.log('Error: ' + char._symbol);
+    console.log('Command Error: ' + char._symbol);
     str = '';
   }
   return [str, conversion];
@@ -193,6 +192,21 @@ let collateCommands = function(map, packages) {
 };
 
 let collateEnvironments = function(map, packages) {
+  let result = {};
+  for (let [key, char] of map.map) {
+    let entry = `\\begin{${key}} A \\end{${key}}`;
+    let [conversion, error] = convert(entry, packages);
+    if (error) {
+      entry = `\\begin{${key}}{2} A &= B \\end{${key}}`;
+      [conversion, error] = convert(entry, packages);
+    }
+    if (error) {
+      console.log('Environment Error: ' + char._symbol);
+    } else {
+      result[key] = {'input': entry, 'expected': conversion};
+    }
+  }
+  return result;
 };
 
 
@@ -229,7 +243,9 @@ for (let pkg of ConfigurationHandler.keys()) {
       if (table instanceof sm.CharacterMap) {
         collateMap(table, packages, pkg, collateCharacters);
       }
-      if (table instanceof sm.EnvironmentMap) continue;
+      if (table instanceof sm.EnvironmentMap) {
+        collateMap(table, packages, pkg, collateEnvironments);
+      }
       if (table instanceof sm.CommandMap) {
         collateMap(table, packages, pkg, collateCommands);
       }
