@@ -1,0 +1,6978 @@
+{
+  "name": "base mathchar0mo table test",
+  "factory": "parserTest",
+  "packages": [
+    "base"
+  ],
+  "tests": {
+    "surd": {
+      "input": "\\surd",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "TeXAtom",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mo",
+                        "texClass": 0,
+                        "attributes": {
+                          "stretchy": false
+                        },
+                        "inherited": {
+                          "displaystyle": true,
+                          "scriptlevel": 0,
+                          "form": "infix",
+                          "stretchy": true
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "text",
+                            "text": "√"
+                          }
+                        ],
+                        "isEmbellished": true
+                      }
+                    ],
+                    "isInferred": true,
+                    "isEmbellished": true
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "coprod": {
+      "input": "\\coprod",
+      "expected": {
+        "kind": "math",
+        "texClass": 1,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 1,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 1,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "largeop": true,
+                  "movablelimits": true,
+                  "symmetric": true
+                },
+                "properties": {
+                  "texClass": 1,
+                  "movesupsub": true
+                },
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "∐"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "bigvee": {
+      "input": "\\bigvee",
+      "expected": {
+        "kind": "math",
+        "texClass": 1,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 1,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 1,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "largeop": true,
+                  "movablelimits": true,
+                  "symmetric": true
+                },
+                "properties": {
+                  "texClass": 1,
+                  "movesupsub": true
+                },
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⋁"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "bigwedge": {
+      "input": "\\bigwedge",
+      "expected": {
+        "kind": "math",
+        "texClass": 1,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 1,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 1,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "largeop": true,
+                  "movablelimits": true,
+                  "symmetric": true
+                },
+                "properties": {
+                  "texClass": 1,
+                  "movesupsub": true
+                },
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⋀"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "biguplus": {
+      "input": "\\biguplus",
+      "expected": {
+        "kind": "math",
+        "texClass": 1,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 1,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 1,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "largeop": true,
+                  "movablelimits": true,
+                  "symmetric": true
+                },
+                "properties": {
+                  "texClass": 1,
+                  "movesupsub": true
+                },
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⨄"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "bigcap": {
+      "input": "\\bigcap",
+      "expected": {
+        "kind": "math",
+        "texClass": 1,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 1,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 1,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "largeop": true,
+                  "movablelimits": true,
+                  "symmetric": true
+                },
+                "properties": {
+                  "texClass": 1,
+                  "movesupsub": true
+                },
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⋂"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "bigcup": {
+      "input": "\\bigcup",
+      "expected": {
+        "kind": "math",
+        "texClass": 1,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 1,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 1,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "largeop": true,
+                  "movablelimits": true,
+                  "symmetric": true
+                },
+                "properties": {
+                  "texClass": 1,
+                  "movesupsub": true
+                },
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⋃"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "int": {
+      "input": "\\int",
+      "expected": {
+        "kind": "math",
+        "texClass": 1,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 1,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 1,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "largeop": true,
+                  "symmetric": true
+                },
+                "properties": {
+                  "texClass": 1
+                },
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "∫"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "intop": {
+      "input": "\\intop",
+      "expected": {
+        "kind": "math",
+        "texClass": 1,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 1,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 1,
+                "attributes": {
+                  "movablelimits": true
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "largeop": true,
+                  "symmetric": true
+                },
+                "properties": {
+                  "texClass": 1,
+                  "movesupsub": true,
+                  "movablelimits": true
+                },
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "∫"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "iint": {
+      "input": "\\iint",
+      "expected": {
+        "kind": "math",
+        "texClass": 1,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 1,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 1,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "largeop": true,
+                  "symmetric": true
+                },
+                "properties": {
+                  "texClass": 1
+                },
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "∬"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "iiint": {
+      "input": "\\iiint",
+      "expected": {
+        "kind": "math",
+        "texClass": 1,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 1,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 1,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "largeop": true,
+                  "symmetric": true
+                },
+                "properties": {
+                  "texClass": 1
+                },
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "∭"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "prod": {
+      "input": "\\prod",
+      "expected": {
+        "kind": "math",
+        "texClass": 1,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 1,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 1,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "largeop": true,
+                  "movablelimits": true,
+                  "symmetric": true
+                },
+                "properties": {
+                  "texClass": 1,
+                  "movesupsub": true
+                },
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "∏"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "sum": {
+      "input": "\\sum",
+      "expected": {
+        "kind": "math",
+        "texClass": 1,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 1,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 1,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "largeop": true,
+                  "movablelimits": true,
+                  "symmetric": true
+                },
+                "properties": {
+                  "texClass": 1,
+                  "movesupsub": true
+                },
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "∑"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "bigotimes": {
+      "input": "\\bigotimes",
+      "expected": {
+        "kind": "math",
+        "texClass": 1,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 1,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 1,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "largeop": true,
+                  "movablelimits": true,
+                  "symmetric": true
+                },
+                "properties": {
+                  "texClass": 1,
+                  "movesupsub": true
+                },
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⨂"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "bigoplus": {
+      "input": "\\bigoplus",
+      "expected": {
+        "kind": "math",
+        "texClass": 1,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 1,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 1,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "largeop": true,
+                  "movablelimits": true,
+                  "symmetric": true
+                },
+                "properties": {
+                  "texClass": 1,
+                  "movesupsub": true
+                },
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⨁"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "bigodot": {
+      "input": "\\bigodot",
+      "expected": {
+        "kind": "math",
+        "texClass": 1,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 1,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 1,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "largeop": true,
+                  "movablelimits": true,
+                  "symmetric": true
+                },
+                "properties": {
+                  "texClass": 1,
+                  "movesupsub": true
+                },
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⨀"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "oint": {
+      "input": "\\oint",
+      "expected": {
+        "kind": "math",
+        "texClass": 1,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 1,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 1,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "largeop": true,
+                  "symmetric": true
+                },
+                "properties": {
+                  "texClass": 1
+                },
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "∮"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "bigsqcup": {
+      "input": "\\bigsqcup",
+      "expected": {
+        "kind": "math",
+        "texClass": 1,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 1,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 1,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "largeop": true,
+                  "movablelimits": true,
+                  "symmetric": true
+                },
+                "properties": {
+                  "texClass": 1,
+                  "movesupsub": true
+                },
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⨆"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "smallint": {
+      "input": "\\smallint",
+      "expected": {
+        "kind": "math",
+        "texClass": 1,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 1,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 1,
+                "attributes": {
+                  "largeop": false
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "largeop": true,
+                  "symmetric": true
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "∫"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "triangleleft": {
+      "input": "\\triangleleft",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "◃"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "triangleright": {
+      "input": "\\triangleright",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "▹"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "bigtriangleup": {
+      "input": "\\bigtriangleup",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "△"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "bigtriangledown": {
+      "input": "\\bigtriangledown",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "▽"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "wedge": {
+      "input": "\\wedge",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "∧"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "land": {
+      "input": "\\land",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "∧"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "vee": {
+      "input": "\\vee",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "∨"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "lor": {
+      "input": "\\lor",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "∨"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "cap": {
+      "input": "\\cap",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "∩"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "cup": {
+      "input": "\\cup",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "∪"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "ddagger": {
+      "input": "\\ddagger",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "‡"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "dagger": {
+      "input": "\\dagger",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "†"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "sqcap": {
+      "input": "\\sqcap",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⊓"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "sqcup": {
+      "input": "\\sqcup",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⊔"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "uplus": {
+      "input": "\\uplus",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⊎"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "amalg": {
+      "input": "\\amalg",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⨿"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "diamond": {
+      "input": "\\diamond",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⋄"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "bullet": {
+      "input": "\\bullet",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "∙"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "wr": {
+      "input": "\\wr",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "≀"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "div": {
+      "input": "\\div",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "÷"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "odot": {
+      "input": "\\odot",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⊙"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "oslash": {
+      "input": "\\oslash",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⊘"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "otimes": {
+      "input": "\\otimes",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⊗"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "ominus": {
+      "input": "\\ominus",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⊖"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "oplus": {
+      "input": "\\oplus",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⊕"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "mp": {
+      "input": "\\mp",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "∓"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "pm": {
+      "input": "\\pm",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "±"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "circ": {
+      "input": "\\circ",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "∘"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "bigcirc": {
+      "input": "\\bigcirc",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "◯"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "setminus": {
+      "input": "\\setminus",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "∖"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "cdot": {
+      "input": "\\cdot",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⋅"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "ast": {
+      "input": "\\ast",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "∗"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "times": {
+      "input": "\\times",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "×"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "star": {
+      "input": "\\star",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⋆"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "propto": {
+      "input": "\\propto",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "∝"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "sqsubseteq": {
+      "input": "\\sqsubseteq",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⊑"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "sqsupseteq": {
+      "input": "\\sqsupseteq",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⊒"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "parallel": {
+      "input": "\\parallel",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "∥"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "mid": {
+      "input": "\\mid",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "∣"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "dashv": {
+      "input": "\\dashv",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⊣"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "vdash": {
+      "input": "\\vdash",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⊢"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "leq": {
+      "input": "\\leq",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "≤"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "le": {
+      "input": "\\le",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "≤"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "geq": {
+      "input": "\\geq",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "≥"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "ge": {
+      "input": "\\ge",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "≥"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "lt": {
+      "input": "\\lt",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "<"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "gt": {
+      "input": "\\gt",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": ">"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "succ": {
+      "input": "\\succ",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "≻"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "prec": {
+      "input": "\\prec",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "≺"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "approx": {
+      "input": "\\approx",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "≈"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "succeq": {
+      "input": "\\succeq",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⪰"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "preceq": {
+      "input": "\\preceq",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⪯"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "supset": {
+      "input": "\\supset",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⊃"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "subset": {
+      "input": "\\subset",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⊂"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "supseteq": {
+      "input": "\\supseteq",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⊇"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "subseteq": {
+      "input": "\\subseteq",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⊆"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "in": {
+      "input": "\\in",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "∈"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "ni": {
+      "input": "\\ni",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "∋"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "notin": {
+      "input": "\\notin",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "∉"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "owns": {
+      "input": "\\owns",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "∋"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "gg": {
+      "input": "\\gg",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "≫"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "ll": {
+      "input": "\\ll",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "≪"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "sim": {
+      "input": "\\sim",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "∼"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "simeq": {
+      "input": "\\simeq",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "≃"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "perp": {
+      "input": "\\perp",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⊥"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "equiv": {
+      "input": "\\equiv",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "≡"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "asymp": {
+      "input": "\\asymp",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "≍"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "smile": {
+      "input": "\\smile",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⌣"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "frown": {
+      "input": "\\frown",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⌢"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "ne": {
+      "input": "\\ne",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "≠"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "neq": {
+      "input": "\\neq",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "≠"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "cong": {
+      "input": "\\cong",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "≅"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "doteq": {
+      "input": "\\doteq",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "≐"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "bowtie": {
+      "input": "\\bowtie",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⋈"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "models": {
+      "input": "\\models",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⊨"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "notChar": {
+      "input": "\\notChar",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⧸"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "Leftrightarrow": {
+      "input": "\\Leftrightarrow",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {
+                  "stretchy": false
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "accent": true,
+                  "stretchy": true
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⇔"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "Leftarrow": {
+      "input": "\\Leftarrow",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {
+                  "stretchy": false
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "accent": true,
+                  "stretchy": true
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⇐"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "Rightarrow": {
+      "input": "\\Rightarrow",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {
+                  "stretchy": false
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "accent": true,
+                  "stretchy": true
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⇒"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "leftrightarrow": {
+      "input": "\\leftrightarrow",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {
+                  "stretchy": false
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "accent": true,
+                  "stretchy": true
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "↔"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "leftarrow": {
+      "input": "\\leftarrow",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {
+                  "stretchy": false
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "accent": true,
+                  "stretchy": true
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "←"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "gets": {
+      "input": "\\gets",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {
+                  "stretchy": false
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "accent": true,
+                  "stretchy": true
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "←"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "rightarrow": {
+      "input": "\\rightarrow",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {
+                  "stretchy": false
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "accent": true,
+                  "stretchy": true
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "→"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "to": {
+      "input": "\\to",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {
+                  "accent": false,
+                  "stretchy": false
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "accent": true,
+                  "stretchy": true
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "→"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "mapsto": {
+      "input": "\\mapsto",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {
+                  "stretchy": false
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "accent": true,
+                  "stretchy": true
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "↦"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "leftharpoonup": {
+      "input": "\\leftharpoonup",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {
+                  "stretchy": false
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "accent": true,
+                  "stretchy": true
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "↼"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "leftharpoondown": {
+      "input": "\\leftharpoondown",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {
+                  "stretchy": false
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "accent": true,
+                  "stretchy": true
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "↽"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "rightharpoonup": {
+      "input": "\\rightharpoonup",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {
+                  "stretchy": false
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "accent": true,
+                  "stretchy": true
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⇀"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "rightharpoondown": {
+      "input": "\\rightharpoondown",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {
+                  "stretchy": false
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "accent": true,
+                  "stretchy": true
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⇁"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "nearrow": {
+      "input": "\\nearrow",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {
+                  "stretchy": false
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "stretchy": true
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "↗"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "searrow": {
+      "input": "\\searrow",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {
+                  "stretchy": false
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "stretchy": true
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "↘"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "nwarrow": {
+      "input": "\\nwarrow",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {
+                  "stretchy": false
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "stretchy": true
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "↖"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "swarrow": {
+      "input": "\\swarrow",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {
+                  "stretchy": false
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "stretchy": true
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "↙"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "rightleftharpoons": {
+      "input": "\\rightleftharpoons",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {
+                  "stretchy": false
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "accent": true,
+                  "stretchy": true
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⇌"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "hookrightarrow": {
+      "input": "\\hookrightarrow",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {
+                  "stretchy": false
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "accent": true,
+                  "stretchy": true
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "↪"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "hookleftarrow": {
+      "input": "\\hookleftarrow",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {
+                  "stretchy": false
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "accent": true,
+                  "stretchy": true
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "↩"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "longleftarrow": {
+      "input": "\\longleftarrow",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {
+                  "stretchy": false
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "accent": true,
+                  "stretchy": true
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⟵"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "Longleftarrow": {
+      "input": "\\Longleftarrow",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {
+                  "stretchy": false
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "accent": true,
+                  "stretchy": true
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⟸"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "longrightarrow": {
+      "input": "\\longrightarrow",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {
+                  "stretchy": false
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "accent": true,
+                  "stretchy": true
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⟶"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "Longrightarrow": {
+      "input": "\\Longrightarrow",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {
+                  "stretchy": false
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "accent": true,
+                  "stretchy": true
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⟹"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "Longleftrightarrow": {
+      "input": "\\Longleftrightarrow",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {
+                  "stretchy": false
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "accent": true,
+                  "stretchy": true
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⟺"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "longleftrightarrow": {
+      "input": "\\longleftrightarrow",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {
+                  "stretchy": false
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "accent": true,
+                  "stretchy": true
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⟷"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "longmapsto": {
+      "input": "\\longmapsto",
+      "expected": {
+        "kind": "math",
+        "texClass": 3,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 3,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 3,
+                "attributes": {
+                  "stretchy": false
+                },
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "accent": true,
+                  "stretchy": true
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⟼"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "ldots": {
+      "input": "\\ldots",
+      "expected": {
+        "kind": "math",
+        "texClass": 7,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 7,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 7,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "…"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "cdots": {
+      "input": "\\cdots",
+      "expected": {
+        "kind": "math",
+        "texClass": 7,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 7,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 7,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⋯"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "vdots": {
+      "input": "\\vdots",
+      "expected": {
+        "kind": "math",
+        "texClass": 0,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 0,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "TeXAtom",
+                "texClass": 0,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "mrow",
+                    "texClass": 0,
+                    "attributes": {},
+                    "inherited": {
+                      "displaystyle": true,
+                      "scriptlevel": 0
+                    },
+                    "properties": {},
+                    "childNodes": [
+                      {
+                        "kind": "mo",
+                        "texClass": 0,
+                        "attributes": {},
+                        "inherited": {
+                          "displaystyle": true,
+                          "scriptlevel": 0,
+                          "form": "infix"
+                        },
+                        "properties": {},
+                        "childNodes": [
+                          {
+                            "kind": "text",
+                            "text": "⋮"
+                          }
+                        ],
+                        "isEmbellished": true
+                      }
+                    ],
+                    "isInferred": true,
+                    "isEmbellished": true
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "ddots": {
+      "input": "\\ddots",
+      "expected": {
+        "kind": "math",
+        "texClass": 7,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 7,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 7,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⋱"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "dotsc": {
+      "input": "\\dotsc",
+      "expected": {
+        "kind": "math",
+        "texClass": 7,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 7,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 7,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "…"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "dotsb": {
+      "input": "\\dotsb",
+      "expected": {
+        "kind": "math",
+        "texClass": 7,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 7,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 7,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⋯"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "dotsm": {
+      "input": "\\dotsm",
+      "expected": {
+        "kind": "math",
+        "texClass": 7,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 7,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 7,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⋯"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "dotsi": {
+      "input": "\\dotsi",
+      "expected": {
+        "kind": "math",
+        "texClass": 7,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 7,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 7,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⋯"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "dotso": {
+      "input": "\\dotso",
+      "expected": {
+        "kind": "math",
+        "texClass": 7,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 7,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 7,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {},
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "…"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "ldotp": {
+      "input": "\\ldotp",
+      "expected": {
+        "kind": "math",
+        "texClass": 6,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 6,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 6,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix",
+                  "separator": true
+                },
+                "properties": {
+                  "texClass": 6
+                },
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "."
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "cdotp": {
+      "input": "\\cdotp",
+      "expected": {
+        "kind": "math",
+        "texClass": 6,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 6,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 6,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {
+                  "texClass": 6
+                },
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": "⋅"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    },
+    "colon": {
+      "input": "\\colon",
+      "expected": {
+        "kind": "math",
+        "texClass": 6,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": 6,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [
+              {
+                "kind": "mo",
+                "texClass": 6,
+                "attributes": {},
+                "inherited": {
+                  "displaystyle": true,
+                  "scriptlevel": 0,
+                  "form": "infix"
+                },
+                "properties": {
+                  "texClass": 6
+                },
+                "childNodes": [
+                  {
+                    "kind": "text",
+                    "text": ":"
+                  }
+                ],
+                "isEmbellished": true
+              }
+            ],
+            "isInferred": true,
+            "isEmbellished": true
+          }
+        ],
+        "isEmbellished": true
+      }
+    }
+  }
+}
