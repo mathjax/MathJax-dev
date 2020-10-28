@@ -73,6 +73,12 @@ let document = function(packages, output = false) {
 };
 
 
+let outputError = function(char, type) {
+  console.error(`${type} Error: ` + char._symbol);
+};
+
+
+
 let convert = function(command, packages) {
   let doc = document(packages);
   let root = doc.convert(command, {end: STATE.CONVERT});
@@ -95,7 +101,7 @@ let collateDelimiters = function(map, packages) {
     let entry = `\\left${key} A \\middle${key} B \\right${key}`;
     let [conversion, error] = convert(entry, packages);
     if (error) {
-      console.log('Delimiter Error: ' + char._symbol);
+      outputError(char, 'Delimiter');
     } else {
       result[key] = {'input': entry, 'expected': conversion};
     }
@@ -174,7 +180,7 @@ let convertMacro = function(key, char, packages) {
     [conversion, error] = convert(str, packages);
   }
   if (error) {
-    console.log('Command Error: ' + char._symbol);
+    outputError(char, 'Command');
     str = '';
   }
   return [str, conversion];
@@ -201,7 +207,7 @@ let collateEnvironments = function(map, packages) {
       [conversion, error] = convert(entry, packages);
     }
     if (error) {
-      console.log('Environment Error: ' + char._symbol);
+      outputError(char, 'Environment');
     } else {
       result[key] = {'input': entry, 'expected': conversion};
     }
@@ -228,6 +234,7 @@ let collateMap = function(table, packages, pkg, method) {
 
 
 for (let pkg of ConfigurationHandler.keys()) {
+  // We ignore these two packages for automatic completion.
   if (pkg === 'bussproofs' || pkg === 'newcommand') continue;
   let configuration = ConfigurationHandler.get(pkg);
   packageMkdir(configuration);
@@ -236,7 +243,6 @@ for (let pkg of ConfigurationHandler.keys()) {
     for (let handler of handlers) {
       let table = MapHandler.getMap(handler);
       if (table instanceof sm.RegExpMap) continue;
-      //TODO: Be careful if the table is a delimiter table!
       if (table instanceof sm.DelimiterMap) {
         collateMap(table, packages, pkg, collateDelimiters);
       };
