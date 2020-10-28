@@ -1,5 +1,126 @@
 (require 'ediff)
 
+;;; Jest Tests
+;;; ==========
+;;;
+;;; Run by piping stdout and stderr into a file. Then use the output file form
+;;; the stderr pipe to replace expected for actual
+;;;
+;;; If piping stderr only the output file will contain noise for tty
+;;; colorization.
+;;;
+
+(defun jest-find-fail ()
+  ;; Returns start end for actual and expected and position of fail o/w nil.
+  (interactive)
+  (block find-fail-block
+    (let ((pos (condition-case nil
+                   (search-forward "●" nil t)
+                 (error nil))))
+      (when (null pos)
+        (return-from find-fail-block  nil))
+      (let ((expected (condition-case nil
+                          (search-forward "Expected value")
+                        (error nil)))
+            (actual (condition-case nil
+                        (search-forward "Received:")
+                      (error nil)))
+            )
+        (when (or (null actual) (null expected))
+          (return-from find-fail-block  nil))
+        (let* ((beg1 (progn
+                       (goto-char actual)
+                       (forward-line)
+                       (search-forward "\"")))
+               (end1 (1- (search-forward "\"")))
+               (fail1 (buffer-substring beg1 end1))
+               (beg2 (progn
+                       (goto-char expected)
+                       (forward-line)
+                       (search-forward "\"")))
+               (end2 (1- (search-forward "\"")))
+               (fail2 (buffer-substring beg2 end2)))
+          (list (cons beg1 end1) (cons beg2 end2) pos (cons fail1 fail2))
+          )))))
+
+
+(defun jest-diff-fail ()
+  (interactive)
+  ;; (do* ((fail (find-fail)))
+  ;;     ((null fail))
+  (let ((fail (jest-find-fail)))
+    (when (null fail) nil)
+    (ediff-regions-internal
+     (get-buffer (buffer-name)) (caar fail) (cdar fail)
+     (get-buffer (buffer-name)) (caadr fail) (cdadr fail)
+     nil 'ediff-regions-wordwise 'word-mode nil)))
+
+(global-set-key [?\C-c ?\C-d] 'jest-diff-fail)
+
+;;; Replace expected for actual
+
+(defun jest-replace-expected-for-actual ()
+  (interactive)
+  (block expected-block
+    (let* ((actual (jest-get-failed-testcase))
+           (testcase (first actual))
+           (expected (cdr (fifth actual)))
+           (new (car (fifth actual)))
+           )
+      (forward-line)
+      (other-window 1)
+      (beginning-of-buffer)
+      (let ((pos (condition-case nil
+                     (search-forward testcase)
+                   (error nil))))
+        (when (null pos)
+          (return-from expected-block nil))
+        (search-forward "\"expected\":")
+        (if (and (stringp expected) (string-equal expected ""))
+            (progn (condition-case nil
+                       (search-forward (concat "\"\""))
+                     (error nil))
+                   (backward-char 1)
+                   (insert new))
+          (let ((old (condition-case nil
+                       (search-forward (concat expected))
+                     (error nil))))
+          (print old)
+          (when (null old)
+            (return-from expected-block nil))
+          (backward-char (length expected))
+          (delete-region (point) old)
+          (insert new)
+          ))
+        (other-window 1)
+        t
+        ))))
+
+(defun jest-get-failed-testcase ()
+  (block fail-block
+    (let ((fail (jest-find-fail)))
+      (when (null fail) (return-from fail-block nil))
+      (let* ((point1 (progn
+                       (goto-char (third fail))
+                       (beginning-of-line)
+                       (condition-case nil
+                           (search-forward "›")
+                         (error nil))
+                       (forward-char 1)
+                       (point)))
+             (point2 (progn
+                       (condition-case nil
+                           (end-of-line) ;; For colorized files use:
+                                         ;; search-forward ""
+                         (error nil))
+                       (point)))
+             (name (buffer-substring point1 (1- point2))
+                   )
+             (actual (buffer-substring (caar fail) (cdar fail))))
+        (cons name fail)))))
+
+
+;;; This is for the old test environment.
 (defun find-fail ()
   ;; Returns start end for actual and expected and position of fail o/w nil.
   (interactive)
@@ -159,6 +280,7 @@
 
 
 ;;; Generate basic latex tests.
+;;; This is outdated with JEST. Replace with a novel method.
 
 (defun generate-latex-test ()
   (interactive)

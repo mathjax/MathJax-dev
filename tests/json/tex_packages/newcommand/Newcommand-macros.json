@@ -1,0 +1,134 @@
+{
+  "name": "newcommand Newcommand-macros table test",
+  "factory": "parserTest",
+  "packages": [
+    "base",
+    "newcommand"
+  ],
+  "tests": {
+    "newcommand": {
+      "input": "\\newcommand{A}{B}",
+      "expected": {
+        "kind": "math",
+        "texClass": null,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": null,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [],
+            "isInferred": true,
+            "isSpacelike": true
+          }
+        ],
+        "isSpacelike": true
+      }
+    },
+    "renewcommand": {
+      "input": "\\renewcommand{A}{B}",
+      "expected": {
+        "kind": "math",
+        "texClass": null,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": null,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [],
+            "isInferred": true,
+            "isSpacelike": true
+          }
+        ],
+        "isSpacelike": true
+      }
+    },
+    "newenvironment": {
+      "input": "\\newenvironment{A}{B}{C}",
+      "expected": {
+        "kind": "math",
+        "texClass": null,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": null,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [],
+            "isInferred": true,
+            "isSpacelike": true
+          }
+        ],
+        "isSpacelike": true
+      }
+    },
+    "renewenvironment": {
+      "input": "\\renewenvironment{A}{B}{C}",
+      "expected": {
+        "kind": "math",
+        "texClass": null,
+        "attributes": {
+          "display": "block"
+        },
+        "inherited": {
+          "displaystyle": true,
+          "scriptlevel": 0
+        },
+        "properties": {},
+        "childNodes": [
+          {
+            "kind": "mrow",
+            "texClass": null,
+            "attributes": {},
+            "inherited": {
+              "displaystyle": true,
+              "scriptlevel": 0
+            },
+            "properties": {},
+            "childNodes": [],
+            "isInferred": true,
+            "isSpacelike": true
+          }
+        ],
+        "isSpacelike": true
+      }
+    }
+  }
+}

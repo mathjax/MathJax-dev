@@ -6,11 +6,12 @@ import {chooseAdaptor} from '../mathjax3/js/adaptors/chooseAdaptor.js';
 import {STATE} from '../mathjax3/js/core/MathItem.js';
 import {AllPackages} from '../mathjax3/js/input/tex/AllPackages.js';
 import {CHTML} from '../mathjax3/js/output/chtml.js';
+import '../mathjax3/js/input/tex/physics/PhysicsConfiguration.js';
 
 RegisterHTMLHandler(chooseAdaptor());
 
 let html = mathjax.document('<html></html>', {
-  InputJax: new TeX({packages: AllPackages}),
+  InputJax: new TeX({packages: ['base', 'physics']}),
   OutputJax: new CHTML()
 });
 
