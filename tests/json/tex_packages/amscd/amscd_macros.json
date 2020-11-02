@@ -1,9 +1,0 @@
-{
-  "name": "amscd amscd_macros table test",
-  "factory": "parserTest",
-  "packages": [
-    "base",
-    "amscd"
-  ],
-  "tests": {}
-}
