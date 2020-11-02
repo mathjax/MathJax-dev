@@ -120,6 +120,18 @@
         (cons name fail)))))
 
 
+;;; Simple method to rewrite json tests from input to expected:
+(defun json-test-input-to-expected ()
+  (interactive)
+  (search-forward "{")
+  (backward-char 1)
+  (kill-sexp)
+  (insert "{\n\t\"expected\" : \"\"\n\t}")
+  (search-forward "{")
+  (beginning-of-line)
+  )
+
+
 ;;; This is for the old test environment.
 (defun find-fail ()
   ;; Returns start end for actual and expected and position of fail o/w nil.
