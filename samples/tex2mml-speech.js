@@ -13,7 +13,12 @@ import {CHTML} from '../mathjax3/js/output/chtml.js';
 EnrichHandler(RegisterHTMLHandler(chooseAdaptor()), new MathML());
 
 let html = mathjax.document('<html></html>', {
-  enrichSpeech: 'deep',
+  sre: {
+    speech: 'deep',
+    domain: 'clearspeak',
+    style: 'default',
+    locale: 'en'
+  },
   InputJax: new TeX({packages: AllPackages}),
   OutputJax: new CHTML()   // Needed for bussproofs
 });
