@@ -29,12 +29,12 @@ const {TeX} = require('../mathjax3/js/input/tex.js');
 const {AllPackages} = require('../mathjax3/js/input/tex/AllPackages.js');
 const {Configuration, ConfigurationHandler} = require('../mathjax3/js/input/tex/Configuration.js');
 const {MapHandler} = require('../mathjax3/js/input/tex/MapHandler.js');
-const {AbstractParseMap, EnvironmentMap, DelimiterMap, RegExpMap} = require('../mathjax3/js/input/tex/SymbolMap.js');
+const {AbstractParseMap, EnvironmentMap, DelimiterMap, RegExpMap, MacroMap, CommandMap} = require('../mathjax3/js/input/tex/SymbolMap.js');
 
 const fs = require('fs');
 
 // Packages not included in AllPackages.
-const extraPackages = ['physics', 'colorv2', 'setOptions'];
+const extraPackages = ['physics', 'colorv2', 'mhchem','setOptions'];
 
 AbstractParseMap.prototype.toString = function() {
   let str = `Table: ${this._name}: \n`;
@@ -63,6 +63,14 @@ EnvironmentMap.prototype.outputEntry = function(entry) {
 
 DelimiterMap.prototype.outputEntry = function(entry) {
   return entry;
+};
+
+MacroMap.prototype.outputEntry = function(entry) {
+  return entry;
+};
+
+CommandMap.prototype.outputEntry = function(entry) {
+  return `\\${entry}`;
 };
 
 
@@ -131,6 +139,9 @@ function rstOptions(name, options) {
   return str;
 }
 
+let alphaCompare = (a, b) => a.toLowerCase().localeCompare(b.toLowerCase());
+    
+
 function rstCommands(name, handlers) {
   let str = '\n\n-----\n\n\n';
   str += `.. _tex-${name}-commands:\n\n`;
@@ -153,16 +164,12 @@ function rstCommands(name, handlers) {
   }
   if (commands.length) {
     str += 'The `' + name + '` extension implementes the following macros:\n';
-    str += commands.sort(function (a, b) {
-    return a.toLowerCase().localeCompare(b.toLowerCase());
-    }).join(', ');
+    str += commands.sort(alphaCompare).join(', ');
   }
   if (envs.length) {
     str += commands.length ? '\n\nAnd the following environments:\n' :
       'The `' + name + '` extension implementes the following environments:\n\n';
-    str += envs.sort(function (a, b) {
-      return a.toLowerCase().localeCompare(b.toLowerCase());
-    }).join(', ');
+    str += envs.sort(alphaCompare).join(', ');
   }
   return str;
 }
@@ -178,6 +185,8 @@ Configuration.prototype.toRst = function(keys) {
   return str;
 };
 
+// Output of a single package.
+// Usage: rstConfiguration('physics', '/tmp/physics.rst');
 function rstConfiguration(name, file = '') {
   let config = ConfigurationHandler.get(name);
   let str = config ? config.toRst() : '';
@@ -237,7 +246,9 @@ function compileCommandTable() {
           char = handler.outputEntry(char);
           let com = commandMap.get(char);
           if (com) {
-            com.push(package);
+            if (com.indexOf(package) === -1) {
+              com.push(package);
+            }
           } else {
             commandMap.set(char, [package]);
           }
@@ -251,7 +262,9 @@ function compileCommandTable() {
         char = handler.outputEntry(char);
         let com = envMap.get(char);
         if (com) {
-          com.push(package);
+          if (com.indexOf(package) === -1) {
+            com.push(package);
+          }
         } else {
           envMap.set(char, [package]);
         }
@@ -260,6 +273,72 @@ function compileCommandTable() {
   }
 }
 
-function rstCommandTable() {
+let rstTableEnv = '.. list-table::\n   :widths: 70 30\n\n';
+
+
+function rstCommandTableLine([command, packages]) {
+  let str = '   * - ``' + command + '``\n';
+  return str + '     -' +
+    ((packages.length === 1 && packages[0] === 'base') ? '' :
+    (' ' + packages.map(p => extraPackages.indexOf(p) === -1 ? `**${p}**` : `*${p}*`)
+     .join(', ')));
+}
+
+function rstTable(title, entries) {
+  return rstTitle(title) + rstTableEnv +
+    entries.map(rstCommandTableLine).join('\n');
+}
+
+function rstCommandTables(cmd) {
+  let table = [];
+  let result = [];
+  // Symbols
+  for (let [symb, pkg] of cmd.entries()) {
+    if (symb.match(/^([a-zA-Z]|\\[a-zA-Z])/)) {
+      continue;
+    }
+    table.push([symb, cmd.get(symb)]);
+    cmd.delete(symb);
+  }
+  result.push(rstTable('Symbols', table));
+  let char;
+  for (let i = 65; i <= 90; i++) {
+    table = [];
+    char = String.fromCharCode(i);
+    let regExp = new RegExp(
+        `^(${char}|${char.toLowerCase()}|\\\\${char}|\\\\${char.toLowerCase()})`);
+    for (let [command, packages] of cmd.entries()) {
+      if (!command.match(regExp)) {
+        result.push(rstTable(char, table));
+        break;
+      }
+      table.push([command, packages]);
+      cmd.delete(command);
+    }
+  }
+  result.push(rstTable(char, table));
+  return result.join('\n\n');
+}
+
+function rstEnvironments(env) {
+  return rstTable('Environments', [...env.entries()]);
+}
+
+
+// Usage: var lll = rstSymbolIndex('/tmp/tables.rst');
+// Note: Some cleanup is usually necessary on the symbols table.
+function rstSymbolIndex(file = ``) {
   compileCommandTable();
+  let header = '.. raw:: html\n\n   <style>\n' +
+      '   .wy-table-responsive table {width: 100%}\n'+
+      '   .rst-content .wy-table-responsive table code.literal {background: inherit}' +
+      '   </style>\n\n';
+  let entryCompare = (a, b) => alphaCompare(a[0], b[0]);
+  let sortedCommands = new Map([...commandMap.entries()].sort(entryCompare));
+  let sortedEnvs = new Map([...envMap.entries()].sort(entryCompare));
+  let final = header + rstCommandTables(sortedCommands) + '\n\n' + rstEnvironments(sortedEnvs);
+  if (file) {
+    fs.writeFileSync(file, final);
+  }
+  return final;
 }
