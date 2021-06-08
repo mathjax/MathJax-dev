@@ -342,3 +342,11 @@ function rstSymbolIndex(file = ``) {
   }
   return final;
 }
+
+
+function rstAllPackages() {
+  for (let package of AllPackages.concat(extraPackages)) {
+    rstConfiguration(package, `/tmp/${package}.rst`);
+  }
+}
+
