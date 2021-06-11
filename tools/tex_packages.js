@@ -30,6 +30,7 @@ const {AllPackages} = require('../mathjax3/js/input/tex/AllPackages.js');
 const {Configuration, ConfigurationHandler} = require('../mathjax3/js/input/tex/Configuration.js');
 const {MapHandler} = require('../mathjax3/js/input/tex/MapHandler.js');
 const {AbstractParseMap, EnvironmentMap, DelimiterMap, RegExpMap, MacroMap, CommandMap} = require('../mathjax3/js/input/tex/SymbolMap.js');
+const {AutoloadConfiguration} = require('../mathjax3/js/input/tex/autoload/AutoloadConfiguration.js');
 
 const fs = require('fs');
 
@@ -72,6 +73,46 @@ MacroMap.prototype.outputEntry = function(entry) {
 CommandMap.prototype.outputEntry = function(entry) {
   return `\\${entry}`;
 };
+
+
+function rstIntro(name) {
+  let str = 'The `' + name + '` extension implements the ``' + name + '`` ';
+  str += 'style package from LaTeX.\n';
+  str += '**...Explanation...**\n';
+  str += 'See the `CTAN page <https://www.ctan.org/pkg/' + name + '>`__\n';
+  str += 'for more information and documentation of `' + name + '`.';
+  return str;
+}
+
+function rstExplicitLoading(name) {
+  let str = 'To load the `' + name + '` extension, add ``\'[tex]/\'' + name + '\'`` ';
+  str += 'to the ``load`` array of the ``loader`` block of your\n';
+  str += 'MathJax configuration, and add ``\'' + name + '\'`` to the';
+  str += ' ``packages`` array of the ``tex`` block.\n\n';
+  return str;
+}
+
+function rstIsAutoloaded(name) {
+  let str = 'This extension is loaded automatically when the `autoload` ';
+  str += 'extension is used.\n';
+  str += rstExplicitLoading(name);
+  return str;
+}
+
+function rstIsNotAutoloaded(name) {
+  let str = 'This package is not autoloaded, so you must';
+  str += ' request it explicitly if you want to use it.\n';
+  str += rstExplicitLoading(name);
+  return str;
+}
+
+function isAutoloaded(name) {
+  return !!AutoloadConfiguration.options.autoload[name];
+}
+
+function rstAutoload(name) {
+  return isAutoloaded(name) ? rstIsAutoloaded(name) : rstIsNotAutoloaded(name);
+}
 
 
 function rstHeader(name) {
@@ -163,12 +204,12 @@ function rstCommands(name, handlers) {
     }
   }
   if (commands.length) {
-    str += 'The `' + name + '` extension implementes the following macros:\n';
+    str += 'The `' + name + '` extension implements the following macros:\n';
     str += commands.sort(alphaCompare).join(', ');
   }
   if (envs.length) {
     str += commands.length ? '\n\nAnd the following environments:\n' :
-      'The `' + name + '` extension implementes the following environments:\n\n';
+      'The `' + name + '` extension implements the following environments:\n\n';
     str += envs.sort(alphaCompare).join(', ');
   }
   return str;
@@ -176,6 +217,10 @@ function rstCommands(name, handlers) {
 
 Configuration.prototype.toRst = function(keys) {
   let str = rstHeader(this.name);
+  str += '\n\n';
+  str += rstIntro(this.name);
+  str += '\n\n';
+  str += rstAutoload(this.name);
   str += '\n' + rstCodeBlock(this.name) + '\n\n\n' + rstRequireBlock(this.name);
   if (this.options[this.name]) {
     str += rstOptions(this.name, this.options[this.name]);
@@ -227,7 +272,7 @@ function outputConfigurations() {
   return results.join('\n\n');
 }
 
-
+// Command Index methods
 let commandMap = new Map();
 let envMap = new Map();
 
@@ -280,7 +325,8 @@ function rstCommandTableLine([command, packages]) {
   let str = '   * - ``' + command + '``\n';
   return str + '     -' +
     ((packages.length === 1 && packages[0] === 'base') ? '' :
-    (' ' + packages.map(p => extraPackages.indexOf(p) === -1 ? `**${p}**` : `*${p}*`)
+     (' ' + packages.map(
+       p => (p === 'base' || p === 'ams' || isAutoloaded(p)) ? `**${p}**` : `*${p}*`)
      .join(', ')));
 }
 
@@ -325,7 +371,8 @@ function rstEnvironments(env) {
 }
 
 
-// Usage: var lll = rstSymbolIndex('/tmp/tables.rst');
+// Output of the symbol index.
+// Usage: rstSymbolIndex('/tmp/index.rst');
 // Note: Some cleanup is usually necessary on the symbols table.
 function rstSymbolIndex(file = ``) {
   compileCommandTable();
@@ -344,9 +391,13 @@ function rstSymbolIndex(file = ``) {
 }
 
 
+// Output of sekeleton documentation for all packages.
+// Usage: rstAllPackages()
 function rstAllPackages() {
   for (let package of AllPackages.concat(extraPackages)) {
     rstConfiguration(package, `/tmp/${package}.rst`);
   }
 }
 
+rstAllPackages();
+rstSymbolIndex('/tmp/index.rst');
