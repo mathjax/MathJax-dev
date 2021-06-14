@@ -14,7 +14,9 @@ const adaptor = chooseAdaptor();
 EnrichHandler(RegisterHTMLHandler(adaptor), new MathML());
 
 let html = mathjax.document('<html></html>', {
-  enrichSpeech: 'deep',
+  sre: {
+    speech: 'deep'
+  },
   InputJax: new TeX({packages: ['base']}),
   OutputJax: new SVG(),
   renderActions: {
