@@ -35,7 +35,7 @@ const {AutoloadConfiguration} = require('../mathjax3/js/input/tex/autoload/Autol
 const fs = require('fs');
 
 // Packages not included in AllPackages.
-const extraPackages = ['physics', 'colorv2', 'mhchem','setOptions'];
+const extraPackages = ['physics', 'colorv2', 'setOptions'];
 
 AbstractParseMap.prototype.toString = function() {
   let str = `Table: ${this._name}: \n`;
@@ -253,7 +253,7 @@ Configuration.prototype.toString = function(keys) {
   let option = [];
   if (this.options[this.name]) {
     for (let [key, value] of Object.entries(this.options[this.name])) {
-    option.push(`${key}: ${value}`);
+      option.push(`${key}: ${value}`);
     }
   }
   if (option.length) {
