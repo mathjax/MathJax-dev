@@ -10,12 +10,17 @@
 <script src="lib/traceur.min.js"></script>
 <script src="lib/system.js"></script>
 <script>
-System.defaultJSExtensions = true;
 System.config({
   map: {
+    'speech-rule-engine': './node_modules/speech-rule-engine',
     'mj-context-menu': './node_modules/mj-context-menu',
     'mhchemparser': './node_modules/mhchemparser'
-  }
+},
+packages: {
+'speech-rule-engine': {
+defaultExtension: 'js'
+}
+}
 });
 </script>
 <style>
