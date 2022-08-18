@@ -16,16 +16,12 @@ For the remainder we assume that this symlink has been set.
 ## Getting the Lab to work
 
 
-You need to install the MathJax context menu first:
+You need to install the MathJax context menu and the mhchem parser first:
 
 ``` shell
-nmp install mj-context-menu
-```
-
-Create a symbolic link for the context menu. MathJax expects it to be _in parallel_ to its code.
-
-``` shell
-ln -s node_modules/mj-context-menu
+npm install mj-context-menu
+npm install mhchemparser
+npm install speech-rule-engine
 ```
 
 Then run the lab by loading `v3-lab.html` in your webbrowser via a local

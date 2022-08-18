@@ -8,12 +8,19 @@
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <![endif]-->
 <script src="lib/traceur.min.js"></script>
+<script>let PACKAGE_VERSION = '3.2.1'</script>
 <script src="lib/system.js"></script>
 <script>
 System.config({
   map: {
-    'mj-context-menu': './node_modules/mj-context-menu'
-  }
+    'speech-rule-engine': './node_modules/speech-rule-engine',
+    'mj-context-menu': './node_modules/mj-context-menu',
+    'mhchemparser': './node_modules/mhchemparser'
+},
+packages: {
+'speech-rule-engine': {
+}
+}
 });
 </script>
 <style>
@@ -39,8 +46,8 @@ body {
   vertical-align: top;
 }
 #layout > div > div:last-child {
-  width: 18em;
-  max-width: 18em;
+  width: 18.5em;
+  max-width: 18.5em;
 }
 
 #main {
@@ -74,26 +81,43 @@ body {
   padding-left: 1em;
   font-size: 80%;
 }
-#controls > div {
+#controls > div,
+#controls details > div {
   margin-bottom: .5em;
   white-space: nowrap;
+}
+summary + * {
+  margin-top: .5em;
 }
 #controls > hr {
   border: none;
   border-top: 2px dotted;
   margin: .7em 1em .7em 0;
 }
-#package {
-  margin-top: .5em;
+#mml-package,
+#tex-package,
+#text-package {
+  column-count: 2;
   white-space: normal ! important;
 }
-#package > span > span {
+#mml-package > span > span,
+#tex-package > span > span,
+#text-package > span > span {
   display: inline-block;
   width: 9em;
   white-space: nowrap;
 }
-#package label {
+#mml-package label,
+#tex-package label,
+#text-package label {
   padding-left: 5px;
+}
+
+#output-details  label:first-child,
+#texinput-details label:first-child {
+  display: inline-block;
+  min-width: 7em;
+  text-align: right;
 }
 
 input[disabled] + label {
@@ -114,12 +138,17 @@ input[disabled] + label {
 <input id="keep" type="button" value="Keep" onclick="Lab.Keep()" disabled />
 <input id="typeset" type="button" value="Typeset" onclick="Lab.Typeset()" disabled />
 </div>
-<div class="output" id="output"></div>
-<div class="output" id="output2"></div>
+<div class="output" id="output1"></div>
+<div class="output" id="output2" style="display: none; border-top: none"></div>
+<div style="overflow: auto">
 <pre id="mathml"></pre>
+</div>
 </div>
 
 <div id="controls">
+
+<details id="render-details" ontoggle="Lab.setDetails(this)">
+<summary><b>Rendering Options:</b></summary>
 <div>
 <label for="format">Input:</label>
 <select id="format" onchange="Lab.setFormat(this.value)">
@@ -129,25 +158,64 @@ input[disabled] + label {
 </select>
 </div>
 <div>
-<label for="renderer">Output:</label>
-<select id="renderer" onchange="Lab.setRenderer(this.value)">
+<label for="jax">Output:</label>
+<select id="jax" onchange="Lab.setRenderer(this.value)">
 <option value="CHTML">CHTML</option>
 <option value="SVG">SVG</option>
 </select>
 </div>
 <div>
-<input type="checkbox" id="showMML" onchange="Lab.setMathML(this.checked)" /><label for="showMML"> Show MathML</label><br/>
-<input type="checkbox" id="showSecondOutput" onchange="Lab.setSecondOutput(this.checked)" /><label for="showSecondOutput"> Show 2nd Output</label>
+<input type="checkbox" id="MML" onchange="Lab.setMathML(this.checked)" /><label for="MML"> Show MathML</label><br/>
+<input type="checkbox" id="secondOutput" onchange="Lab.setSecondOutput(this.checked)" /><label for="secondOutput"> Show 2nd Output</label>
 </div>
+</details>
+
 <hr/>
+<div>
+<details id="menu-details" ontoggle="Lab.setDetails(this)">
+<summary><b>Assistive Options:</b></summary>
 <div>
 <input type="checkbox" id="enrich" onchange="Lab.setEnrich(this.checked)" /><label for="enrich"> Enrich MathML</label><br/>
 <input type="checkbox" id="compute" onchange="Lab.setCompute(this.checked)" /><label for="compute"> Compute Complexity</label><br/>
 <input type="checkbox" id="collapse" onchange="Lab.setCollapse(this.checked)" /><label for="collapse"> Collapse Complex Math</label><br/>
 <input type="checkbox" id="explore" onchange="Lab.setExplorer(this.checked)" /><label for="explore"> Math Explorer</label><br/>
 </div>
+<div>
+<input type="checkbox" id="semantics"
+onchange="Lab.setSemantics(this.checked)" /><label for="semantics">
+Hide Semantic Attributes</label><br/>
+</div>
+</details>
+</div>
+
 <hr/>
-<div id="package"></div>
+<details id="texinput-details" ontoggle="Lab.setDetails(this)">
+<summary><b>TeX Input Options:</b></summary>
+</details>
+
+<hr/>
+<details id="output-details" ontoggle="Lab.setDetails(this)">
+<summary><b>Output Options:</b></summary>
+</details>
+
+<hr/>
+<details id="mml-details" ontoggle="Lab.setDetails(this)">
+<summary><b>MathML Extensions:</b></summary>
+<div id="mml-package"></div>
+</details>
+
+<hr/>
+<details id="tex-details" ontoggle="Lab.setDetails(this)">
+<summary><b>TeX Packages:</b></summary>
+<div id="tex-package"></div>
+</details>
+
+<hr/>
+<details id="text-details" ontoggle="Lab.setDetails(this)">
+<summary><b>TextMacros Packages:</b></summary>
+<div id="text-package"></div>
+</details>
+
 </div>
 </div>
 </div>
@@ -157,9 +225,16 @@ __dirname = String(location.href).replace(/v3-lab\.html.*/, 'mathjax3/components
 </script>
 
 <script>
+document.getElementById('keep').disabled = true;
+document.getElementById('typeset').disabled = true;
+document.getElementById('input').value = ''
+</script>
+
+<script>
 System.import('./lib/v3-lab.js')
   .then(function () {return System.import('./mathjax3/components/src/startup/startup.js')})
   .catch(function (error) {console.log(error.message)});
 </script>
+
 </body>
 </html>
