@@ -21,6 +21,7 @@ You need to install the MathJax context menu and the mhchem parser first:
 ``` shell
 npm install mj-context-menu
 npm install mhchemparser
+npm install speech-rule-engine
 ```
 
 Then run the lab by loading `v3-lab.html` in your webbrowser via a local
