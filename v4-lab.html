@@ -3,27 +3,34 @@
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>MathJax v3 Interactive Lab</title>
+<title>MathJax v4 Interactive Lab</title>
 <!--[if IE 11]>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <![endif]-->
-<script src="lib/traceur.min.js"></script>
-<script>let PACKAGE_VERSION = '3.2.1'</script>
-<script src="lib/system.js"></script>
+<script type="importmap">
+{
+  "imports": {
+    "#js/": "./mathjax3/mjs/",
+    "#source/source.cjs": "./mathjax3/components/mjs/source-lab.js",
+    "#root/": "./mathjax3/mjs/components/mjs/",
+    "#mml3/": "./mathjax3/mjs/input/mathml/mml3/mjs/",
+    "#default-font/": "./node_modules/mathjax-modern-font/mjs/",
+    "#sre/": "./node_modules/speech-rule-engine/mjs/",
+    "#menu/": "./node_modules/mj-context-menu/js/",
+    "#mhchem/": "./node_modules/mhchemparser/esm/",
+    "mathjax-full/components/src/": "./mathjax3/components/mjs/",
+    "mathjax-full/js/": "./mathjax3/mjs/",
+    "mathjax-full/": "./mathjax3/"
+  }
+}
+</script>
 <script>
-System.config({
-  map: {
-    'speech-rule-engine': './node_modules/speech-rule-engine',
-    'mj-context-menu': './node_modules/mj-context-menu',
-    'mhchemparser': './node_modules/mhchemparser'
-},
-packages: {
-'speech-rule-engine': {
-}
-}
-});
+PACKAGE_VERSION = "4.0.0-test";
 </script>
 <style>
+.MJX_LiveRegion_Show {
+  font-size: 150%;
+}
 h1 {
   margin-left: 1.5em;
   margin-top: .25em;
@@ -128,7 +135,7 @@ input[disabled] + label {
 </head>
 <body>
 
-<h1>MathJax v3 Interactive Lab</h1>
+<h1>MathJax v4 Interactive Lab</h1>
 
 <div id="layout">
 <div>
@@ -221,19 +228,14 @@ Hide Semantic Attributes</label><br/>
 </div>
 
 <script>
-__dirname = String(location.href).replace(/v3-lab\.html.*/, 'mathjax3/components/src');
-</script>
-
-<script>
 document.getElementById('keep').disabled = true;
 document.getElementById('typeset').disabled = true;
-document.getElementById('input').value = ''
+document.getElementById('input').value = '';
 </script>
 
-<script>
-System.import('./lib/v3-lab.js')
-  .then(function () {return System.import('./mathjax3/components/src/startup/startup.js')})
-  .catch(function (error) {console.log(error.message)});
+<script type="module">
+  import './lib/v4-lab.js';
+  import 'mathjax-full/components/src/startup/startup.js';
 </script>
 
 </body>
