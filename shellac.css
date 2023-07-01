@@ -1,0 +1,20 @@
+/* Formatting */
+code[data-shellac] div {
+    display: grid;
+    font-family: monospace;
+}
+code[data-shellac] span {
+    font-family: monospace;
+}
+
+/* Highlights (scm specific) */
+code[data-shellac] [highlight=string] {
+    color: brown;
+}
+code[data-shellac] [highlight="string.special.key"] {
+    color: orange;
+}
+code[data-shellac] [highlight=number] {
+    color: blue;
+}
+
