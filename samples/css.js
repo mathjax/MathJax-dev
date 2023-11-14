@@ -1,6 +1,6 @@
-import {CHTML} from '../mathjax3/js/output/chtml.js';
-import {liteAdaptor} from '../mathjax3/js/adaptors/liteAdaptor.js';
-import {HTMLDocument} from '../mathjax3/js/handlers/html/HTMLDocument.js';
+import {CHTML} from 'mathjax-full/js/output/chtml.js';
+import {liteAdaptor} from 'mathjax-full/js/adaptors/liteAdaptor.js';
+import {HTMLDocument} from 'mathjax-full/js/handlers/html/HTMLDocument.js';
 
 const chtml = new CHTML();
 

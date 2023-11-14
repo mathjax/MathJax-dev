@@ -3,8 +3,23 @@
 <head>
 <title>MathJax v3 Tables Sample 39</title>
 <link rel="stylesheet" type="text/css" href="lib/dual-tables.css">
-<script src="../../lib/traceur.min.js"></script>
-<script src="../../lib/system.js"></script>
+<script type="importmap">
+{
+  "imports": {
+    "#js/": "../../node_modules/mathjax-full/mjs/",
+    "#source/source.cjs": "../../node_modules/mathjax-full/components/mjs/source-lab.js",
+    "#root/": "../../node_modules/mathjax-full/mjs/components/mjs/",
+    "#mml3/": "../../node_modules/mathjax-full/mjs/input/mathml/mml3/mjs/",
+    "#default-font/": "../../node_modules/mathjax-modern-font/mjs/",
+    "#sre/": "../../node_modules/speech-rule-engine/js/",
+    "#menu/": "../../node_modules/mj-context-menu/js/",
+    "#mhchem/": "../../node_modules/mhchemparser/esm/",
+    "mathjax-full/components/src/": "../../node_modules/mathjax-full/components/mjs/",
+    "mathjax-full/js/": "../../node_modules/mathjax-full/mjs/",
+    "mathjax-full/": "../../node_modules/mathjax-full/"
+  }
+}
+</script>
 </head>
 <body>
 
@@ -41,9 +56,7 @@ var variables = [
 </script>
 
 <script>
-System.import('./lib/dual-tables.js').catch(function (error) {console.log(error.message)});
+import('./lib/dual-tables.js').catch(function (error) {console.log(error.message)});
 </script>
 </body>
 </html>
-
-

@@ -1,9 +1,9 @@
-import {mathjax} from '../mathjax3/js/mathjax.js';
+import {mathjax} from 'mathjax-full/js/mathjax.js';
 
-import {AsciiMath} from '../mathjax3/js/input/asciimath.js';
-import {CHTML} from '../mathjax3/js/output/chtml.js';
+import {AsciiMath} from 'mathjax-full/js/input/asciimath.js';
+import {CHTML} from 'mathjax-full/js/output/chtml.js';
 import {adaptor, htmlDocument} from './lib/chooseHTML.js';
-import {STATE} from '../mathjax3/js/core/MathItem.js';
+import {STATE} from 'mathjax-full/js/core/MathItem.js';
 
 const OPTIONS = {
   InputJax: new AsciiMath(),
