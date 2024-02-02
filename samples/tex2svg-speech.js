@@ -1,14 +1,14 @@
-import {mathjax} from '../mathjax3/js/mathjax.js';
-import '../mathjax3/js/util/asyncLoad/node.js';
+import {mathjax} from 'mathjax-full/js/mathjax.js';
+import 'mathjax-full/js/util/asyncLoad/node.js';
 
-import {TeX} from '../mathjax3/js/input/tex.js';
-import {MathML} from '../mathjax3/js/input/mathml.js';
-import {SVG} from '../mathjax3/js/output/svg.js';
-import {RegisterHTMLHandler} from '../mathjax3/js/handlers/html.js';
-import {chooseAdaptor} from '../mathjax3/js/adaptors/chooseAdaptor.js';
-import {STATE} from '../mathjax3/js/core/MathItem.js';
-import {AllPackages} from '../mathjax3/js/input/tex/AllPackages.js';
-import {EnrichHandler} from '../mathjax3/js/a11y/semantic-enrich.js';
+import {TeX} from 'mathjax-full/js/input/tex.js';
+import {MathML} from 'mathjax-full/js/input/mathml.js';
+import {SVG} from 'mathjax-full/js/output/svg.js';
+import {RegisterHTMLHandler} from 'mathjax-full/js/handlers/html.js';
+import {chooseAdaptor} from 'mathjax-full/js/adaptors/chooseAdaptor.js';
+import {STATE} from 'mathjax-full/js/core/MathItem.js';
+import {AllPackages} from 'mathjax-full/js/input/tex/AllPackages.js';
+import {EnrichHandler} from 'mathjax-full/js/a11y/semantic-enrich.js';
 
 const adaptor = chooseAdaptor();
 EnrichHandler(RegisterHTMLHandler(adaptor), new MathML());

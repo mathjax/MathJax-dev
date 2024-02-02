@@ -1,14 +1,14 @@
-import {MathML} from "../../../mathjax3/input/mathml.js";
-import {CHTML} from "../../../mathjax3/output/chtml.js";
-import {SVG} from "../../../mathjax3/output/svg.js";
-import {HTMLMathItem} from "../../../mathjax3/handlers/html/HTMLMathItem.js";
-import {HTMLDocument} from "../../../mathjax3/handlers/html/HTMLDocument.js";
-import {handleRetriesFor} from "../../../mathjax3/util/Retries.js";
-import {browserAdaptor} from "../../../mathjax3/adaptors/browserAdaptor.js";
+import {MathML} from "mathjax-full/js/input/mathml.js";
+import {CHTML} from "mathjax-full/js/output/chtml.js";
+import {SVG} from "mathjax-full/js/output/svg.js";
+import {HTMLMathItem} from "mathjax-full/js/handlers/html/HTMLMathItem.js";
+import {HTMLDocument} from "mathjax-full/js/handlers/html/HTMLDocument.js";
+import {handleRetriesFor} from "mathjax-full/js/util/Retries.js";
+import {browserAdaptor} from "mathjax-full/js/adaptors/browserAdaptor.js";
 
 let mml = new MathML({forceReparse: true});
-let chtml = new CHTML({fontURL: '../../mathjax2/css/'});
-let svg = new SVG();
+let chtml = new CHTML({fontURL: '../../node_modules/mathjax-modern-font/chtml/woff'});
+let svg = new SVG({});
 
 let docs = {
   CHTML: new HTMLDocument(document, browserAdaptor(), {InputJax: mml, OutputJax: chtml}),
@@ -75,7 +75,7 @@ function linkTables(n, m, arrow) {
     return '<a href="tables-' + N + '.html"' + (n === m ? ' disabled="true"' : '') + '>&#x' + arrow + ';</a>';
 }
 
-const testNo = parseInt(this.location.pathname.match(/-(\d+)\.html$/)[1]);
+const testNo = parseInt(window.location.pathname.match(/-(\d+)\.html$/)[1]);
 const maxTest = 60;
 
 const nav = document.body.appendChild(document.createElement('div'));
@@ -86,16 +86,9 @@ nav.innerHTML = [
 ].join(' ');
 
 
-docs.CHTML
-  .findMath({elements: ['mjx-chtml-table']})
-  .compile()
-  .getMetrics()
-  .typeset()
-  .updateDocument();
+chtml.options.elements = ['mjx-chtml-table'];
+svg.options.elements = ['mjx-svg-table'];
 
-docs.SVG
-  .findMath({elements: ['mjx-svg-table']})
-  .compile()
-  .getMetrics()
-  .typeset()
-  .updateDocument();
+docs.CHTML.render();
+docs.SVG.render();
+

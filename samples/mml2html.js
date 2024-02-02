@@ -1,10 +1,10 @@
-import {mathjax} from '../mathjax3/js/mathjax.js';
+import {mathjax} from 'mathjax-full/js/mathjax.js';
 
-import {MathML} from '../mathjax3/js/input/mathml.js';
-import {CHTML} from '../mathjax3/js/output/chtml.js';
-import {RegisterHTMLHandler} from '../mathjax3/js/handlers/html.js';
-import {chooseAdaptor} from '../mathjax3/js/adaptors/chooseAdaptor.js';
-import {STATE} from '../mathjax3/js/core/MathItem.js';
+import {MathML} from 'mathjax-full/js/input/mathml.js';
+import {CHTML} from 'mathjax-full/js/output/chtml.js';
+import {RegisterHTMLHandler} from 'mathjax-full/js/handlers/html.js';
+import {chooseAdaptor} from 'mathjax-full/js/adaptors/chooseAdaptor.js';
+import {STATE} from 'mathjax-full/js/core/MathItem.js';
 
 const adaptor = chooseAdaptor();
 RegisterHTMLHandler(adaptor);

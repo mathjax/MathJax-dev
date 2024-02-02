@@ -1,5 +1,5 @@
-import {liteAdaptor} from '../mathjax3/js/adaptors/liteAdaptor.js';
-import {jsdomAdaptor} from '../mathjax3/js/adaptors/jsdomAdaptor.js';
+import {liteAdaptor} from 'mathjax-full/js/adaptors/liteAdaptor.js';
+import {jsdomAdaptor} from 'mathjax-full/js/adaptors/jsdomAdaptor.js';
 
 let JSDOM = require('jsdom').JSDOM;
 

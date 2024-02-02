@@ -1,4 +1,4 @@
-import {Styles} from '../mathjax3/js/util/Styles.js';
+import {Styles} from 'mathjax-full/js/util/Styles.js';
 
 let JSDOM = require('jsdom').JSDOM;
 

@@ -1,52 +1,51 @@
-# MathJax v3 Developers Tools
+# MathJax v4 Developers Tools
 
-Some developers tools for testing local MathJax v3 code base.
+Some developers tools for testing local MathJax v4 code base.
 
 ## General setup
 
 To run most scripts in the tools you need to connect to your current version of
-MathJax3.  Assuming that MathJax3 sources are at `<MJ3-PATH>` you need to link
-in the JavaScript sources there:
+MathJax4.  To do this, `cd` to the current MathJax4 directory and do
 
 ``` shell
-ln -s <MJ3-PATH> mathjax3
+npm link
 ```
+
+then `cd` to the MathJax-dev directory and do
+
+``` shell
+npm install
+npm link mathjax-full
+```
+
 For the remainder we assume that this symlink has been set.
 
-## Getting the Lab to work
+## Running the lab
 
-
-You need to install the MathJax context menu and the mhchem parser first:
-
-``` shell
-npm install mj-context-menu
-npm install mhchemparser
-npm install speech-rule-engine
-```
-
-Then run the lab by loading `v3-lab.html` in your webbrowser via a local
+Then run the lab by loading `v4-lab.html` in your webbrowser via a local
 webserver. E.g., create a symbolic link
 
 
 ``` shell
-sudo ln -s <MathJax-dev-PATH> /var/www/html/
+sudo ln -s <MathJax-dev-PATH> /var/www/html/MathJax-dev
 ```
 
 Run the lab on `localhost` using the URL
 
 ``` shell
-http://localhost/MathJax-dev/v3-lab.html
+http://localhost/MathJax-dev/v4-lab.html
 ```
 
-Or alternatively serve directly from the directory, i.e., by running a python server:
+Or, alternatively, serve directly from the directory, e.g., by running a python server:
 
 ``` shell
 python -m SimpleHTTPServer 8000
 ```
+
 and then run the lab at the following URL
 
 ``` shell
-http://localhost:8000/v3-lab.html
+http://localhost:8000/v4-lab.html
 ```
 
 
@@ -59,23 +58,21 @@ using `node` or in a browser.
 
 ### Running Samples in Node
 
-Samples are run in `node` using the `esm` package on load. You need to first install `esm` by
-
-``` shell
-npm install esm
-```
-
-The general command to run scripts is then:
+Samples are run in `node` using a command
 
 ``` shell
 node -r esm samples/<SCRIPT>.js <INPUT>
 ```
 
-As example consider the script to parse LaTeX expressions into MathML:
+where `<SCRIPT>` is replaced by the script you want to run, and `<INPUT>` by whatever input that script may need.
+
+As example, consider the script to parse LaTeX expressions into MathML:
 
 ``` shell
-node -r esm samples/tex2mml.js x^2
+node samples/tex2mml.js 'x^2'
 ```
+
+It should print the following
 
 ``` html
 <math display="block">
@@ -91,13 +88,13 @@ node -r esm samples/tex2mml.js x^2
 Samples can be run in the browser using the `load.html` page. This either loads
 the `main.js` file or the particular sample file given in the parameters. For example, running
 
-[http://localhost/v3-dev/load.html?samples/asciimath-document.js](http://localhost/v3-dev/load.html?samples/asciimath-document.js)
+[http://localhost/MathJax-dev/load.html?samples/asciimath-document.js](http://localhost/MathJax-dev/load.html?samples/asciimath-document.js)
 
 will give you a rendered page of AsciiMath expressions in the browser. Note,
 that the output will also be displayed on the console. In fact, many scripts
 will only produce console output. For example, the URL:
 
-[http://localhost/v3-dev/load.html?samples/tex2mml.js&x^2](http://localhost/v3-dev/load.html?samples/tex2mml.js&x^2)
+[http://localhost/MathJax-dev/load.html?samples/tex2mml.js&x^2](http://localhost/MathJax-dev/load.html?samples/tex2mml.js&x^2)
 
 will print the corresponding MathML expression in the console:
 

@@ -1,6 +1,6 @@
-import {mathjax} from '../mathjax3/js/mathjax.js';
+import {mathjax} from 'mathjax-full/js/mathjax.js';
 
-import {TeX} from '../mathjax3/js/input/tex.js';
+import {TeX} from 'mathjax-full/js/input/tex.js';
 import {adaptor, htmlDocument} from './lib/chooseHTML.js';
 import {printFound} from './lib/found.js';
 
