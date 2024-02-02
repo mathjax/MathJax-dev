@@ -191,7 +191,7 @@ function rstOptions(name, options) {
 }
 
 let alphaCompare = (a, b) => a.toLowerCase().localeCompare(b.toLowerCase());
-    
+
 
 function rstCommands(name, handlers) {
   let str = '\n\n-----\n\n\n';
@@ -421,19 +421,39 @@ rstSymbolIndex('/tmp/index.rst');
  */
 
 AbstractParseMap.prototype.toHtml = function() {
-  let str = '<table>';
+  let str = '<table rules="all" frame="box" cellpadding="5">';
   str += '\n<thead>\n<tr><th>Macro Name</th><th>Macro Output</th></thead>';
   let commands = [];
-  for (let char of this.map.keys()) {
-    commands.push(`<tr><td>${this.outputHtml(char)}</td><td>$${this.outputHtml(char)}$</td></tr>`);
+  for (let [char, def] of this.map.entries()) {
+    commands.push(`<tr><td>${this.outputHtml(char)}</td><td>$${this.outputHtml(char, def._args?.length)}$</td></tr>`);
   }
   str += '\n' + commands.join('\n');
   str += '\n</table>';
   return str;
 };
 
-AbstractParseMap.prototype.outputHtml = function(entry) {
-  return `\\${entry}`;
+EnvironmentMap.prototype.toHtml = function() {
+  let str = '<table rules="all" frame="box" cellpadding="5">';
+  str += '\n<thead>\n<tr><th>Environment Name</th><th>Macro Output</th></thead>';
+  let commands = [];
+  for (let char of this.map.keys()) {
+    commands.push(`<tr><td>${char}</td><td>$${this.outputHtml(char)}$</td></tr>`);
+  }
+  str += '\n' + commands.join('\n');
+  str += '\n</table>';
+  return str;
+};
+
+AbstractParseMap.prototype.outputHtml = function(entry, args = 0) {
+  if (args <= 1) {
+    return `\\${entry}`;
+  }
+  let rest = '';
+  let count = 1;
+  while (count < args) {
+    rest += `{${count++}}`;
+  }
+  return `\\${entry}${rest}`;
 };
 
 EnvironmentMap.prototype.outputHtml = function(entry) {
@@ -528,7 +548,7 @@ Configuration.prototype.toHtml = function() {
 function htmlConfiguration(name) {
   let config = ConfigurationHandler.get(name);
   if (config) {
-    config.toHtml(); 
+    config.toHtml();
   }
 }
 
