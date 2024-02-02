@@ -1,6 +1,33 @@
 {
+  "name": "MathJax-dev",
+  "version": "4.0.0-beta",
+  "description": "An interactive labe for testing MathJax from source.",
+  "keywords": [
+    "MathJax"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    "MathJax, Inc. <info@mathjax.org> (http://www.mathjax.org)"
+  ],
+  "bugs": {
+    "url": "http://github.com/mathjax/MathJax/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mathjax/MathJax-dev/"
+  },
+  "type": "module",
   "dependencies": {
-    "mathjax-modern-font": "^1.0.0-beta.5",
+    "mathjax-asana-font": "^4.0.0-beta.4",
+    "mathjax-bonum-font": "^4.0.0-beta.4",
+    "mathjax-dejavu-font": "^4.0.0-beta.4",
+    "mathjax-fira-font": "^4.0.0-beta.4",
+    "mathjax-modern-font": "^4.0.0-beta.4",
+    "mathjax-pagella-font": "^4.0.0-beta.4",
+    "mathjax-schola-font": "^4.0.0-beta.4",
+    "mathjax-stix2-font": "^4.0.0-beta.4",
+    "mathjax-termes-font": "^4.0.0-beta.4",
+    "mathjax-tex-font": "^4.0.0-beta.4",
     "mhchemparser": "^4.2.1",
     "mj-context-menu": "^0.9.1",
     "speech-rule-engine": "^4.1.0-beta.7"
