@@ -1,12 +1,12 @@
-import {mathjax} from '../mathjax3/mathjax.js';
+import {mathjax} from 'mathjax-full/mathjax.js';
 
-import {TeX} from '../mathjax3/input/tex.js';
-import {CHTML} from '../mathjax3/output/chtml.js';
-//import {SVG} from '../mathjax3/output/svg.js';
-import {RegisterHTMLHandler} from '../mathjax3/handlers/html.js';
-import {browserAdaptor} from '../mathjax3/adaptors/browserAdaptor.js';
+import {TeX} from 'mathjax-full/input/tex.js';
+import {CHTML} from 'mathjax-full/output/chtml.js';
+//import {SVG} from 'mathjax-full/output/svg.js';
+import {RegisterHTMLHandler} from 'mathjax-full/handlers/html.js';
+import {browserAdaptor} from 'mathjax-full/adaptors/browserAdaptor.js';
 
-import {AllPackages} from '../mathjax3/input/tex/AllPackages.js';
+import {AllPackages} from 'mathjax-full/input/tex/AllPackages.js';
 
 const packages = AllPackages.filter(name => name !== 'noerrors');
 
@@ -31,5 +31,5 @@ mathjax.handleRetriesFor(() => {
 
 }).catch(err => console.log(err.stack));
 
-import {Package} from '../mathjax3/components/package.js';
+import {Package} from 'mathjax-full/components/package.js';
 console.log(Package.packages);

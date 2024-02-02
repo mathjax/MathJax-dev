@@ -1,4 +1,4 @@
-import {BitFieldClass} from '../mathjax3/js/util/BitField.js';
+import {BitFieldClass} from 'mathjax-full/js/util/BitField.js';
 
 const MyBits = BitFieldClass('test1', 'test2');
 

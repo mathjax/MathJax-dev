@@ -1,12 +1,12 @@
-import {mathjax} from '../mathjax3/js/mathjax.js';
+import {mathjax} from 'mathjax-full/js/mathjax.js';
 
-import {TeX} from '../mathjax3/js/input/tex.js';
-import {RegisterHTMLHandler} from '../mathjax3/js/handlers/html.js';
-import {chooseAdaptor} from '../mathjax3/js/adaptors/chooseAdaptor.js';
-import {STATE} from '../mathjax3/js/core/MathItem.js';
+import {TeX} from 'mathjax-full/js/input/tex.js';
+import {RegisterHTMLHandler} from 'mathjax-full/js/handlers/html.js';
+import {chooseAdaptor} from 'mathjax-full/js/adaptors/chooseAdaptor.js';
+import {STATE} from 'mathjax-full/js/core/MathItem.js';
 
-import '../mathjax3/js/input/tex/ams/AmsConfiguration.js';
-import '../mathjax3/js/input/tex/tag_format/TagFormatConfiguration.js';
+import 'mathjax-full/js/input/tex/ams/AmsConfiguration.js';
+import 'mathjax-full/js/input/tex/tag_format/TagFormatConfiguration.js';
 
 RegisterHTMLHandler(chooseAdaptor());
 
@@ -23,7 +23,7 @@ let html = mathjax.document('', {
     })
 });
 
-import {SerializedMmlVisitor} from '../mathjax3/js/core/MmlTree/SerializedMmlVisitor.js';
+import {SerializedMmlVisitor} from 'mathjax-full/js/core/MmlTree/SerializedMmlVisitor.js';
 let visitor = new SerializedMmlVisitor();
 let toMml = (node => visitor.visitTree(node));
 
