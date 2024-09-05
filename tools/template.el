@@ -1,0 +1,21 @@
+(defun convert-template (str)
+  "Convert a string into a template string"
+  (interactive (progn
+     (grep-compute-defaults)
+     (list (grep-read-regexp))))
+  (let ((strings (remove-if #'(lambda (x) (equal (length x) 0))
+                            (mapcar #'(lambda (x) (string-trim-right (string-trim-left x))) (split-string str "+"))))
+        (result ""))
+    (do* ((rest strings (cdr rest))
+          (first (car rest) (car rest))
+          )
+        ((null rest) result)
+      (if (string-equal (subseq first 0 1) "'")
+          (setq result (concat result (subseq first 1 (1- (length first)))))
+        (setq result (concat result (concat "${" first "}")))))
+    (setq result (concat "`" result "`"))
+    (kill-region (region-beginning) (region-end))
+    (insert result)
+    )
+  )
+
