@@ -18,18 +18,22 @@
   },
   "type": "module",
   "dependencies": {
-    "mathjax-asana-font": "^4.0.0-beta.4",
-    "mathjax-bonum-font": "^4.0.0-beta.4",
-    "mathjax-dejavu-font": "^4.0.0-beta.4",
-    "mathjax-fira-font": "^4.0.0-beta.4",
-    "mathjax-modern-font": "^4.0.0-beta.4",
-    "mathjax-pagella-font": "^4.0.0-beta.4",
-    "mathjax-schola-font": "^4.0.0-beta.4",
-    "mathjax-stix2-font": "^4.0.0-beta.4",
-    "mathjax-termes-font": "^4.0.0-beta.4",
-    "mathjax-tex-font": "^4.0.0-beta.4",
+    "mathjax-asana-font": "^4.0.0-beta.7",
+    "mathjax-bbm-font-extension": "^4.0.0-beta.7",
+    "mathjax-bboldx-font-extension": "^4.0.0-beta.7",
+    "mathjax-bonum-font": "^4.0.0-beta.7",
+    "mathjax-dejavu-font": "^4.0.0-beta.7",
+    "mathjax-dsfont-font-extension": "^4.0.0-beta.7",
+    "mathjax-fira-font": "^4.0.0-beta.7",
+    "mathjax-modern-font": "^4.0.0-beta.7",
+    "mathjax-newcm-font": "^4.0.0-beta.7",
+    "mathjax-pagella-font": "^4.0.0-beta.7",
+    "mathjax-schola-font": "^4.0.0-beta.7",
+    "mathjax-stix2-font": "^4.0.0-beta.7",
+    "mathjax-termes-font": "^4.0.0-beta.7",
+    "mathjax-tex-font": "^4.0.0-beta.7",
     "mhchemparser": "^4.2.1",
     "mj-context-menu": "^0.9.1",
-    "speech-rule-engine": "^4.1.0-beta.7"
+    "speech-rule-engine": "^4.1.0-beta.11"
   }
 }
