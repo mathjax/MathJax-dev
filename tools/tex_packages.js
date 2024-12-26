@@ -24,18 +24,25 @@
  */
 
 
-const {mathjax} = require('../mathjax3/js/mathjax.js');
-const {TeX} = require('../mathjax3/js/input/tex.js');
-const {AllPackages} = require('../mathjax3/js/input/tex/AllPackages.js');
-const {Configuration, ConfigurationHandler} = require('../mathjax3/js/input/tex/Configuration.js');
-const {MapHandler} = require('../mathjax3/js/input/tex/MapHandler.js');
-const {AbstractParseMap, EnvironmentMap, DelimiterMap, RegExpMap, MacroMap, CommandMap} = require('../mathjax3/js/input/tex/SymbolMap.js');
-const {AutoloadConfiguration} = require('../mathjax3/js/input/tex/autoload/AutoloadConfiguration.js');
+const {mathjax} = require('mathjax-full/js/mathjax.js');
+const {TeX} = require('mathjax-full/js/input/tex.js');
+const {Configuration, ConfigurationHandler} = require('mathjax-full/js/input/tex/Configuration.js');
+const {MapHandler} = require('mathjax-full/js/input/tex/MapHandler.js');
+const {AbstractParseMap, EnvironmentMap, DelimiterMap, RegExpMap, MacroMap, CommandMap} = require('mathjax-full/js/input/tex/TokenMap.js');
+const {AutoloadConfiguration} = require('mathjax-full/js/input/tex/autoload/AutoloadConfiguration.js');
 
 const fs = require('fs');
 
-// Packages not included in AllPackages.
-const extraPackages = ['physics', 'colorv2', 'setOptions'];
+const {source} = require('mathjax-full/components/js/source.js');
+
+const AllPackages =
+  Object.keys(source)
+    .filter(name => name.substring(0, 6) === '[tex]/')
+    .map(name => name.substring(6));
+
+AllPackages.forEach(name => require(source[`[tex]/${name}`]));
+
+AllPackages.unshift('base');
 
 AbstractParseMap.prototype.toString = function() {
   let str = `Table: ${this._name}: \n`;
@@ -86,9 +93,9 @@ function rstIntro(name) {
 
 function rstExplicitLoading(name) {
   let str = 'To load the `' + name + '` extension, add ``\'[tex]/\'' + name + '\'`` ';
-  str += 'to the ``load`` array of the ``loader`` block of your\n';
+  str += 'to the :data:`load` array of the :data:`loader` block of your\n';
   str += 'MathJax configuration, and add ``\'' + name + '\'`` to the';
-  str += ' ``packages`` array of the ``tex`` block.\n\n';
+  str += ' :data:`packages` array of the :data:`tex` block.\n\n';
   return str;
 }
 
@@ -157,8 +164,8 @@ function rstOptions(name, options) {
   let str = '\n\n-----\n\n\n';
   str += `.. _tex-${name}-options:\n\n`;
   str += rstTitle(`${name} Options`);
-  str += 'Adding the `' + name + '` extension to the ``packages`` array defines an\n';
-  str += '``' + name + '`` sub-block of the ``tex`` configuration block with the\n';
+  str += 'Adding the `' + name + '` extension to the :data:`packages` array defines an\n';
+  str += ':data:`' + name + '` sub-block of the :data:`tex` configuration block with the\n';
   str += 'following values:\n\n';
   str += '.. code-block:: javascript\n\n';
   str += `  MathJax = {\n`;
@@ -264,7 +271,7 @@ Configuration.prototype.toString = function(keys) {
 };
 
 function outputConfigurations() {
-  let jax = new TeX({packages: AllPackages.concat(extraPackages)});
+  let jax = new TeX({packages: AllPackages});
   let results = [];
   for (let key of jax.configuration.configurations) {
     results.push(key.item.toString(jax.configuration.handlers.keys()));
@@ -280,7 +287,7 @@ let envMap = new Map();
 function compileCommandTable() {
   commandMap.clear();
   envMap.clear();
-  for (let package of AllPackages.concat(extraPackages)) {
+  for (let package of AllPackages) {
     let config = ConfigurationHandler.get(package);
     if (!config) continue;
     for (let kind of ['character', 'macro']) {
@@ -394,7 +401,7 @@ function rstSymbolIndex(file = ``) {
 // Output of sekeleton documentation for all packages.
 // Usage: rstAllPackages()
 function rstAllPackages() {
-  for (let package of AllPackages.concat(extraPackages)) {
+  for (let package of AllPackages) {
     rstConfiguration(package, `/tmp/${package}.rst`);
   }
 }
