@@ -43,6 +43,7 @@ const AllPackages =
 AllPackages.forEach(name => require(source[`[tex]/${name}`]));
 
 AllPackages.unshift('base');
+AllPackages.push('text-bboldx', 'text-base');
 
 AbstractParseMap.prototype.toString = function() {
   let str = `Table: ${this._name}: \n`;
@@ -86,13 +87,13 @@ function rstIntro(name) {
   let str = 'The `' + name + '` extension implements the ``' + name + '`` ';
   str += 'style package from LaTeX.\n';
   str += '**...Explanation...**\n';
-  str += 'See the `CTAN page <https://www.ctan.org/pkg/' + name + '>`__\n';
-  str += 'for more information and documentation of `' + name + '`.';
+  str += 'See the `' + name + ' CTAN page <https://www.ctan.org/pkg/' + name + '>`__\n';
+  str += 'for more information and documentation.';
   return str;
 }
 
 function rstExplicitLoading(name) {
-  let str = 'To load the `' + name + '` extension, add ``\'[tex]/\'' + name + '\'`` ';
+  let str = 'To load the `' + name + '` extension explicitly, add ``\'[tex]/' + name + '\'`` ';
   str += 'to the :data:`load` array of the :data:`loader` block of your\n';
   str += 'MathJax configuration, and add ``\'' + name + '\'`` to the';
   str += ' :data:`packages` array of the :data:`tex` block.\n\n';
@@ -100,7 +101,7 @@ function rstExplicitLoading(name) {
 }
 
 function rstIsAutoloaded(name) {
-  let str = 'This extension is loaded automatically when the `autoload` ';
+  let str = 'This extension is loaded automatically when the :ref:`tex-autoload` ';
   str += 'extension is used.\n';
   str += rstExplicitLoading(name);
   return str;
@@ -121,6 +122,10 @@ function rstAutoload(name) {
   return isAutoloaded(name) ? rstIsAutoloaded(name) : rstIsNotAutoloaded(name);
 }
 
+function isPreloaded(name) {
+  return ['base', 'ams', 'newcommand', 'require'].includes(name);
+}
+
 
 function rstHeader(name) {
   let hashes = new Array(name.length + 1).join('#');
@@ -138,7 +143,7 @@ function rstCodeBlock(name) {
 function rstRequireBlock(name) {
   return 'Alternatively, use ``\\require{' + name +
     '}`\` in a TeX expression to load it\n' +
-    'dynamically from within the math on the page, if the `require`\n' +
+    'dynamically from within the math on the page, if the :ref:`tex-require`\n' +
     'extension is loaded.';
 }
 
@@ -168,17 +173,17 @@ function rstOptions(name, options) {
   str += ':data:`' + name + '` sub-block of the :data:`tex` configuration block with the\n';
   str += 'following values:\n\n';
   str += '.. code-block:: javascript\n\n';
-  str += `  MathJax = {\n`;
-  str += `    tex: {\n`;
-  str += `      ${name}: {\n`;
+  str += `   MathJax = {\n`;
+  str += `     tex: {\n`;
+  str += `       ${name}: {\n`;
   let optStr = [];
   for (let [key, value] of Object.entries(options)) {
-    optStr.push(`        ${key}: ${rstStringify(value)}`);
+    optStr.push(`         ${key}: ${rstStringify(value)}`);
   }
   str += optStr.join(',\n');
-  str += '\n      }';
-  str += '\n    }';
-  str += '\n  };\n\n';
+  str += '\n       }';
+  str += '\n     }';
+  str += '\n   };\n\n';
   for (let [key, value] of Object.entries(options)) {
     str += `\n.. _tex-${name}-${key}:\n`;
     str += `.. describe:: ${key}: ${rstStringify(value)}`;
@@ -233,7 +238,7 @@ Configuration.prototype.toRst = function(keys) {
     str += rstOptions(this.name, this.options[this.name]);
   }
   str += rstCommands(this.name, this.handler);
-  str += '\n\n\n|-----|';
+  str += '\n\n\n|-----|\n';
   return str;
 };
 
@@ -333,7 +338,7 @@ function rstCommandTableLine([command, packages]) {
   return str + '     -' +
     ((packages.length === 1 && packages[0] === 'base') ? '' :
      (' ' + packages.map(
-       p => (p === 'base' || p === 'ams' || isAutoloaded(p)) ? `**${p}**` : `*${p}*`)
+       p => isPreloaded(p) ? `**${p}**` : isAutoloaded(p) ? `*${p}*` : p)
      .join(', ')));
 }
 
