@@ -35,6 +35,7 @@
     "@mathjax/mathjax-tex-font": "0.4.2-beta.8",
     "mhchemparser": "^4.2.1",
     "mj-context-menu": "^0.9.1",
-    "speech-rule-engine": "4.1.0-beta.11"
+    "speech-rule-engine": "4.1.0-beta.11",
+    "wicked-good-xpath": "^1.3.0"
   }
 }
