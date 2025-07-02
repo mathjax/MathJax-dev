@@ -6,17 +6,17 @@
 <script type="importmap">
 {
   "imports": {
-    "#js/": "./node_modules/mathjax-full/mjs/",
-    "#source/source.cjs": "./node_modules/mathjax-full/components/mjs/source-lab.js",
-    "#root/": "./node_modules/mathjax-full/mjs/components/mjs/",
-    "#map/": "./node_modules/mathjax-full/mjs/util/mjs/",
+    "#js/": "./node_modules/@mathjax/src/mjs/",
+    "#source/source.cjs": "./node_modules/@mathjax/src/components/mjs/source-lab.js",
+    "#root/": "./node_modules/@mathjax/src/mjs/components/mjs/",
+    "#map/": "./node_modules/@mathjax/src/mjs/util/mjs/",
     "#default-font/": "./node_modules/@mathjax/mathjax-newcm-font/mjs/",
     "#sre/": "./node_modules/speech-rule-engine/js/",
     "#menu/": "./node_modules/mj-context-menu/js/",
     "#mhchem/": "./node_modules/mhchemparser/esm/",
-    "mathjax-full/components/src/": "./node_modules/mathjax-full/components/mjs/",
-    "mathjax-full/js/": "./node_modules/mathjax-full/mjs/",
-    "mathjax-full/": "./node_modules/mathjax-full/",
+    "@mathjax/src/components/src/": "./node_modules/@mathjax/src/components/mjs/",
+    "@mathjax/src/js/": "./node_modules/@mathjax/src/mjs/",
+    "@mathjax/src/": "./node_modules/@mathjax/src/",
     "wicked-good-xpath": "./node_modules/wicked-good-xpath/dist/wgxpath.install-node.js",
     "@xmldom/xmldom": "./lib/xmldom/index.js"
   }
@@ -25,7 +25,6 @@
 <script>
 global = window;
 module = {exports: {}};
-exports = module.exports;
 PACKAGE_VERSION = "4.0.0-test";
 </script>
 <style>
@@ -246,7 +245,7 @@ document.getElementById('input').value = '';
 
 <script type="module">
   import './lib/v4-lab.js';
-  import 'mathjax-full/components/src/startup/startup.js';
+  import '@mathjax/src/components/src/startup/startup.js';
 </script>
 
 </body>
