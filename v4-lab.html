@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" href="favicon.ico" />
 <meta charset="utf-8" />
 <title>MathJax v4 Interactive Lab</title>
 <script type="importmap">
@@ -28,6 +29,22 @@ module = {exports: {}};
 PACKAGE_VERSION = "4.0.0-test";
 </script>
 <style>
+:root {
+    --background-color: #F9FAFB;          /* very light gray with slight blue */
+    --text-color: #1F2937;                /* dark slate gray */
+    --text-background: #FFFFFF;           /* pure white */
+    --border-color: #D1D5DB;              /* soft gray */
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #1E1E2F;        /* deep navy purple */
+        --text-color: #E0E0E0;              /* light gray */
+        --text-background: #2C2C3C;         /* dark slate */
+        --border-color: #3F3F4F;            /* soft border gray-blue */
+  }
+}
+
 .MJX_LiveRegion_Show {
   font-size: 150%;
 }
@@ -37,6 +54,8 @@ h1 {
 }
 body {
   min-height: 50em;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 #layout {
   padding-left: .5em;
@@ -61,6 +80,9 @@ body {
   display: inline-block;
 }
 #input {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
   width: 100%;
   box-sizing: border-box;
 }
@@ -70,7 +92,7 @@ body {
   margin-bottom: 1em;
 }
 .output {
-  border: 1px solid black;
+  border: 1px solid var(--border-color);
   padding: 10px;
   width: 100%;
   max-width: 45em;
