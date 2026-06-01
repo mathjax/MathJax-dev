@@ -121,3 +121,7 @@ summary + * {
 input[disabled] + label {
   color: var(--text-disabled);
 }
+
+#clear {
+  float: left;
+}

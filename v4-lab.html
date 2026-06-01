@@ -8,6 +8,7 @@
 <script type="importmap">
 {
   "imports": {
+    "#ts/": "./node_modules/@mathjax/src/ts/",
     "#js/": "./node_modules/@mathjax/src/mjs/",
     "#source/source.cjs": "./node_modules/@mathjax/src/components/mjs/source-lab.js",
     "#root/": "./node_modules/@mathjax/src/mjs/components/mjs/",
@@ -88,6 +89,8 @@ PACKAGE_VERSION = "4.0.0-test";
 <input type="checkbox" id="collapse" onchange="Lab.setCollapse(this.checked)" /><label for="collapse"> Collapse Complex Math</label><br/>
 <input type="checkbox" id="compute" onchange="Lab.setCompute(this.checked)" /><label for="compute"> Compute Complexity</label><br/>
 <input type="checkbox" id="enrich" onchange="Lab.setEnrich(this.checked)" /><label for="enrich"> Enrich MathML</label><br/>
+<div style="height: 8px"></div>
+<input type="checkbox" id="regions" onchange="Lab.setRegions(this.checked)" /><label for="regions"> Don't Close Regions</label><br/>
 </div>
 </details>
 </div>
